@@ -79,7 +79,8 @@ public function refresh() {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   public static function cron() {
-   refresh();
+  
+   fordcar::refresh();
   }
 
 
