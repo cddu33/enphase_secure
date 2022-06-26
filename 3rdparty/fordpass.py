@@ -23,7 +23,7 @@ TOKEN_URL = 'https://api.mps.ford.com/api/oauth2/v1'
 
 class Vehicle(object):
     '''Represents a Ford vehicle, with methods for status and issuing commands'''
-
+	
     def __init__(self, username, password, vin):
         self.username = username
         self.password = password
@@ -32,7 +32,8 @@ class Vehicle(object):
         self.refresh_token = None
         self.access_expire_time = None
         self.refresh_expire_time = None
-
+	#print(username + password + vin);
+		
 
     def __auth(self):     
         '''Authenticate and store the token'''
@@ -43,7 +44,7 @@ class Vehicle(object):
             'username': self.username,
             'password': self.password
         }
-
+		
         r = requests.post(f'{SSO_URI}/oidc/endpoint/default/token', data=data, headers=defaultHeaders)
 
         if r.status_code == 200:
