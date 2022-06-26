@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys, os, logging, time, json
-sys.path.insert(1, sys.argv[6] + '/../../3rdparty')
+
 from fordpass import Vehicle
 
 if len(sys.argv) != 7:
