@@ -28,7 +28,7 @@ function fordcar_install() {
 function fordcar_update() {
 	fordcar::dependancy_install();
   exec('../ressources/install_apt.sh');
-	fordcar::refresh();
+	fordcarCmd::refresh();
 }
 
 // Fonction exécutée automatiquement après la suppression du plugin
