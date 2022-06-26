@@ -33,7 +33,7 @@ function fordcar_update() {
 
 // Fonction exécutée automatiquement après la suppression du plugin
 function fordcar_remove() {
-	$cron = cron::byClassAndFunction('fordpass', 'pull');
+	$cron = cron::byClassAndFunction('fordcar', 'pull');
     if (is_object($cron)) {
         $cron->remove();
     }
