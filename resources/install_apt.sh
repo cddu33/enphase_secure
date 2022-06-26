@@ -12,6 +12,10 @@ echo 5 > ${PROGRESS_FILE}
 sudo apt-get update
 echo 10 > ${PROGRESS_FILE}
 sudo apt-get install -y python3 python3-requests
+echo 20 > ${PROGRESS_FILE}
+sudo apt-get install pip
+echo 50 > ${PROGRESS_FILE}
+sudo python3 -m pip install git+https://github.com/NicKoehler/fordpass-python.git
 echo 100 > ${PROGRESS_FILE}
 echo $(date)
 rm ${PROGRESS_FILE}
