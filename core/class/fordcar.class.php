@@ -148,7 +148,8 @@ public function refresh() {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
-	  fordcar::refresh();
+	  $eqLogic = $this->getEqLogic();
+        $eqLogic->refresh();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
