@@ -21,7 +21,7 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 function fordcar_install() {
   fordcar::dependancy_install();
   exec('../ressources/install_apt.sh');
-  fordcar::refresh();
+  //fordcar::refresh();
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin

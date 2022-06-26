@@ -60,7 +60,6 @@ public function refresh() {
 	
 	
   /*
-  jlinassier@gmail.com 190417JlCd WF0JXXGAHJLY65246
   * Permet de définir les possibilités de personnalisation du widget (en cas d'utilisation de la fonction 'toHtml' par exemple)
   * Tableau multidimensionnel - exemple: array('custom' => true, 'custom::layout' => false)
   public static $_widgetPossibility = array();
@@ -80,8 +79,7 @@ public function refresh() {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   public static function cron() {
-  
-    fordcar::refresh();
+   refresh();
   }
 
 
