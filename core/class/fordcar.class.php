@@ -127,14 +127,14 @@ public function refresh() {
 
   // Fonction exécutée automatiquement avant la mise à jour de l'équipement
   public function preUpdate() {
-	 // if (empty($this->getConfiguration('user'))) {
-	//		throw new Exception('L\'identifiant ne peut pas être vide');
-	 // }
-		if (empty($this->getConfiguration('password'))) {
+	 if ($this->getConfiguration('user') == '') {
+			throw new Exception('L\'identifiant ne peut pas être vide');
+	  }
+		if ($this->getConfiguration('password') == '') {
 			throw new Exception('Le mot de passe ne peut etre vide');
 		}
-		if (empty($this->getConfiguration('vin'))) {
-			throw new Exception('Le d\'identification du véhicule ne peut pas être vide');
+		if ($this->getConfiguration('vin') == '') {
+			throw new Exception('Le VIN d\'identification du véhicule ne peut pas être vide');
 		}
 	  
   }
