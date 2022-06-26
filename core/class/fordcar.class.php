@@ -46,12 +46,21 @@ class fordcar extends eqLogic {
 		
 	}
   
-
+public function refresh() {
+		$fordcar_path = realpath(dirname(__FILE__));
+		$cmd = '';
+		foreach (self::byType('fordcar', true) as $fordcar) {
+			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			log::add('fordcar', 'debug', 'commande ' . $cmd);
+			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		}
 	}	
 	
 	
 	
   /*
+==
   * Permet de définir les possibilités de personnalisation du widget (en cas d'utilisation de la fonction 'toHtml' par exemple)
   * Tableau multidimensionnel - exemple: array('custom' => true, 'custom::layout' => false)
   public static $_widgetPossibility = array();
@@ -72,7 +81,7 @@ class fordcar extends eqLogic {
  
   public static function cron() {
   
-   fordcarCmd::refresh();
+    fordcar::refresh();
   }
 
 
@@ -140,7 +149,6 @@ class fordcar extends eqLogic {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
-        fordcarCmd::refresh();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -188,16 +196,6 @@ class fordcar extends eqLogic {
 }
 
 class fordcarCmd extends cmd {
-
-public function refresh() {
-		$fordcar_path = realpath(dirname(__FILE__));
-		$cmd = '';
-		foreach (self::byType('fordcar', true) as $fordcar) {
-			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			log::add('fordcar', 'debug', 'commande ' . $cmd);
-			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		}
   /*     * *************************Attributs****************************** */
 
   /*
