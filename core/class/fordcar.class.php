@@ -46,15 +46,7 @@ class fordcar extends eqLogic {
 		
 	}
   
-public function refresh() {
-		$fordcar_path = realpath(dirname(__FILE__));
-		$cmd = '';
-		foreach (self::byType('fordcar', true) as $fordcar) {
-			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			log::add('fordcar', 'debug', 'commande ' . $cmd);
-			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		}
+
 	}	
 	
 	
@@ -148,7 +140,7 @@ public function refresh() {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
-        $eqLogic->refresh();
+        fordcar::refresh();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -196,6 +188,16 @@ public function refresh() {
 }
 
 class fordcarCmd extends cmd {
+
+public function refresh() {
+		$fordcar_path = realpath(dirname(__FILE__));
+		$cmd = '';
+		foreach (self::byType('fordcar', true) as $fordcar) {
+			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			log::add('fordcar', 'debug', 'commande ' . $cmd);
+			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		}
   /*     * *************************Attributs****************************** */
 
   /*
