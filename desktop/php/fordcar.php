@@ -159,7 +159,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous connecter à l'application FordPass sur votre téléphone}}"></i></sup>
       </label>
       <div class="col-md-4">
-        <input class="eqLogicAttr form-control" data-l1key="user"/>
+        <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="user"/>
       </div>
     </div>
     <div class="form-group">
@@ -167,7 +167,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous connecter à l'application FordPass sur votre téléphone}}"></i></sup>
       </label>
       <div class="col-md-4">
-        <input type="password" class="eqLogicAttr form-control" autocomplete="new-password" data-l1key="password"/>
+        <input type="password" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="password" autocomplete="new-password"/>
       </div>
     </div>
     <div class="form-group">
@@ -175,7 +175,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <sup><i class="fas fa-question-circle tooltips" title="{{Numéros VIN (identification) de votre véhicule présent sur la carte grise}}"></i></sup>
       </label>
       <div class="col-md-4">
-        <input class="eqLogicAttr form-control" data-l1key="vin">
+        <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="vin">
         </select>
       </div>
     </div>
