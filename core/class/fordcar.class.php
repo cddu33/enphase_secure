@@ -155,6 +155,27 @@ class fordcar extends eqLogic {
   $refresh->setType('action');
   $refresh->setSubType('other');
   $refresh->save();
+  	   $lock = $this->getCmd(null, 'lock');
+  if (!is_object($lock)) {
+    $refresh = new fordcarCmd();
+    $refresh->setName(__('Vérouiller', __FILE__));
+  }
+  $lock->setEqLogic_id($this->getId());
+  $lock->setLogicalId('lock');
+  $lock->setType('action');
+  $lock->setSubType('other');
+  $lock->save();
+
+  $unlock = $this->getCmd(null, 'unlock');
+  if (!is_object($lock)) {
+    $refresh = new fordcarCmd();
+    $refresh->setName(__('Dévérouiller', __FILE__));
+  }
+  $unlock->setEqLogic_id($this->getId());
+  $unlock->setLogicalId('lunlock');
+  $unlock->setType('action');
+  $unlock->setSubType('other');
+  $unlock->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -202,10 +223,11 @@ class fordcarCmd extends cmd {
 	
   /*
   * Permet d'empêcher la suppression des commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
+  */
   public function dontRemoveCmd() {
     return true;
   }
-  */
+  
 
   // Exécution d'une commande
   public function execute($_options = array()) {
