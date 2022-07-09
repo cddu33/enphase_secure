@@ -70,19 +70,7 @@ class fordcar extends eqLogic {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   public static function cron() {
-      
-		$fordcar_path = realpath(dirname(__FILE__));
-		foreach (self::byType('fordcar', true) as $fordcar) {
-			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			//$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 		
-			
-			log::add('fordcar', 'debug', 'commande ' . $cmd);
-			//$cmd->execCmd();
-			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		
-		}
   //  fordcar::refresh();
   }
 
@@ -188,6 +176,7 @@ class fordcar extends eqLogic {
   public static function preConfig_param3() {}
   */
 
+
   /*
   * Permet de déclencher une action après modification d'une variable de configuration du plugin
   * Exemple avec la variable "param3"
@@ -195,6 +184,20 @@ class fordcar extends eqLogic {
   */
 
   /*     * **********************Getteur Setteur*************************** */
+  public function refresh() {
+
+  $fordcar_path = realpath(dirname(__FILE__));
+		foreach (self::byType('fordcar', true) as $fordcar) {
+			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+			//$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+		
+			
+			log::add('fordcar', 'debug', 'commande ' . $cmd);
+			//$cmd->execCmd();
+			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		
+		}
 
 }
 
@@ -225,6 +228,22 @@ class fordcarCmd extends cmd {
 
   // Exécution d'une commande
   public function execute($_options = array()) {
+  }
+  
+
+
+  $fordcar_path = realpath(dirname(__FILE__));
+		foreach (self::byType('fordcar', true) as $fordcar) {
+			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+			//$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+		
+			
+			log::add('fordcar', 'debug', 'commande ' . $cmd);
+			//$cmd->execCmd();
+			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		
+		}
   }
 
   /*     * **********************Getteur Setteur*************************** */
