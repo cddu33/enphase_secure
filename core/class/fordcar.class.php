@@ -311,18 +311,6 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
-	  $fordcarCmd = $this->getCmd(null, 'etpndr');
-	  if (!is_object($fordcarCmd)) {
-		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Etat pneu droit', __FILE__));
-	  }
-	  $fordcarCmd->setEqLogic_id($this->getId());
-	  $fordcarCmd->setLogicalId('etpndr');
-	  $fordcarCmd->setType('info');
-	  $fordcarCmd->setSubType('string');
-	  //$fordcarCmd->setUnite('%');
-	  $fordcarCmd->save();
-
 	  $fordcarCmd = $this->getCmd(null, 'etpnavgh');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
