@@ -228,6 +228,30 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'lat');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Latitude', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('lat');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('°');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'long');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Longitude', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('long');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('°');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -277,6 +301,10 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('veille', $fordcar_json['deepSleepInProgress']['value']);
 		log::add('fordcar', 'debug', 'Kilométrage' . $fordcar_json['odometer']['value']);
 		$this->checkAndUpdateCmd('km', $fordcar_json['odometer']['value']);
+		log::add('fordcar', 'debug', 'Latitude' . $fordcar_json['gps']['latitude']);
+		$this->checkAndUpdateCmd('lat', $fordcar_json['gps']['latitude']);
+		log::add('fordcar', 'debug', 'Latitude' . $fordcar_json['gps']['longitude']);
+		$this->checkAndUpdateCmd('long', $fordcar_json['gps']['longitude']);
 	}
   }
   public function commandes($fordcar_statut) {
