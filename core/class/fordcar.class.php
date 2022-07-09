@@ -201,17 +201,16 @@ class fordcar extends eqLogic {
   /*     * **********************Getteur Setteur*************************** */
   public function refresh() {
 
-  $fordcar_path = realpath(dirname(__FILE__));
+	$fordcar_path = realpath(dirname(__FILE__));
 		foreach (self::byType('fordcar', true) as $fordcar) {
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			//$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			//$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 		
 			
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
 			//$cmd->execCmd();
 			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		
 		}
   }
 
@@ -244,18 +243,14 @@ class fordcarCmd extends cmd {
 
   // Exécution d'une commande
   public function execute($_options = array()) {
- 
-  $fordcar_path = realpath(dirname(__FILE__));
-		
-			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			//$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-		
-			
-			log::add('fordcar', 'debug', 'commande ' . $cmd);
-			//$cmd->execCmd();
-			$result=exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		return $result;
+ $eqlogic = $this->getEqLogic(); //récupère l'éqlogic de la commande $this
+  switch ($this->getLogicalId()) { //vérifie le logicalid de la commande
+    case 'refresh': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
+    $info = $eqlogic->refresh(); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
+   // $eqlogic->checkAndUpdateCmd('story', $info); //on met à jour la commande avec le LogicalId "story"  de l'eqlogic
+    break;
+  }
+  return $info;
   }
   /*     * **********************Getteur Setteur*************************** */
 
