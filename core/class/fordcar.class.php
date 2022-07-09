@@ -69,18 +69,11 @@ class fordcar extends eqLogic {
   /*
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
-  public static function cron($_multiId = null) {
-
-  if($_multiId != null){
-			$eqLogics = [fordcar::byLogicalId($_multiId, 'fordcar')];
-		}
-		else{
-            $eqLogics = fordcar::byType('fordcar', true);
-        }
+  public static function cron() {
       
 		$fordcar_path = realpath(dirname(__FILE__));
 		$cmd = '';
-		foreach (self::byType('fordcar', true) as $fordcar) {
+		foreach (eqLogic::byType('fordcar', true) as $eqLogic) {
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
 			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
@@ -88,7 +81,6 @@ class fordcar extends eqLogic {
 	}	
 
   //  fordcar::refresh();
-  return $return;
   }
 
 
