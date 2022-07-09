@@ -215,6 +215,18 @@ class fordcar extends eqLogic {
 			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		}
   }
+  public function commandes($fordcar_statut) {
+	  $fordcar_path = realpath(dirname(__FILE__));
+		$fordcar_pass = $this->getConfiguration('password');
+		$fordcar_vin = $this->getConfiguration('vin');
+			$fordcar_user = $this->getConfiguration('user');
+			$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+			$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut . ' ' . $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
+			log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
+			//$cmd->execCmd();
+			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+
+  }
 
 }
 
@@ -236,6 +248,11 @@ class fordcarCmd extends cmd {
     case 'refresh': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
     $info = $eqlogic->refresh(); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
    // $eqlogic->checkAndUpdateCmd('story', $info); //on met à jour la commande avec le LogicalId "story"  de l'eqlogic
+   case 'lock': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
+    $info = $eqlogic->commandes("lock"); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
+	 case 'unlock': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
+    $info = $eqlogic->commandes("unlock"); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
+    break;
     break;
   }
   return $info;
