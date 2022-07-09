@@ -298,6 +298,126 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'pression');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat pression', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('pression');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'etpndr');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat pneu droit', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('etpndr');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'etpnavgh');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat pneu avant gauche', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('etpnavgh');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	   $fordcarCmd = $this->getCmd(null, 'etpnavdr');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat pneu avant droit', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('etpnavdr');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'etpnargh');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat pneu arrière gauche', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('etpnargh');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'etpnardr');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat pneu arrière droit', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('etpnardr');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'prpnavgh');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Pression pneu avant gauche', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('prpnavgh');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'prpnavdr');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Pression pneu avant droit', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('prpnavdr');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'prpnargh');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Pression pneu arrière gauche', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('prpnargh');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'prpnardr');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Pression pneu arrière droit', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('prpnardr');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -337,30 +457,89 @@ class fordcar extends eqLogic {
 		if ($fordcar_json === null) {
 			throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
 		}
-		log::add('fordcar', 'debug', 'etat lock:' . $fordcar_json['lockStatus']['value']);
-		$this->checkAndUpdateCmd('etat', $fordcar_json['lockStatus']['value']);
-		log::add('fordcar', 'debug', 'dernière actualisation:' . $fordcar_json['lastRefresh']);
-		$this->checkAndUpdateCmd('last', $fordcar_json['lastRefresh']);
-		log::add('fordcar', 'debug', 'Mise à jour en cours:' . $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value']);
-		$this->checkAndUpdateCmd('maj', $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value']);
-		log::add('fordcar', 'debug', 'Veille profonde' . $fordcar_json['deepSleepInProgress']['value']);
-		$this->checkAndUpdateCmd('veille', $fordcar_json['deepSleepInProgress']['value']);
-		log::add('fordcar', 'debug', 'Kilométrage' . $fordcar_json['odometer']['value']);
-		$this->checkAndUpdateCmd('km', $fordcar_json['odometer']['value']);
-		log::add('fordcar', 'debug', 'Latitude' . $fordcar_json['gps']['latitude']);
-		$this->checkAndUpdateCmd('lat', $fordcar_json['gps']['latitude']);
-		log::add('fordcar', 'debug', 'Longitude' . $fordcar_json['gps']['longitude']);
-		$this->checkAndUpdateCmd('long', $fordcar_json['gps']['longitude']);
-		log::add('fordcar', 'debug', 'Etat batterie' . $fordcar_json['battery']['batteryHealth']['value']);
-		$this->checkAndUpdateCmd('hbat', $fordcar_json['battery']['batteryHealth']['value']);
-		log::add('fordcar', 'debug', 'Tension batterie' . $fordcar_json['battery']['batteryStatusActual']['value']);
-		$this->checkAndUpdateCmd('tbat', $fordcar_json['battery']['batteryStatusActual']['value']);
-		log::add('fordcar', 'debug', 'Etat huile' . $fordcar_json['oil']['oilLife']);
-		$this->checkAndUpdateCmd('ehuile', $fordcar_json['oil']['oilLife']);
-		log::add('fordcar', 'debug', 'Pourcentage huile' . $fordcar_json['oil']['oilLifeActual']);
-		$this->checkAndUpdateCmd('huile', $fordcar_json['oil']['oilLifeActual']);
+		$fordcar_info = $fordcar_json['lockStatus']['value'];
+		log::add('fordcar', 'debug', 'etat lock:' . $fordcar_info);
+		$this->checkAndUpdateCmd('etat', $fordcar_info);
 
+		$fordcar_info = $fordcar_json['lastRefresh'];
+		log::add('fordcar', 'debug', 'dernière actualisation:' . $fordcar_info);
+		$this->checkAndUpdateCmd('last', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value'];
+		log::add('fordcar', 'debug', 'Mise à jour en cours:' . $fordcar_info);
+		$this->checkAndUpdateCmd('maj', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['deepSleepInProgress']['value'];
+		log::add('fordcar', 'debug', 'Veille profonde' . $fordcar_info);
+		$this->checkAndUpdateCmd('veille', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['odometer']['value'];
+		log::add('fordcar', 'debug', 'Kilométrage' . $fordcar_info);
+		$this->checkAndUpdateCmd('km', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['gps']['latitude'];
+		log::add('fordcar', 'debug', 'Latitude' . $fordcar_info);
+		$this->checkAndUpdateCmd('lat', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['gps']['longitude'];
+		log::add('fordcar', 'debug', 'Longitude' . $fordcar_info);
+		$this->checkAndUpdateCmd('long', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['battery']['batteryHealth']['value'];
+		log::add('fordcar', 'debug', 'Etat batterie' . $fordcar_info);
+		$this->checkAndUpdateCmd('hbat', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['battery']['batteryStatusActual']['value'];
+		log::add('fordcar', 'debug', 'Tension batterie' . $fordcar_info);
+		$this->checkAndUpdateCmd('tbat', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['oil']['oilLife'];
+		log::add('fordcar', 'debug', 'Etat huile' . $fordcar_info);
+		$this->checkAndUpdateCmd('ehuile', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['oil']['oilLifeActual'];
+		log::add('fordcar', 'debug', 'Pourcentage huile' . $fordcar_info);
+		$this->checkAndUpdateCmd('huile', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['oil']['oilLifeActual'];
+		log::add('fordcar', 'debug', 'Pourcentage huile' . $fordcar_info);
+		$this->checkAndUpdateCmd('huile', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['tirePressure']['value'];
+		log::add('fordcar', 'debug', 'Etat pression' . $fordcar_info);
+		$this->checkAndUpdateCmd('pression', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['leftFrontTireStatus']['value'];
+		log::add('fordcar', 'debug', 'Etat pneu avant gauche' . $fordcar_info);
+		$this->checkAndUpdateCmd('etpnargh', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['rightFrontTireStatus']['value'];
+		log::add('fordcar', 'debug', 'Etat pneu avant droit' . $fordcar_info);
+		$this->checkAndUpdateCmd('etpnardr', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['outerLeftRearTireStatus']['value'];
+		log::add('fordcar', 'debug', 'Etat pneu arrière gauche' . $fordcar_info);
+		$this->checkAndUpdateCmd('etpnavgh', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['outerRightRearTireStatus']['value'];
+		log::add('fordcar', 'debug', 'Etat pneu arrière droit' . $fordcar_info);
+		$this->checkAndUpdateCmd('etpnavdr', $fordcar_info);
 	
+		$fordcar_info = $fordcar_json['TPMS']['leftFrontTirePressure']['value'];
+		log::add('fordcar', 'debug', 'Pression pneu avant gauche' . $fordcar_info);
+		$this->checkAndUpdateCmd('prpnargh', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['rightFrontTirePressure']['value'];
+		log::add('fordcar', 'debug', 'Pression pneu avant droit' . $fordcar_info);
+		$this->checkAndUpdateCmd('prpnardr', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['outerLeftRearTirePressure']['value'];
+		log::add('fordcar', 'debug', 'Pression pneu arrière gauche' . $fordcar_info);
+		$this->checkAndUpdateCmd('prpnavgh', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['TPMS']['outerRightRearTirePressure']['value'];
+		log::add('fordcar', 'debug', 'Pression pneu arrière droit' . $fordcar_info);
+		$this->checkAndUpdateCmd('prpnavdr', $fordcar_info);
 	}
   }
   public function commandes($fordcar_statut) {

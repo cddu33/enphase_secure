@@ -21,3 +21,5 @@ etat batterie
 tension batterie
 etat huile
 % huile
+pneux
+

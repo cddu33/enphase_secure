@@ -10,4 +10,4 @@ Paramétrage:
 * Renseigner le VIN du véhicule
 * Sauvegarder
 
-* Suite à une mise à jour, pour actualiser la liste des commandes, sauvegarder l'équipement'
+* Suite à une mise à jour, pour actualiser la liste des commandes, sauvegarder l'équipement
