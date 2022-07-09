@@ -213,10 +213,15 @@ class fordcar extends eqLogic {
 		$fordcar_pass = $this->getConfiguration('password');
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
+		$fordcar_fichier = $fordcar_path .'/../../data/'. $fordcar_vin . '.json'
 		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
+		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		$json = json_decode($fordcar_fichier, true);
+			if ($json === null) {
+				throw new Exception(__('Json invalide ou non décodable : ', __FILE__) . $json_str);
+			}
 	}
   }
   public function commandes($fordcar_statut) {
