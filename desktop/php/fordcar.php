@@ -24,11 +24,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<br>
 				<span>{{Configuration}}</span>
 			</div>
+			<!--
 			<div class="cursor eqLogicAction logoSecondary" data-action="fordcar::refresh">
 				<i class="fas fa-wrench"></i>
 				<br>
 				<span>{{Forcer l'actualisation}}</span>
 			</div>
+			-->
 		</div>
 		<legend><i class="fas fa-table"></i> {{Mes véhicules}}</legend>
 		<?php
