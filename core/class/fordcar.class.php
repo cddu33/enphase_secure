@@ -590,15 +590,15 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Pression pneu arrière droit' . $fordcar_info);
 		$this->checkAndUpdateCmd('prpnavdr', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['windowPosition']['leftFrontTirePressure']['value'];
+		$fordcar_info = $fordcar_json['windowPosition']['driverWindowPosition']['value'];
 		log::add('fordcar', 'debug', 'Fenetre conducteur avant' . $fordcar_info);
 		$this->checkAndUpdateCmd('vicdav', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['windowPosition']['rightFrontTirePressure']['value'];
+		$fordcar_info = $fordcar_json['windowPosition']['rearDriverWindowPos']['value'];
 		log::add('fordcar', 'debug', 'Fenetre conducteur arrière' . $fordcar_info);
 		$this->checkAndUpdateCmd('vicdar', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['windowPosition']['rearDriverWindowPos']['value'];
+		$fordcar_info = $fordcar_json['windowPosition']['passWindowPosition']['value'];
 		log::add('fordcar', 'debug', 'Fenetre passager avant' . $fordcar_info);
 		$this->checkAndUpdateCmd('vipsav', $fordcar_info);
 
