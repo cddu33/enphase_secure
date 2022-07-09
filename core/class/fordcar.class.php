@@ -222,8 +222,8 @@ class fordcar extends eqLogic {
 		if ($fordcar_json === null) {
 			throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
 		}
-		log::add('fordcar', 'debug', 'etat lock:' . $fordcar_json['lockStatus'][value]);
-			  $this->checkAndUpdateCmd('etat', $fordcar_json['lockStatus'][value]);
+		log::add('fordcar', 'debug', 'etat lock:' . $fordcar_json['lockStatus']['value']);
+		$this->checkAndUpdateCmd('etat', $fordcar_json['lockStatus']['value']);
 	}
   }
   public function commandes($fordcar_statut) {
@@ -234,7 +234,6 @@ class fordcar extends eqLogic {
 	  $fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut ;
 	  log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 	  exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-
   }
 }
 
