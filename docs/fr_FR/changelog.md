@@ -7,4 +7,4 @@
 # 09/07/2022
 Initial
 Envoie des commandes lock/unlock
-Le statut n'est pas encore fonctionnel
+Statut de la voiture
