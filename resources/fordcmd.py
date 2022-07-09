@@ -3,7 +3,7 @@ import sys, os, logging, time, json
 
 from fordpass import Vehicle
 
-if len(sys.argv) != 4:
+if len(sys.argv) != 5:
 	print('Il y a un probleme avec les arguments: ', sys.argv[1], ' / pass: ', sys.argv[2], ' / vin: ', sys.argv[3])
 else:
 	r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN # Username, Password, VIN
