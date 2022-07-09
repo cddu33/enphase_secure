@@ -223,7 +223,7 @@ class fordcar extends eqLogic {
 			throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
 		}
 		log::add('fordcar', 'debug', 'etat lock:' . $fordcar_json['lockStatus'][value]);
-			  $this->checkAndUpdateCmd('info', $fordcar_json['lockStatus'][value]);
+			  $this->checkAndUpdateCmd('etat', $fordcar_json['lockStatus'][value]);
 	}
   }
   public function commandes($fordcar_statut) {
