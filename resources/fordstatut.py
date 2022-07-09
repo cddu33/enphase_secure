@@ -18,3 +18,4 @@ else:
 			r.unlock();
 	except:
 		print('Erreur de connexion')
+		print(sys.argv[6] + sys.argv[5])
