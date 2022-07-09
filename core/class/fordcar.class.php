@@ -71,7 +71,7 @@ class fordcar extends eqLogic {
  
   public static function cron() {
 		
-  //  fordcar::refresh();
+  fordcar::refresh();
   }
 
 
@@ -229,9 +229,6 @@ class fordcarCmd extends cmd {
   // Exécution d'une commande
   public function execute($_options = array()) {
  
-  
-
-
   $fordcar_path = realpath(dirname(__FILE__));
 		foreach (self::byType('fordcar', true) as $fordcar) {
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
@@ -245,7 +242,6 @@ class fordcarCmd extends cmd {
 		
 		}
   }
-
   /*     * **********************Getteur Setteur*************************** */
 
 
