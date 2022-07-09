@@ -226,7 +226,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('km');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
-	  fordcarCmd->setUnite('°C');
+	  $fordcarCmd->setUnite('°C');
 	  $fordcarCmd->save();
   }
 
