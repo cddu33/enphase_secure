@@ -239,8 +239,8 @@ class fordcarCmd extends cmd {
 			
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
 			//$cmd->execCmd();
-			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		
+			$result=exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		return $result;
 		}
   }
   /*     * **********************Getteur Setteur*************************** */
