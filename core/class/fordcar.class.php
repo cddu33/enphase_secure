@@ -147,7 +147,7 @@ class fordcar extends eqLogic {
   public function postSave() {
 	   $refresh = $this->getCmd(null, 'refresh');
   if (!is_object($refresh)) {
-    $refresh = new vdmCmd();
+    $refresh = new fordcarCmd();
     $refresh->setName(__('Rafraichir', __FILE__));
   }
   $refresh->setEqLogic_id($this->getId());
