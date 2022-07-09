@@ -187,7 +187,7 @@ class fordcar extends eqLogic {
   $etat->setEqLogic_id($this->getId());
   $etat->setLogicalId('etat');
   $etat->setType('info');
-  $etat->setSubType('other');
+  $etat->setSubType('string');
   $etat->save();
   }
 
