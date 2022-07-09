@@ -70,9 +70,14 @@ class fordcar extends eqLogic {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   public static function cron() {
-		
-  //fordcar::refresh();
+	foreach (self::byType('fordcar', true) as $fordcar) { //parcours tous les équipements actifs du plugin vdm
+    $cmd = $fordcar->getCmd(null, 'refresh'); //retourne la commande "refresh" si elle existe
+    if (!is_object($cmd)) { //Si la commande n'existe pas
+    continue; //continue la boucle
   }
+  $cmd->execCmd(); //la commande existe on la lance
+}
+}
 
 
   /*
@@ -140,6 +145,16 @@ class fordcar extends eqLogic {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
+	   $refresh = $this->getCmd(null, 'refresh');
+  if (!is_object($refresh)) {
+    $refresh = new vdmCmd();
+    $refresh->setName(__('Rafraichir', __FILE__));
+  }
+  $refresh->setEqLogic_id($this->getId());
+  $refresh->setLogicalId('refresh');
+  $refresh->setType('action');
+  $refresh->setSubType('other');
+  $refresh->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -231,7 +246,7 @@ class fordcarCmd extends cmd {
   public function execute($_options = array()) {
  
   $fordcar_path = realpath(dirname(__FILE__));
-		foreach (self::byType('fordcar', true) as $fordcar) {
+		
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
 			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 			//$cmd .= ' ' . $fordcar->$getConfiguration("user") . ' ' . $fordcar->getConfiguration("password") . ' ' . $fordcar->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
@@ -241,7 +256,6 @@ class fordcarCmd extends cmd {
 			//$cmd->execCmd();
 			$result=exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		return $result;
-		}
   }
   /*     * **********************Getteur Setteur*************************** */
 
