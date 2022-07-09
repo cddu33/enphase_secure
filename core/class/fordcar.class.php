@@ -205,6 +205,28 @@ class fordcar extends eqLogic {
 	  $maj->setType('info');
 	  $maj->setSubType('binary');
 	  $maj->save();
+
+	  $veille = $this->getCmd(null, 'veille');
+	  if (!is_object($veille)) {
+		  $veille = new fordcarCmd();
+		  $veille->setName(__('Veille profonde', __FILE__));
+	  }
+	  $veille->setEqLogic_id($this->getId());
+	  $veille->setLogicalId('veille');
+	  $veille->setType('info');
+	  $veille->setSubType('binary');
+	  $veille->save();
+
+	  $km = $this->getCmd(null, 'km');
+	  if (!is_object($km)) {
+		  $km = new fordcarCmd();
+		  $km->setName(__('Kilométrage', __FILE__));
+	  }
+	  $km->setEqLogic_id($this->getId());
+	  $km->setLogicalId('km');
+	  $km->setType('info');
+	  $km->setSubType('number');
+	  $km->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -250,7 +272,10 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('last', $fordcar_json['lastRefresh']);
 		log::add('fordcar', 'debug', 'Mise à jour en cours:' . $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value']);
 		$this->checkAndUpdateCmd('maj', $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value']);
-		
+		log::add('fordcar', 'debug', 'Veille profonde' . $fordcar_json['deepSleepInProgress']['value']);
+		$this->checkAndUpdateCmd('veille', $fordcar_json['deepSleepInProgress']['value']);
+		log::add('fordcar', 'debug', 'Kilométrage' . $fordcar_json['odometer']['value']);
+		$this->checkAndUpdateCmd('km', $fordcar_json['odometer']['value']);
 	}
   }
   public function commandes($fordcar_statut) {
