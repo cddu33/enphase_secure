@@ -88,6 +88,7 @@ class fordcar extends eqLogic {
 	}	
 
   //  fordcar::refresh();
+  return $return;
   }
 
 
