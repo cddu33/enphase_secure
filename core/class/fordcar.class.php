@@ -79,7 +79,7 @@ class fordcar extends eqLogic {
 			//$cmd->execCmd();
 			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		
-
+		}
   //  fordcar::refresh();
   }
 
