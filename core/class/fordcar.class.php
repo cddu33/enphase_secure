@@ -179,16 +179,16 @@ class fordcar extends eqLogic {
   $unlock->setSubType('other');
   $unlock->save();
 
-  $Etat = $this->getCmd(null, 'etat');
-  if (!is_object($unlock)) {
-    $Etat = new fordcarCmd();
-    $Etat->setName(__('Etat', __FILE__));
+  $etat = $this->getCmd(null, 'etat');
+  if (!is_object($etat)) {
+    $etat = new fordcarCmd();
+    $etat->setName(__('Etat', __FILE__));
   }
-  $Etat->setEqLogic_id($this->getId());
-  $Etat->setLogicalId('etat');
-  $Etat->setType('info');
-  $Etat->setSubType('other');
-  $Etat->save();
+  $etat->setEqLogic_id($this->getId());
+  $etat->setLogicalId('etat');
+  $etat->setType('info');
+  $etat->setSubType('other');
+  $etat->save();
   }
 
 
