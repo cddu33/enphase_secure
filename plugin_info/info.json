@@ -1,6 +1,6 @@
 {
 	"id" : "fordcar",
-	"name" : "Ford Car",
+	"name" : "FordCar",
 
 	"description" : {
 		"fr_FR": "Plugin permettant de ce connecté à Ford Pass et à récuperrer toutes les information de votre Véhicule. Il permet de vérouiller/dévérouiller son véhicules et suivant les régions du monde, Démarrer son véhicule."
