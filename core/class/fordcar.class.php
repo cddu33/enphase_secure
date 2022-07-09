@@ -418,6 +418,55 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'vicdav');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Vitre conducteur avant', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('vicdav');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'vicdar');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Vitre conducteur arrière', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('vicdar');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'vipsav');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Vitre passager avant', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('vipsav');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'vipsar');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Vitre passager arrière', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('vipsar');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -540,6 +589,22 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['TPMS']['outerRightRearTirePressure']['value'];
 		log::add('fordcar', 'debug', 'Pression pneu arrière droit' . $fordcar_info);
 		$this->checkAndUpdateCmd('prpnavdr', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['windowPosition']['leftFrontTirePressure']['value'];
+		log::add('fordcar', 'debug', 'Fenetre conducteur avant' . $fordcar_info);
+		$this->checkAndUpdateCmd('vicdav', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['windowPosition']['rightFrontTirePressure']['value'];
+		log::add('fordcar', 'debug', 'Fenetre conducteur arrière' . $fordcar_info);
+		$this->checkAndUpdateCmd('vicdar', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['windowPosition']['rearDriverWindowPos']['value'];
+		log::add('fordcar', 'debug', 'Fenetre passager avant' . $fordcar_info);
+		$this->checkAndUpdateCmd('vipsav', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['windowPosition']['rearPassWindowPos']['value'];
+		log::add('fordcar', 'debug', 'Fenetre passager arrière' . $fordcar_info);
+		$this->checkAndUpdateCmd('vipsar', $fordcar_info);
 	}
   }
   public function commandes($fordcar_statut) {
