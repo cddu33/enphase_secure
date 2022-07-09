@@ -140,93 +140,94 @@ class fordcar extends eqLogic {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
-	  $refresh = $this->getCmd(null, 'refresh');
-	  if (!is_object($refresh)) {
-		  $refresh = new fordcarCmd();
-		  $refresh->setName(__('Rafraichir', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'refresh');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Rafraichir', __FILE__));
 	  }
-	  $refresh->setEqLogic_id($this->getId());
-	  $refresh->setLogicalId('refresh');
-	  $refresh->setType('action');
-	  $refresh->setSubType('other');
-	  $refresh->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('refresh');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  $fordcarCmd->save();
   
-	  $lock = $this->getCmd(null, 'lock');
-	  if (!is_object($lock)) {
-		  $lock = new fordcarCmd();
-		  $lock->setName(__('Vérouiller', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'lock');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Vérouiller', __FILE__));
 	  }
-	  $lock->setEqLogic_id($this->getId());
-	  $lock->setLogicalId('lock');
-	  $lock->setType('action');
-	  $lock->setSubType('other');
-	  $lock->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('lock');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  $fordcarCmd->save();
 	  
-	  $unlock = $this->getCmd(null, 'unlock');
-	  if (!is_object($unlock)) {
-		  $unlock = new fordcarCmd();
-		  $unlock->setName(__('Dévérouiller', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'unlock');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Dévérouiller', __FILE__));
 	  }
-	  $unlock->setEqLogic_id($this->getId());
-	  $unlock->setLogicalId('unlock');
-	  $unlock->setType('action');
-	  $unlock->setSubType('other');
-	  $unlock->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('unlock');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  $fordcarCmd->save();
 	  
-	  $etat = $this->getCmd(null, 'etat');
-	  if (!is_object($etat)) {
-		  $etat = new fordcarCmd();
-		  $etat->setName(__('Etat', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'etat');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat', __FILE__));
 	  }
-	  $etat->setEqLogic_id($this->getId());
-	  $etat->setLogicalId('etat');
-	  $etat->setType('info');
-	  $etat->setSubType('string');
-	  $etat->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('etat');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  $fordcarCmd->save();
 
-	  $last = $this->getCmd(null, 'last');
-	  if (!is_object($last)) {
-		  $last = new fordcarCmd();
-		  $last->setName(__('Dernière actualisation', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'last');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Dernière actualisation', __FILE__));
 	  }
-	  $last->setEqLogic_id($this->getId());
-	  $last->setLogicalId('last');
-	  $last->setType('info');
-	  $last->setSubType('string');
-	  $last->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('last');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  $fordcarCmd->save();
 
-	  $maj = $this->getCmd(null, 'maj');
-	  if (!is_object($maj)) {
-		  $maj = new fordcarCmd();
-		  $maj->setName(__('Mise à jour en cours', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'maj');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Mise à jour en cours', __FILE__));
 	  }
-	  $maj->setEqLogic_id($this->getId());
-	  $maj->setLogicalId('maj');
-	  $maj->setType('info');
-	  $maj->setSubType('binary');
-	  $maj->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('maj');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('binary');
+	  $fordcarCmd->save();
 
-	  $veille = $this->getCmd(null, 'veille');
-	  if (!is_object($veille)) {
-		  $veille = new fordcarCmd();
-		  $veille->setName(__('Veille profonde', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'veille');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Veille profonde', __FILE__));
 	  }
-	  $veille->setEqLogic_id($this->getId());
-	  $veille->setLogicalId('veille');
-	  $veille->setType('info');
-	  $veille->setSubType('binary');
-	  $veille->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('veille');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('binary');
+	  $fordcarCmd->save();
 
-	  $km = $this->getCmd(null, 'km');
-	  if (!is_object($km)) {
-		  $km = new fordcarCmd();
-		  $km->setName(__('Kilométrage', __FILE__));
+	  $fordcarCmd = $this->getCmd(null, 'km');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Kilométrage', __FILE__));
 	  }
-	  $km->setEqLogic_id($this->getId());
-	  $km->setLogicalId('km');
-	  $km->setType('info');
-	  $km->setSubType('number');
-	  $km->save();
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('km');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  fordcarCmd->setUnite('°C');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
