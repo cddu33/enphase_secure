@@ -611,10 +611,10 @@ class fordcarCmd extends cmd {
 	
   /*
   * Permet d'empêcher la suppression des commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
-  */
+  
   public function dontRemoveCmd() {
     return true;
-  }
+  }*/
 
   // Exécution d'une commande
   public function execute($_options = array()) {
