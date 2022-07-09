@@ -74,7 +74,10 @@ class fordcar extends eqLogic {
 		$fordcar_path = realpath(dirname(__FILE__));
 		foreach (self::byType('fordcar', true) as $fordcar) {
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			//$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			$cmd .= ' ' . $this->getConfiguration("user") . ' ' . $this->getConfiguration("password") . ' ' . $this->getConfiguration("vin") .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+		
+			
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
 			//$cmd->execCmd();
 			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
