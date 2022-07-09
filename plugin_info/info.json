@@ -1,24 +1,24 @@
 {
-	"id" : "fordcar",
-	"name" : "FordCar",
+	"id": "fordcar",
+	"name": "FordCar",
 
-	"description" : {
+	"description": {
 		"fr_FR": "Plugin permettant de ce connecté à Ford Pass et à récuperrer toutes les information de votre Véhicule. Il permet de vérouiller/dévérouiller son véhicules et suivant les régions du monde, Démarrer son véhicule."
 	},
-	"licence" : "AGPL",
-	"author" : "cddu33",
-	"require" : "4.1.0",
-	"category" : "devicecommunication",
-	"hasDependency" : true,
-	"hasOwnDeamon" : false,
-	"maxDependancyInstallTime" : 0,
-	"changelog" : "https://jeedom.github.io/plugin-fordcar/#language#/changelog",
-	"documentation" : "https://jeedom.github.io/plugin-fordcar/#language#/",
-	"changelog_beta" : "https://jeedom.github.io/plugin-fordcar/#language#/beta/changelog",
-	"documentation_beta" : "https://jeedom.github.io/plugin-FordCars/#language#/beta/",
-	"link" : {
-		"forum":"Lien vers le forum",
-		"video" : "Lien vers une video"
+	"licence": "AGPL",
+	"author": "cddu33",
+	"require": "4.1.0",
+	"category": "devicecommunication",
+	"hasDependency": true,
+	"hasOwnDeamon": false,
+	"maxDependancyInstallTime": 0,
+	"changelog": "https://jeedom.github.io/fordcar/#language#/changelog",
+	"documentation": "https://jeedom.github.io/fordcar/#language#/",
+	"changelog_beta": "https://jeedom.github.io/fordcar/#language#/changelog",
+	"documentation_beta": "https://jeedom.github.io/fordcar/#language#/",
+	"link": {
+		"forum": "Lien vers le forum",
+		"video": "Lien vers une video"
 	},
 	"language": [
 		"fr_FR",

@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\3rdparty",
     "\\core",
     "\\core\\ajax",
     "\\core\\class",
     "\\core\\php",
-    "\\desktop",
     "\\desktop\\php",
+    "\\docs",
+    "\\docs\\fr_FR",
     "\\plugin_info",
     "\\resources"
   ],
-  "SelectedNode": "\\resources\\fordstatut.py",
+  "SelectedNode": "\\docs\\fr_FR\\changelog.md",
   "PreviewInSolutionExplorer": false
 }
