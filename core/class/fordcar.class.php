@@ -70,8 +70,10 @@ class fordcar extends eqLogic {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   public static function cron() {
-  
-    fordcar::refresh();
+        $eqLogic = $this->getEqLogic();
+
+        $eqLogic->refresh();
+  //  fordcar::refresh();
   }
 
 
@@ -137,7 +139,6 @@ class fordcar extends eqLogic {
 			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
 			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-			
 		}
 		return $result;
 	}	
