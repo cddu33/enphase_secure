@@ -218,10 +218,11 @@ class fordcar extends eqLogic {
 		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		$json = json_decode(file_get_contents($fordcar_fichier), true);
-			if ($json === null) {
-				throw new Exception(__('Json invalide ou non décodable : ', __FILE__) . $json_str);
-			}
+		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
+		if ($fordcar_json === null) {
+			throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
+		}
+		log::add('fordcar', 'debug', 'etat lock ' . $fordcar_json->lockStatus > value;
 	}
   }
   public function commandes($fordcar_statut) {
