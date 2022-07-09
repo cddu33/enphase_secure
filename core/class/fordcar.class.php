@@ -77,7 +77,7 @@ class fordcar extends eqLogic {
 			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
 			exec($cmd);
-			//$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		
 
   //  fordcar::refresh();
