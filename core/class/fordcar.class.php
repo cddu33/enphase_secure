@@ -46,7 +46,7 @@ class fordcar extends eqLogic {
 		
 	}
   
-public function refresh() {
+public static function refresh() {
 		$fordcar_path = realpath(dirname(__FILE__));
 		$cmd = '';
 		foreach (self::byType('fordcar', true) as $fordcar) {
