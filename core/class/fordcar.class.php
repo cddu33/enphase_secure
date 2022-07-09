@@ -267,7 +267,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd = $this->getCmd(null, 'tbat');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Etat batterie', __FILE__));
+		  $fordcarCmd->setName(__('Tension batterie', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
 	  $fordcarCmd->setLogicalId('tbat');
