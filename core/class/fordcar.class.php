@@ -71,7 +71,7 @@ class fordcar extends eqLogic {
  
   public static function cron() {
 		
-  fordcar::refresh();
+  //fordcar::refresh();
   }
 
 
