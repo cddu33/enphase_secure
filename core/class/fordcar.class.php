@@ -157,8 +157,8 @@ class fordcar extends eqLogic {
   $refresh->save();
   	   $lock = $this->getCmd(null, 'lock');
   if (!is_object($lock)) {
-    $refresh = new fordcarCmd();
-    $refresh->setName(__('Vérouiller', __FILE__));
+    $lock = new fordcarCmd();
+    $lock->setName(__('Vérouiller', __FILE__));
   }
   $lock->setEqLogic_id($this->getId());
   $lock->setLogicalId('lock');
@@ -167,12 +167,12 @@ class fordcar extends eqLogic {
   $lock->save();
 
   $unlock = $this->getCmd(null, 'unlock');
-  if (!is_object($lock)) {
-    $refresh = new fordcarCmd();
-    $refresh->setName(__('Dévérouiller', __FILE__));
+  if (!is_object($unlock)) {
+    $unlock = new fordcarCmd();
+    $unlock->setName(__('Dévérouiller', __FILE__));
   }
   $unlock->setEqLogic_id($this->getId());
-  $unlock->setLogicalId('lunlock');
+  $unlock->setLogicalId('unlock');
   $unlock->setType('action');
   $unlock->setSubType('other');
   $unlock->save();
