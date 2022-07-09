@@ -263,6 +263,41 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'tbat');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat batterie', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('tbat');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('V');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'ehuile');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat huile', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('ehuile');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'huile');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Pourcentage huile', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('huile');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -318,6 +353,12 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('long', $fordcar_json['gps']['longitude']);
 		log::add('fordcar', 'debug', 'Etat batterie' . $fordcar_json['battery']['batteryHealth']['value']);
 		$this->checkAndUpdateCmd('hbat', $fordcar_json['battery']['batteryHealth']['value']);
+		log::add('fordcar', 'debug', 'Tension batterie' . $fordcar_json['battery']['batteryStatusActual']['value']);
+		$this->checkAndUpdateCmd('tbat', $fordcar_json['battery']['batteryStatusActual']['value']);
+		log::add('fordcar', 'debug', 'Etat huile' . $fordcar_json['oil']['oilLife']);
+		$this->checkAndUpdateCmd('ehuile', $fordcar_json['oil']['oilLife']);
+		log::add('fordcar', 'debug', 'Pourcentage huile' . $fordcar_json['oil']['oilLifeActual']);
+		$this->checkAndUpdateCmd('huile', $fordcar_json['oil']['oilLifeActual']);
 
 	
 	}

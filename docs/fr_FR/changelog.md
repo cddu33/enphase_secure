@@ -18,3 +18,6 @@ kilométrage
 latitude
 longitude
 etat batterie
+tension batterie
+etat huile
+% huile
