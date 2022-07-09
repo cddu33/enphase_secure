@@ -150,12 +150,14 @@ class fordcar extends eqLogic {
     $refresh = new fordcarCmd();
     $refresh->setName(__('Rafraichir', __FILE__));
   }
+ 
   $refresh->setEqLogic_id($this->getId());
   $refresh->setLogicalId('refresh');
   $refresh->setType('action');
   $refresh->setSubType('other');
   $refresh->save();
-  	   $lock = $this->getCmd(null, 'lock');
+  
+  $lock = $this->getCmd(null, 'lock');
   if (!is_object($lock)) {
     $lock = new fordcarCmd();
     $lock->setName(__('Vérouiller', __FILE__));
@@ -176,7 +178,20 @@ class fordcar extends eqLogic {
   $unlock->setType('action');
   $unlock->setSubType('other');
   $unlock->save();
+
+  $Etat = $this->getCmd(null, 'etat');
+  if (!is_object($unlock)) {
+    $Etat = new fordcarCmd();
+    $Etat->setName(__('Etat', __FILE__));
   }
+  $Etat->setEqLogic_id($this->getId());
+  $Etat->setLogicalId('etat');
+  $Etat->setType('info');
+  $Etat->setSubType('other');
+  $Etat->save();
+  }
+
+
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   public function preRemove() {
