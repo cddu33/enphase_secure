@@ -72,13 +72,13 @@ class fordcar extends eqLogic {
   public static function cron() {
       
 		$fordcar_path = realpath(dirname(__FILE__));
-		$cmd = '';
-		foreach (eqLogic::byType('fordcar', true) as $eqLogic) {
+		foreach (self::byType('fordcar', true) as $fordcar) {
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
+			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
 			log::add('fordcar', 'debug', 'commande ' . $cmd);
-			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-	}	
+			$cmd->execCmd();
+			//$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		
 
   //  fordcar::refresh();
   }
