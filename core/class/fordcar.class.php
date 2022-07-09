@@ -247,12 +247,12 @@ class fordcarCmd extends cmd {
   switch ($this->getLogicalId()) { //vérifie le logicalid de la commande
     case 'refresh': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
     $info = $eqlogic->refresh(); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
-   // $eqlogic->checkAndUpdateCmd('story', $info); //on met à jour la commande avec le LogicalId "story"  de l'eqlogic
+   break;
    case 'lock': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
-    $info = $eqlogic->commandes("lock"); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
+    $info = $eqlogic->commandes("lock"); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info*
+	break;
 	 case 'unlock': // LogicalId de la commande rafraîchir que l’on a créé dans la méthode Postsave de la classe vdm .
     $info = $eqlogic->commandes("unlock"); //On lance la fonction randomVdm() pour récupérer une vdm et on la stocke dans la variable $info
-    break;
     break;
   }
   return $info;
