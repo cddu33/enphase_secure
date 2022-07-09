@@ -1,4 +1,4 @@
-# Plugin Nicolaudie Stick DE3 DMX pour Jeedom
+# Plugin FordCar pour Jeedom
 
 Ce plugin permet de récuperer les informations de tous les véhicule possédant fordpass
 Il s'appuie sur l'API fordcar.
