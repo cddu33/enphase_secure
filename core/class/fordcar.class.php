@@ -217,17 +217,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('binary');
 	  $fordcarCmd->save();
 
-	  $fordcarCmd = $this->getCmd(null, 'km');
-	  if (!is_object($fordcarCmd)) {
-		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Kilométrage', __FILE__));
-	  }
-	  $fordcarCmd->setEqLogic_id($this->getId());
-	  $fordcarCmd->setLogicalId('km');
-	  $fordcarCmd->setType('info');
-	  $fordcarCmd->setSubType('numeric');
-	  $fordcarCmd->setUnite('°C');
-	  $fordcarCmd->save();
+
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
