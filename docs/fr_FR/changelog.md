@@ -17,3 +17,4 @@ Maj
 kilométrage
 latitude
 longitude
+etat batterie

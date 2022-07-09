@@ -252,6 +252,17 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('°');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'hbat');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Etat batterie', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('hbat');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -303,8 +314,12 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('km', $fordcar_json['odometer']['value']);
 		log::add('fordcar', 'debug', 'Latitude' . $fordcar_json['gps']['latitude']);
 		$this->checkAndUpdateCmd('lat', $fordcar_json['gps']['latitude']);
-		log::add('fordcar', 'debug', 'Latitude' . $fordcar_json['gps']['longitude']);
+		log::add('fordcar', 'debug', 'Longitude' . $fordcar_json['gps']['longitude']);
 		$this->checkAndUpdateCmd('long', $fordcar_json['gps']['longitude']);
+		log::add('fordcar', 'debug', 'Etat batterie' . $fordcar_json['battery']['batteryHealth']['value']);
+		$this->checkAndUpdateCmd('hbat', $fordcar_json['battery']['batteryHealth']['value']);
+
+	
 	}
   }
   public function commandes($fordcar_statut) {
