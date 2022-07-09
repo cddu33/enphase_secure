@@ -75,7 +75,7 @@ class fordcar extends eqLogic {
     if (!is_object($cmd)) { //Si la commande n'existe pas
     continue; //continue la boucle
   }
-  $cmd->execCmd(); //la commande existe on la lance
+ // $cmd->execCmd(); //la commande existe on la lance
 }
 }
 
