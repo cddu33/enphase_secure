@@ -183,6 +183,28 @@ class fordcar extends eqLogic {
 	  $etat->setType('info');
 	  $etat->setSubType('string');
 	  $etat->save();
+
+	  $last = $this->getCmd(null, 'last');
+	  if (!is_object($last)) {
+		  $last = new fordcarCmd();
+		  $last->setName(__('Dernière actualisation', __FILE__));
+	  }
+	  $last->setEqLogic_id($this->getId());
+	  $last->setLogicalId('last');
+	  $last->setType('info');
+	  $last->setSubType('string');
+	  $last->save();
+
+	  $maj = $this->getCmd(null, 'maj');
+	  if (!is_object($maj)) {
+		  $maj = new fordcarCmd();
+		  $maj->setName(__('Mise à jour en cours', __FILE__));
+	  }
+	  $maj->setEqLogic_id($this->getId());
+	  $maj->setLogicalId('maj');
+	  $maj->setType('info');
+	  $maj->setSubType('binary');
+	  $maj->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -224,6 +246,11 @@ class fordcar extends eqLogic {
 		}
 		log::add('fordcar', 'debug', 'etat lock:' . $fordcar_json['lockStatus']['value']);
 		$this->checkAndUpdateCmd('etat', $fordcar_json['lockStatus']['value']);
+		log::add('fordcar', 'debug', 'dernière actualisation:' . $fordcar_json['lastRefresh']);
+		$this->checkAndUpdateCmd('last', $fordcar_json['lastRefresh']);
+		log::add('fordcar', 'debug', 'Mise à jour en cours:' . $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value']);
+		$this->checkAndUpdateCmd('maj', $fordcar_json['lastRefrfirmwareUpgInProgressesh']['value']);
+		
 	}
   }
   public function commandes($fordcar_statut) {
