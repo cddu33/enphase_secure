@@ -188,7 +188,7 @@ class fordcar extends eqLogic {
 			$fordcar_vin = $this->getConfiguration('vin');
 			$fordcar_user = $this->getConfiguration('user');
 			$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . '/../../data/'. $fordcar_vin . '.json' . ' ' . $fordcar_path;
+			$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
 			log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 			//$cmd->execCmd();
 			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
