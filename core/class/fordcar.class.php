@@ -76,8 +76,8 @@ class fordcar extends eqLogic {
 		foreach (eqLogic::byType('fordcar', true) as $eqLogic) {
 			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
 			$cmd .= ' ' . $eqLogic::byKey('user', 'fordcar') . ' ' . $eqLogic::byKey('password', 'fordcar') . ' ' . $eqLogic::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $eqLogic::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			log::add('fordcar', 'debug', 'commande ' . $cmd);
-			$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+			//log::add('fordcar', 'debug', 'commande ' . $cmd);
+			//$result = exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 	}	
 
   //  fordcar::refresh();
