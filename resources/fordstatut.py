@@ -9,7 +9,7 @@ else:
 	r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN # Username, Password, VIN
 	try:
 		with open(sys.argv[6] + sys.argv[5], "w+") as json_file:
-		print('ok')
+			print('ok')
 			st = r.status()
 			print(st)
 			json.dump(st, json_file)
