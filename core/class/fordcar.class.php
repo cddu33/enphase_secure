@@ -180,34 +180,18 @@ class fordcar extends eqLogic {
   }
  
 
-  /*
-  * Permet de modifier l'affichage du widget (également utilisable par les commandes)
-  public function toHtml($_version = 'dashboard') {}
-  */
-
-  /*
-  * Permet de déclencher une action avant modification d'une variable de configuration du plugin
-  * Exemple avec la variable "param3"
-  public static function preConfig_param3() {}
-  */
-
-
-  /*
-  * Permet de déclencher une action après modification d'une variable de configuration du plugin
-  * Exemple avec la variable "param3"
-  public static function postConfig_param3() {}
-  */
-
-  /*     * **********************Getteur Setteur*************************** */
   public function refresh() {
 
 	$fordcar_path = realpath(dirname(__FILE__));
 		foreach (self::byType('fordcar', true) as $fordcar) {
-			$cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-			$cmd .= ' ' . $fordcar::byKey('user', 'fordcar') . ' ' . $fordcar::byKey('password', 'fordcar') . ' ' . $fordcar::byKey('vin', 'fordcar') .' ' . 'statut' . ' ' . '/../../data/'. $fordcar::byKey('vin', 'fordcar') . '.json' . ' ' . $fordcar_path;
-			log::add('fordcar', 'debug', 'commande ' . $cmd);
+			$fordcar_pass = $this->getConfiguration('password');
+			$fordcar_vin = $this->getConfiguration('vin');
+			$fordcar_user = $this->getConfiguration('user');
+			$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+			$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . '/../../data/'. $fordcar_vin . '.json' . ' ' . $fordcar_path;
+			log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 			//$cmd->execCmd();
-			exec($cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		}
   }
 
@@ -216,21 +200,6 @@ class fordcar extends eqLogic {
 class fordcarCmd extends cmd {
 
 	
-  /*     * *************************Attributs****************************** */
-
-  /*
-  public static $_widgetPossibility = array();
-  */
-
-  /*     * ***********************Methode static*************************** */
-  
-
-	
-	
-
-
-  /*     * *********************Methode d'instance************************* */
-
   /*
   * Permet d'empêcher la suppression des commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
   public function dontRemoveCmd() {
