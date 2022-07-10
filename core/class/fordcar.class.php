@@ -41,8 +41,13 @@ class fordcar extends eqLogic {
 		log::remove(__CLASS__ . '_update');
 		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
+	}
 
-			}
+	public static $_widgetPossibility = array(
+		'custom' => true,
+		//'custom::layout' => false,
+		'parameters' => array(),
+	);
   
 
 	
@@ -53,13 +58,6 @@ class fordcar extends eqLogic {
   * Tableau multidimensionnel - exemple: array('custom' => true, 'custom::layout' => false)
   public static $_widgetPossibility = array();
   */
-
-  /*
-  * Permet de crypter/décrypter automatiquement des champs de configuration du plugin
-  * Exemple : "param1" & "param2" seront cryptés mais pas "param3"
-   */
-  //public static $_encryptConfigKey = array('password', 'vin');
-  
  
 
   /*     * ***********************Methode static*************************** */
@@ -151,6 +149,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('refresh');
 	  $fordcarCmd->setType('action');
 	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
   
 	  $fordcarCmd = $this->getCmd(null, 'lock');
@@ -162,6 +161,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('lock');
 	  $fordcarCmd->setType('action');
 	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 	  
 	  $fordcarCmd = $this->getCmd(null, 'unlock');
@@ -173,6 +173,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('unlock');
 	  $fordcarCmd->setType('action');
 	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 	  
 	  $fordcarCmd = $this->getCmd(null, 'etat');
@@ -184,6 +185,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('etat');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'last');
@@ -195,6 +197,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('last');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'maj');
@@ -206,6 +209,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('maj');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('binary');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'veille');
@@ -217,6 +221,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('veille');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('binary');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'km');
@@ -264,6 +269,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('hbat');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'tbat');
@@ -276,6 +282,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('V');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'ehuile');
@@ -287,6 +294,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('ehuile');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'huile');
@@ -325,7 +333,7 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
-	   $fordcarCmd = $this->getCmd(null, 'etpnavdr');
+	  $fordcarCmd = $this->getCmd(null, 'etpnavdr');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
 		  $fordcarCmd->setName(__('Etat pneu avant droit', __FILE__));
@@ -540,7 +548,6 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->save();
-
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -551,19 +558,69 @@ class fordcar extends eqLogic {
   public function postRemove() {
   }
 
-  /*
-  * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
-  * Exemple avec le champ "Mot de passe" (password)
-   */
+  /* Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin */
+    public function toHtml($_version = 'dashboard') {
+    	
+		if ($this->getConfiguration('widget_template') != 1) {
+			return parent::toHtml($_version);
+		}
+		
+		$replace = $this->preToHtml($_version);
+		if (!is_array($replace)) {
+			return $replace;
+		}
+		$version = jeedom::versionAlias($_version);
+		$replace['#version#'] = $_version;
+		
+		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vehicle_vin');
+		$replace['#vehicle_type'.$this->getId().'#'] = $this->getConfiguration('vehicle_type');
+							
+		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
+
+		// Traitement des commandes infos
+		foreach ($this->getCmd('info') as $cmd) {
+			$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+			$replace['#' . $cmd->getLogicalId() . '_name#'] = $cmd->getName();
+			$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+			$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
+			//$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+			//if ($cmd->getIsHistorized() == 1) { $replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor'; }
+		}
+
+		// Traitement des commandes actions
+		foreach ($this->getCmd('action') as $cmd) {
+			$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+			$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
+			if ($cmd->getSubType() == 'select') {
+				$listValue = "<option value>" . $cmd->getName() . "</option>";
+				$listValueArray = explode(';', $cmd->getConfiguration('listValue'));
+				foreach ($listValueArray as $value) {
+					list($id, $name) = explode('|', $value);
+					$listValue = $listValue . "<option value=" . $id . ">" . $name . "</option>";
+				}
+				$replace['#' . $cmd->getLogicalId() . '_listValue#'] = $listValue;
+			}
+		}
+			
+		// On definit le template à appliquer par rapport à la version Jeedom utilisée
+		if (version_compare(jeedom::version(), '4.0.0') >= 0) {
+			$template = 'fordcar_dashboard';
+		}
+		$replace['#template#'] = $template;
+
+		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
+	}
+
+  // Permet de crypter/décrypter automatiquement des champs de configuration des équipements
   public function decrypt() {
 	  $this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 	  $this->setConfiguration('vin', utils::decrypt($this->getConfiguration('vin')));
   }
+
   public function encrypt() {
 	  $this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
 	  $this->setConfiguration('vin', utils::encrypt($this->getConfiguration('vin')));
   }
- 
 
   public function refresh() {
 	$fordcar_path = realpath(dirname(__FILE__));
@@ -705,6 +762,7 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);
 	}
   }
+
   public function commandes($fordcar_statut) {
 	  $fordcar_pass = $this->getConfiguration('password');
 	  $fordcar_vin = $this->getConfiguration('vin');
@@ -714,17 +772,10 @@ class fordcar extends eqLogic {
 	  log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 	  exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
   }
+
 }
 
 class fordcarCmd extends cmd {
-
-	
-  /*
-  * Permet d'empêcher la suppression des commandes même si elles ne sont pas dans la nouvelle configuration de l'équipement envoyé en JS
-  
-  public function dontRemoveCmd() {
-    return true;
-  }*/
 
   // Exécution d'une commande
   public function execute($_options = array()) {
@@ -732,19 +783,16 @@ class fordcarCmd extends cmd {
 	  switch ($this->getLogicalId()) 
 	  { 
 		  case 'refresh':
-		  $info = $eqlogic->refresh(); 
+		  $eqlogic->refresh(); 
 		  break;
 		  case 'lock':
-		  $info = $eqlogic->commandes("lock"); 
+		  $eqlogic->commandes("lock"); 
 		  break;
 		  case 'unlock':
-		  $info = $eqlogic->commandes("unlock"); 
+		  $eqlogic->commandes("unlock"); 
 		  break;
 	  }
-	  return $info;
   }
-  /*     * **********************Getteur Setteur*************************** */
-
 
 
 }
