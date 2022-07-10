@@ -96,7 +96,7 @@ class fordcar extends eqLogic {
 		}
 		$replace['#template#'] = $template;
 
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'myBMW')));
+		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
 	}/* Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin */
     public function toHtml($_version = 'dashboard') {
     	
@@ -147,7 +147,7 @@ class fordcar extends eqLogic {
 		}
 		$replace['#template#'] = $template;
 
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'myBMW')));
+		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
 	}
 
 
