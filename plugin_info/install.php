@@ -20,14 +20,14 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 // Fonction exécutée automatiquement après l'installation du plugin
 function fordcar_install() {
   fordcar::dependancy_install();
-  exec('../ressources/install_apt.sh');
+  //exec('../ressources/install_apt.sh');
   //fordcar::refresh();
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
 function fordcar_update() {
 	fordcar::dependancy_install();
-  exec('../ressources/install_apt.sh');
+  //exec('../ressources/install_apt.sh');
   fordcar::postSave();
 	fordcar::refresh();
 
