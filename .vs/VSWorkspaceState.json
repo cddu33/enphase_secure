@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\core",
+    "\\core\\class",
+    "\\docs",
+    "\\docs\\fr_FR"
   ],
-  "SelectedNode": "\\C:\\Users\\clement.dibout\\Source\\Repos\\cddu33\\fordcar",
+  "SelectedNode": "\\docs\\fr_FR\\index.md",
   "PreviewInSolutionExplorer": false
 }
