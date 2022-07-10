@@ -22,8 +22,8 @@
 				</div>
 				
 				<div class="row" id="infos">
-					<div class="col-sm-6"><span class="state"><i class="Cmd#doorLockState_id#"></i></span></div>
-					<div class="col-sm-6"><span class="Cmd#mileage_id# iconCmd"></span></div>
+					<div class="col-sm-6"><span class="state"><i class="Cmd#etat_id#"></i></span></div>
+					<div class="col-sm-6"><span class="Cmd#km_id# iconCmd"></span></div>
 				</div>
 				
 				<hr class="cmdName">
@@ -55,31 +55,31 @@
 					<div class="row">
 						<div class="col-sm-3">
 							</br>
-							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorDriverFront_id#"></i></div>
+							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorcd_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#windowDriverFront_id#"></i></div>
+							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#vicdav_id#"></i></div>
 							</br></br></br>
-							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorDriverRear_id#"></i></div>
+							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorleft_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#windowDriverRear_id#"></i></div>
+							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#vicdar_id#"></i></div>
 						</div>
 						<div class="col-sm-6">
 							<img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
 						</div>
 						<div class="col-sm-3">
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorPassengerFront_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorps_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#windowPassengerFront_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsav_id#"></i></div>
 							</br></br></br>
-							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorPassengerRear_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorright_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#windowPassengerRear_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsar_id#"></i></div>
 						</div>
 					</div>
 					</br>
 					<div class="row"><span class="label pull-center">Toit ouvrant : <i class="Cmd#moonroof_state_id#"></i></span></div>
-					<div class="row"><span class="label pull-center">Coffre : <i class="Cmd#trunk_state_id#"></i></span></div>				
+					<div class="row"><span class="label pull-center">Coffre : <i class="Cmd#hood_id#"></i></span></div>				
 				</div>
 			</div>
 			
@@ -157,150 +157,144 @@
             var cmd2  = $('#img_car#id#')[0];
 			cmd2.src = "plugins/fordcar/data/"+_options.display_value+".png";
 		}
-		jeedom.cmd.update['#id#']({display_value: '#vehicle_vin#id##'});
+		jeedom.cmd.update['#id#']({display_value: '#vin#id##'});
 				
 				
-		jeedom.cmd.update['#doorLockState_id#'] = function(_options) {
+		jeedom.cmd.update['#etat_id#'] = function(_options) {
             if ( _options.display_value == "Unlocked" || _options.display_value == "UNLOCKED" || _options.display_value == "Déverrouillé" )  {
-            	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
+            	$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
             }
           	if ( _options.display_value == "Locked" || _options.display_value == "LOCKED" || _options.display_value == "SELECTIVELOCKED" || _options.display_value == "Verrouillé" )  {
-              	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
-            }
-			if (  _options.display_value == "Secured" || _options.display_value == "SECURED" || _options.display_value == "Sécurisé" )  {
-              	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>&nbsp<i class="fa-1x icon_green fas fa-shield-alt"></i>');
-            }
-			if ( _options.display_value == "Unknown" || _options.display_value == "not available" || _options.display_value == "Inconnu" )  {
-              	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+              	$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
             }
         }
-		jeedom.cmd.update['#doorLockState_id#']({display_value:'#doorLockState#'});
+		jeedom.cmd.update['#etat_id#']({display_value:'#etat#'});
       	
 		
-		jeedom.cmd.update['#doorDriverFront_id#'] = function(_options) {
+		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#doorDriverFront_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#doorDriverFront_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#doorcd_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#doorDriverFront_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#doorcd_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#doorDriverFront_id#']({display_value:'#doorDriverFront#'});
+		jeedom.cmd.update['#doorcd_id#']({display_value:'#doorcd#'});
 		
 		
-		jeedom.cmd.update['#doorDriverRear_id#'] = function(_options) {
+		jeedom.cmd.update['#doorleft_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#doorDriverRear_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            	$('.Cmd#doorleft_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#doorDriverRear_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#doorleft_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#doorDriverRear_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#doorleft_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#doorDriverRear_id#']({display_value:'#doorDriverRear#'});
+		jeedom.cmd.update['#doorleft_id#']({display_value:'#doorleft#'});
 		
 		
-		jeedom.cmd.update['#doorPassengerFront_id#'] = function(_options) {
+		jeedom.cmd.update['#doorps_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#doorPassengerFront_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            	$('.Cmd#doorps_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#doorPassengerFront_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#doorps_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#doorPassengerFront_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#doorps_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#doorPassengerFront_id#']({display_value:'#doorPassengerFront#'});
+		jeedom.cmd.update['#doorps_id#']({display_value:'#doorps#'});
 		
 		
-		jeedom.cmd.update['#doorPassengerRear_id#'] = function(_options) {
+		jeedom.cmd.update['#doorright_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#doorPassengerRear_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            	$('.Cmd#doorright_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#doorPassengerRear_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#doorright_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#doorPassengerRear_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#doorright_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#doorPassengerRear_id#']({display_value:'#doorPassengerRear#'});
+		jeedom.cmd.update['#doorright_id#']({display_value:'#doorright#'});
 		
 		
-		jeedom.cmd.update['#windowDriverFront_id#'] = function(_options) {
+		jeedom.cmd.update['#vicdav_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#windowDriverFront_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#windowDriverFront_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#windowDriverFront_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#windowDriverFront_id#']({display_value:'#windowDriverFront#'});
+		jeedom.cmd.update['#vicdav_id#']({display_value:'#vicdav#'});
 		
 		
-		jeedom.cmd.update['#windowDriverRear_id#'] = function(_options) {
+		jeedom.cmd.update['#vicdar_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#windowDriverRear_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            	$('.Cmd#vicdar_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#windowDriverRear_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vicdar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#windowDriverRear_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vicdar_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#windowDriverRear_id#']({display_value:'#windowDriverRear#'});
+		jeedom.cmd.update['#vicdar_id#']({display_value:'#vicdar#'});
 		
 		
-		jeedom.cmd.update['#windowPassengerFront_id#'] = function(_options) {
+		jeedom.cmd.update['#vipsav_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#windowPassengerFront_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            	$('.Cmd#vipsav_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#windowPassengerFront_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vipsav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#windowPassengerFront_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vipsav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#windowPassengerFront_id#']({display_value:'#windowPassengerFront#'});
+		jeedom.cmd.update['#vipsav_id#']({display_value:'#vipsav#'});
 		
 		
-		jeedom.cmd.update['#windowPassengerRear_id#'] = function(_options) {
+		jeedom.cmd.update['#vipsar_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#windowPassengerRear_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            	$('.Cmd#vipsar_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#windowPassengerRear_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vipsar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#windowPassengerRear_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vipsar_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#windowPassengerRear_id#']({display_value:'#windowPassengerRear#'});
+		jeedom.cmd.update['#vipsar_id#']({display_value:'#vipsar#'});
 				
       
-		jeedom.cmd.update['#trunk_state_id#'] = function(_options) {
+		jeedom.cmd.update['#hood_id#'] = function(_options) {
             if ( _options.display_value == "OPEN")  {
-            	$('.Cmd#trunk_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            	$('.Cmd#hood_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
           	if ( _options.display_value == "CLOSED")  {
-              	$('.Cmd#trunk_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#hood_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			if ( _options.display_value == "not available")  {
-              	$('.Cmd#trunk_state_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#trunk_state_id#']({display_value:'#trunk_state#'});
+		jeedom.cmd.update['#hood_id#']({display_value:'#hood#'});
 		
       
 		jeedom.cmd.update['#hood_state_id#'] = function(_options) {
@@ -316,28 +310,13 @@
 		}
 		jeedom.cmd.update['#hood_state_id#']({display_value:'#hood_state#'});
 		
-		
-		jeedom.cmd.update['#moonroof_state_id#'] = function(_options) {
-            if ( _options.display_value == "OPEN" || _options.display_value != "0" || _options.display_value != "CLOSED" )  {
-            	$('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
-            }
-          	if ( _options.display_value == "CLOSED" || _options.display_value == "0" )  {
-              	$('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
-            }
-			if ( _options.display_value == "not available")  {
-              	$('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
-            }
-		}
-		jeedom.cmd.update['#moonroof_state_id#']({display_value:'#moonroof_state#'});
-		
-		
-		jeedom.cmd.update['#mileage_id#'] = function(_options) {
+		jeedom.cmd.update['#km_id#'] = function(_options) {
            	if ( _options.display_value == "0")  {
-			 $('.Cmd#mileage_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
 			}
-			else  {  $('.Cmd#mileage_id#').empty().append('<span>'+_options.display_value+'</span>');  }
+			else  {  $('.Cmd#km_id#').empty().append('<span>'+_options.display_value+'</span>');  }
         }
-		jeedom.cmd.update['#mileage_id#']({display_value:'#mileage#'});
+		jeedom.cmd.update['#km_id#']({display_value:'#km#'});
 		
 		
 		jeedom.cmd.update['#beRemainingRangeElectric_id#'] = function(_options) {
