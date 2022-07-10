@@ -151,7 +151,7 @@ class fordcar extends eqLogic {
 	}
 
 
-
+	}
 
   //public static $_encryptConfigKey = array('password', 'vin');
   
