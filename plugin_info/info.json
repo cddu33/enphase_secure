@@ -12,10 +12,10 @@
 	"hasDependency": true,
 	"hasOwnDeamon": false,
 	"maxDependancyInstallTime": 0,
-	"changelog": "https://jeedom.github.io/fordcar/#language#/changelog",
-	"documentation": "https://jeedom.github.io/fordcar/#language#/",
-	"changelog_beta": "https://jeedom.github.io/fordcar/#language#/changelog",
-	"documentation_beta": "https://jeedom.github.io/fordcar/#language#/",
+	"changelog": "https://cddu33.github.io/fordcar/#language#/changelog",
+	"documentation": "https://cddu33.github.io/fordcar/#language#/",
+	"changelog_beta": "https://cddu33.github.io/fordcar/#language#/changelog",
+	"documentation_beta": "https://cddu33.github.io/fordcar/#language#/",
 	"link": {
 		"forum": "Lien vers le forum",
 		"video": "Lien vers une video"
