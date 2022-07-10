@@ -97,61 +97,8 @@ class fordcar extends eqLogic {
 		$replace['#template#'] = $template;
 
 		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
-	}/* Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin */
-    public function toHtml($_version = 'dashboard') {
-    	
-		if ($this->getConfiguration('widget_template') != 1) {
-			return parent::toHtml($_version);
-		}
-		
-		$replace = $this->preToHtml($_version);
-		if (!is_array($replace)) {
-			return $replace;
-		}
-		$version = jeedom::versionAlias($_version);
-		$replace['#version#'] = $_version;
-		
-		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vin');
-		//$replace['#vehicle_type'.$this->getId().'#'] = $this->getConfiguration('vehicle_type');
-							
-		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
-
-		// Traitement des commandes infos
-		foreach ($this->getCmd('info') as $cmd) {
-			$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
-			$replace['#' . $cmd->getLogicalId() . '_name#'] = $cmd->getName();
-			$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
-			$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
-			//$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
-			//if ($cmd->getIsHistorized() == 1) { $replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor'; }
-		}
-
-		// Traitement des commandes actions
-		foreach ($this->getCmd('action') as $cmd) {
-			$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
-			$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
-			if ($cmd->getSubType() == 'select') {
-				$listValue = "<option value>" . $cmd->getName() . "</option>";
-				$listValueArray = explode(';', $cmd->getConfiguration('listValue'));
-				foreach ($listValueArray as $value) {
-					list($id, $name) = explode('|', $value);
-					$listValue = $listValue . "<option value=" . $id . ">" . $name . "</option>";
-				}
-				$replace['#' . $cmd->getLogicalId() . '_listValue#'] = $listValue;
-			}
-		}
-			
-		// On definit le template à appliquer par rapport à la version Jeedom utilisée
-		if (version_compare(jeedom::version(), '4.0.0') >= 0) {
-			$template = 'fordcar_dashboard';
-		}
-		$replace['#template#'] = $template;
-
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
 	}
 
-
-	}
 
   //public static $_encryptConfigKey = array('password', 'vin');
   
