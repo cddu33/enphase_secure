@@ -11,15 +11,16 @@ Initial
 Envoie des commandes lock/unlock
 Statut de la voiture
 # 10/07/2022
-Statut de la voiture
-Veille
-Maj
-kilométrage
-latitude
-longitude
-etat batterie
-tension batterie
-etat huile
-% huile
-pneux
-vitres
+Statut de la voiture//Veille//Maj
+
+Kilométrage//Latitude//Longitude
+
+Etat batterie//Tension batterie
+
+Etat huile//% huile
+
+Pneux
+
+Vitres//Portes//Coffre
+
+Fuel

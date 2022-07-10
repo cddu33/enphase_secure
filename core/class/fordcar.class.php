@@ -517,6 +517,30 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
 
+	  $fordcarCmd = $this->getCmd(null, 'qfuel');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Réservoir carburant restant', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('qfuel');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'kmfuel');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Estimation kilométrage restant', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('kmfuel');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('km');
+	  $fordcarCmd->save();
+
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -671,6 +695,14 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('hood', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
+		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('qfuel', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
+		log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);
 	}
   }
   public function commandes($fordcar_statut) {
