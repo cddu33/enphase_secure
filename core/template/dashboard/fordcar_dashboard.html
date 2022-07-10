@@ -1,4 +1,4 @@
-<div id="myBMW_widget_ID" class="eqLogic-widget eqLogic noResize myBMW_widget myBMW" style="width: 900px; height: 740px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic noResize fordcar_widget fordcar" style="width: 900px; height: 740px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
 	
 	<center class="widget-name" style="padding-right: 0px;">
 		<span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
@@ -64,7 +64,7 @@
 							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#windowDriverRear_id#"></i></div>
 						</div>
 						<div class="col-sm-6">
-							<img src="plugins/myBMW/core/img/widget_car.png" height="150" width="150" />
+							<img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
 						</div>
 						<div class="col-sm-3">
 							</br>
@@ -99,7 +99,7 @@
 					<script>
 						$('.cmd[data-cmd_id=#vehicleFinder_id#]').on('click', function () {
 							$('#md_modal').dialog({title: "Recherche Véhicule"});
-							$('#md_modal').load('index.php?v=d&plugin=myBMW&modal=VehicleFinder.myBMW&eqLogic_id='+'#id#').dialog('open');
+							$('#md_modal').load('index.php?v=d&plugin=fordcar&modal=VehicleFinder.fordcar&eqLogic_id='+'#id#').dialog('open');
 						});
 					</script>
 					<button class="btn cmd action" data-cmd_id="#sendPOI_id#" title="Envoi POI"><i class="fa-2x icon fas fa-map-marker-alt"></i></button>
@@ -115,7 +115,7 @@
 									width: 447
 							});
 							jQuery.ajaxSetup({async: false});
-							$('#mod_sendPOI').load('index.php?v=d&plugin=myBMW&modal=SendPOI.myBMW&eqLogic_id='+'#id#');
+							$('#mod_sendPOI').load('index.php?v=d&plugin=fordcar&modal=SendPOI.fordcar&eqLogic_id='+'#id#');
 							jQuery.ajaxSetup({async: true});
 														
 							$('#mod_sendPOI').dialog('open');
@@ -169,7 +169,7 @@
 		
 		jeedom.cmd.update['#id#'] =function(_options) {
             var cmd2  = $('#img_car#id#')[0];
-			cmd2.src = "plugins/myBMW/data/"+_options.display_value+".png";
+			cmd2.src = "plugins/fordcar/data/"+_options.display_value+".png";
 		}
 		jeedom.cmd.update['#id#']({display_value: '#vehicle_vin#id##'});
 				
@@ -422,53 +422,53 @@
 
 	<style>
 	
-	.myBMW_widget .container-fluid {
+	.fordcar_widget .container-fluid {
 		margin-top: 10px;
 	}
 
-	.myBMW_widget hr {
+	.fordcar_widget hr {
 		border-top: 1px solid;
 		margin : 10px 10px 10px 10px;
 	}
 
-	.myBMW_widget #infos {
+	.fordcar_widget #infos {
 		margin-top: 10px;
 		margin-bottom: 16px;
 	}
 	
-	.myBMW_widget #engine {
+	.fordcar_widget #engine {
 		width: 450px;
 		height: 130px;
 		margin-top: 15px;
 		margin-bottom: 15px;
 	}
 	
-	.myBMW_widget #doors_windows {
+	.fordcar_widget #doors_windows {
 		margin: 10px 10px 10px 10px;
 	}
 	
-	.myBMW_widget #actions {
+	.fordcar_widget #actions {
 		margin-top: 10px;
 		margin-bottom: 20px;
 	}
 	
-	.myBMW_widget .btn {
+	.fordcar_widget .btn {
 		width: 40px !important;
 		height: 40px !important;
 		max-width: 40px !important;
 		max-height: 40px !important;
 	}
 	
-	.myBMW_widget #location {
+	.fordcar_widget #location {
 		margin-top: 10px;
 		margin-bottom: 15px;
 	}
 	
-	.myBMW_widget #messages {
+	.fordcar_widget #messages {
 		margin : 10px 23px 10px 23px;
 	}
 	
-	.myBMW_widget #liste_msg {
+	.fordcar_widget #liste_msg {
 		width: 380px;
 		height: 255px;
 		overflow: auto;

@@ -656,7 +656,7 @@ class fordcar extends eqLogic {
   }
   public function encrypt() {
 	  $this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
-	  $this->setConfiguration('vin', utils::encrypt($this->getConfiguration('vin')));
+	  $this->setConfiguration('v	in', utils::encrypt($this->getConfiguration('vin')));
   }
  
 
