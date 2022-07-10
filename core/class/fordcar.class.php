@@ -457,6 +457,66 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
 
+	  $fordcarCmd = $this->getCmd(null, 'doorcd');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Porte conducteur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('doorcd');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'doorps');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Porte passagé', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('doorps');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'doorleft');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Porte arrière gauche', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('doorleft');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'doorright');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Porte arrière droite', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('doorright');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'hood');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Coffre', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('hood');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -591,6 +651,23 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['windowPosition']['rearPassWindowPos']['value'];
 		log::add('fordcar', 'debug', 'Fenetre passager arrière: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('vipsar', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['driverDoor ']['value'];
+		log::add('fordcar', 'debug', 'Porte conducteur: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('doorcd', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['rightRearDoor']['value'];
+		log::add('fordcar', 'debug', 'Porte arrière droite: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('doorright', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['leftRearDoor']['value'];
+		log::add('fordcar', 'debug', 'Porte arrière gauche: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('doorleft', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor ']['value'];
+		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('hood', $fordcar_info);
+	}
 	}
   }
   public function commandes($fordcar_statut) {
