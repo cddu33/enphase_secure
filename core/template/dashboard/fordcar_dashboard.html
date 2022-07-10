@@ -1,0 +1,479 @@
+<div id="myBMW_widget_ID" class="eqLogic-widget eqLogic noResize myBMW_widget myBMW" style="width: 900px; height: 740px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+	
+	<center class="widget-name" style="padding-right: 0px;">
+		<span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
+		<a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>
+		<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
+	</center>
+	
+	<div class="container-fluid">
+		
+		<div class="row">
+			
+			<div class="col-sm-6">
+		
+				<div class="row" id="picture">
+					<img id="img_car#id#" src="" style="height:150px" />
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-6"><span class="label" style="font-weight: bold">Véhicule</span></div>
+					<div class="col-sm-6"><span class="label" style="font-weight: bold">Kilométrage</span></div>
+				</div>
+				
+				<div class="row" id="infos">
+					<div class="col-sm-6"><span class="state"><i class="Cmd#doorLockState_id#"></i></span></div>
+					<div class="col-sm-6"><span class="Cmd#mileage_id# iconCmd"></span></div>
+				</div>
+				
+				<hr class="cmdName">
+				
+				<div class="row" id="engine">
+					<div id="electric_engine#id#" class="col-sm-6" style="width:225px; height:130px;">
+						<i class="fa-2x fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold">Moteur électrique</span>
+						</br></br>
+						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeElectric_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas fa-car-battery"></i><span class="Cmd#chargingLevelHv_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>
+					</div>
+					<div id="combustion_engine#id#" class="col-sm-6" style="width:225px; height:130px;">
+						<i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
+						</br></br>
+						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeFuelKm_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#remaining_fuel_id#"></span></div>
+					</div>
+				</div>
+				
+				<hr class="cmdName">
+				
+				<span class="label cmdName" style="font-weight: bold">Portes & Fenêtres</span>
+				</br>
+				<div class="row" id="doors_windows">
+					<div class="row"><span class="label pull-center">Capot : <i class="Cmd#hood_state_id#"></i></span></div>
+					</br>
+					<div class="row">
+						<div class="col-sm-3">
+							</br>
+							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorDriverFront_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#windowDriverFront_id#"></i></div>
+							</br></br></br>
+							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorDriverRear_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#windowDriverRear_id#"></i></div>
+						</div>
+						<div class="col-sm-6">
+							<img src="plugins/myBMW/core/img/widget_car.png" height="150" width="150" />
+						</div>
+						<div class="col-sm-3">
+							</br>
+							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorPassengerFront_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#windowPassengerFront_id#"></i></div>
+							</br></br></br>
+							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorPassengerRear_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#windowPassengerRear_id#"></i></div>
+						</div>
+					</div>
+					</br>
+					<div class="row"><span class="label pull-center">Toit ouvrant : <i class="Cmd#moonroof_state_id#"></i></span></div>
+					<div class="row"><span class="label pull-center">Coffre : <i class="Cmd#trunk_state_id#"></i></span></div>				
+				</div>
+			</div>
+			
+			<div class="col-sm-6">
+			
+				<span class="label cmdName" style="font-weight: bold">Actions</span>
+				<div class="row" id="actions">
+					<!-- <button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button> -->
+					<button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #doorLock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
+					<button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #doorUnlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
+					<button class="btn cmd action" data-cmd_id="#climateNow_id#" title="Ventiler" onclick="jeedom.cmd.execute({id: #climateNow_id#});"><i class="fa-2x icon fas fa-fan"></i></button>
+					<button class="btn cmd action" data-cmd_id="#stopClimateNow_id#" title="Stop Ventiler" onclick="jeedom.cmd.execute({id: #stopClimateNow_id#});"><i class="fa-2x icon fas fa-ban"></i></button>
+					<!-- <button id="charge_btn#id#" class="btn cmd action" data-cmd_id="#chargeNow_id#" title="Charger" onclick="jeedom.cmd.execute({id: #chargeNow_id#});"><i class="fa-2x icon fas fa-plug"></i></button> -->
+					<button class="btn cmd action" data-cmd_id="#lightFlash_id#" title="Appel de phares" onclick="jeedom.cmd.execute({id: #lightFlash_id#});"><i class="fa-2x icon fas fa-lightbulb"></i></button>
+					<button class="btn cmd action" data-cmd_id="#hornBlow_id#" title="Klaxonner" onclick="jeedom.cmd.execute({id: #hornBlow_id#});"><i class="fa-2x icon fas fa-volume-up"></i></button>
+					<button class="btn cmd action" data-cmd_id="#vehicleFinder_id#" title="Recherche véhicule"><i class="fa-2x icon fas fa-map-marked"></i></button>
+					<script>
+						$('.cmd[data-cmd_id=#vehicleFinder_id#]').on('click', function () {
+							$('#md_modal').dialog({title: "Recherche Véhicule"});
+							$('#md_modal').load('index.php?v=d&plugin=myBMW&modal=VehicleFinder.myBMW&eqLogic_id='+'#id#').dialog('open');
+						});
+					</script>
+					<button class="btn cmd action" data-cmd_id="#sendPOI_id#" title="Envoi POI"><i class="fa-2x icon fas fa-map-marker-alt"></i></button>
+					<script>
+						$('.cmd[data-cmd_id=#sendPOI_id#]').on('click', function () {
+							$('body').append('<div id="mod_sendPOI" style="overflow-x: hidden; overflow-y: hidden;"/>');
+							$("#mod_sendPOI").dialog({
+									title: "Envoi POI",
+									closeText: '',
+									autoOpen: false,
+									modal: true,
+									height: 240,
+									width: 447
+							});
+							jQuery.ajaxSetup({async: false});
+							$('#mod_sendPOI').load('index.php?v=d&plugin=myBMW&modal=SendPOI.myBMW&eqLogic_id='+'#id#');
+							jQuery.ajaxSetup({async: true});
+														
+							$('#mod_sendPOI').dialog('open');
+						});
+					</script>
+				</div>
+			
+				<hr class="cmdName">
+				
+				<span class="label cmdName" style="font-weight: bold">Localisation</span>
+				<div class="row" id="location">
+					<iframe id="myFrame#id#" src="https://maps.google.com/maps?hl=fr&ie=utf8&output=embed&q=#gps_coordinates#" width="380" height="239" frameborder="0" style="border:0"></iframe>
+				</div>
+				
+				<hr class="cmdName">
+				
+				<div class="row" id="messages">
+					<span class="label cmdName" style="font-weight: bold">Messages</span><span class="nb_message#id#"></span>
+					<div id="liste_msg" class="label Cmd#vehicleMessages_id# table_message#id#"></div>
+				</div>
+			
+			</div>
+			
+		</div>
+		
+		<div class="row">
+			<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#lastUpdate_id# state"></span></div>
+		</div>
+	
+	</div>
+	#divGraphInfo#
+	
+	<script>
+        
+      	if ( '#vehicle_type#id##' == 'ELECTRIC' )  {
+			$('#combustion_engine#id#').hide();
+			$('#electric_engine#id#').width("450px");
+		}
+		if ( '#vehicle_type#id##' == 'COMBUSTION' )  {
+			//$('#charge_btn#id#').hide();
+			$('#electric_engine#id#').hide();
+			$('#combustion_engine#id#').width("450px");
+		}
+		
+		jeedom.cmd.update['#id#'] =function(_options) {
+            var cmd  = $('#myFrame#id#')[0];
+			cmd.src = "https://maps.google.com/maps?hl=fr&ie=utf8&output=embed&q="+_options.display_value;
+		}
+		jeedom.cmd.update['#id#']({display_value: '#gps_coordinates#'});
+		
+		
+		jeedom.cmd.update['#id#'] =function(_options) {
+            var cmd2  = $('#img_car#id#')[0];
+			cmd2.src = "plugins/myBMW/data/"+_options.display_value+".png";
+		}
+		jeedom.cmd.update['#id#']({display_value: '#vehicle_vin#id##'});
+				
+				
+		jeedom.cmd.update['#doorLockState_id#'] = function(_options) {
+            if ( _options.display_value == "Unlocked" || _options.display_value == "UNLOCKED" || _options.display_value == "Déverrouillé" )  {
+            	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
+            }
+          	if ( _options.display_value == "Locked" || _options.display_value == "LOCKED" || _options.display_value == "SELECTIVELOCKED" || _options.display_value == "Verrouillé" )  {
+              	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
+            }
+			if (  _options.display_value == "Secured" || _options.display_value == "SECURED" || _options.display_value == "Sécurisé" )  {
+              	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>&nbsp<i class="fa-1x icon_green fas fa-shield-alt"></i>');
+            }
+			if ( _options.display_value == "Unknown" || _options.display_value == "not available" || _options.display_value == "Inconnu" )  {
+              	$('.Cmd#doorLockState_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+            }
+        }
+		jeedom.cmd.update['#doorLockState_id#']({display_value:'#doorLockState#'});
+      	
+		
+		jeedom.cmd.update['#doorDriverFront_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#doorDriverFront_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#doorDriverFront_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#doorDriverFront_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#doorDriverFront_id#']({display_value:'#doorDriverFront#'});
+		
+		
+		jeedom.cmd.update['#doorDriverRear_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#doorDriverRear_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#doorDriverRear_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#doorDriverRear_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#doorDriverRear_id#']({display_value:'#doorDriverRear#'});
+		
+		
+		jeedom.cmd.update['#doorPassengerFront_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#doorPassengerFront_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#doorPassengerFront_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#doorPassengerFront_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#doorPassengerFront_id#']({display_value:'#doorPassengerFront#'});
+		
+		
+		jeedom.cmd.update['#doorPassengerRear_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#doorPassengerRear_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#doorPassengerRear_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#doorPassengerRear_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#doorPassengerRear_id#']({display_value:'#doorPassengerRear#'});
+		
+		
+		jeedom.cmd.update['#windowDriverFront_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#windowDriverFront_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#windowDriverFront_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#windowDriverFront_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#windowDriverFront_id#']({display_value:'#windowDriverFront#'});
+		
+		
+		jeedom.cmd.update['#windowDriverRear_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#windowDriverRear_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#windowDriverRear_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#windowDriverRear_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#windowDriverRear_id#']({display_value:'#windowDriverRear#'});
+		
+		
+		jeedom.cmd.update['#windowPassengerFront_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#windowPassengerFront_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#windowPassengerFront_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#windowPassengerFront_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#windowPassengerFront_id#']({display_value:'#windowPassengerFront#'});
+		
+		
+		jeedom.cmd.update['#windowPassengerRear_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#windowPassengerRear_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#windowPassengerRear_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#windowPassengerRear_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#windowPassengerRear_id#']({display_value:'#windowPassengerRear#'});
+				
+      
+		jeedom.cmd.update['#trunk_state_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#trunk_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#trunk_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#trunk_state_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#trunk_state_id#']({display_value:'#trunk_state#'});
+		
+      
+		jeedom.cmd.update['#hood_state_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN")  {
+            	$('.Cmd#hood_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED")  {
+              	$('.Cmd#hood_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#hood_state_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#hood_state_id#']({display_value:'#hood_state#'});
+		
+		
+		jeedom.cmd.update['#moonroof_state_id#'] = function(_options) {
+            if ( _options.display_value == "OPEN" || _options.display_value != "0" || _options.display_value != "CLOSED" )  {
+            	$('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
+            }
+          	if ( _options.display_value == "CLOSED" || _options.display_value == "0" )  {
+              	$('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			if ( _options.display_value == "not available")  {
+              	$('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#moonroof_state_id#']({display_value:'#moonroof_state#'});
+		
+		
+		jeedom.cmd.update['#mileage_id#'] = function(_options) {
+           	if ( _options.display_value == "0")  {
+			 $('.Cmd#mileage_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+			}
+			else  {  $('.Cmd#mileage_id#').empty().append('<span>'+_options.display_value+'</span>');  }
+        }
+		jeedom.cmd.update['#mileage_id#']({display_value:'#mileage#'});
+		
+		
+		jeedom.cmd.update['#beRemainingRangeElectric_id#'] = function(_options) {
+           	$('.Cmd#beRemainingRangeElectric_id#').empty().append('<span>'+' '+_options.display_value+' kms restants'+'</span>');
+        }
+		jeedom.cmd.update['#beRemainingRangeElectric_id#']({display_value:'#beRemainingRangeElectric#'});
+		
+		
+		jeedom.cmd.update['#chargingLevelHv_id#'] = function(_options) {
+           	$('.Cmd#chargingLevelHv_id#').empty().append('<span>'+' Batterie : '+_options.display_value+' %'+'</span>');
+        }
+		jeedom.cmd.update['#chargingLevelHv_id#']({display_value:'#chargingLevelHv#'});
+		
+		
+		jeedom.cmd.update['#connectorStatus_id#'] = function(_options) {
+           	if ( _options.display_value == "1" )  {			
+				$('.Cmd#connectorStatus_id#').empty().append('<span> Prise : connectée</span>');
+			}
+			if ( _options.display_value == "0" || _options.display_value == "" )  {			
+				$('.Cmd#connectorStatus_id#').empty().append('<span> Prise : deconnectée</span>');
+			}
+		}
+		jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
+		
+		
+		jeedom.cmd.update['#chargingStatus_id#'] = function(_options) {
+           	$('.Cmd#chargingStatus_id#').empty().append('<span>'+' Charge : '+_options.display_value+'</span>');
+        }
+		jeedom.cmd.update['#chargingStatus_id#']({display_value:'#chargingStatus#'});
+		
+		
+		jeedom.cmd.update['#beRemainingRangeFuelKm_id#'] = function(_options) {
+           	$('.Cmd#beRemainingRangeFuelKm_id#').empty().append('<span>'+' '+_options.display_value+' kms restants'+'</span>');
+        }
+		jeedom.cmd.update['#beRemainingRangeFuelKm_id#']({display_value:'#beRemainingRangeFuelKm#'});
+		
+		
+		jeedom.cmd.update['#remaining_fuel_id#'] = function(_options) {
+           	$('.Cmd#remaining_fuel_id#').empty().append('<span>'+' Volume restant : '+_options.display_value+' L'+'</span>');
+        }
+		jeedom.cmd.update['#remaining_fuel_id#']({display_value:'#remaining_fuel#'});
+		
+		
+		jeedom.cmd.update['#lastUpdate_id#'] = function(_options) {
+           	if ( _options.display_value == "not available")  { $('.Cmd#lastUpdate_id#').empty().append('<span>'+"inconnue"+'</span>'); }
+			else { $('.Cmd#lastUpdate_id#').empty().append('<span>'+_options.display_value+'</span>'); }
+        }
+		jeedom.cmd.update['#lastUpdate_id#']({display_value:'#lastUpdate#'});
+
+
+		jeedom.cmd.update['#vehicleMessages_id#'] = function(_options) {
+           	var messages = jQuery.parseJSON(_options.display_value);
+			console.log(messages);
+			var table_html= "";
+			$('.nb_message#id#').empty().append('<span>'+'('+Object.keys(messages).length+')'+'</span>');
+			
+			table_html += '<ul class="list-group" style="text-align: left">';
+			jQuery.each(messages,function(key,message){
+				table_html += '<li class="list-group-item" style="margin-bottom: 10px"><span class="label cmdName">'+message.type+message.date+message.state+'</span><br/><span class="label cmdName">'+message.title+'</span><br/><span class="label cmdName" style="white-space: normal; text-align: left">'+message.description+'</span></li>'
+			});
+			table_html += '</ul>';
+			$('.table_message#id#').empty().append(table_html);
+		}
+		jeedom.cmd.update['#vehicleMessages_id#']({display_value:'#vehicleMessages#'});
+		
+      
+	</script>
+
+	<style>
+	
+	.myBMW_widget .container-fluid {
+		margin-top: 10px;
+	}
+
+	.myBMW_widget hr {
+		border-top: 1px solid;
+		margin : 10px 10px 10px 10px;
+	}
+
+	.myBMW_widget #infos {
+		margin-top: 10px;
+		margin-bottom: 16px;
+	}
+	
+	.myBMW_widget #engine {
+		width: 450px;
+		height: 130px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	
+	.myBMW_widget #doors_windows {
+		margin: 10px 10px 10px 10px;
+	}
+	
+	.myBMW_widget #actions {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+	
+	.myBMW_widget .btn {
+		width: 40px !important;
+		height: 40px !important;
+		max-width: 40px !important;
+		max-height: 40px !important;
+	}
+	
+	.myBMW_widget #location {
+		margin-top: 10px;
+		margin-bottom: 15px;
+	}
+	
+	.myBMW_widget #messages {
+		margin : 10px 23px 10px 23px;
+	}
+	
+	.myBMW_widget #liste_msg {
+		width: 380px;
+		height: 255px;
+		overflow: auto;
+	}
+				
+	</style>
+	
+</div>
