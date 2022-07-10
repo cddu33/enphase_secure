@@ -188,7 +188,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('refresh');
 	  $fordcarCmd->setType('action');
 	  $fordcarCmd->setSubType('other');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
   
 	  $fordcarCmd = $this->getCmd(null, 'lock');
@@ -200,7 +200,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('lock');
 	  $fordcarCmd->setType('action');
 	  $fordcarCmd->setSubType('other');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 	  
 	  $fordcarCmd = $this->getCmd(null, 'unlock');
@@ -212,7 +212,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('unlock');
 	  $fordcarCmd->setType('action');
 	  $fordcarCmd->setSubType('other');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 	  
 	  $fordcarCmd = $this->getCmd(null, 'etat');
@@ -224,7 +224,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('etat');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'last');
@@ -236,7 +236,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('last');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'maj');
@@ -248,7 +248,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('maj');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('binary');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'veille');
@@ -260,7 +260,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('veille');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('binary');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'km');
@@ -273,7 +273,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'lat');
@@ -286,7 +286,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('°');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'long');
@@ -299,7 +299,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('°');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'hbat');
@@ -311,7 +311,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('hbat');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'tbat');
@@ -324,7 +324,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('V');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'ehuile');
@@ -336,7 +336,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setLogicalId('ehuile');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'huile');
@@ -349,7 +349,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'pression');
@@ -362,7 +362,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'etpnavgh');
@@ -375,7 +375,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	   $fordcarCmd = $this->getCmd(null, 'etpnavdr');
@@ -388,7 +388,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'etpnargh');
@@ -401,7 +401,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'etpnardr');
@@ -414,7 +414,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnavgh');
@@ -427,7 +427,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnavdr');
@@ -440,7 +440,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnargh');
@@ -453,7 +453,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnardr');
@@ -466,7 +466,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'vicdav');
@@ -479,7 +479,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'vicdar');
@@ -492,7 +492,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'vipsav');
@@ -505,7 +505,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'vipsar');
@@ -518,7 +518,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'doorcd');
@@ -531,7 +531,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'doorps');
@@ -544,7 +544,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'doorleft');
@@ -557,7 +557,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'doorright');
@@ -570,7 +570,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'hood');
@@ -583,7 +583,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'qfuel');
@@ -596,7 +596,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'kmfuel');
@@ -609,7 +609,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
-	  if (!empty($template)) { $cmd->setTemplate(fordcar::fordcar_dashboard); }
+	  if (!empty($template)) { $cmd->setTemplate(dashboard, fordcar::fordcar_dashboard); }
 	  $fordcarCmd->save();
 
   }
