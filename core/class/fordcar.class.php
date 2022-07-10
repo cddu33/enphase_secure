@@ -20,7 +20,11 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class fordcar extends eqLogic {
   /*     * *************************Attributs****************************** */
-
+  public static $_widgetPossibility = array(
+		'custom' => true,
+		//'custom::layout' => false,
+		'parameters' => array(),
+	);
 	public static function dependancy_info() {
 		$return = array();
         $return['log'] = log::getPathToLog(__CLASS__ . '_update');
