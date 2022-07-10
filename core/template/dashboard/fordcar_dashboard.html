@@ -93,24 +93,6 @@
 						<!-- <button id="charge_btn#id#" class="btn cmd action" data-cmd_id="#chargeNow_id#" title="Charger" onclick="jeedom.cmd.execute({id: #chargeNow_id#});"><i class="fa-2x icon fas fa-plug"></i></button> -->
 						
 					<button class="btn cmd action" data-cmd_id="#sendPOI_id#" title="Envoi POI"><i class="fa-2x icon fas fa-map-marker-alt"></i></button>
-					<script>
-						$('.cmd[data-cmd_id=#sendPOI_id#]').on('click', function () {
-							$('body').append('<div id="mod_sendPOI" style="overflow-x: hidden; overflow-y: hidden;"/>');
-							$("#mod_sendPOI").dialog({
-									title: "Envoi POI",
-									closeText: '',
-									autoOpen: false,
-									modal: true,
-									height: 240,
-									width: 447
-							});
-							jQuery.ajaxSetup({async: false});
-							$('#mod_sendPOI').load('index.php?v=d&plugin=fordcar&modal=SendPOI.fordcar&eqLogic_id='+'#id#');
-							jQuery.ajaxSetup({async: true});
-														
-							$('#mod_sendPOI').dialog('open');
-						});
-					</script>
 				</div>
 			
 				<hr class="cmdName">
@@ -128,7 +110,7 @@
 		</div>
 		
 		<div class="row">
-			<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#lastUpdate_id# state"></span></div>
+			<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#last_id# state"></span></div>
 		</div>
 	
 	</div>
@@ -360,28 +342,11 @@
 		jeedom.cmd.update['#remaining_fuel_id#']({display_value:'#remaining_fuel#'});
 		
 		
-		jeedom.cmd.update['#lastUpdate_id#'] = function(_options) {
-           	if ( _options.display_value == "not available")  { $('.Cmd#lastUpdate_id#').empty().append('<span>'+"inconnue"+'</span>'); }
-			else { $('.Cmd#lastUpdate_id#').empty().append('<span>'+_options.display_value+'</span>'); }
+		jeedom.cmd.update['#last_id#'] = function(_options) {
+           	if ( _options.display_value == "not available")  { $('.Cmd#last_id#').empty().append('<span>'+"inconnue"+'</span>'); }
+			else { $('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>'); }
         }
-		jeedom.cmd.update['#lastUpdate_id#']({display_value:'#last#'});
-
-
-		jeedom.cmd.update['#vehicleMessages_id#'] = function(_options) {
-           	var messages = jQuery.parseJSON(_options.display_value);
-			console.log(messages);
-			var table_html= "";
-			$('.nb_message#id#').empty().append('<span>'+'('+Object.keys(messages).length+')'+'</span>');
-			
-			table_html += '<ul class="list-group" style="text-align: left">';
-			jQuery.each(messages,function(key,message){
-				table_html += '<li class="list-group-item" style="margin-bottom: 10px"><span class="label cmdName">'+message.type+message.date+message.state+'</span><br/><span class="label cmdName">'+message.title+'</span><br/><span class="label cmdName" style="white-space: normal; text-align: left">'+message.description+'</span></li>'
-			});
-			table_html += '</ul>';
-			$('.table_message#id#').empty().append(table_html);
-		}
-		jeedom.cmd.update['#vehicleMessages_id#']({display_value:'#vehicleMessages#'});
-		
+		jeedom.cmd.update['#last_id#']({display_value:'#last#'});
       
 	</script>
 

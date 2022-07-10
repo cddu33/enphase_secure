@@ -43,11 +43,8 @@ class fordcar extends eqLogic {
 		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
 	}
 
-	public static $_widgetPossibility = array(
-		'custom' => true,
-		//'custom::layout' => false,
-		'parameters' => array(),
-	);
+	private static $_templateArray = [];
+  	public static $_widgetPossibility = array('custom' => true);
   
 
 	
@@ -572,7 +569,7 @@ class fordcar extends eqLogic {
 		$version = jeedom::versionAlias($_version);
 		$replace['#version#'] = $_version;
 		
-		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vehicle_vin');
+		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vin');
 		//$replace['#vehicle_type'.$this->getId().'#'] = $this->getConfiguration('vehicle_type');
 							
 		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
