@@ -656,7 +656,7 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Porte conducteur: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('doorcd', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['doorStatus']['passengerDoor ']['value'];
+		$fordcar_info = $fordcar_json['doorStatus']['passengerDoor']['value'];
 		log::add('fordcar', 'debug', 'Porte passagé: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('doorps', $fordcar_info);
 
@@ -668,7 +668,7 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Porte arrière gauche: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('doorleft', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor ']['value'];
+		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('hood', $fordcar_info);
 	}
