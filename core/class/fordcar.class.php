@@ -19,12 +19,7 @@
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class fordcar extends eqLogic {
-  /*     * *************************Attributs****************************** */
-  public static $_widgetPossibility = array(
-		'custom' => true,
-		//'custom::layout' => false,
-		'parameters' => array(),
-	);
+
 	public static function dependancy_info() {
 		$return = array();
         $return['log'] = log::getPathToLog(__CLASS__ . '_update');
@@ -43,14 +38,9 @@ class fordcar extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
-		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
-		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
+		passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
+	}
 
-			}
-  
-
-
-/* Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin */
     public function toHtml($_version = 'dashboard') {
     	
 		if ($this->getConfiguration('widget_template') != 1) {
@@ -103,7 +93,6 @@ class fordcar extends eqLogic {
 		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
 	}
 
-  /*     * ***********************Methode static*************************** */
 
   /*
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
@@ -115,9 +104,8 @@ class fordcar extends eqLogic {
 			  continue; //continue la boucle
 			  }
 			  $cmd->execCmd(); //la commande existe on la lance
-}
-}
-
+			  }
+  }
 
   /*
   * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
@@ -615,7 +603,6 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->setTemplate('dashboard','fordcar::fordcar_dashboard');
 	  $fordcarCmd->save();
-
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -626,10 +613,7 @@ class fordcar extends eqLogic {
   public function postRemove() {
   }
 
-  /*
-  * Permet de crypter/décrypter automatiquement des champs de configuration des équipements
-  * Exemple avec le champ "Mot de passe" (password)
-   */
+  //Permet de crypter/décrypter automatiquement des champs de configuration des équipements
   public function decrypt() {
 	  $this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 	  $this->setConfiguration('vin', utils::decrypt($this->getConfiguration('vin')));
@@ -638,7 +622,6 @@ class fordcar extends eqLogic {
 	  $this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
 	  $this->setConfiguration('v	in', utils::encrypt($this->getConfiguration('vin')));
   }
- 
 
   public function refresh() {
 	$fordcar_path = realpath(dirname(__FILE__));
@@ -781,6 +764,7 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);
 	}
   }
+
   public function commandes($fordcar_statut) {
 	  $fordcar_pass = $this->getConfiguration('password');
 	  $fordcar_vin = $this->getConfiguration('vin');
@@ -809,10 +793,5 @@ class fordcarCmd extends cmd {
 		 $eqlogic->commandes("unlock"); 
 		  break;
 	  }
-	  //$eqLogic->refreshWidget();
   }
-  /*     * **********************Getteur Setteur*************************** */
-
-
-
 }
