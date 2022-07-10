@@ -39,7 +39,7 @@ class fordcar extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
-		return array('script' => dirname(__FILE__) . '/../../resources/install_#stype#.sh ' . jeedom::getTmpFolder('fordcar') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
+		return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder('fordcar') . '/dependance', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 	}
   
 
