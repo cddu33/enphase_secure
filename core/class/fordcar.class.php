@@ -653,7 +653,7 @@ class fordcar extends eqLogic {
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
 		if ($fordcar_json === null) {
-			throw new Exception(__('Erruer'));
+			throw new Exception(__('Erreur de connexion')__);
 		}
 
 		$fordcar_info = $fordcar_json['lockStatus']['value'];
