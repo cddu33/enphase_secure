@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\core",
+    "\\core\\class",
+    "\\core\\php",
+    "\\core\\template",
+    "\\core\\template\\dashboard",
+    "\\desktop",
+    "\\desktop\\php"
   ],
-  "SelectedNode": "\\C:\\Users\\cdibo\\Source\\Repos\\cddu33\\fordcar",
+  "SelectedNode": "\\desktop\\php\\fordcar.php",
   "PreviewInSolutionExplorer": false
 }
