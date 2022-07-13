@@ -40,7 +40,7 @@
 					<div id="combustion_engine#id#" class="col-sm-6" style="width:225px; height:130px;">
 						<i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
 						</br></br>
-						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeFuelKm_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#kmfuel_id#"></span></div></br>
 						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#remaining_fuel_id#"></span></div>
 					</div>
 				</div>
@@ -331,10 +331,10 @@
 		jeedom.cmd.update['#chargingStatus_id#']({display_value:'#chargingStatus#'});
 		
 		
-		jeedom.cmd.update['#beRemainingRangeFuelKm_id#'] = function(_options) {
-           	$('.Cmd#beRemainingRangeFuelKm_id#').empty().append('<span>'+' '+_options.display_value+' kms restants'+'</span>');
+		jeedom.cmd.update['#kmfuel_id#'] = function(_options) {
+           	$('.Cmd#kmfuel_id#').empty().append('<span>'+' '+_options.display_value+' kms restants'+'</span>');
         }
-		jeedom.cmd.update['#beRemainingRangeFuelKm_id#']({display_value:'#beRemainingRangeFuelKm#'});
+		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
 		
 		
 		jeedom.cmd.update['#remaining_fuel_id#'] = function(_options) {
