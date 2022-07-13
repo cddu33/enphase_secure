@@ -158,7 +158,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorcd_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#doorcd_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -172,7 +172,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorleft_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#doorleft_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -186,7 +186,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorps_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#doorps_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -200,7 +200,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorright_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#doorright_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -214,7 +214,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -228,7 +228,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#vicdar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#vicdar_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -242,7 +242,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#vipsav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#vipsav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -256,7 +256,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#vipsar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#vipsar_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -270,7 +270,7 @@
           	if ( _options.display_value == "Closed")  {
               	$('.Cmd#hood_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-			if ( _options.display_value == "Undefined")  {
+			else {
               	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -283,7 +283,7 @@
             if (_options.display_value == "Closed") {
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-            if (_options.display_value == "Undefined" || _options.display_value == "") {
+            else {
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
@@ -340,7 +340,7 @@
 		
 		
 		jeedom.cmd.update['#last_id#'] = function(_options) {
-           	if ( _options.display_value == "Undefined")  { $('.Cmd#last_id#').empty().append('<span>'+"inconnue"+'</span>'); }
+           	else { $('.Cmd#last_id#').empty().append('<span>'+"inconnue"+'</span>'); }
 			else { $('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>'); }
         }
 		jeedom.cmd.update['#last_id#']({display_value:'#last#'});
