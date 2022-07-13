@@ -118,15 +118,20 @@
 	
 	<script>
         
-      	if ( '#vehicle_type#id##' == 'ELECTRIC' )  {
+        if ('#vehicle_type#id##' == 'electrique' )  {
 			$('#combustion_engine#id#').hide();
 			$('#electric_engine#id#').width("450px");
 		}
-		if ( '#vehicle_type#id##' == 'COMBUSTION' )  {
+        if ('#vehicle_type#id##' == 'hybride' )  {
 			//$('#charge_btn#id#').hide();
-			$('#electric_engine#id#').hide();
+            $('#electric_engine#id#').width("450px");
 			$('#combustion_engine#id#').width("450px");
 		}
+        if ('#vehicle_type#id##' == 'thermique') {
+            $('#charge_btn#id#').hide();
+            $('#electric_engine#id#').hide();
+            $('#combustion_engine#id#').width("450px");
+        }
 		
 		jeedom.cmd.update['#id#'] =function(_options) {
             var cmd  = $('#myFrame#id#')[0];

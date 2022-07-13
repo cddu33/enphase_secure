@@ -188,9 +188,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
       <div class="col-md-4">
        <select id="sel_type" class="eqLogicAttr form-control" style="margin: 1px 0px;" data-l1key="configuration" data-l2key="vehicle_type" placeholder="Type de motorisation">
 											<option value="" disabled selected hidden>{{Choisir dans la liste}}</option>
-											<option value="1">Thermique</option>
-											<option value="2">Electrique</option>
-											<option value="3">Hybride</option>
+											<option value="thermique">Thermique</option>
+											<option value="electrique">Electrique</option>
+											<option value="hybride">Hybride</option>
 										</select>
       </div>
     </div>
