@@ -77,7 +77,7 @@
 						</div>
 					</div>
 					</br>
-					<div class="row"><span class="label pull-center">Toit ouvrant : <i class="Cmd#moonroof_state_id#"></i></span></div>
+					<div class="row"><span class="label pull-center">Toit ouvrant : <i class="Cmd#moonroof_state_id# fas fa-ban" ></i></span></div>
 					<div class="row"><span class="label pull-center">Coffre : <i class="Cmd#hood_id#"></i></span></div>				
 				</div>
 			</div>
@@ -275,7 +275,7 @@
             }
 		}
 		jeedom.cmd.update['#hood_id#']({display_value:'#hood#'});
-
+		/*
         jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
             if (_options.display_value == "Open") {
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
@@ -288,7 +288,7 @@
             }
         }
         jeedom.cmd.update['#moonroof_state_id#']({display_value: '#moonroof_state#'});
-		
+		*/
 		jeedom.cmd.update['#km_id#'] = function(_options) {
            	if ( _options.display_value == "0")  {
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
