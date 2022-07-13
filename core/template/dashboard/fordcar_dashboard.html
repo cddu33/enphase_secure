@@ -155,14 +155,14 @@
 		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 
 		jeedom.cmd.update['#lat_id#'] = function (_options) {
-            $('.Cmd#lat_id_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
+            $('.Cmd#lat_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
 		}
         jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
 
 		}
 		jeedom.cmd.update['#long_id#'] = function (_options) {
             $('.Cmd#long_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
-			}
+		}
 		jeedom.cmd.update['#long_id#']({ display_value: '#long#' });
 		
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
