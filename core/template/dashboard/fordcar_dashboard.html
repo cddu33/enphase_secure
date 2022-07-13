@@ -129,20 +129,6 @@
             $('#combustion_engine#id#').width("450px");
         }
 		
-		/*jeedom.cmd.update['#id#'] =function(_options) {
-            var cmd  = $('#myFrame#id#')[0];
-			cmd.src = "https://maps.google.com/maps?hl=fr&ie=utf8&output=embed&q="+_options.display_value;
-		}
-		jeedom.cmd.update['#id#']({display_value: '#gps_coordinates#'});
-		*/
-		/*
-		jeedom.cmd.update['#id#'] =function(_options) {
-            var cmd2  = $('#img_car#id#')[0];
-			cmd2.src = "plugins/fordcar/data/"+_options.display_value+".png";
-		}
-		jeedom.cmd.update['#id#']({display_value: '#vin#id##'});
-			*/	
-				
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
             if (_options.display_value == "LOCKED") {
                 $('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
@@ -159,7 +145,7 @@
 		}
         jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
 
-		}
+		
 		jeedom.cmd.update['#long_id#'] = function (_options) {
             $('.Cmd#long_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
 		}
