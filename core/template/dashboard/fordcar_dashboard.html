@@ -41,7 +41,7 @@
 						<i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
 						</br></br>
 						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#kmfuel_id#"></span></div></br>
-						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#remaining_fuel_id#"></span></div>
+						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#qfuel_id#"></span></div>
 					</div>
 				</div>
 				
@@ -337,10 +337,10 @@
 		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
 		
 		
-		jeedom.cmd.update['#remaining_fuel_id#'] = function(_options) {
-           	$('.Cmd#remaining_fuel_id#').empty().append('<span>'+' Volume restant : '+_options.display_value+' L'+'</span>');
+		jeedom.cmd.update['#kmfuel_id#'] = function(_options) {
+           	$('.Cmd#kmfuel_id#').empty().append('<span>'+' Volume restant : '+_options.display_value+' L'+'</span>');
         }
-		jeedom.cmd.update['#remaining_fuel_id#']({display_value:'#remaining_fuel#'});
+		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
 		
 		
 		jeedom.cmd.update['#last_id#'] = function(_options) {
