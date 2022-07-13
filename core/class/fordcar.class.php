@@ -796,7 +796,7 @@ class fordcarCmd extends cmd {
 		  $eqlogic->commandes("unlock"); 
 		  break;
 	  }
-	  $eqLogic->refreshWidget();
+	  //$eqLogic->refreshWidget();
   }
 
 
