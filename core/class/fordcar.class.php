@@ -786,9 +786,6 @@ class fordcarCmd extends cmd {
 	  $eqlogic = $this->getEqLogic();
 	  switch ($this->getLogicalId()) 
 	  { 
-		  case 'refresh':
-		  $eqlogic->refresh(); 
-		  break;
 		  case 'lock':
 		  $eqlogic->commandes("lock"); 
 		  break;
@@ -796,6 +793,7 @@ class fordcarCmd extends cmd {
 		  $eqlogic->commandes("unlock"); 
 		  break;
 	  }
+	    $eqlogic->refresh();
 	  //$eqLogic->refreshWidget();
   }
 
