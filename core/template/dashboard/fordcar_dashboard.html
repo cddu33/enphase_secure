@@ -156,7 +156,7 @@
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
-          	else if ( _options.display_value == "Fully_Closed")  {
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorcd_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			else {
@@ -170,7 +170,7 @@
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorleft_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
-          	else if ( _options.display_value == "Fully_Closed")  {
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorleft_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			else {
@@ -184,7 +184,7 @@
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorps_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
-          	else if ( _options.display_value == "Fully_Closed")  {
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorps_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			else {
@@ -198,7 +198,7 @@
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorright_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
-          	else if ( _options.display_value == "Fully_Closed")  {
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorright_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			else {
@@ -209,7 +209,7 @@
 		
 		
 		jeedom.cmd.update['#vicdav_id#'] = function(_options) {
-            if ( _options.display_value == "Open")  {
+            if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vicdav_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	else if ( _options.display_value == "Fully_Closed")  {
@@ -223,7 +223,7 @@
 		
 		
 		jeedom.cmd.update['#vicdar_id#'] = function(_options) {
-            if ( _options.display_value == "Open")  {
+            if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vicdar_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	else if ( _options.display_value == "Fully_Closed")  {
@@ -251,7 +251,7 @@
 		
 		
 		jeedom.cmd.update['#vipsar_id#'] = function(_options) {
-            if ( _options.display_value == "Open")  {
+            if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vipsar_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	else if ( _options.display_value == "Fully_Closed")  {
