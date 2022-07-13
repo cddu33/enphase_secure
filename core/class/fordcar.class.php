@@ -558,9 +558,14 @@ class fordcar extends eqLogic {
   /* Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin */
     public function toHtml($_version = 'dashboard') {
     	
+	/*
 		if ($this->getConfiguration('widget_template') != 1) {
 			return parent::toHtml($_version);
-		}
+		}*/
+		if ($this->getConfiguration('eqtuile','') == "core"){
+          	self::$_widgetPossibility = array('custom' => 'layout');
+          	return eqLogic::toHtml($_version);
+        }
 		
 		$replace = $this->preToHtml($_version);
 		if (!is_array($replace)) {
@@ -600,9 +605,7 @@ class fordcar extends eqLogic {
 		}
 			
 		// On definit le template à appliquer par rapport à la version Jeedom utilisée
-		if (version_compare(jeedom::version(), '4.0.0') >= 0) {
-			$template = 'fordcar_dashboard';
-		}
+		$template = 'fordcar_dashboard';
 		$replace['#template#'] = $template;
 
 		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
@@ -789,7 +792,7 @@ class fordcarCmd extends cmd {
 		  $eqlogic->commandes("unlock"); 
 		  break;
 	  }
-	  $eqLogic->refreshWidget();
+	 // $eqLogic->refreshWidget();
   }
 
 
