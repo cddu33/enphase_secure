@@ -139,7 +139,7 @@
           	
         }
 		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
-
+		/*
 		jeedom.cmd.update['#lat_id#'] = function (_options) {
             $('.Cmd#lat_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
 		}
@@ -150,7 +150,7 @@
             $('.Cmd#long_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
 		}
 		jeedom.cmd.update['#long_id#']({ display_value: '#long#' });
-		
+		*/
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
