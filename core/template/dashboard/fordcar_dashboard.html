@@ -13,7 +13,7 @@
 			<div class="col-sm-6">
 		
 				<div class="row" id="picture">
-					<img id="img_car#id#" src="" style="height:150px" />
+					<!--	<img id="img_car#id#" src="" style="height:150px" />-->
 				</div>
 				
 				<div class="row">
@@ -334,15 +334,14 @@
 		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
 		
 		
-		jeedom.cmd.update['#kmfuel_id#'] = function(_options) {
-           	$('.Cmd#kmfuel_id#').empty().append('<span>'+' Volume restant : '+_options.display_value+' L'+'</span>');
+		jeedom.cmd.update['#qfuel_id#'] = function(_options) {
+           	$('.Cmd#qfuel_id#').empty().append('<span>'+' Volume restant : '+_options.display_value+' %'+'</span>');
         }
-		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
+		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
 		
 		
 		jeedom.cmd.update['#last_id#'] = function(_options) {
-           	if ( _options.display_value == "Undefined")  { $('.Cmd#last_id#').empty().append('<span>'+"inconnue"+'</span>'); }
-			else { $('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>'); }
+           	$('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>');
         }
 		jeedom.cmd.update['#last_id#']({display_value:'#last#'});
       
