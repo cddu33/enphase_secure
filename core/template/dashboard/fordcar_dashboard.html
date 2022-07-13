@@ -280,13 +280,13 @@
 
         jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
             if (_options.display_value == "Open") {
-                $().empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+                $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
             if (_options.display_value == "Closed") {
-                $().empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+                $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
             if (_options.display_value == "Undefined" || _options.display_value == "") {
-                $().empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update[]({ display_value: '#moonroof_state#' });
