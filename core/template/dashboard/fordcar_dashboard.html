@@ -277,19 +277,20 @@
             }
 		}
 		jeedom.cmd.update['#hood_id#']({display_value:'#hood#'});
-
-        jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
-            if (_options.display_value == "Open") {
-                $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
+		
+      
+		jeedom.cmd.update['#hood_state_id#'] = function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#hood_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
             }
-            if (_options.display_value == "Closed") {
-                $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+          	if ( _options.display_value == "Closed")  {
+              	$('.Cmd#hood_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
-            if (_options.display_value == "Undefined" || _options.display_value == "") {
-                $('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
+			if ( _options.display_value == "Undefined")  {
+              	$('.Cmd#hood_state_id#').empty().append('<i class="fas fa-ban"></i>');
             }
-        }
-        jeedom.cmd.update[]({display_value: '#moonroof_state#'});
+		}
+		jeedom.cmd.update['#hood_state_id#']({display_value:'#hood_state#'});
 		
 		jeedom.cmd.update['#km_id#'] = function(_options) {
            	if ( _options.display_value == "0")  {
