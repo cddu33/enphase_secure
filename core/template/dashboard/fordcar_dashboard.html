@@ -237,7 +237,7 @@
 		
 		
 		jeedom.cmd.update['#vipsav_id#'] = function(_options) {
-            if ( _options.display_value == "Open")  {
+            if (_options.display_value.indexOf("Open") != "-1") {
             	$('.Cmd#vipsav_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
             }
           	else if ( _options.display_value == "Fully_Closed")  {
