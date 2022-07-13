@@ -124,6 +124,10 @@ class fordcar extends eqLogic {
 	 if ($this->getConfiguration('vin') == '') {
 		 throw new Exception('Le VIN d\'identification du véhicule ne peut pas être vide');
 	 }
+	 if ($this->getConfiguration('vehicle_type') == '') {
+		 throw new Exception('Merci de choisir un type de motorisation');
+	 }
+	 
   }
 
   	
@@ -575,7 +579,7 @@ class fordcar extends eqLogic {
 		$replace['#version#'] = $_version;
 		
 		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vin');
-		//$replace['#vehicle_type'.$this->getId().'#'] = $this->getConfiguration('vehicle_type');
+		$replace['#vehicle_type'.$this->getId().'#'] = $this->getConfiguration('vehicle_type');
 							
 		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
 

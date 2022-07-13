@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\core",
+    "\\core\\class",
+    "\\core\\php",
+    "\\core\\template",
+    "\\core\\template\\dashboard",
+    "\\desktop",
+    "\\desktop\\php"
   ],
+  "SelectedNode": "\\core\\template\\dashboard\\fordcar_dashboard.html",
   "PreviewInSolutionExplorer": false
 }

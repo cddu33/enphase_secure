@@ -181,6 +181,19 @@ $eqLogics = eqLogic::byType($plugin->getId());
         </select>
       </div>
     </div>
+	<div class="form-group">
+      <label class="col-md-4 control-label">{{Type de motorisation}}
+        <sup><i class="fas fa-question-circle tooltips" title="{{Change la vue sur les widgets}}"></i></sup>
+      </label>
+      <div class="col-md-4">
+       <select id="sel_type" class="eqLogicAttr form-control" style="margin: 1px 0px;" data-l1key="configuration" data-l2key="vehicle_type" placeholder="Type de motorisation">
+											<option value="" disabled selected hidden>{{Choisir dans la liste}}</option>
+											<option value="1">Thermique</option>
+											<option value="2">Electrique</option>
+											<option value="3">Hybride</option>
+										</select>
+      </div>
+    </div>
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
