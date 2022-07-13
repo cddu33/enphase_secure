@@ -141,12 +141,11 @@
 				
 				
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
-            
-			if (_options.display_value == "LOCKED") {
-				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
-			}
-			else {
-                    $('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
+            if ( _options.display_value == "Unlocked" || _options.display_value == "UNLOCKED" || _options.display_value == "Déverrouillé" )  {
+            	$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
+            }
+          	if ( _options.display_value == "Locked" || _options.display_value == "LOCKED" || _options.display_value == "SELECTIVELOCKED" || _options.display_value == "Verrouillé" )  {
+              	$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
             }
         }
 		jeedom.cmd.update['#etat_id#']({display_value:'#etat#'});
@@ -155,10 +154,10 @@
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorcd_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#doorcd_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -169,10 +168,11 @@
 		jeedom.cmd.update['#doorleft_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorleft_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorleft_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-            } else {
+            }
+			else {
               	$('.Cmd#doorleft_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
@@ -182,10 +182,10 @@
 		jeedom.cmd.update['#doorps_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorps_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorps_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#doorps_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -196,10 +196,10 @@
 		jeedom.cmd.update['#doorright_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorright_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#doorright_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#doorright_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -210,10 +210,10 @@
 		jeedom.cmd.update['#vicdav_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#vicdav_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -224,10 +224,10 @@
 		jeedom.cmd.update['#vicdar_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#vicdar_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#vicdar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#vicdar_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -238,10 +238,10 @@
 		jeedom.cmd.update['#vipsav_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#vipsav_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#vipsav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#vipsav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -252,10 +252,10 @@
 		jeedom.cmd.update['#vipsar_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#vipsar_id#').empty().append('<i class="icon_red jeedom-fenetre-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#vipsar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#vipsar_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -266,10 +266,10 @@
 		jeedom.cmd.update['#hood_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#hood_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+          	else if ( _options.display_value == "Closed")  {
               	$('.Cmd#hood_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-			}
+            }
 			else {
               	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -279,11 +279,11 @@
         jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
             if (_options.display_value == "Open") {
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-			}
-			else if (_options.display_value == "Closed") {
+            }
+            else if (_options.display_value == "Closed") {
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-			}
-			else {
+            }
+            else {
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
@@ -339,6 +339,10 @@
 		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
 		
 		
+		jeedom.cmd.update['#last_id#'] = function(_options) {
+           	if ( _options.display_value == "Undefined")  { $('.Cmd#last_id#').empty().append('<span>'+"inconnue"+'</span>'); }
+			else { $('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>'); }
+        }
 		jeedom.cmd.update['#last_id#']({display_value:'#last#'});
       
 	</script>
