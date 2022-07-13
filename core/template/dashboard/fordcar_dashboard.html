@@ -287,6 +287,14 @@
                 $('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
+        jeedom.cmd.update['#moonroof_state_id#']({display_value: '#moonroof_state#'});
+		
+		jeedom.cmd.update['#km_id#'] = function(_options) {
+           	if ( _options.display_value == "0")  {
+			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+			}
+			else  {  $('.Cmd#km_id#').empty().append('<span>'+_options.display_value+'</span>');  }
+        }
 		jeedom.cmd.update['#km_id#']({display_value:'#km#'});
 		
 		
