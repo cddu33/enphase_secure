@@ -3,12 +3,9 @@
     "",
     "\\core",
     "\\core\\class",
-    "\\core\\php",
     "\\core\\template",
-    "\\core\\template\\dashboard",
-    "\\desktop",
-    "\\desktop\\php"
+    "\\core\\template\\dashboard"
   ],
-  "SelectedNode": "\\desktop\\php\\fordcar.php",
+  "SelectedNode": "\\core\\class\\fordcar.class.php",
   "PreviewInSolutionExplorer": false
 }

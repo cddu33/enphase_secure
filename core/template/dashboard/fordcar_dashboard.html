@@ -11,11 +11,7 @@
 		<div class="row">
 			
 			<div class="col-sm-6">
-		
-				<div class="row" id="picture">
-					<!--	<img id="img_car#id#" src="" style="height:150px" />-->
-				</div>
-				
+
 				<div class="row">
 					<div class="col-sm-6"><span class="label" style="font-weight: bold">Véhicule</span></div>
 					<div class="col-sm-6"><span class="label" style="font-weight: bold">Kilométrage</span></div>
@@ -86,35 +82,29 @@
 
 				<span class="label cmdName" style="font-weight: bold">Actions</span>
 				<div class="row" id="actions">
-					<!-- <button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button> -->
+					<button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>
 					<button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
 					<button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
-					<!-- <button id="charge_btn#id#" class="btn cmd action" data-cmd_id="#chargeNow_id#" title="Charger" onclick="jeedom.cmd.execute({id: #chargeNow_id#});"><i class="fa-2x icon fas fa-plug"></i></button> -->
-					<!--<button class="btn cmd action" data-cmd_id="#sendPOI_id#" title="Envoi POI"><i class="fa-2x icon fas fa-map-marker-alt"></i></button>-->
 				</div>
 
 				<hr class="cmdName">
-			
+
 				<span class="label cmdName" style="font-weight: bold">Localisation</span>
 				<div class="row" id="location">
-					<div class="mapouter"><div class="gmap_canvas"><object data="https://maps.google.com/maps?q=9%20chemin%20du%20chateau%2033650&t=&z=13&ie=UTF8&iwloc=&output=embed" width="380" height="339" type="text/html">
-</object><br>
-					
+					<div class="mapouter">
+						<div class="gmap_canvas">
+							<div class="label pull-center">
+								Latitude: <span class="Cmd#lat_id# state"></span></br>
+								Longitude: <span class="Cmd#long_id# state"></span></br>
 
-						
-						</div></div>
+							</div></br>
+							<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long" target="_blank">Afficher la carte</a></br>
+					</div>
 				</div>
 				<hr class="cmdName">
-
-
+				<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#last_id# state"></span></div>
 			</div>
-			
 		</div>
-		
-		<div class="row">
-			<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#last_id# state"></span></div>
-		</div>
-	
 	</div>
 	
 	<script>
@@ -130,32 +120,30 @@
             $('#combustion_engine#id#').width("450px");
         }
 		
-		/*jeedom.cmd.update['#id#'] =function(_options) {
-            var cmd  = $('#myFrame#id#')[0];
-			cmd.src = "https://maps.google.com/maps?hl=fr&ie=utf8&output=embed&q="+_options.display_value;
-		}
-		jeedom.cmd.update['#id#']({display_value: '#gps_coordinates#'});
-		*/
-		/*
-		jeedom.cmd.update['#id#'] =function(_options) {
-            var cmd2  = $('#img_car#id#')[0];
-			cmd2.src = "plugins/fordcar/data/"+_options.display_value+".png";
-		}
-		jeedom.cmd.update['#id#']({display_value: '#vin#id##'});
-			*/	
-				
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
-            if (_options.display_value == "LOCKED") {
-                $('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
+			if (_options.display_value == "LOCKED") {
+				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
+			}
+			else if (_options.display_value == "UNLOCKED") {
+				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
 			}
 			else {
-            	$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
+                $('.Cmd#etat_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
             }
           	
         }
-		jeedom.cmd.update['#etat_id#']({display_value:'#etat#'});
-      	
+		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 		
+		jeedom.cmd.update['#lat_id#'] = function (_options) {
+            $('.Cmd#lat_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
+		}
+		jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
+
+
+        jeedom.cmd.update['#long_id#'] = function (_options) {
+            $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>');
+        }
+        jeedom.cmd.update['#long_id#']({ display_value: '#long#' });
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
@@ -295,7 +283,7 @@
         jeedom.cmd.update['#moonroof_state_id#']({display_value: '#moonroof_state#'});
 		*/
 		jeedom.cmd.update['#km_id#'] = function(_options) {
-           	if ( _options.display_value == "0")  {
+            if (_options.display_value == "0" || _options.display_value == "")  {
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
 			}
 			else  {  $('.Cmd#km_id#').empty().append('<span>'+_options.display_value+'</span>');  }
