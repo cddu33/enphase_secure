@@ -67,17 +67,17 @@
 						</div>
 						<div class="col-sm-3">
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorps_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Porte : <i class="Cmd#doorps_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsav_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i class="Cmd#vipsav_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Pression : <i class="Cmd#etpnavdr_id#"></i> #prpnavdr# bar</div>
+							<div class="label pull-left" style="margin-left: -35px">Pression : <i class="Cmd#etpnavdr_id#"></i> #prpnavdr# bar</div>
 							</br></br>
-							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorright_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Porte : <i class="Cmd#doorright_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsar_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i class="Cmd#vipsar_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Pression : <i class="Cmd#etpnardr_id#"></i> #prpnardr# bar</div>
+							<div class="label pull-left" style="margin-left: -35px">Pression : <i class="Cmd#etpnardr_id#"></i> #prpnardr# bar</div>
 						</div>
 					</div>
 					</br>
@@ -109,7 +109,7 @@
 					</div>
 				</div>
 				<hr class="cmdName">
-				<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#last_id# state"></span></div>
+				<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div>
 			</div>
 		</div>
 	</div>
@@ -382,11 +382,6 @@
         }
 		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
 		
-		
-		jeedom.cmd.update['#last_id#'] = function(_options) {
-           	$('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>');
-        }
-		jeedom.cmd.update['#last_id#']({display_value:'#last#'});
       
 	</script>
 
