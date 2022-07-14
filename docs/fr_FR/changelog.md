@@ -25,3 +25,9 @@ Pneux
 Vitres//Portes//Coffre
 
 Fuel
+
+# 14/07/2022
+
+Création Widget avec source mybmw
+
+Partie thermique opérationnelle avec line vers la position
