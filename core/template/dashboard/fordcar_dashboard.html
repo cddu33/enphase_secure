@@ -1,12 +1,13 @@
-<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic noResize fordcar_widget fordcar" style="width: 900px; height: 740px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic noResize fordcar_widget fordcar" style="width: 900px; height: 540px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
 	
 	<center class="widget-name" style="padding-right: 0px;">
 		<span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
 		<a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>
-		<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
-	</center>
+		<!--<span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
+	-->
+			</center>
 	
-	<div class="container-fluid">
+	<div class="container-fluid" >
 		
 		<div class="row">
 			
@@ -37,7 +38,9 @@
 						<i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
 						</br></br>
 						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#kmfuel_id#"></span></div></br>
-						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#qfuel_id#"></span></div>
+						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#qfuel_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span class="Cmd#hbat_id#"></span>   #tbat#V</div></br>
+						<div class="row label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span class="Cmd#ehuile_id#"></span>    #huile#% propre</div>
 					</div>
 				</div>
 				
@@ -53,23 +56,31 @@
 							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorcd_id#"></i></div>
 							</br>
 							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#vicdav_id#"></i></div>
-							</br></br></br>
+							</br>
+							<div class="label pull-left" style="margin-left: 30px">Pression : <i class="Cmd#etpnavgh_id#"></i> #prpnavgh# bar</div>
+							</br></br>
 							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorleft_id#"></i></div>
 							</br>
 							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#vicdar_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: 30px">Pression : <i class="Cmd#etpnargh_id#"></i> #prpnargh# bar</div>
 						</div>
 						<div class="col-sm-6">
 							<img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
 						</div>
 						<div class="col-sm-3">
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorps_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Porte : <i class="Cmd#doorps_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsav_id#"></i></div>
-							</br></br></br>
-							<div class="label pull-left" style="margin-left: -30px">Porte : <i class="Cmd#doorright_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i class="Cmd#vipsav_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsar_id#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Pression : <i class="Cmd#etpnavdr_id#"></i> #prpnavdr# bar</div>
+							</br></br>
+							<div class="label pull-left" style="margin-left: -35px">Porte : <i class="Cmd#doorright_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i class="Cmd#vipsar_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: -35px">Pression : <i class="Cmd#etpnardr_id#"></i> #prpnardr# bar</div>
 						</div>
 					</div>
 					</br>
@@ -91,18 +102,13 @@
 
 				<span class="label cmdName" style="font-weight: bold">Localisation</span>
 				<div class="row" id="location">
-					<div class="mapouter">
-						<div class="gmap_canvas">
 							<div class="label pull-center">
-								Latitude: <span class="Cmd#lat_id# state"></span></br>
-								Longitude: <span class="Cmd#long_id# state"></span></br>
-
+								Latitude: #lat#</br>
+								Longitude: #long#</br>
 							</div></br>
-							<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long" target="_blank">Afficher la carte</a></br>
-					</div>
-				</div>
+							<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
 				<hr class="cmdName">
-				<div class="label pull-center">Dernière connexion avec le véhicule : <span class="Cmd#last_id# state"></span></div>
+				<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div>
 			</div>
 		</div>
 	</div>
@@ -131,19 +137,44 @@
                 $('.Cmd#etat_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
             }
           	
-        }
-		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
-		
-		jeedom.cmd.update['#lat_id#'] = function (_options) {
-            $('.Cmd#lat_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
 		}
-		jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
+
+        jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 
 
-        jeedom.cmd.update['#long_id#'] = function (_options) {
-            $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>');
+        jeedom.cmd.update['#ehuile_id#'] = function (_options) {
+            if (_options.display_value == "STATUS_GOOD") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else if (_options.display_value == "STATUS_NOT_GOOD") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
+			}
+            else if (_options.display_value == "STATUS_LOW") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#ehuile_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
         }
-        jeedom.cmd.update['#long_id#']({ display_value: '#long#' });
+		jeedom.cmd.update['#ehuile_id#']({ display_value: '#ehuile#' });
+
+        jeedom.cmd.update['#hbat_id#'] = function (_options) {
+            if (_options.display_value == "STATUS_GOOD") {
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else if (_options.display_value == "STATUS_NOT_GOOD") {
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
+            }
+            else if (_options.display_value == "STATUS_LOW") {
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#hbat_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#hbat_id#']({ display_value: '#hbat#' });
+
+		
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
@@ -267,7 +298,61 @@
               	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#hood_id#']({display_value:'#hood#'});
+		jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+
+
+        jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+           /* else if (_options.display_value == "Closed") {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }*/
+            else {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		}
+		jeedom.cmd.update['#etpnavgh_id#']({ display_value: '#etpnavgh#' });
+
+        jeedom.cmd.update['#etpnavdr_id#'] = function (_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            /* else if (_options.display_value == "Closed") {
+                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+             }*/
+            else {
+                $('.Cmd#etpnavdr_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+		jeedom.cmd.update['#etpnavdr_id#']({ display_value: '#etpnavdr#' });
+
+        jeedom.cmd.update['#etpnardr_id#'] = function (_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnardr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            /* else if (_options.display_value == "Closed") {
+                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+             }*/
+            else {
+                $('.Cmd#etpnardr_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+		jeedom.cmd.update['#etpnardr_id#']({ display_value: '#etpnardr#' });
+
+        jeedom.cmd.update['#etpnargh_id#'] = function (_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnargh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            /* else if (_options.display_value == "Closed") {
+                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+             }*/
+            else {
+                $('.Cmd#etpnargh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#etpnargh_id#']({ display_value: '#etpnargh#' });
+
 		/*
         jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
             if (_options.display_value == "Open") {
@@ -331,11 +416,6 @@
         }
 		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
 		
-		
-		jeedom.cmd.update['#last_id#'] = function(_options) {
-           	$('.Cmd#last_id#').empty().append('<span>'+_options.display_value+'</span>');
-        }
-		jeedom.cmd.update['#last_id#']({display_value:'#last#'});
       
 	</script>
 
