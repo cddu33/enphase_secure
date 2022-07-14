@@ -119,13 +119,13 @@
         
         if ('#vehicle_type#id##' == 'electrique' )  {
 			$('#combustion_engine#id#').hide();
-			$('#electric_engine#id#').width("450px");
+			$('#electric_engine#id#').width("350px");
 		}
        
         if ('#vehicle_type#id##' == 'thermique') {
             $('#charge_btn#id#').hide();
             $('#electric_engine#id#').hide();
-            $('#combustion_engine#id#').width("450px");
+            $('#combustion_engine#id#').width("350px");
         }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
@@ -403,7 +403,7 @@
 	}
 	
 	.fordcar_widget #engine {
-		width: 450px;
+		width: 350px;
 		height: 130px;
 		margin-top: 15px;
 		margin-bottom: 15px;
@@ -428,16 +428,6 @@
 	.fordcar_widget #location {
 		margin-top: 10px;
 		margin-bottom: 15px;
-	}
-	
-	.fordcar_widget #messages {
-		margin : 10px 23px 10px 23px;
-	}
-	
-	.fordcar_widget #liste_msg {
-		width: 380px;
-		height: 255px;
-		overflow: auto;
 	}
 				
 	</style>
