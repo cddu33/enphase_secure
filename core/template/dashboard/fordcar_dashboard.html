@@ -39,8 +39,8 @@
 						</br></br>
 						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#kmfuel_id#"></span></div></br>
 						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#qfuel_id#"></span></div></br>
-						<div class="row label"><i class="fa-xl fas fa-car-battery"></i>Batterie : <span class="Cmd#hbat_id#"></span>   #tbat#V</div></br>
-						<div class="row label"><i class="fa-xl fas kiko-wrench"></i>Huile : <span class="Cmd#ehuile_id#"></span>    #huile#% propre</div>
+						<div class="row label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span class="Cmd#hbat_id#"></span>   #tbat#V</div></br>
+						<div class="row label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span class="Cmd#ehuile_id#"></span>    #huile#% propre</div>
 					</div>
 				</div>
 				
@@ -144,7 +144,7 @@
 
         jeedom.cmd.update['#ehuile_id#'] = function (_options) {
             if (_options.display_value == "STATUS_GOOD") {
-                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
             else if (_options.display_value == "STATUS_NOT_GOOD") {
                 $('.Cmd#ehuile_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
@@ -160,7 +160,7 @@
 
         jeedom.cmd.update['#hbat_id#'] = function (_options) {
             if (_options.display_value == "STATUS_GOOD") {
-                $('.Cmd#hbat_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
             else if (_options.display_value == "STATUS_NOT_GOOD") {
                 $('.Cmd#hbat_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
