@@ -131,7 +131,7 @@
         }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
-			if (_options.display_value == "LOCKED") {
+			if (_options.display_value == "hLOCKED") {
 				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
 			}
 			else if (_options.display_value == "UNLOCKED") {
