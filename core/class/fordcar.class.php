@@ -536,7 +536,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
-	  $fordcarCmd->setConfiguration('minValue':'0','maxValue':'100','timeline::enable':'0','timeline::folder':'','influx::enable':'0','influx::namecmd':'','influx::nameEq':'','influx::nameVal':'','interact::auto::disable':'0','calculValueOffset':'','historizeRound':'0','jeedomCheckCmdOperator':'==','jeedomCheckCmdTest':'','jeedomCheckCmdTime':'','historizeMode':'avg','historyPurge':'','denyValues':'','returnStateValue':'','returnStateTime':'','repeatEventManagement':'never','jeedomPushUrl':'','actionCheckCmd':[],'jeedomPreExecCmd':[],'jeedomPostExecCmd':[]});
+	  $fordcarCmd->setConfiguration('minValue':'0','maxValue':'100','timeline::enable':'0','timeline::folder':'','influx::enable':'0','influx::namecmd':'','influx::nameEq':'','influx::nameVal':'','interact::auto::disable':'0','calculValueOffset':'','historizeRound':'0','jeedomCheckCmdOperator':'==','jeedomCheckCmdTest':'','jeedomCheckCmdTime':'','historizeMode':'avg','historyPurge':'','denyValues':'','returnStateValue':'','returnStateTime':'','repeatEventManagement':'never','jeedomPushUrl':'','actionCheckCmd':[],'jeedomPreExecCmd':[],'jeedomPostExecCmd':[]);
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'kmfuel');
