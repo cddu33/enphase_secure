@@ -77,7 +77,7 @@
 							</br>
 							<div class="label pull-left" style="margin-left: -30px">Fenêtre : <i class="Cmd#vipsar_id#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -30px">Pression : <i class="Cmd#etpnardr_id#"> </i>#prpnardr#</div>
+							<div class="label pull-left" style="margin-left: -30px">Pression : <i class="Cmd#etpnardr_id#"></i> #prpnardr# bar</div>
 						</div>
 					</div>
 					</br>
@@ -102,9 +102,8 @@
 					<div class="mapouter">
 						<div class="gmap_canvas">
 							<div class="label pull-center">
-								Latitude: <span class="Cmd#lat_id# state"></span></br>
-								Longitude: <span class="Cmd#long_id# state"></span></br>
-
+								Latitude: #lat#</br>
+								Longitude: #long#</br>
 							</div></br>
 							<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long" target="_blank">Afficher la carte</a></br>
 					</div>
@@ -142,16 +141,6 @@
         }
 		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 		
-		jeedom.cmd.update['#lat_id#'] = function (_options) {
-            $('.Cmd#lat_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
-		}
-		jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
-
-
-        jeedom.cmd.update['#long_id#'] = function (_options) {
-            $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>');
-        }
-        jeedom.cmd.update['#long_id#']({ display_value: '#long#' });
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
