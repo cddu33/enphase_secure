@@ -99,9 +99,9 @@
 				<div class="row" id="location">
 					<div class="mapouter">
 						<div class="gmap_canvas">
-							<a href="https://www.openstreetmap.org/?mlat=Cmd#lat_ID#&mlon=Cmd#lat_ID#map=16/Cmd#lat_ID#/Cmd#long_ID#" target="_blank">Afficher la carte</a><br>
-							#lat_ID#</br>
-							#long_ID#
+							<a href="https://www.openstreetmap.org/?mlat=#lat_id#&mlon=#lat_id#map=16/#lat_id#/#long_id#" target="_blank">Afficher la carte</a><br>
+							#lat_id#</br>
+							#long_id#
 
 
 						</div>
@@ -147,7 +147,8 @@
 		jeedom.cmd.update['#lat_id#'] = function (_options) {
             $('.Cmd#lat_id#').empty().append('<span>' + ' ' + _options.display_value + '</span>');
 		}
-        jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
+		jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' });
+
 
         jeedom.cmd.update['#long_id#'] = function (_options) {
             $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>');
