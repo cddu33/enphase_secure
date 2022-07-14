@@ -53,6 +53,8 @@
 							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorcd_id#"></i></div>
 							</br>
 							<div class="label pull-left" style="margin-left: 30px">Fenêtre : <i class="Cmd#vicdav_id#"></i></div>
+							</br>
+							<div class="label pull-left" style="margin-left: 30px">Pression : <i class="Cmd#etpnavgh_id#"></i></div>
 							</br></br></br>
 							<div class="label pull-left" style="margin-left: 30px">Porte : <i class="Cmd#doorleft_id#"></i></div>
 							</br>
@@ -267,7 +269,20 @@
               	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#hood_id#']({display_value:'#hood#'});
+		jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+
+
+        jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedom-done"></i>');
+            }
+           /* else if (_options.display_value == "Closed") {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }*/
+            else {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
 		/*
         jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
             if (_options.display_value == "Open") {
