@@ -38,7 +38,8 @@
 						<i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
 						</br></br>
 						<div class="row label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#kmfuel_id#"></span></div></br>
-						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#qfuel_id#"></span></div>
+						<div class="row label"><i class="fa-xl fas fa-gas-pump"></i><span class="Cmd#qfuel_id#"></span></div></br>
+						<div class="row label"><i class="fa-xl fas kiko-wrench"></i>Huile :<span class="Cmd#ehuile_id#"></span> // #huile#% propre</div>
 					</div>
 				</div>
 				
@@ -135,8 +136,27 @@
                 $('.Cmd#etat_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
             }
           	
+		}
+
+        jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
+
+
+        jeedom.cmd.update['#ehuile_id#'] = function (_options) {
+            if (_options.display_value == "STATUS_GOOD") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+            }
+            else if (_options.display_value == "STATUS_NOT_GOOD") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
+			}
+            else if (_options.display_value == "STATUS_LOW") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#ehuile_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
         }
-		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
+        jeedom.cmd.update['#ehuile_id#']({ display_value: '#ehuile#' });
+
 		
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
