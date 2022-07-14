@@ -6,10 +6,12 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
-# 09/07/2022
-Initial
+# 14/07/2022
 
-Envoie des commandes lock/unlock
+Création Widget avec source mybmw
+
+Partie thermique opérationnelle avec line vers la position
+
 
 # 10/07/2022
 Statut de la voiture//Veille//Maj
@@ -26,8 +28,9 @@ Vitres//Portes//Coffre
 
 Fuel
 
-# 14/07/2022
 
-Création Widget avec source mybmw
+# 09/07/2022
+Initial
 
-Partie thermique opérationnelle avec line vers la position
+Envoie des commandes lock/unlock
+
