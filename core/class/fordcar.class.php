@@ -235,6 +235,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  //$fordcarCmd->setConfiguration('maxValue', '400');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'lat');
@@ -283,6 +285,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('V');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '20');
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
 
@@ -308,6 +312,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '100');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'pression');
@@ -380,6 +386,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '400');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnavdr');
@@ -392,6 +400,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '400');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnargh');
@@ -404,6 +414,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '400');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'prpnardr');
@@ -416,6 +428,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('bar');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '400');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'vicdav');
@@ -537,6 +551,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
 	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '100');
+	  $fordcarCmd->setConfiguration('historizeRound', '0');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'kmfuel');
@@ -549,6 +565,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
+	  $fordcarCmd->setConfiguration('minValue', '0');
 	  $fordcarCmd->save();
   }
 
