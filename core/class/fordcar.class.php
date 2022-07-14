@@ -536,7 +536,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
-	  $fordcarCmd->setHistorizeRound('0');
+	  $fordcarCmd->setConfiguration('HistorizeRound'::'0');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'kmfuel');
