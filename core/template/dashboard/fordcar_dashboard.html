@@ -101,15 +101,17 @@
 				<hr class="cmdName">
 
 				<span class="label cmdName" style="font-weight: bold">Localisation</span>
-				<div class="row" id="location">
-							<div class="label pull-center">
-								Latitude: #lat#</br>
-								Longitude: #long#</br>
-							</div></br>
-							<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
-				<hr class="cmdName">
-				<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div>
-			</div>
+				<div class="row" id="droit">
+					<div class="label pull-center">
+						Latitude: #lat#</br>
+						Longitude: #long#</br>
+					</div></br>
+					<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
+					<hr class="cmdName">
+					<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div>
+					<div class="label pull-center">Veille profonde :<i class="Cmd#veille_id#"></i></div>
+					<div class="label pull-center">Mise à jour Firmware : <i class="Cmd#maj_id#"></i></div>
+				</div>
 		</div>
 	</div>
 	
@@ -141,6 +143,28 @@
 
         jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 
+        jeedom.cmd.update['#maj_id#'] = function (_options) {
+            if (_options.display_value == "0") {
+                $('.Cmd#maj_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else if (_options.display_value == "1") {
+                $('.Cmd#maj_id#').empty().append('<i class="icon_red fa-exclamation"></i>');
+            }
+            else {
+                $('.Cmd#maj_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+		jeedom.cmd.update['#maj_id#']({ display_value: '#maj#' });
+
+        jeedom.cmd.update['#veille_id#'] = function (_options) {
+            if (_options.display_value == "0") {
+                $('.Cmd#veille_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#veille_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#veille_id#']({ display_value: '#veille#' });
 
         jeedom.cmd.update['#ehuile_id#'] = function (_options) {
             if (_options.display_value == "STATUS_GOOD") {
@@ -458,7 +482,7 @@
 		max-height: 40px !important;
 	}
 	
-	.fordcar_widget #location {
+	.fordcar_widget #droit {
 		margin-top: 10px;
 		margin-bottom: 15px;
 	}

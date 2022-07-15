@@ -4,8 +4,11 @@
     "\\core",
     "\\core\\class",
     "\\core\\template",
-    "\\core\\template\\dashboard"
+    "\\core\\template\\dashboard",
+    "\\desktop",
+    "\\docs",
+    "\\docs\\fr_FR"
   ],
-  "SelectedNode": "\\core\\class\\fordcar.class.php",
+  "SelectedNode": "\\docs\\fr_FR\\changelog.md",
   "PreviewInSolutionExplorer": false
 }
