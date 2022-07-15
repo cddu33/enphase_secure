@@ -171,7 +171,7 @@
                 $('.Cmd#ehuile_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
 			}
             else if (_options.display_value == "STATUS_LOW") {
-                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red fa-exclamation"></i>');
             }
             else {
                 $('.Cmd#ehuile_id#').empty().append('<i class="fas fa-ban"></i>');
@@ -187,7 +187,7 @@
                 $('.Cmd#hbat_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
             }
             else if (_options.display_value == "STATUS_LOW") {
-                $('.Cmd#hbat_id#').empty().append('<i class="icon_red jeedomapp-done"></i>');
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_red fa-exclamation"></i>');
             }
             else {
                 $('.Cmd#hbat_id#').empty().append('<i class="fas fa-ban"></i>');
@@ -438,10 +438,10 @@
                 $('.Cmd#qfuel#').empty().append('<span>' + ' Volume restant : ' + _options.display_value + ' %' + '</span>');
 			}
 			else if (_options.display_value > "10") {
-                $('.Cmd#qfuel_id#').empty().append('<i class="icon_orange fas fa-exclamation"></i> < span > ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
+                $('.Cmd#qfuel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
             }
             else {
-                $('.Cmd#qfuel_id#').empty().append('<i class="icon_red fas fa-exclamation"></i> < span > ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
+                $('.Cmd#qfuel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
             }
         }
 		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
