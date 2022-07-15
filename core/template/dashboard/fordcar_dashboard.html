@@ -109,7 +109,7 @@
 					<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
 					<hr class="cmdName">
 					<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div>
-					<div class="label pull-center">Veille profonde :<i class="Cmd#veille_id#"></i></div>
+					<div class="label pull-center">Veille profonde : <i class="Cmd#veille_id#"></i></div>
 					<div class="label pull-center">Mise à jour Firmware : <i class="Cmd#maj_id#"></i></div>
 				</div>
 		</div>
@@ -432,8 +432,17 @@
 		jeedom.cmd.update['#kmfuel_id#']({display_value:'#kmfuel#'});
 		
 		
-		jeedom.cmd.update['#qfuel_id#'] = function(_options) {
-           	$('.Cmd#qfuel_id#').empty().append('<span>'+' Volume restant : '+_options.display_value+' %'+'</span>');
+		jeedom.cmd.update['#qfuel_id#'] = function (_options) {
+
+            if (_options.display_value > "50") {
+                $('.Cmd#qfuel#').empty().append('<span>' + ' Volume restant : ' + _options.display_value + ' %' + '</span>');
+			}
+			else if (_options.display_value > "10") {
+                $('.Cmd#qfuel_id#').empty().append('<i class="icon_orange fas fa-exclamation"></i> < span > ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
+            }
+            else {
+                $('.Cmd#qfuel_id#').empty().append('<i class="icon_red fas fa-exclamation"></i> < span > ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
+            }
         }
 		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
 		
