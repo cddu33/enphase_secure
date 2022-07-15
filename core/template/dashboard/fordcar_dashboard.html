@@ -108,7 +108,7 @@
 					</div></br>
 					<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
 					<hr class="cmdName">
-					<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div>
+					<div class="label pull-center">Dernière connexion avec le véhicule : #last#</div></br>
 					<div class="label pull-center">Veille profonde : <i class="Cmd#veille_id#"></i></div>
 					<div class="label pull-center">Mise à jour Firmware : <i class="Cmd#maj_id#"></i></div>
 				</div>
@@ -170,8 +170,9 @@
             else if (_options.display_value == "STATUS_NOT_GOOD") {
                 $('.Cmd#ehuile_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
 			}
-            
-           
+            else if (_options.display_value == "STATUS_LOW") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red fa-exclamation"></i>');
+            }
             else {
                 $('.Cmd#ehuile_id#').empty().append('<i class="fas fa-ban"></i>');
             }
