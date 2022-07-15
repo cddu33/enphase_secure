@@ -144,24 +144,21 @@
         jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 
         jeedom.cmd.update['#maj_id#'] = function (_options) {
-            if (_options.display_value == "0") {
-                $('.Cmd#maj_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
-            }
-            else if (_options.display_value == "1") {
-                $('.Cmd#maj_id#').empty().append('<i class="icon_red fa-exclamation"></i>');
+            if (_options.display_value == "1") {
+                $('.Cmd#maj_id#').empty().append('<i class="icon_red fa-2x fa-exclamation"></i>');
             }
             else {
-                $('.Cmd#maj_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#maj_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
             }
         }
 		jeedom.cmd.update['#maj_id#']({ display_value: '#maj#' });
 
         jeedom.cmd.update['#veille_id#'] = function (_options) {
-            if (_options.display_value == "0") {
-                $('.Cmd#veille_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            if (_options.display_value == "1") {
+                $('.Cmd#veille_id#').empty().append('<i class="icon_orange jeedomapp-done"></i>');
             }
             else {
-                $('.Cmd#veille_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#veille_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update['#veille_id#']({ display_value: '#veille#' });
