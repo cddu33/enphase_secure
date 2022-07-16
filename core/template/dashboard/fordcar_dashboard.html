@@ -22,7 +22,7 @@
 				
 				<hr class="cmdName">
 				
-				<div class="row" id="label">
+				<div class="row" id="label" class="col-sm-6">
 						<div id="electric_engine#id#" class="col-sm-6">
 
 							<i class="fa-2x fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold">Moteur électrique</span>
@@ -480,7 +480,7 @@
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
 			}
 			else {
-				$('.Cmd#km_id#').empty().append('<i>' + _options.display_value + 'km</i>');
+				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span>');
 			}
         }
 		jeedom.cmd.update['#km_id#']({display_value:'#km#'});
