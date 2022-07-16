@@ -38,7 +38,7 @@
 							</br>
 							<div class="label pull-left"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div></br>
 							<div class="label pull-left"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div></br>
-							<div class="label pull-left"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_ud#">  V</i></div></br>
+							<div class="label pull-left"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id#"></i></div></br>
 							<div class="label pull-left"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span>    #huile#% propre</div>
 						</div>
 						</br>
@@ -198,7 +198,7 @@
             if (_options.display_value == "0" || _options.display_value == "") {
                 $('.Cmd#tbat_id#').empty().append('<i class="fas fa-ban"></i>');
             }
-            else { $('.Cmd#tbat_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+            else { $('.Cmd#tbat_id#').empty().append('<span>' + _options.display_value + 'V</span>'); }
         }
         jeedom.cmd.update['#tbat_id#']({ display_value: '#tbat#' }); 
       /*  
