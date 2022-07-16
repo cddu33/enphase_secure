@@ -455,7 +455,9 @@
             if (_options.display_value == "0" || _options.display_value == "")  {
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
 			}
-			else  {  $('.Cmd#km_id#').empty().append('<span>'+_options.display_value+'</span>');  }
+			else {
+				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span>');
+			}
         }
 		jeedom.cmd.update['#km_id#']({display_value:'#km#'});
 		/*
@@ -497,10 +499,10 @@
 		
 		jeedom.cmd.update['#qfuel_id#'] = function (_options) {
 
-            if (_options.display_value >= "050") {
+            if (_options.display_value >= "50") {
                 $('.Cmd#qfuel#').empty().append('<span>' + ' Volume restant : ' + _options.display_value + ' %' + '</span>');
 			}
-			else if (_options.display_value >= "010") {
+			else if (_options.display_value >= "10") {
                 $('.Cmd#qfuel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
             }
             else {
