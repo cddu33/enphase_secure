@@ -551,7 +551,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
 	  $fordcarCmd->setConfiguration('minValue', '0');
-	  $fordcarCmd->setConfiguration('maxValue', '100');
+	  $fordcarCmd->setConfiguration('maxValue', '150');
 	  $fordcarCmd->setConfiguration('historizeRound', '0');
 	  $fordcarCmd->save();
 
