@@ -1,4 +1,4 @@
-<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width: 900px;min-width:900px; height:auto; min-height:400px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width: 900px; min-width:900px; height:auto; min-height:400px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
 	
 	<center class="widget-name" style="padding-right: 0px;">
 		<span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
@@ -119,15 +119,14 @@
         
         if ('#vehicle_type#id##' == 'electrique' )  {
 			$('#combustion_engine#id#').hide();
-			$('#electric_engine#id#').margin-left('250px');
+			$('#electric_engine#id#').style.margin('250px, 0px, 0px, 0px');
 			
 		}
        
         if ('#vehicle_type#id##' == 'thermique') {
             $('#charge_btn#id#').hide();
 			$('#electric_engine#id#').hide();
-            $('combustion_engine#id#').margin-left('250px');
-    
+            $('combustion_engine#id#').style.margin('250px, 0px, 0px, 0px');
         }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
