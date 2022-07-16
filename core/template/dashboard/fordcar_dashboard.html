@@ -499,10 +499,10 @@
 		
 		jeedom.cmd.update['#qfuel_id#'] = function (_options) {
 
-            if (Integer.valueOf(_options.display_value) >= "50") {
+            if (parseInt(_options.display_value) >= "50") {
                 $('.Cmd#qfuel#').empty().append('<span>' + ' Volume restant : ' + _options.display_value + ' %' + '</span>');
 			}
-            else if (Integer.valueOf(_options.display_value) >= "10") {
+            else if (parseInt(_options.display_value) >= "10") {
                 $('.Cmd#qfuel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
             }
             else {
