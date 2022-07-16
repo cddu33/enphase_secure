@@ -7,7 +7,6 @@
 	-->
 			</center>
 	<div class="container-fluid" >
-
 			<div class="col-sm-6">
 				<div class="row" style="height:60px">
 					<div class="col-sm-6">
@@ -85,32 +84,32 @@
 					<div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span></div>	</br>			
 				</div>
 			</div>
-			
-			<div class="col-sm-6">
-				<div class="row" style="height:60px">
-					<span class="label cmdName" style="font-weight: bold">Actions</span></br>
-					<button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>
-					<button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
-					<button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
+            <div class="row" style="height:60px">
+                <div class="col-sm-6">
 
-				</div>
-					<hr class="cmdName">
+                    <span class="label cmdName" style="font-weight: bold">Actions</span></br>
+                    <button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>
+                    <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
+                    <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
 
-					<span class="label cmdName" style="font-weight: bold">Localisation</span>
-					<div class="row" id="droit">
-						
-							Latitude: <i data-cmd_id="#lat_id#" class="Cmd#lat_id# #lat_history#"></i></br>
-							Longitude: <i data-cmd_id="#long_id#" class="Cmd#long_id# #long_history#"></i></br>
-						</br>
-						<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
-						</div>
-						<hr class="cmdName">
-						<div class="row">
-							<div class="label pull-center">Dernière connexion avec le véhicule : <i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div></br>
-							<div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div>
-							<div class="label pull-center">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
-						</div>
-					</div>
+                </div>
+                <hr class="cmdName">
+
+                <span class="label cmdName" style="font-weight: bold">Localisation</span>
+                <div class="row" id="droit">
+
+                    Latitude: <i data-cmd_id="#lat_id#" class="Cmd#lat_id# #lat_history#"></i></br>
+                    Longitude: <i data-cmd_id="#long_id#" class="Cmd#long_id# #long_history#"></i></br>
+                    </br>
+                    <a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
+                </div>
+                <hr class="cmdName">
+                <div class="row">
+                    <div class="label pull-center">Dernière connexion avec le véhicule : <i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div></br>
+                    <div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div>
+                    <div class="label pull-center">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
+                </div>
+            </div>
 			</div>
 	
 	<script>
