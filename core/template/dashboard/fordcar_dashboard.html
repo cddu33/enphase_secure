@@ -78,7 +78,7 @@
 							</br></br>
 							<div class="label pull-left" style="margin-left: -35px">Porte : <i data-cmd_id="#doorright_id#" class="Cmd#doorright_id# #doorright_history#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i data-cmd_id="#vipsar_id#" class="Cmd#vipsar_id#v #vipsar_history#"></i></div>
+							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i data-cmd_id="#vipsar_id#" class="Cmd#vipsar_id# #vipsar_history#"></i></div>
 							</br>
 							<div class="label pull-left" style="margin-left: -35px">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> #prpnardr# bar</div>
 						</div>
@@ -103,8 +103,8 @@
 				<span class="label cmdName" style="font-weight: bold">Localisation</span>
 				<div class="row" id="droit">
 					<div class="label pull-center">
-						Latitude: #lat#</br>
-						Longitude: #long#</br>
+						Latitude: <i data-cmd_id="#lat_id#" class="Cmd#lat_id# #lat_history#></i></br>
+						Longitude: <i data-cmd_id="#long_id#" class="Cmd#long_id# #long_history#></i></br>
 					</div></br>
 					<a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a></br>
 					<hr class="cmdName">
@@ -141,15 +141,32 @@
 		}
         jeedom.cmd.update['#last_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#last_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
-        jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
+		jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
 
-      /*  jeedom.cmd.update['#blabla_id#'] = function (_options) {
+        jeedom.cmd.update['#blabla_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+        }
+		jeedom.cmd.update['#long_id#']({ display_value: '#long#' }); 
+
+        jeedom.cmd.update['#lat_id#'] = function (_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#lat_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+        }
+        jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' }); 
+
+      /*  
+	   *  jeedom.cmd.update['#blabla_id#'] = function (_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#blabla_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
