@@ -38,8 +38,8 @@
 							</br>
 							<div class="label pull-left"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div></br>
 							<div class="label pull-left"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div></br>
-							<div class="label pull-left"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id#"></i></div></br>
-							<div class="label pull-left"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span>    #huile#% propre</div>
+							<div class="label pull-left"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id# #tbat_history#"></i></div></br>
+							<div class="label pull-left"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i class="Cmd#huile_id #huile_history#"></i> </div>
 						</div>
 						</br>
 					</div>
@@ -200,7 +200,16 @@
             }
             else { $('.Cmd#tbat_id#').empty().append('<span>' + _options.display_value + 'V</span>'); }
         }
-        jeedom.cmd.update['#tbat_id#']({ display_value: '#tbat#' }); 
+		jeedom.cmd.update['#tbat_id#']({ display_value: '#tbat#' }); 
+
+        jeedom.cmd.update['#huile_id#'] = function (_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#huile_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#huile_id#').empty().append('<span>' + _options.display_value + '% propre</span>'); }
+        }
+        jeedom.cmd.update['#huile_id#']({ display_value: '#huile#' }); 
+
       /*  
 	      jeedom.cmd.update['#blabla_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
@@ -211,7 +220,7 @@
         jeedom.cmd.update['#blabla_id#']({ display_value: '#blabla#' }); 
 		*/
 
-
+		
         jeedom.cmd.update['#maj_id#'] = function (_options) {
             if (_options.display_value == "1") {
                 $('.Cmd#maj_id#').empty().append('<i class="icon_red fa-2x fa-exclamation"></i>');
