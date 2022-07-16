@@ -195,7 +195,7 @@
         jeedom.cmd.update['#prpnargh_id#']({ display_value: '#prpnargh#' + ' bar' }); 
 
         jeedom.cmd.update['#tbat_id#'] = function (_options) {
-            if (_options.display_value == "0" || _options.display_value == "") {
+            if (_options.display_value == "") {
                 $('.Cmd#tbat_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#tbat_id#').empty().append('<span>' + _options.display_value + 'V</span>'); }
@@ -203,7 +203,7 @@
 		jeedom.cmd.update['#tbat_id#']({ display_value: '#tbat#' }); 
 
         jeedom.cmd.update['#huile_id#'] = function (_options) {
-            if (_options.display_value == "0" || _options.display_value == "") {
+            if (_options.display_value == "") {
                 $('.Cmd#huile_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#huile_id#').empty().append('<span>' + _options.display_value + '% propre</span>'); }
