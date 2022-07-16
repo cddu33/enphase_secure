@@ -502,14 +502,14 @@
             if (_options.display_value >= "50") {
                 $('.Cmd#qfuel#').empty().append('<span>' + ' Volume restant : ' + _options.display_value + ' %' + '</span>');
 			}
-			else if (_options.display_value >= "10") {
+            else if (Integer.valueOf(_options.display_value) >= "10") {
                 $('.Cmd#qfuel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
             }
             else {
                 $('.Cmd#qfuel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Volume restant : ' + _options.display_value + ' % ' + '</span >');
             }
         }
-        jeedom.cmd.update['#qfuel_id#']({ display_value: '#qfuel#' + _options.display_value >= "50" });
+		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
 		
       
 	</script>
