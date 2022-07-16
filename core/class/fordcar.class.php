@@ -612,8 +612,7 @@ class fordcar extends eqLogic {
 			if ($cmd->getIsHistorized() == 1) {
 				$replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
 			}
-			//$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
-			//if ($cmd->getIsHistorized() == 1) { $replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor'; }
+			$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
 		}
 
 		// Traitement des commandes actions
