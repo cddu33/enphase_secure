@@ -139,6 +139,9 @@
                 $('.Cmd#etat_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
             }
 		}
+		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
+
+
         jeedom.cmd.update['#last_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
                 $('.Cmd#last_id#').empty().append('<i class="fas fa-ban"></i>');
@@ -147,7 +150,7 @@
         }
 		jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
 
-        jeedom.cmd.update['#blabla_id#'] = function (_options) {
+        jeedom.cmd.update['#long_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
                 $('.Cmd#long_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -173,8 +176,6 @@
         jeedom.cmd.update['#blabla_id#']({ display_value: '#blabla#' }); 
 		*/
 
-
-        jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
 
         jeedom.cmd.update['#maj_id#'] = function (_options) {
             if (_options.display_value == "1") {
