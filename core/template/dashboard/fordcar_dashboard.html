@@ -144,7 +144,8 @@
             }
             else {
                 const datelast = new Date(_options.display_value);
-                    $('.Cmd#last_id#').empty().append('<span>' + datelast.setHours(datelast.getHours() + 12) + '</span>');
+                datelast => datelast.setHours(datelast.getHours() + 12);
+                    $('.Cmd#last_id#').empty().append('<span>' + datelast.toLocaleString() + '</span>');
             }
         }
 		jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
@@ -153,7 +154,9 @@
             if (_options.display_value == "0" || _options.display_value == "") {
                 $('.Cmd#long_id#').empty().append('<i class="fas fa-ban"></i>');
             }
-            else { $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+            else {
+                $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>');
+            }
         }
 		jeedom.cmd.update['#long_id#']({ display_value: '#long#' }); 
 
@@ -161,7 +164,9 @@
             if (_options.display_value == "0" || _options.display_value == "") {
                 $('.Cmd#lat_id#').empty().append('<i class="fas fa-ban"></i>');
             }
-            else { $('.Cmd#lat_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+            else {
+                $('.Cmd#lat_id#').empty().append('<span>' + _options.display_value + '</span>');
+            }
         }
         jeedom.cmd.update['#lat_id#']({ display_value: '#lat#' }); 
 
