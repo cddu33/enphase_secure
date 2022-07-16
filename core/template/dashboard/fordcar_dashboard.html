@@ -143,8 +143,8 @@
                 $('.Cmd#last_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else {
-                datelast = new Date(_options.display_value);
-                datelast = datelast.setHours(2);
+                datelast = new Date(_options.display_value).setHours(2);
+           
                     $('.Cmd#last_id#').empty().append('<span>' + datelast + '</span>');
             }
         }
