@@ -141,7 +141,7 @@
 		}
         jeedom.cmd.update['#last_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#last_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#last_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
@@ -149,7 +149,7 @@
 
         jeedom.cmd.update['#blabla_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#long_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
@@ -157,7 +157,7 @@
 
         jeedom.cmd.update['#lat_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#lat_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#lat_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
@@ -166,7 +166,7 @@
       /*  
 	   *  jeedom.cmd.update['#blabla_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#km_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#blabla_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else { $('.Cmd#blabla_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
