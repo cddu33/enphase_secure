@@ -81,8 +81,8 @@
 							</br>
 							<div class="label pull-left">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> <i data-cmd_id="#prpnardr_id#" class="Cmd#prpnardr_id# #prpnardr_history#"></i></div>
 						</div></br>
-					<div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#last_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban" ></i></span></div></br>
-					<div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#last_id#" class="Cmd#hood_id# #hood_history#"></i></span></div>	</br>			
+					<div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban" ></i></span></div></br>
+					<div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span></div>	</br>			
 				</div>
 			</div>
 			
@@ -142,7 +142,10 @@
             if (_options.display_value == "0" || _options.display_value == "") {
                 $('.Cmd#last_id#').empty().append('<i class="fas fa-ban"></i>');
             }
-            else { $('.Cmd#last_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+            else {
+                const datelast = new Date(_options.display_value);
+                $('.Cmd#last_id#').empty().append('<span>' + datelast + '</span>');
+            }
         }
 		jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
 
