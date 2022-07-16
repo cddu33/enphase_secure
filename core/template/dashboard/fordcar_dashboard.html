@@ -80,7 +80,7 @@
 							</br>
 							<div class="label pull-left" style="margin-left: -35px">Fenêtre : <i data-cmd_id="#vipsar_id#" class="Cmd#vipsar_id# #vipsar_history#"></i></div>
 							</br>
-							<div class="label pull-left" style="margin-left: -35px">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> <i data-cmd_id="#prpnardr_id#" class="Cmd#prpnardr_id# #prpnardr_history#"> bar</i></div>
+							<div class="label pull-left" style="margin-left: -35px">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> <i data-cmd_id="#prpnardr_id#" class="Cmd#prpnardr_id# #prpnardr_history#"></i></div>
 						</div>
 					</div>
 					</br>
@@ -172,7 +172,7 @@
             }
             else { $('.Cmd#prpnardr_id#').empty().append('<span>' + _options.display_value + '</span>'); }
         }
-        jeedom.cmd.update['#prpnardr_id#']({ display_value: '#prpnardr#' }); 
+        jeedom.cmd.update['#prpnardr_id#']({ display_value: '#prpnardr#' + ' bar'}); 
 
 
 
