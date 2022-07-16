@@ -143,9 +143,10 @@
                 $('.Cmd#last_id#').empty().append('<i class="fas fa-ban"></i>');
             }
             else {
-                const datelast = new Date(_options.display_value).addHours(2);
+                var datelast = new Date(_options.display_value);
+                var datelast1 = new Date(datelast.setHours(datelast.getHours() + (2 * 60 * 60 * 1000)));
            
-                $('.Cmd#last_id#').empty().append('<span>' + datelast + '</span>');
+                $('.Cmd#last_id#').empty().append('<span>' + datelast1 + '</span>');
             }
         }
 		jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
