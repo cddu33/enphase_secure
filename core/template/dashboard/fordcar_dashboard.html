@@ -145,7 +145,7 @@
             else {
                 const datelast = new Date(_options.display_value);
            
-                $('.Cmd#last_id#').empty().append('<span>' + datelast.setHours(2) + '</span>');
+                $('.Cmd#last_id#').empty().append('<span>' + datelast.addHours(2) + '</span>');
             }
         }
 		jeedom.cmd.update['#last_id#']({ display_value: '#last#' }); 
