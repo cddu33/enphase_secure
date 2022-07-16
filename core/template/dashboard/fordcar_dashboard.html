@@ -119,14 +119,14 @@
         
         if ('#vehicle_type#id##' == 'electrique' )  {
 			$('#combustion_engine#id#').hide();
-			$('#electric_engine#id#').style.margin('250px, 0px, 0px, 0px');
+			$('#electric_engine#id#').style.margin='250px, 0px, 0px, 0px';
 			
 		}
        
         if ('#vehicle_type#id##' == 'thermique') {
             $('#charge_btn#id#').hide();
 			$('#electric_engine#id#').hide();
-            $('combustion_engine#id#').style.margin('250px, 0px, 0px, 0px');
+            $('combustion_engine#id#').style.margin='250px, 0px, 0px, 0px';
         }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
