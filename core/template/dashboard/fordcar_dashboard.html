@@ -497,7 +497,7 @@
 		
 		jeedom.cmd.update['#qfuel_id#'] = function (_options) {
 
-            if (_options.display_value > '050') {
+            if (_options.display_value > 50) {
                 $('.Cmd#qfuel#').empty().append('<span>' + ' Volume restant : ' + _options.display_value + ' %' + '</span>');
 			}
 			else if (_options.display_value > '10') {
