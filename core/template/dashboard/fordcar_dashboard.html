@@ -459,20 +459,7 @@
         }
         jeedom.cmd.update['#etpnargh_id#']({ display_value: '#etpnargh#' });
 
-		/*
-        jeedom.cmd.update['#moonroof_state_id#'] = function (_options) {
-            if (_options.display_value == "Open") {
-                $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_red jeedom-porte-ouverte"></i>');
-            }
-            else if (_options.display_value == "Fully_Closed") {
-                $('.Cmd#moonroof_state_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-            }
-            else {
-                $('.Cmd#moonroof_state_id#').empty().append('<i class="fas fa-ban"></i>');
-            }
-        }
-        jeedom.cmd.update['#moonroof_state_id#']({display_value: '#moonroof_state#'});
-		*/
+	
 		jeedom.cmd.update['#km_id#'] = function(_options) {
             if (_options.display_value == "0" || _options.display_value == "")  {
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
@@ -482,37 +469,7 @@
 			}
         }
 		jeedom.cmd.update['#km_id#']({display_value:'#km#'});
-		/*
-		
-		jeedom.cmd.update['#beRemainingRangeElectric_id#'] = function(_options) {
-           	$('.Cmd#beRemainingRangeElectric_id#').empty().append('<span>'+' '+_options.display_value+' kms restants'+'</span>');
-        }
-		jeedom.cmd.update['#beRemainingRangeElectric_id#']({display_value:'#beRemainingRangeElectric#'});
-		
-		
-		jeedom.cmd.update['#chargingLevelHv_id#'] = function(_options) {
-           	$('.Cmd#chargingLevelHv_id#').empty().append('<span>'+' Batterie : '+_options.display_value+' %'+'</span>');
-        }
-		jeedom.cmd.update['#chargingLevelHv_id#']({display_value:'#chargingLevelHv#'});
-		
-		
-		jeedom.cmd.update['#connectorStatus_id#'] = function(_options) {
-           	if ( _options.display_value == "1" )  {			
-				$('.Cmd#connectorStatus_id#').empty().append('<span> Prise : connectée</span>');
-			}
-			if ( _options.display_value == "0" || _options.display_value == "" )  {			
-				$('.Cmd#connectorStatus_id#').empty().append('<span> Prise : deconnectée</span>');
-			}
-		}
-		jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
-		
-		
-		jeedom.cmd.update['#chargingStatus_id#'] = function(_options) {
-           	$('.Cmd#chargingStatus_id#').empty().append('<span>'+' Charge : '+_options.display_value+'</span>');
-        }
-		jeedom.cmd.update['#chargingStatus_id#']({display_value:'#chargingStatus#'});
-		
-		*/
+	
 		jeedom.cmd.update['#kmfuel_id#'] = function (_options) {
            	$('.Cmd#kmfuel_id#').empty().append('<span><i>'+' '+_options.display_value+'kms</i> restants'+'</span>');
         }
@@ -536,29 +493,15 @@
 	</script>
 
 	<style>
-	
+	/*
 	.fordcar_widget .container-fluid {
 		margin-top: 10px;
 		
 	}
-
+    */
 	.fordcar_widget hr {
 		border-top: 1px solid;
 		margin : 10px 10px 10px 10px;
-	}
-
-	.fordcar_widget #infos {
-		margin-top: 10px;
-		margin-bottom: 16px;
-	}
-	
-	.fordcar_widget #doors_windows {
-		margin: 10px 10px 10px 10px;
-	}
-	
-	.fordcar_widget #actions {
-		margin-top: 10px;
-		margin-bottom: 20px;
 	}
 	
 	.fordcar_widget .btn {

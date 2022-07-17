@@ -3,12 +3,13 @@
     "",
     "\\core",
     "\\core\\class",
+    "\\core\\img",
     "\\core\\template",
     "\\core\\template\\dashboard",
     "\\desktop",
     "\\docs",
     "\\docs\\fr_FR"
   ],
-  "SelectedNode": "\\docs\\fr_FR\\changelog.md",
+  "SelectedNode": "\\core\\img\\widget_car.png",
   "PreviewInSolutionExplorer": false
 }
