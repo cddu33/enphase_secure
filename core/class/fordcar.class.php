@@ -551,7 +551,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
 	  $fordcarCmd->setConfiguration('minValue', '0');
-	  $fordcarCmd->setConfiguration('maxValue', '100');
+	  $fordcarCmd->setConfiguration('maxValue', '150');
 	  $fordcarCmd->setConfiguration('historizeRound', '0');
 	  $fordcarCmd->save();
 
@@ -609,8 +609,10 @@ class fordcar extends eqLogic {
 			$replace['#' . $cmd->getLogicalId() . '_name#'] = $cmd->getName();
 			$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
 			$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
-			//$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
-			//if ($cmd->getIsHistorized() == 1) { $replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor'; }
+			if ($cmd->getIsHistorized() == 1) {
+				$replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
+			}
+			$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
 		}
 
 		// Traitement des commandes actions

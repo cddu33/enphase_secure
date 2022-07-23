@@ -1,11 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\core",
-    "\\core\\class",
-    "\\core\\template",
-    "\\core\\template\\dashboard"
+    ""
   ],
-  "SelectedNode": "\\core\\class\\fordcar.class.php",
   "PreviewInSolutionExplorer": false
 }
