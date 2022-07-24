@@ -6,11 +6,17 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
+# 24/07/2022
+
+Amélioration du widget bureau
+
+
+
 # 14/07/2022
 
 Création Widget avec source mybmw
 
-Partie thermique opérationnelle avec line vers la position
+Partie thermique opérationnelle avec lien vers la position
 
 
 # 10/07/2022
