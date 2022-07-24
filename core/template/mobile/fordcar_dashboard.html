@@ -6,36 +6,24 @@
         <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
         
     </center>
-        <table width="100%" border="0" align="center" cellpadding="0">
-            <tr>
-                <td align="center">
+    <div align="center">
+     
                         <span class="label" style="font-weight: bold">Véhicule</span><br />
                         <span data-cmd_id="#etat_id#" class="state Cmd#etat_id# #etat_history#"></span>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
+      
+                <br />
                         <span class="label" style="font-weight: bold">Kilométrage</span><br />
                         <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>
-                </td>
-             </tr>
-            <tr>
-                <td align="center">
+
+                
                         <span class="label cmdName" style="font-weight: bold">Actions</span><br />
                         <!--<button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>-->
-                        <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
-                        <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa icon fas fa-lock"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa icon fas fa-lock-open"></i></button>
                         <br />&nbsp;<br />
-                </td>
-            </tr>
-            <tr>
-                <td bgcolor="" width="52%" colspan="2" align="center">
-                    <table align="center" width="100%" border="0">
-                        <tr hidden />
-                        <tr>
-                            <td width="5%"></td>
-                            <td align="left" width="45%">
-                                    <div id="electric_engine#id#">
+ </div>
+
+                                    <div id="electric_engine#id#" align="left">
                                         <i class="fa-2x fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold">Moteur électrique</span>
                                         <br />
                                         <div class="label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeElectric_id#"></span></div><br />
@@ -43,76 +31,57 @@
                                         <div class="label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div><br />
                                         <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>
                                     </div>
-                            </td>
-                            <td align="left">
-                                    <div id="combustion_engine#id#">
-                                        <i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
-                                        <br />
-                                        <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div><br />
-                                        <div class="label"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div><br />
-                                        <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id# #tbat_history#"></i></div><br />
-                                        <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i class="Cmd#huile_id# #huile_history#"></i> </div>
-                                    </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td bgcolor="" width="48%" align="center">
-                   
+
+                                <div id="combustion_engine#id#" align="left">
+                                    <i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
+                                    <br />
+                                    <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div><br />
+                                    <div class="label"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div><br />
+                                    <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id# #tbat_history#"></i></div><br />
+                                    <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i class="Cmd#huile_id# #huile_history#"></i> </div>
+                                </div>
+<div align="center">
                         <span class="label cmdName" style="font-weight: bold">Localisation</span><br />
                         Latitude: <i data-cmd_id="#lat_id#" class="Cmd#lat_id# #lat_history#"></i><br />
                         Longitude: <i data-cmd_id="#long_id#" class="Cmd#long_id# #long_history#"></i><br />
                         <br />
                         <a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a><br />
                 
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <table align="left" width="100%">
-                        <tr>
-                            <td align="left">
-                                    <div class="label">Porte : <i data-cmd_id="#doorcd_id#" class="Cmd#doorcd_id# #doorcd_history#"></i></div>
-                                    <br />
-                                    <div class="label">Fenêtre : <i data-cmd_id="#vicdav_id#" class="Cmd#vicdav_id# #vicdav_history#"></i></div>
-                                    <br />
-                                    <div class="label">Pression : <i data-cmd_id="#etpnavgh_id#" class="Cmd#etpnavgh_id# #etpnavgh_history#"></i> <i data-cmd_id="#prpnavgh_id#" class="Cmd#prpnavgh_id# #prpnavgh_history#"></i></div>
-                                    <br /><br />
-                                    <div class="label">Porte : <i data-cmd_id="#doorleft_id#" class="Cmd#doorleft_id# #doorleft_history#"></i></div>
-                                    <br />
-                                    <div class="label">Fenêtre : <i data-cmd_id="#vicdar_id#" class="Cmd#vicdar_id# #vicdar_history#"></i></div>
-                                    <br />
-                                    <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
-                            </td>
-                            <td align="left">
-                                    <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
-                                    <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
-                                    <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span></div>	<br />
-                            </td>
-                            <td align="left">
-                                    <div class="label">Porte : <i data-cmd_id="#doorps_id#" class="Cmd#doorps_id# #etpnargh_history#"></i></div>
-                                    <br />
-                                    <div class="label">Fenêtre : <i data-cmd_id="#vipsav_id#" class="Cmd#vipsav_id# #vipsav_history#"></i></div>
-                                    <br />
-                                    <div class="label">Pression : <i data-cmd_id="#etpnavdr_id#" class="Cmd#etpnavdr_id# #etpnavdr_history#"></i> <i data-cmd_id="#prpnavdr_id#" class="Cmd#prpnavdr_id# #prpnavdr_history#"></i></div>
-                                    <br /><br />
-                                    <div class="label">Porte : <i data-cmd_id="#doorright_id#" class="Cmd#doorright_id# #doorright_history#"></i></div>
-                                    <br />
-                                    <div class="label">Fenêtre : <i data-cmd_id="#vipsar_id#" class="Cmd#vipsar_id# #vipsar_history#"></i></div>
-                                    <br />
-                                    <div class="label">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> <i data-cmd_id="#prpnardr_id#" class="Cmd#prpnardr_id# #prpnardr_history#"></i></div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-           
-                <td bgcolor="" width="48%" align="center">
+</div>
+<div align="left">
+    <div class="label">Porte : <i data-cmd_id="#doorcd_id#" class="Cmd#doorcd_id# #doorcd_history#"></i></div>
+    <br />
+    <div class="label">Fenêtre : <i data-cmd_id="#vicdav_id#" class="Cmd#vicdav_id# #vicdav_history#"></i></div>
+    <br />
+    <div class="label">Pression : <i data-cmd_id="#etpnavgh_id#" class="Cmd#etpnavgh_id# #etpnavgh_history#"></i> <i data-cmd_id="#prpnavgh_id#" class="Cmd#prpnavgh_id# #prpnavgh_history#"></i></div>
+    <br /><br />
+    <div class="label">Porte : <i data-cmd_id="#doorleft_id#" class="Cmd#doorleft_id# #doorleft_history#"></i></div>
+    <br />
+    <div class="label">Fenêtre : <i data-cmd_id="#vicdar_id#" class="Cmd#vicdar_id# #vicdar_history#"></i></div>
+    <br />
+    <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
+
+
+    <div class="label">Porte : <i data-cmd_id="#doorps_id#" class="Cmd#doorps_id# #etpnargh_history#"></i></div>
+    <br />
+    <div class="label">Fenêtre : <i data-cmd_id="#vipsav_id#" class="Cmd#vipsav_id# #vipsav_history#"></i></div>
+    <br />
+    <div class="label">Pression : <i data-cmd_id="#etpnavdr_id#" class="Cmd#etpnavdr_id# #etpnavdr_history#"></i> <i data-cmd_id="#prpnavdr_id#" class="Cmd#prpnavdr_id# #prpnavdr_history#"></i></div>
+    <br /><br />
+    <div class="label">Porte : <i data-cmd_id="#doorright_id#" class="Cmd#doorright_id# #doorright_history#"></i></div>
+    <br />
+    <div class="label">Fenêtre : <i data-cmd_id="#vipsar_id#" class="Cmd#vipsar_id# #vipsar_history#"></i></div>
+    <br />
+    <div class="label">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> <i data-cmd_id="#prpnardr_id#" class="Cmd#prpnardr_id# #prpnardr_history#"></i></div>
+    <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
+    <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span></div>	<br />
+
+</div>
+                <div align="center">
                         <div class="label pull-center">Dernière connexion avec le véhicule : <i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div><br />
                         <div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div>
                         <div class="label pull-center">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
-                </td>
-            </tr>
-        </table>
+                </div>
 
 	
 	<script>
