@@ -1,4 +1,4 @@
-<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width:#width#; height:#height#; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="mobile">
+<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width:#width#; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="mobile">
 
     <center class="widget-name" style="padding-right: 0px;">
         <span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
@@ -8,14 +8,14 @@
     </center>
     <div align="center">
      
-                        <span class="label" style="font-weight: bold">Véhicule</span><br />
+                        <span class="label" style="font-weight: bold">Véhicule</span>
                         <span data-cmd_id="#etat_id#" class="state Cmd#etat_id# #etat_history#"></span>
       
                 <br />
-                        <span class="label" style="font-weight: bold">Kilométrage</span><br />
+                        <span class="label" style="font-weight: bold">Kilométrage</span>
                         <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>
 
-                
+                        <br />
                         <span class="label cmdName" style="font-weight: bold">Actions</span><br />
                         <!--<button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>-->
                         <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa icon fas fa-lock"></i></button>
@@ -97,13 +97,13 @@
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
 			if (_options.display_value == "LOCKED") {
-				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
+				$('.Cmd#etat_id#').empty().append('<i class="fa icon_green fas fa-lock"></i>');
 			}
 			else if (_options.display_value == "UNLOCKED") {
-				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>');
+				$('.Cmd#etat_id#').empty().append('<i class="fa icon_red fas fa-lock-open"></i>');
 			}
 			else {
-                $('.Cmd#etat_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+                $('.Cmd#etat_id#').empty().append('<i class="fa fas fa-ban"></i>');
             }
 		}
 		jeedom.cmd.update['#etat_id#']({ display_value: '#etat#' });
@@ -435,7 +435,7 @@
 	
 		jeedom.cmd.update['#km_id#'] = function(_options) {
             if (_options.display_value == "0" || _options.display_value == "")  {
-			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+			 $('.Cmd#km_id#').empty().append('<i class="fa fas fa-ban"></i>');
 			}
 			else {
 				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span>');
