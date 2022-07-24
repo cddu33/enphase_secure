@@ -9,38 +9,33 @@
     <div align="center">
 
         <span class="label" style="font-weight: bold">Véhicule</span>
-        <span data-cmd_id="#etat_id#" class="state Cmd#etat_id# #etat_history#">
-            <!--<button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa icon jeedomapp-reload"></i></button>-->
-            <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa icon fas fa-lock"></i></button>
-            <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa icon fas fa-lock-open"></i></button>
-        </span>
-
+        <span data-cmd_id="#etat_id#" class="state Cmd#etat_id# #etat_history#"></span>
+        <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa icon fas fa-lock"></i></button>
+        <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa icon fas fa-lock-open"></i></button>
         <br />
         <span class="label" style="font-weight: bold">Kilométrage</span>
         <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>
+<br />
 
-    
+        <div id="electric_engine#id#">
+            <i class="fa fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold"> Moteur électrique</span>
+            <br />
+            <div class="label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeElectric_id#"></span></div>
+            <div class="label "><i class="fa-xl fas fa-car-battery"></i><span class="Cmd#chargingLevelHv_id#"></span></div>
+            <div class="label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div>
+            <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>
+        </div>
 
-
-    <div id="electric_engine#id#">
-        <i class="fa fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold"> Moteur électrique</span>
+        <div id="combustion_engine#id#">
+            <i class="fa fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold"> Moteur thermique</span>
+            <br />
+            <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div>
+            <div class="label"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div>
+            <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id# #tbat_history#"></i></div>
+            <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i class="Cmd#huile_id# #huile_history#"></i> </div>
+        </div>
         <br />
-        <div class="label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeElectric_id#"></span></div>
-        <div class="label "><i class="fa-xl fas fa-car-battery"></i><span class="Cmd#chargingLevelHv_id#"></span></div>
-        <div class="label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div>
-        <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>
-    </div>
 
-    <div id="combustion_engine#id#">
-        <i class="fa fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold"> Moteur thermique</span>
-        <br />
-        <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div>
-        <div class="label"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div>
-        <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id# #tbat_history#"></i></div>
-        <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i class="Cmd#huile_id# #huile_history#"></i> </div>
-    </div>
-    <br />
-   
         Conducteur avant:<br />
         <div class="label">Porte : <i data-cmd_id="#doorcd_id#" class="Cmd#doorcd_id# #doorcd_history#"></i></div>
         <div class="label">Fenêtre : <i data-cmd_id="#vicdav_id#" class="Cmd#vicdav_id# #vicdav_history#"></i></div>
@@ -73,9 +68,9 @@
         <br />
         <a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a><br />
         <br />
-        <div class="label pull-center">Dernière connexion avec le véhicule : <i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div><br />
-        <div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div>
-        <div class="label pull-center">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
+        <div class="label">Dernière connexion avec le véhicule : <i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div><br />
+        <div class="label">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div>
+        <div class="label">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
     </div>
 
 
