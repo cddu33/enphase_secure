@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\docs",
+    "\\docs\\fr_FR"
   ],
+  "SelectedNode": "\\docs\\fr_FR\\index.md",
   "PreviewInSolutionExplorer": false
 }
