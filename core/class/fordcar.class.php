@@ -27,14 +27,35 @@ class fordcar extends eqLogic {
         $return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependency';
         if (file_exists(jeedom::getTmpFolder(__CLASS__) . '/dependency')) {
 			$return['state'] = 'in_progress';
-        } else {
-            if (exec(system::getCmdSudo() . system::get('cmd_check') . '-Ec "python3\-requests"') < 1) { // adaptez la liste des paquets et le total
-                $return['state'] = 'ok';
-            } else {
-                $return['state'] = 'nok';
-            }
-        }
-        return $return;
+        } 
+		else 
+		{
+			$return['state'] = 'nok';
+			
+				$deps = array('fordpass');
+				
+				$output = array();
+				foreach($deps as $dep) {
+					$cmd = "$pip3 list | grep $dep";
+					unset($output);
+					exec($cmd, $output, $return_var);
+        
+					if ($return_var || $output[0] == "") {
+						$return['state'] = 'nok';
+ 
+						break;
+					}
+					else{ 
+						$return['state'] = 'ok'; 
+					}
+				
+		}
+		else { 
+        $return['state'] = 'nok';
+		}
+    }
+    return $return;
+  }
     }
 
 	public static function dependancy_install() {
