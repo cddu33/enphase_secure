@@ -2,14 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\core",
-    "\\core\\class",
     "\\core\\template",
     "\\core\\template\\dashboard",
     "\\core\\template\\mobile",
     "\\data",
     "\\docs",
-    "\\docs\\fr_FR"
+    "\\docs\\fr_FR",
+    "\\plugin_info",
+    "\\resources"
   ],
-  "SelectedNode": "\\docs\\fr_FR\\changelog.md",
+  "SelectedNode": "\\resources\\install_apt_update.sh",
   "PreviewInSolutionExplorer": false
 }
