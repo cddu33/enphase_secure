@@ -27,20 +27,35 @@ class fordcar extends eqLogic {
         $return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependency';
         if (file_exists(jeedom::getTmpFolder(__CLASS__) . '/dependency')) {
 			$return['state'] = 'in_progress';
-        } else {
-            if (exec(system::getCmdSudo() . system::get('cmd_check') . '-Ec "python3\-requests"') < 1) { // adaptez la liste des paquets et le total
-                $return['state'] = 'nok';
-            } else {
-                $return['state'] = 'ok';
-            }
-        }
-        return $return;
+        } 
+		else 
+		{
+			$return['state'] = 'nok';
+			$output = array();
+			$cmd = "pip3 list | grep fordpass";
+			unset($output);
+			exec($cmd, $output, $return_var);
+        
+			if ($return_var || $output[0] == "") {
+				$return['state'] = 'nok';	
+			}
+			else{ 
+				$return['state'] = 'ok'; 
+			}	
+		}
+		return $return;
     }
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
 		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
+	}
+
+	public static function dependancy_install_update() {
+		log::remove(__CLASS__ . '_update');
+		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
+		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt_update.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
 	}
 
 	private static $_templateArray = [];
