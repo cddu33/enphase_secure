@@ -50,12 +50,7 @@ class fordcar extends eqLogic {
 					}
 				
 		}
-		else { 
-        $return['state'] = 'nok';
-		}
-    }
-    return $return;
-  }
+		return $return;
     }
 
 	public static function dependancy_install() {
