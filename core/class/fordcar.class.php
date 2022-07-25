@@ -42,12 +42,13 @@ class fordcar extends eqLogic {
         
 					if ($return_var || $output[0] == "") {
 						$return['state'] = 'nok';
- 
-						break;
+						
 					}
 					else{ 
 						$return['state'] = 'ok'; 
 					}
+					break;
+				}
 				
 		}
 		return $return;
