@@ -26,7 +26,7 @@ function fordcar_install() {
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
 function fordcar_update() {
-	//fordcar::dependancy_install();
+	fordcar::dependancy_install_update();
   //exec('../ressources/install_apt.sh');
   fordcar::postSave();
 	fordcar::refresh();
