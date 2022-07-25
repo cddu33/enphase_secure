@@ -37,8 +37,7 @@ class fordcar extends eqLogic {
 			exec($cmd, $output, $return_var);
         
 			if ($return_var || $output[0] == "") {
-				$return['state'] = 'nok';
-						
+				$return['state'] = 'nok';	
 			}
 			else{ 
 				$return['state'] = 'ok'; 
