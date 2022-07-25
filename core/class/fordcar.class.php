@@ -29,9 +29,9 @@ class fordcar extends eqLogic {
 			$return['state'] = 'in_progress';
         } else {
             if (exec(system::getCmdSudo() . system::get('cmd_check') . '-Ec "python3\-requests"') < 1) { // adaptez la liste des paquets et le total
-                $return['state'] = 'nok';
-            } else {
                 $return['state'] = 'ok';
+            } else {
+                $return['state'] = 'nok';
             }
         }
         return $return;
