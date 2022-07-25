@@ -31,25 +31,18 @@ class fordcar extends eqLogic {
 		else 
 		{
 			$return['state'] = 'nok';
-			
-				$deps = array('fordpass');
-				
-				$output = array();
-				foreach($deps as $dep) {
-					$cmd = "$pip3 list | grep $dep";
-					unset($output);
-					exec($cmd, $output, $return_var);
+			$output = array();
+			$cmd = "pip3 list | grep fordpass";
+			unset($output);
+			exec($cmd, $output, $return_var);
         
-					if ($return_var || $output[0] == "") {
-						$return['state'] = 'nok';
+			if ($return_var || $output[0] == "") {
+				$return['state'] = 'nok';
 						
-					}
-					else{ 
-						$return['state'] = 'ok'; 
-					}
-					break;
-				}
-				
+			}
+			else{ 
+				$return['state'] = 'ok'; 
+			}	
 		}
 		return $return;
     }
