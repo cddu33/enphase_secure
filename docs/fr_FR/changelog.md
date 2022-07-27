@@ -6,14 +6,12 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
-# 24/07/2022 (beta)
-
-Widget mobile
-
 
 # 24/07/2022
 
 Amélioration du widget bureau
+
+Widget mobile
 
 
 
