@@ -6,6 +6,13 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
+# 31/07/2022 (BETA)
+
+Reprise de la taille du widget bureau
+
+Rajout des infos: capot coffre et coffre interieur
+
+Rajout des commandes démarrer et couper le moteur (fonctionne suivant les pays)
 
 # 24/07/2022
 
