@@ -8,7 +8,8 @@ if len(sys.argv) != 5:
 else:
 	r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN # Username, Password, VIN
 	try:
-	switch(sys.argv[4]){
+	string i = sys.argv[4];
+	switch(i){
 		case "lock":
 			r.lock();
 			break;
