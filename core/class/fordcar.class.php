@@ -558,7 +558,7 @@ class fordcar extends eqLogic {
 	   $fordcarCmd = $this->getCmd(null, 'tailgate');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Coffre/Hayon', __FILE__));
+		  $fordcarCmd->setName(__('CoffreHayon', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
 	  $fordcarCmd->setLogicalId('tailgate');
