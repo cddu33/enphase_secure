@@ -543,13 +543,13 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
 
-	  $fordcarCmd = $this->getCmd(null, 'hooda');
+	  $fordcarCmd = $this->getCmd(null, 'hood');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
 		  $fordcarCmd->setName(__('Capot', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
-	  $fordcarCmd->setLogicalId('hooda');
+	  $fordcarCmd->setLogicalId('hood');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
@@ -558,7 +558,7 @@ class fordcar extends eqLogic {
 	   $fordcarCmd = $this->getCmd(null, 'tailgate');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Coffre', __FILE__));
+		  $fordcarCmd->setName(__('Coffre/Hayon', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
 	  $fordcarCmd->setLogicalId('tailgate');
@@ -816,7 +816,7 @@ class fordcar extends eqLogic {
 
 		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor']['value'];
 		log::add('fordcar', 'debug', 'Capot: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('hooda', $fordcar_info);
+		$this->checkAndUpdateCmd('hood', $fordcar_info);
 
 		$fordcar_info = $fordcar_json['doorStatus']['tailgateDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
