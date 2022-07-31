@@ -373,6 +373,32 @@
         }
         jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
 
+        jeedom.cmd.update['#tailgate_id#'] = function (_options) {
+            if (_options.display_value == "Open") {
+                $('.Cmd#tailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+            else if (_options.display_value == "Closed") {
+                $('.Cmd#tailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+            else {
+                $('.Cmd#tailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#tailgate_id#']({ display_value: '#tailgate#' });
+
+        jeedom.cmd.update['#innertailgate_id#'] = function (_options) {
+            if (_options.display_value == "Open") {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+            else if (_options.display_value == "Closed") {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+            else {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#innertailgate_id#']({ display_value: '#innertailgate#' });
+
 
         jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
             if (_options.display_value == "Normal") {
