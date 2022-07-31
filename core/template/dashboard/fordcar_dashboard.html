@@ -90,7 +90,7 @@
                                     <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
                             </td>
                             <td align="left">
-                                <div class="label"><span class="label pull-center">Capot : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div>
+                                <div class="label"><span class="label pull-center">Capot : <i data-cmd_id="#hooda_id#" class="Cmd#hooda_id# #hooda_history#"></i></span> </div>
                                 <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
                                 <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
                                 <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#tailgate_id#" class="Cmd#ttailgate_id# #tailgate_history#"></i></span> </div><br />
@@ -405,18 +405,18 @@
 		jeedom.cmd.update['#vipsar_id#']({display_value:'#vipsar#'});
 				
       
-		jeedom.cmd.update['#hood_id#'] = function(_options) {
+		jeedom.cmd.update['#hooda_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
-            	$('.Cmd#hood_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            	$('.Cmd#hooda_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
             }
           	else if ( _options.display_value == "Closed")  {
-              	$('.Cmd#hood_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#hooda_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
 			else {
-              	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#hooda_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-        jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+        jeedom.cmd.update['#hooda_id#']({ display_value: '#hooda#' });
 
         jeedom.cmd.update['#tailgate_id#'] = function (_options) {
             if (_options.display_value == "Open") {
