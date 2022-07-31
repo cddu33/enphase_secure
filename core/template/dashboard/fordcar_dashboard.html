@@ -1,4 +1,4 @@
-<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width: 800px; height:420px; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width: 700px; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
 
     <center class="widget-name" style="padding-right: 0px;">
         <span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
@@ -9,31 +9,36 @@
     <div class="container-fluid">
         <table width="100%" border="0" align="center" cellpadding="0">
             <tr>
-                <td bgcolor="" width="26%">
+                <td bgcolor="" width="210px">
                     <div align="center">
                         <span class="label" style="font-weight: bold">Véhicule</span><br />
                         <span data-cmd_id="#etat_id#" class="state Cmd#etat_id# #etat_history#"></span>
                     </div>
                 </td>
-                <td bgcolor="" width="26%">
+                <td bgcolor="" width="210px">
                     <div align="center">
                         <span class="label" style="font-weight: bold">Kilométrage</span><br />
                         <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>
                     </div>
                 </td>
                
-                <td bgcolor="" width="48%">
+                <td bgcolor="" width="280px">
                     <div align="center">
                         <span class="label cmdName" style="font-weight: bold">Actions</span><br />
                         <!--<button class="btn cmd action" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>-->
                         <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
                         <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
+                        &nbsp;  &nbsp;  &nbsp;
+                        <button class="btn cmd action" data-cmd_id="#start_id#" title="Démarrer le moteur" onclick="jeedom.cmd.execute({id: #start_id#});"><i class="fa-2x icon fas fa-toggle-off"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#stop_id#" title="Coupper le moteur" onclick="jeedom.cmd.execute({id: #stop_id#});"><i class="fa-2x icon fas fa-power-off"></i></button>
+
                         <br />&nbsp;<br />
+
                     </div>
                 </td>
             </tr>
             <tr>
-                <td bgcolor="" width="52%" colspan="2" align="center">
+                <td bgcolor="" width="420px" colspan="2" align="center">
                     <table align="center" width="100%" border="0">
                         <tr hidden />
                         <tr>
@@ -59,9 +64,9 @@
                                     </div>
                             </td>
                         </tr>
-                    </table>
+                    </table><br />
                 </td>
-                <td bgcolor="" width="48%" align="center">
+                <td bgcolor="" width="210px" align="center">
                    
                         <span class="label cmdName" style="font-weight: bold">Localisation</span><br />
                         Latitude: <i data-cmd_id="#lat_id#" class="Cmd#lat_id# #lat_history#"></i><br />
@@ -72,7 +77,8 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" align="center">
+                <td colspan="2" width="420px" align="center">
+                    
                     <table align="left" width="100%">
                         <tr>
                             <td align="left">
@@ -89,9 +95,13 @@
                                     <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
                             </td>
                             <td align="left">
-                                    <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
-                                    <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
-                                    <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span></div>	<br />
+                                <br />
+                                <div class="label"><span class="label pull-center">Capot : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div>
+                                <br />
+                                <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
+                                <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
+                                <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#tailgate_id#" class="Cmd#tailgate_id# #tailgate_history#"></i></span> </div><br />
+                                <div class="label"><span class="label pull-center">Coffre intérieur : <i data-cmd_id="#innertailgate_id#" class="Cmd#innertailgate_id# #innertailgate_history#"></i></span> </div> <br /> <br />
                             </td>
                             <td align="left">
                                     <div class="label">Porte : <i data-cmd_id="#doorps_id#" class="Cmd#doorps_id# #etpnargh_history#"></i></div>
@@ -110,9 +120,9 @@
                     </table>
                 </td>
            
-                <td bgcolor="" width="48%" align="center">
-                        <div class="label pull-center">Dernière connexion avec le véhicule : <i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div><br />
-                        <div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div>
+                <td bgcolor="" width="280px" align="center">
+                        <div class="label pull-center">Dernière connexion avec le véhicule : <br /><i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div><br />
+                        <div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div><br />
                         <div class="label pull-center">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
                 </td>
             </tr>
@@ -413,7 +423,33 @@
               	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+        jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+
+        jeedom.cmd.update['#tailgate_id#'] = function (_options) {
+            if (_options.display_value == "Open") {
+                $('.Cmd#tailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+            else if (_options.display_value == "Closed") {
+                $('.Cmd#tailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+            else {
+                $('.Cmd#tailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#tailgate_id#']({ display_value: '#tailgate#' });
+
+        jeedom.cmd.update['#innertailgate_id#'] = function (_options) {
+            if (_options.display_value == "Open") {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+            else if (_options.display_value == "Closed") {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+            else {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#innertailgate_id#']({ display_value: '#innertailgate#' });
 
 
         jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
@@ -474,7 +510,7 @@
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
 			}
 			else {
-				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span>');
+				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span> <small>km</small>');
 			}
         }
 		jeedom.cmd.update['#km_id#']({display_value:'#km#'});

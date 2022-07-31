@@ -191,6 +191,30 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('other');
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'start');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Démarrer le moteur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('start');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'stop');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Couper le moteur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('stop');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
 	  
 	  $fordcarCmd = $this->getCmd(null, 'etat');
 	  if (!is_object($fordcarCmd)) {
@@ -546,10 +570,34 @@ class fordcar extends eqLogic {
 	  $fordcarCmd = $this->getCmd(null, 'hood');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Coffre', __FILE__));
+		  $fordcarCmd->setName(__('Capot', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
 	  $fordcarCmd->setLogicalId('hood');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	   $fordcarCmd = $this->getCmd(null, 'tailgate');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('CoffreHayon', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('tailgate');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'innertailgate');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Coffre intérieur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('innertailgate');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
@@ -791,8 +839,16 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('doorleft', $fordcar_info);
 
 		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor']['value'];
-		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
+		log::add('fordcar', 'debug', 'Capot: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('hood', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['tailgateDoor']['value'];
+		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('tailgate', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
+		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
 
 		$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
 		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
@@ -825,9 +881,19 @@ class fordcarCmd extends cmd {
 	  { 
 		  case 'lock':
 		  $eqlogic->commandes("lock"); 
+		  sleep(5);
 		  break;
 		  case 'unlock':
 		  $eqlogic->commandes("unlock"); 
+		  sleep(5);
+		  break;
+		  case 'start':
+		  $eqlogic->commandes("start"); 
+		  sleep(5);
+		  break;
+		  case 'stop':
+		  $eqlogic->commandes("stop"); 
+		  sleep(5);
 		  break;
 	  }
 	    $eqlogic->refresh();

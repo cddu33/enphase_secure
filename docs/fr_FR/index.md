@@ -12,3 +12,7 @@ Paramétrage:
 * Sauvegarder
 
 * Suite à une mise à jour, pour actualiser la liste des commandes, sauvegarder l'équipement
+
+Limite de l'API:
+
+Suivant l'état de la voiture, une commande peut mettre plusieurs dizaines de secondes à être exécutée.

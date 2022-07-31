@@ -12,5 +12,10 @@ else:
 			r.lock();
 		elif sys.argv[4] == "unlock":
 			r.unlock();
+		elif sys.argv[4] == "start":
+			r.start();
+		elif sys.argv[4] == "stop":
+			r.stop();
+
 	except:
 		print('Erreur de connexion')
