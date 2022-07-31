@@ -90,10 +90,10 @@
                                     <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
                             </td>
                             <td align="left">
-                                <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div>
+                                <div class="label"><span class="label pull-center">Capot : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div>
                                 <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
                                 <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
-                                <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#tailgate_id#" class="Cmd#ttailgate_id# #tailgate_history#"></i></span> </div>
+                                <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#tailgate_id#" class="Cmd#ttailgate_id# #tailgate_history#"></i></span> </div><br />
                                 <div class="label"><span class="label pull-center">Coffre intérieur : <i data-cmd_id="#innertailgate_id#" class="Cmd#innertailgate_id# #innertailgate_history#"></i></span> </div> <br /> <br />
                             </td>
                             <td align="left">
@@ -418,18 +418,31 @@
 		}
         jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
 
-        jeedom.cmd.update['#capot_id#'] = function (_options) {
+        jeedom.cmd.update['#tailgate_id#'] = function (_options) {
             if (_options.display_value == "Open") {
-                $('.Cmd#capot_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+                $('.Cmd#tailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
             }
             else if (_options.display_value == "Closed") {
-                $('.Cmd#capot_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+                $('.Cmd#tailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
             }
             else {
-                $('.Cmd#capot_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#tailgate_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
-        jeedom.cmd.update['#capot_id#']({ display_value: '#capot#' });
+        jeedom.cmd.update['#tailgate_id#']({ display_value: '#tailgate#' });
+
+        jeedom.cmd.update['#innertailgate_id#'] = function (_options) {
+            if (_options.display_value == "Open") {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+            else if (_options.display_value == "Closed") {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+            else {
+                $('.Cmd#innertailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#innertailgate_id#']({ display_value: '#innertailgate#' });
 
 
         jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
