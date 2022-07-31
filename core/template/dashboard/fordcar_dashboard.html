@@ -73,7 +73,7 @@
             </tr>
             <tr>
                 <td colspan="2" width="420px" align="center">
-                    <br />
+                    
                     <table align="left" width="100%">
                         <tr>
                             <td align="left">
@@ -90,9 +90,10 @@
                                     <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
                             </td>
                             <td align="left">
-                                    <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
-                                    <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
-                                    <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div> <br /> <br />
+                                <div class="label"><span class="label pull-center">Capot : <i data-cmd_id="#capot_id#" class="Cmd#capot_id# #capot_history#"></i></span> </div> 
+                                <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
+                                <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
+                                <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div> <br /> <br />
                             </td>
                             <td align="left">
                                     <div class="label">Porte : <i data-cmd_id="#doorps_id#" class="Cmd#doorps_id# #etpnargh_history#"></i></div>
@@ -414,7 +415,20 @@
               	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
-		jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+        jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
+
+        jeedom.cmd.update['#capot_id#'] = function (_options) {
+            if (_options.display_value == "Open") {
+                $('.Cmd#capot_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+            else if (_options.display_value == "Closed") {
+                $('.Cmd#capot_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+            else {
+                $('.Cmd#capot_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#capot_id#']({ display_value: '#capot#' });
 
 
         jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
