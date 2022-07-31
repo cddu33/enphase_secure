@@ -8,9 +8,22 @@ if len(sys.argv) != 5:
 else:
 	r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN # Username, Password, VIN
 	try:
-		if sys.argv[4] == "lock":
+	switch(sys.argv[4]){
+		case "lock":
 			r.lock();
-		elif sys.argv[4] == "unlock":
+			break;
+
+		case "unlock":
 			r.unlock();
+			break;
+
+		case "start":
+			r.start();
+			break;
+
+		case "stop":
+			r.stop();
+			break;
+	}
 	except:
 		print('Erreur de connexion')

@@ -191,6 +191,30 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('other');
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'start');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Démarrer le moteur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('start');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'stop');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Couper le moteur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('stop');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
 	  
 	  $fordcarCmd = $this->getCmd(null, 'etat');
 	  if (!is_object($fordcarCmd)) {
@@ -860,6 +884,12 @@ class fordcarCmd extends cmd {
 		  break;
 		  case 'unlock':
 		  $eqlogic->commandes("unlock"); 
+		  break;
+		  case 'start':
+		  $eqlogic->commandes("start"); 
+		  break;
+		  case 'stop':
+		  $eqlogic->commandes("stop"); 
 		  break;
 	  }
 	    $eqlogic->refresh();
