@@ -18,7 +18,7 @@
                 <td bgcolor="" width="210px">
                     <div align="center">
                         <span class="label" style="font-weight: bold">Kilométrage</span><br />
-                        <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>km
+                        <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>
                     </div>
                 </td>
                
@@ -489,7 +489,7 @@
 			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
 			}
 			else {
-				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span>');
+				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span> km');
 			}
         }
 		jeedom.cmd.update['#km_id#']({display_value:'#km#'});
