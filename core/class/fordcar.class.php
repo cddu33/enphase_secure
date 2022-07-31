@@ -546,7 +546,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd = $this->getCmd(null, 'hood');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Coffre', __FILE__));
+		  $fordcarCmd->setName(__('Capot', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
 	  $fordcarCmd->setLogicalId('hood');
@@ -555,13 +555,25 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
 
-	  $fordcarCmd = $this->getCmd(null, 'capot');
+	   $fordcarCmd = $this->getCmd(null, 'tailgate');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Capot', __FILE__));
+		  $fordcarCmd->setName(__('Coffre', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
-	  $fordcarCmd->setLogicalId('capot');
+	  $fordcarCmd->setLogicalId('tailgate');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('bar');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'innertailgate');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Coffre intérieur', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('innertailgate');
 	  $fordcarCmd->setType('info');
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('bar');
@@ -803,8 +815,16 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('doorleft', $fordcar_info);
 
 		$fordcar_info = $fordcar_json['doorStatus']['hoodDoor']['value'];
-		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
+		log::add('fordcar', 'debug', 'Capot: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('hood', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['tailgateDoor']['value'];
+		log::add('fordcar', 'debug', 'Coffre: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('tailgate', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
+		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
 
 		$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
 		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
