@@ -56,10 +56,7 @@ class fordcar extends eqLogic {
 		log::remove(__CLASS__ . '_update');
 		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
 		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt_update.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
-		foreach (eqLogic::byType('fordcar') as $eqLogic) {
-        		$eqLogic->save();
-        		log::add('fordcar', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
-    		}
+		
 	}
 
 	private static $_templateArray = [];
@@ -68,12 +65,7 @@ class fordcar extends eqLogic {
 
 	
 	
-  /*
-==
-  * Permet de définir les possibilités de personnalisation du widget (en cas d'utilisation de la fonction 'toHtml' par exemple)
-  * Tableau multidimensionnel - exemple: array('custom' => true, 'custom::layout' => false)
-  public static $_widgetPossibility = array();
-  */
+
  
 
   /*     * ***********************Methode static*************************** */
@@ -82,7 +74,31 @@ class fordcar extends eqLogic {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   public static function cron() {
-	  foreach (self::byType('fordcar', true) as $fordcar) { //parcours tous les équipements actifs du plugin vdm
+		$dateRun = new DateTime();
+		foreach (self::byType('fordcar', true) as $fordcar) {
+			$autorefresh = $eqLogic->getConfiguration('autorefresh');
+			if ($eqLogic->getIsEnable() == 1 && $autorefresh != '') {
+				try {
+					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
+					if ($c->isDue($dateRun)) {
+						try {
+							$eqLogic->refresh();
+						} catch (Exception $exc) {
+							log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
+						}
+					}
+				} catch (Exception $exc) {
+					log::add('fordcar', 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
+				}
+			}
+		}
+		
+	}
+
+	  /*
+
+  public static function cron() {
+	  foreach (self::byType('fordcar', true) as $fordcar) { //parcours tous les équipements actifs du plugin
 		  $cmd = $fordcar->getCmd(null, 'refresh'); //retourne la commande "refresh" si elle existe
 		  if (!is_object($cmd)) { //Si la commande n'existe pas
 			  continue; //continue la boucle
@@ -92,7 +108,9 @@ class fordcar extends eqLogic {
 }
 
 
-  /*
+
+
+  
   * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
   public static function cron5() {}
   */

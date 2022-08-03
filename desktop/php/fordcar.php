@@ -124,9 +124,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 							</div>
 
-							<!-- Exemple de champ de saisie du cron d'auto-actualisation avec assistant 
-							<!-- La fonction cron de la classe du plugin doit contenir le code prévu pour que ce champ soit fonctionnel 
-							
+				
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Auto-actualisation}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement des commandes infos du véhicule; On interoge le serveur pas directement la voiture}}"></i></sup>
@@ -144,8 +142,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 							</div>-->
 						</div>
                         
-						<!-- Partie droite de l'onglet "Équipement" -->
-						<!-- Affiche un champ de commentaire par défaut mais vous pouvez y mettre ce que vous voulez -->
 						<div class="col-lg-6">
 							<legend><i class="fas fa-info"></i> {{Informations}}</legend>
 							<div class="form-group">
