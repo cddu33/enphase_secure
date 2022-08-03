@@ -127,7 +127,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Auto-actualisation}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement des commandes infos du véhicule; On interoge le serveur pas directement la voiture}}"></i></sup>
+									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement (15min par défaut) des commandes infos du véhicule; On interoge le serveur pas directement la voiture}}"></i></sup>
 								</label>
 								<div class="col-sm-6">
 									<div class="input-group">

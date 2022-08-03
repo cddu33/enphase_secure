@@ -6,6 +6,14 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
+# 03/08/2022 (beta)
+
+Cron pour l'actualisation des information modifiable depuis l'équipement, de base 15min
+
+# 02/08/2022
+
+Actualisation automatique des commandes après une mise à jour
+
 # 31/07/2022
 
 Reprise de la taille du widget bureau
