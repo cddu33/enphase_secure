@@ -139,7 +139,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 										</span>
 									</div>
 								</div>
-							</div>-->
+							</div>
 						</div>
                         
 						<div class="col-lg-6">
