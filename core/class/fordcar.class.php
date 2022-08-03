@@ -75,7 +75,7 @@ class fordcar extends eqLogic {
  
   public static function cron() {
 		$dateRun = new DateTime();
-		foreach (self::byType('fordcar', true) as $fordcar) {
+		foreach (self::byType('fordcar', true) as $eqLogic) {
 			$autorefresh = $eqLogic->getConfiguration('autorefresh');
 			if ($eqLogic->getIsEnable() == 1 && $autorefresh != '') {
 				try {
@@ -104,8 +104,8 @@ class fordcar extends eqLogic {
 			  continue; //continue la boucle
 			  }
 			  $cmd->execCmd(); //la commande existe on la lance
-		}	
-}	
+	}	
+}
 
 
 
