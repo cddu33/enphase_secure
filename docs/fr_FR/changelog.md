@@ -6,7 +6,7 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
-# 31/07/2022 (BETA)
+# 31/07/2022
 
 Reprise de la taille du widget bureau
 
