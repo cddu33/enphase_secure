@@ -77,7 +77,10 @@ class fordcar extends eqLogic {
 		$dateRun = new DateTime();
 		foreach (self::byType('fordcar', true) as $eqLogic) {
 			$autorefresh = $eqLogic->getConfiguration('autorefresh');
-			if ($eqLogic->getIsEnable() == 1 && $autorefresh != '') {
+			if ($eqLogic->getIsEnable() == 1){
+			if (autorefresh == '') {
+				$autorefresh = '*/15 * * * *';
+			}
 				try {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
