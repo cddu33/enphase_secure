@@ -85,7 +85,12 @@ class fordcar extends eqLogic {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
 						try {
-							$eqLogic->refresh();
+							 $cmd = $eqLogic->getCmd(null, 'refresh'); //retourne la commande "refresh" si elle existe
+							if (!is_object($cmd)) { //Si la commande n'existe pas
+								continue; //continue la boucle
+							}
+							$cmd->execCmd(); //la commande existe on la lance
+				
 						} catch (Exception $exc) {
 							log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
 						}
