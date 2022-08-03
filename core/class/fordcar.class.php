@@ -78,19 +78,14 @@ class fordcar extends eqLogic {
 		foreach (self::byType('fordcar', true) as $eqLogic) {
 			$autorefresh = $eqLogic->getConfiguration('autorefresh');
 			if ($eqLogic->getIsEnable() == 1){
-			if (autorefresh == '') {
+			if ($autorefresh == '') {
 				$autorefresh = '*/15 * * * *';
 			}
 				try {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
 						try {
-							 $cmd = $eqLogic->getCmd(null, 'refresh'); //retourne la commande "refresh" si elle existe
-							if (!is_object($cmd)) { //Si la commande n'existe pas
-								continue; //continue la boucle
-							}
-							$cmd->execCmd(); //la commande existe on la lance
-				
+							$eqLogic->refresh();
 						} catch (Exception $exc) {
 							log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
 						}
