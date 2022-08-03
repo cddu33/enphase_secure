@@ -104,8 +104,8 @@ class fordcar extends eqLogic {
 			  continue; //continue la boucle
 			  }
 			  $cmd->execCmd(); //la commande existe on la lance
-}
-}
+		}	
+}	
 
 
 
