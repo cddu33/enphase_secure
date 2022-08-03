@@ -28,8 +28,10 @@ function fordcar_install() {
 function fordcar_update() {
 	fordcar::dependancy_install_update();
   //exec('../ressources/install_apt.sh');
-  fordcar::postSave();
-	fordcar::refresh();
+  foreach (eqLogic::byType('fordcar') as $eqLogic) {
+        		$eqLogic->save();
+        		log::add('fordcar', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
+    		}
 
 }
 

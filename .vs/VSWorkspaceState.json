@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\3rdparty",
+    "\\core",
+    "\\core\\template",
+    "\\core\\template\\mobile",
+    "\\data",
+    "\\desktop",
+    "\\docs",
+    "\\docs\\fr_FR",
+    "\\resources"
   ],
+  "SelectedNode": "\\core\\template\\mobile\\fordcar_dashboard.html",
   "PreviewInSolutionExplorer": false
 }
