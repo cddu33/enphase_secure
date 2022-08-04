@@ -9,7 +9,7 @@ echo "*  Installation des dépandances  *"
 echo "**********************************"
 echo $(date)
 echo 50 > ${PROGRESS_FILE}
-sudo python3 -m pip install --force git+https://github.com/NicKoehler/fordpass-python.git
+sudo python3 -m pip install --force git+https://github.com/cddu33/fordpass-python.git
 echo 100 > ${PROGRESS_FILE}
 echo $(date)
 rm ${PROGRESS_FILE}

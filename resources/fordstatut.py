@@ -10,7 +10,7 @@ else:
 	try:
 		with open(sys.argv[5], "w+") as json_file:
 			#print(r.status())
-			json.dump(r.status(), json_file)
+			json.dump(r.test(), json_file)
 		if sys.argv[4] == "lock":
 			r.lock();
 		elif sys.argv[4] == "unlock":
