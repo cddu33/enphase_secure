@@ -1,16 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\3rdparty",
-    "\\core",
-    "\\core\\template",
-    "\\core\\template\\mobile",
-    "\\data",
-    "\\desktop",
-    "\\docs",
-    "\\docs\\fr_FR",
+    "\\plugin_info",
     "\\resources"
   ],
-  "SelectedNode": "\\core\\template\\mobile\\fordcar_dashboard.html",
+  "SelectedNode": "\\resources\\install_apt_update.sh",
   "PreviewInSolutionExplorer": false
 }
