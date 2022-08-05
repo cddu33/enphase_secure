@@ -6,6 +6,10 @@
 
 > Pour actualiser les nouvelles commandes disponnibles, sauvegarder l'équipement
 
+# 05/08/2022 (beta)
+
+Bouton pour forcer l'actualisation (30s mini avantle retour d'info)
+
 # 03/08/2022 (beta)
 
 Cron pour l'actualisation des information modifiable depuis l'équipement, de base 15min
