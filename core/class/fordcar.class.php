@@ -915,23 +915,22 @@ class fordcarCmd extends cmd {
 	  { 
 		  case 'lock':
 		  $eqlogic->commandes("lock"); 
-		  sleep(15);
+
 		  break;
 		  case 'unlock':
 		  $eqlogic->commandes("unlock"); 
-		  sleep(15);
+
 		  break;
 		  case 'start':
 		  $eqlogic->commandes("start"); 
-		  sleep(15);
+
 		  break;
 		  case 'stop':
 		  $eqlogic->commandes("stop"); 
-		  sleep(15);
-		  break;
+		  sleep(15);		  break;
 		  case 'frefresh':
 		  $eqlogic->commandes("refresh"); 
-		  sleep(20);
+
 		  break;
 	  }
 	    $eqlogic->refresh();
