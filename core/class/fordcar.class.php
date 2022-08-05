@@ -933,7 +933,7 @@ class fordcarCmd extends cmd {
 
 		  break;
 	  }
-	    $eqlogic->refresh();
+	   // $eqlogic->refresh();
 	  //$eqLogic->refreshWidget();
   }
 
