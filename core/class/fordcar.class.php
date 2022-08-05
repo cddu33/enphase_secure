@@ -902,6 +902,7 @@ class fordcar extends eqLogic {
 	  $fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut ;
 	  log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 	  exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+	  sleep(20);
   }
 
 }
@@ -915,25 +916,21 @@ class fordcarCmd extends cmd {
 	  { 
 		  case 'lock':
 		  $eqlogic->commandes("lock"); 
-
 		  break;
 		  case 'unlock':
 		  $eqlogic->commandes("unlock"); 
-
 		  break;
 		  case 'start':
 		  $eqlogic->commandes("start"); 
-
 		  break;
 		  case 'stop':
-		  $eqlogic->commandes("stop"); 
-		  sleep(15);		  break;
+		  $eqlogic->commandes("stop"); 	  
+		  break;
 		  case 'frefresh':
 		  $eqlogic->commandes("refresh"); 
-
 		  break;
 	  }
-	   // $eqlogic->refresh();
+	   $eqlogic->refresh();
 	  //$eqLogic->refreshWidget();
   }
 
