@@ -17,7 +17,7 @@ else:
 		elif sys.argv[4] == "stop":
 			r.stop();
 		elif sys.argv[4] == "test":
-			r.test();
+			print(r.test());
 
 	except:
 		print('Erreur de connexion')
