@@ -15,6 +15,5 @@ try:
 		r.stop();
 	elif sys.argv[4] == "refresh":
 		r.refresh();
-
-	except:
-		print('Erreur de connexion')
+except:
+	print('Erreur de connexion')
