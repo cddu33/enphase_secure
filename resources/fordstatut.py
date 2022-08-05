@@ -11,9 +11,5 @@ else:
 		with open(sys.argv[5], "w+") as json_file:
 			#print(r.status())
 			json.dump(r.status(), json_file)
-		if sys.argv[4] == "lock":
-			r.lock();
-		elif sys.argv[4] == "unlock":
-			r.unlock();
 	except:
 		print('Erreur de connexion')

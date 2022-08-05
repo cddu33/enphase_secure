@@ -189,6 +189,18 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('other');
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'frefresh');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Forcer le rafraichissement des données', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('frefresh');
+	  $fordcarCmd->setType('action');
+	  $fordcarCmd->setSubType('other');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
   
 	  $fordcarCmd = $this->getCmd(null, 'lock');
 	  if (!is_object($fordcarCmd)) {
@@ -890,6 +902,7 @@ class fordcar extends eqLogic {
 	  $fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut ;
 	  log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 	  exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+	  sleep(30);
   }
 
 }
@@ -903,22 +916,21 @@ class fordcarCmd extends cmd {
 	  { 
 		  case 'lock':
 		  $eqlogic->commandes("lock"); 
-		  sleep(5);
 		  break;
 		  case 'unlock':
 		  $eqlogic->commandes("unlock"); 
-		  sleep(5);
 		  break;
 		  case 'start':
 		  $eqlogic->commandes("start"); 
-		  sleep(5);
 		  break;
 		  case 'stop':
-		  $eqlogic->commandes("stop"); 
-		  sleep(5);
+		  $eqlogic->commandes("stop"); 	  
+		  break;
+		  case 'frefresh':
+		  $eqlogic->commandes("refresh"); 
 		  break;
 	  }
-	    $eqlogic->refresh();
+	   $eqlogic->refresh();
 	  //$eqLogic->refreshWidget();
   }
 
