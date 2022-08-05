@@ -13,8 +13,8 @@ elif sys.argv[4] == "start":
 	r.start();
 elif sys.argv[4] == "stop":
 	r.stop();
-elif sys.argv[4] == "test":
-	r.test();
+elif sys.argv[4] == "refresh":
+	r.refresh();
 
 #except:
 #	print('Erreur de connexion')
