@@ -79,6 +79,10 @@
     <br />
     <script>
 
+        if ('#vehicle_type#id##' == 'electrique') {
+            $('#combustion_engine#id#').hide();
+        }
+
         if (('#vehicle_type#id##' == 'thermique') || ('#vehicle_type#id##' == 'hybride')) {
             // $('#charge_btn#id#').hide();
             $('#electric_engine#id#').hide();
