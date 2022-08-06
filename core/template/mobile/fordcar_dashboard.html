@@ -24,10 +24,9 @@
         <div id="electric_engine#id#">
             <i class="fa fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold"> Moteur électrique</span>
             <br />
-            <div class="label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeElectric_id#"></span></div>
-            <div class="label "><i class="fa-xl fas fa-car-battery"></i><span class="Cmd#chargingLevelHv_id#"></span></div>
-            <div class="label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div>
-            <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>
+            <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#elVehDTE_id#" class="Cmd#elVehDTE_id# #elVehDTE_history#">kms restants</span></div><br />
+            <div class="label "><i class="fa-xl fas fa-car-battery"></i>Charge restant: <span data-cmd_id="#batteryFillLevel_id#" class="Cmd#batteryFillLevel_id#"></span></div><br />
+            <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
         </div>
 
         <div id="combustion_engine#id#">
