@@ -44,14 +44,16 @@
                         <tr>
                             <td width="5%"></td>
                             <td align="left" width="45%">
-                                    <div id="electric_engine#id#">
-                                        <i class="fa-2x fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold">Moteur électrique</span>
-                                        <br />
-                                        <div class="label"><i class="fa-xl fas fa-map-pin"></i><span class="Cmd#beRemainingRangeElectric_id#"></span></div><br />
-                                        <div class="label "><i class="fa-xl fas fa-car-battery"></i><span class="Cmd#chargingLevelHv_id#"></span></div><br />
-                                        <div class="label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div><br />
-                                        <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>
-                                    </div>
+                                <div id="electric_engine#id#">
+                                    <i class="fa-2x fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold">Moteur électrique</span>
+                                    <br />
+                                    <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#elVehDTE_id#" class="Cmd#elVehDTE_id# #elVehDTE_history#" >kms restants</span></div><br />
+                                    <div class="label "><i class="fa-xl fas fa-car-battery"></i> Charge restant: <span data-cmd_id="#batteryFillLevel_id#" class="Cmd#batteryFillLevel_id#"></span></div><br />
+                                    <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
+
+                                    <!--<div class="label"><i class="fa-xl fas fa-plug"></i><span class="Cmd#connectorStatus_id#"></span></div><br />
+    <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div>-->
+                                </div>
                             </td>
                             <td align="left">
                                     <div id="combustion_engine#id#">
@@ -59,8 +61,8 @@
                                         <br />
                                         <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div><br />
                                         <div class="label"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div><br />
-                                        <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i class="Cmd#tbat_id# #tbat_history#"></i></div><br />
-                                        <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i class="Cmd#huile_id# #huile_history#"></i> </div>
+                                        <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
+                                        <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i data-cmd_id="#huile_id#"" class="Cmd#huile_id# #huile_history#"></i> </div>
                                     </div>
                             </td>
                         </tr>

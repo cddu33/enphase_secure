@@ -98,50 +98,6 @@ class fordcar extends eqLogic {
 		
 	}
 
-	  /*
-
-  public static function cron() {
-	  foreach (self::byType('fordcar', true) as $fordcar) { //parcours tous les équipements actifs du plugin
-		  $cmd = $fordcar->getCmd(null, 'refresh'); //retourne la commande "refresh" si elle existe
-		  if (!is_object($cmd)) { //Si la commande n'existe pas
-			  continue; //continue la boucle
-			  }
-			  $cmd->execCmd(); //la commande existe on la lance
-	}	
-}
-
-
-
-
-  
-  * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
-  public static function cron5() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 10 minutes par Jeedom
-  public static function cron10() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 15 minutes par Jeedom
-  public static function cron15() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 30 minutes par Jeedom
-  public static function cron30() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les heures par Jeedom
-  public static function cronHourly() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement tous les jours par Jeedom
-  public static function cronDaily() {}
-  */
 
   /*     * *********************Méthodes d'instance************************* */
 
@@ -664,6 +620,34 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->setConfiguration('minValue', '0');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'elVehDTE');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Estimation kilométrage restant électrique', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('elVehDTE');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('km');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('minValue', '1000');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'batteryFillLevel');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Charge batterie', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('batteryFillLevel');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('%');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('minValue', '100');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -888,9 +872,13 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('qfuel', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
-		log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);
+		$fordcar_info = $fordcar_json['elVehDTE']['value'];
+		log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
+		log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
 	}
   }
 
