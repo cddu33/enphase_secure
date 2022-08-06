@@ -620,6 +620,34 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->setConfiguration('minValue', '0');
 	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'elVehDTE');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Estimation kilométrage restant électrique', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('elVehDTE');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('km');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('minValue', '1000');
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'batteryFillLevel');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Charge batterie', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('batteryFillLevel');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('%');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('minValue', '100');
+	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -844,9 +872,13 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('qfuel', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
-		log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);
+		$fordcar_info = $fordcar_json['elVehDTE']['value'];
+		log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
+
+		$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
+		log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
 	}
   }
 
