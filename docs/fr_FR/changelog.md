@@ -7,7 +7,10 @@
 
 # 06/08/2022 (beta)
 
-Rajout d'information pour les voitures électrique'
+Rajout d'information pour les voitures électrique
+
+Reprise version mobile
+
 # 05/08/2022 (beta)
 
 Bouton pour forcer l'actualisation (30s mini avantle retour d'info)
