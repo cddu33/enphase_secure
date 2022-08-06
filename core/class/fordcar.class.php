@@ -98,50 +98,6 @@ class fordcar extends eqLogic {
 		
 	}
 
-	  /*
-
-  public static function cron() {
-	  foreach (self::byType('fordcar', true) as $fordcar) { //parcours tous les équipements actifs du plugin
-		  $cmd = $fordcar->getCmd(null, 'refresh'); //retourne la commande "refresh" si elle existe
-		  if (!is_object($cmd)) { //Si la commande n'existe pas
-			  continue; //continue la boucle
-			  }
-			  $cmd->execCmd(); //la commande existe on la lance
-	}	
-}
-
-
-
-
-  
-  * Fonction exécutée automatiquement toutes les 5 minutes par Jeedom
-  public static function cron5() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 10 minutes par Jeedom
-  public static function cron10() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 15 minutes par Jeedom
-  public static function cron15() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les 30 minutes par Jeedom
-  public static function cron30() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement toutes les heures par Jeedom
-  public static function cronHourly() {}
-  */
-
-  /*
-  * Fonction exécutée automatiquement tous les jours par Jeedom
-  public static function cronDaily() {}
-  */
 
   /*     * *********************Méthodes d'instance************************* */
 
