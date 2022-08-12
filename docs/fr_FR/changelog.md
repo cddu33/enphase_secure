@@ -4,6 +4,15 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+>
+>Toutes les informations remontants de l'API sont disponible dans le fichier Data/vin.json du plugin.
+
+>
+>Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
+
+# 12/08/2022
+
+Passage en stable des fonctionnalités des  3 5 et 6 aout
 
 # 06/08/2022 (beta)
 
