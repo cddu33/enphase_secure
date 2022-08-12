@@ -14,6 +14,8 @@
 
 Passage en stable des fonctionnalités des  3 5 et 6 aout
 
+Correction des infos électriques
+
 # 06/08/2022 (beta)
 
 Rajout d'information pour les voitures électrique

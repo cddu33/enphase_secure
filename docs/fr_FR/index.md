@@ -14,3 +14,9 @@ Paramétrage:
 Limite de l'API:
 
 Suivant l'état de la voiture, une commande peut mettre plusieurs dizaines de secondes à être exécutée.
+
+>
+>Toutes les informations remontants de l'API sont disponible dans le fichier Data/vin.json du plugin.
+
+>
+>Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.

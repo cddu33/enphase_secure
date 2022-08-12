@@ -495,7 +495,26 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
 		jeedom.cmd.update['Cmd#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
 
 
-jeedom.cmd.update['#elVehDTE_id#']({display_value:'#elVehDTE#'});
+jeedom.cmd.update['#elVehDTE_id#'] = function (_options) {
+           	$('.Cmd#elVehDTE_id#').empty().append('<span><i>'+' '+_options.display_value+'kms</i> restants'+'</span>');
+        }
+		jeedom.cmd.update['#elVehDTE_id#']({display_value:'#elVehDTE#'});
+
+
+
+jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
+
+            if (parseInt(_options.display_value) >= 50) {
+                $('.Cmd#batteryFillLevel_id#').empty().append('<span>' + ' Charge restante : <i>' + _options.display_value + '%</i>' + '</span>');
+			}
+            else if (parseInt(_options.display_value) >= 10) {
+                $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
+            }
+            else {
+                $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
+            }
+        }
+		jeedom.cmd.update['Cmd#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
 
 
     </script>
