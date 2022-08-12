@@ -556,7 +556,7 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
                 $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
             }
         }
-		jeedom.cmd.update['Cmd#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
+		jeedom.cmd.update['#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
 
 	</script>
 

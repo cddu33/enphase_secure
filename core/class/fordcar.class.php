@@ -632,7 +632,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->setConfiguration('minValue', '0');
-	  $fordcarCmd->setConfiguration('minValue', '1000');
+	  $fordcarCmd->setConfiguration('maxValue', '1000');
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'batteryFillLevel');
@@ -646,7 +646,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('numeric');
 	  $fordcarCmd->setUnite('%');
 	  $fordcarCmd->setConfiguration('minValue', '0');
-	  $fordcarCmd->setConfiguration('minValue', '100');
+	  $fordcarCmd->setConfiguration('maxValue', '110');
 	  $fordcarCmd->save();
   }
 
