@@ -633,6 +633,8 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->setConfiguration('minValue', '0');
 	  $fordcarCmd->setConfiguration('maxValue', '1000');
+$fordcarCmd->setConfiguration('historizeRound', '0');
+
 	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'batteryFillLevel');
