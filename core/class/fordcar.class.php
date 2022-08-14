@@ -303,6 +303,18 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setSubType('string');
 	  //$fordcarCmd->setUnite('%');
 	  $fordcarCmd->save();
+	  
+	   $fordcarCmd = $this->getCmd(null, 'latlong');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Latitude-Longitude', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('latlong');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('string');
+	  //$fordcarCmd->setUnite('%');
+	  $fordcarCmd->save();
 
 	  $fordcarCmd = $this->getCmd(null, 'tbat');
 	  if (!is_object($fordcarCmd)) {
@@ -572,7 +584,7 @@ class fordcar extends eqLogic {
 	   $fordcarCmd = $this->getCmd(null, 'tailgate');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('CoffreHayon', __FILE__));
+		  $fordcarCmd->setName(__('Coffre Hayon', __FILE__));
 	  }
 	  $fordcarCmd->setEqLogic_id($this->getId());
 	  $fordcarCmd->setLogicalId('tailgate');
@@ -684,7 +696,7 @@ $fordcarCmd->setConfiguration('historizeRound', '0');
 		$replace['#long'.$this->getId().'#'] = $this->getConfiguration('long');
 		$replace['#lat'.$this->getId().'#'] = $this->getConfiguration('lat');
 							
-		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
+		//$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
 
 		// Traitement des commandes infos
 		foreach ($this->getCmd('info') as $cmd) {
@@ -773,6 +785,10 @@ $fordcarCmd->setConfiguration('historizeRound', '0');
 		$fordcar_info = $fordcar_json['gps']['longitude'];
 		log::add('fordcar', 'debug', 'Longitude: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('long', $fordcar_info);
+		
+		$this->checkAndUpdateCmd('latlong', $fordcar_json['gps']['latitude'] . ',' . $fordcar_json['gps']['longitude']);
+		
+		
 
 		$fordcar_info = $fordcar_json['battery']['batteryHealth']['value'];
 		log::add('fordcar', 'debug', 'Etat batterie: ' . $fordcar_info);
