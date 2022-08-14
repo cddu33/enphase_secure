@@ -774,7 +774,8 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'etat lock: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('etat', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['lastRefresh'];
+		$fordcar_info = date('Y-m-d H:i:s',strtotime('+2 hour',strtotime($fordcar_json['lastRefresh'])));
+		
 		$fordcar_info = new Date($fordcar_info);
                 $fordcar_info = new Date($fordcar_info.setHours($fordcar_info.getHours() + 2));
 		log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_info);
