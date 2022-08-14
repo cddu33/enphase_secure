@@ -605,7 +605,43 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
 
-	  $fordcarCmd = $this->getCmd(null, 'qfuel');
+	
+
+	 
+	  
+	  if ($this->getConfiguration('vehicle_type') == "electrique") {
+		   $fordcarCmd = $this->getCmd(null, 'elVehDTE');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Estimation kilométrage restant électrique', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('elVehDTE');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('km');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '1000');
+	  $fordcarCmd->setConfiguration('historizeRound', '0');
+
+	  $fordcarCmd->save();
+
+	  $fordcarCmd = $this->getCmd(null, 'batteryFillLevel');
+	  if (!is_object($fordcarCmd)) {
+		  $fordcarCmd = new fordcarCmd();
+		  $fordcarCmd->setName(__('Charge batterie', __FILE__));
+	  }
+	  $fordcarCmd->setEqLogic_id($this->getId());
+	  $fordcarCmd->setLogicalId('batteryFillLevel');
+	  $fordcarCmd->setType('info');
+	  $fordcarCmd->setSubType('numeric');
+	  $fordcarCmd->setUnite('%');
+	  $fordcarCmd->setConfiguration('minValue', '0');
+	  $fordcarCmd->setConfiguration('maxValue', '110');
+	  $fordcarCmd->save();
+	  }
+	  else {
+		    $fordcarCmd = $this->getCmd(null, 'qfuel');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
 		  $fordcarCmd->setName(__('Réservoir carburant restant', __FILE__));
@@ -632,36 +668,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setUnite('km');
 	  $fordcarCmd->setConfiguration('minValue', '0');
 	  $fordcarCmd->save();
-
-	  $fordcarCmd = $this->getCmd(null, 'elVehDTE');
-	  if (!is_object($fordcarCmd)) {
-		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Estimation kilométrage restant électrique', __FILE__));
 	  }
-	  $fordcarCmd->setEqLogic_id($this->getId());
-	  $fordcarCmd->setLogicalId('elVehDTE');
-	  $fordcarCmd->setType('info');
-	  $fordcarCmd->setSubType('numeric');
-	  $fordcarCmd->setUnite('km');
-	  $fordcarCmd->setConfiguration('minValue', '0');
-	  $fordcarCmd->setConfiguration('maxValue', '1000');
-$fordcarCmd->setConfiguration('historizeRound', '0');
-
-	  $fordcarCmd->save();
-
-	  $fordcarCmd = $this->getCmd(null, 'batteryFillLevel');
-	  if (!is_object($fordcarCmd)) {
-		  $fordcarCmd = new fordcarCmd();
-		  $fordcarCmd->setName(__('Charge batterie', __FILE__));
-	  }
-	  $fordcarCmd->setEqLogic_id($this->getId());
-	  $fordcarCmd->setLogicalId('batteryFillLevel');
-	  $fordcarCmd->setType('info');
-	  $fordcarCmd->setSubType('numeric');
-	  $fordcarCmd->setUnite('%');
-	  $fordcarCmd->setConfiguration('minValue', '0');
-	  $fordcarCmd->setConfiguration('maxValue', '110');
-	  $fordcarCmd->save();
   }
 
   // Fonction exécutée automatiquement avant la suppression de l'équipement
