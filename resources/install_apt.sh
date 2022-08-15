@@ -7,7 +7,6 @@ echo 0 > ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépandances  *"
 echo "**********************************"
-echo $(date)
 echo 5 > ${PROGRESS_FILE}
 sudo apt-get update
 echo 10 > ${PROGRESS_FILE}
@@ -21,5 +20,7 @@ sudo pip3 install --upgrade pip
 echo 70 > ${PROGRESS_FILE}
 sudo python3 -m pip install --force git+https://github.com/cddu33/fordpass-python.git
 echo 100 > ${PROGRESS_FILE}
-echo $(date)
+echo "**********************************"
+echo "*  Installation des dépandances OK  *"
+echo "**********************************"
 rm ${PROGRESS_FILE}

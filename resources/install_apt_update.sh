@@ -5,11 +5,13 @@ fi
 touch ${PROGRESS_FILE}
 echo 0 > ${PROGRESS_FILE}
 echo "**********************************"
-echo "*  Installation des dépandances  *"
+echo "*  Update des dépandances  *"
 echo "**********************************"
 echo $(date)
 echo 50 > ${PROGRESS_FILE}
 sudo python3 -m pip install --force git+https://github.com/cddu33/fordpass-python.git
 echo 100 > ${PROGRESS_FILE}
-echo $(date)
+echo "**********************************"
+echo "*  Dépandances update OK  *"
+echo "**********************************"
 rm ${PROGRESS_FILE}
