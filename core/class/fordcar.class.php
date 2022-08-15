@@ -774,12 +774,8 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'etat lock: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('etat', $fordcar_info);
 
-		$fordcar_info = DateTime::createFromFormat("M-d-y H:i:s", $fordcar_json['lastRefresh']);
-
-
-		log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_json['lastRefresh']);
-		
-		log::add('fordcar', 'debug', 'dernière actualisation bis: ' . $fordcar_info);
+		$fordcar_info = $fordcar_json['lastRefresh']);
+		log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_info . 'UTC');
 		
 		$this->checkAndUpdateCmd('last', $fordcar_info);
 		$fordcar_info = $fordcar_json['firmwareUpgInProgress']['value'];
