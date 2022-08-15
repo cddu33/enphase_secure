@@ -10,6 +10,10 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 15/08/2022 (beta)
+
+Corrections messages json
+
 # 12/08/2022
 
 Passage en stable des fonctionnalités des  3 5 et 6 aout
