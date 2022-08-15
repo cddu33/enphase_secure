@@ -775,7 +775,7 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('etat', $fordcar_info);
 
 		$fordcar_info_date = strtotime($fordcar_json['lastRefresh']);
-		$fordcar_info = date('d/M/Y h:i:s', $fordcar_info_date);
+		$fordcar_info = date('M-d-Y h:i:s', $fordcar_info_date);
 		log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_info);
 		log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_info_date);
 		
