@@ -752,11 +752,40 @@ class fordcar extends eqLogic {
   }
 
   public function refresh() {
+	$eqlogic = $this->getEqLogic();
 	$fordcar_path = realpath(dirname(__FILE__));
-			
-	$this->recupjson();
-
 	foreach (self::byType('fordcar', true) as $fordcar) {
+	
+		$fordcar_pass = $this->getConfiguration('password');
+		$fordcar_vin = $this->getConfiguration('vin');
+		$fordcar_user = $this->getConfiguration('user');
+		$fordcar_fichier = $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
+		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
+		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
+		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+		sleep(3);
+		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
+		if ($fordcar_json === null) {
+			log::add('fordcar', 'debug', 'Relance de la commande dans 2s car erreur ' . $fordcar_cmd);
+			sleep(2);
+			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+			sleep(3);
+			$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
+			if ($fordcar_json === null) {
+			throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
+			}
+		}
+		if ($fordcar_json['fuel'] == "null") {
+			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
+			$this->setConfiguration('vehicle_type', 'electrique');
+		}
+		else {
+			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
+			$this->setConfiguration('vehicle_type', 'thermique');
+		}
+  }
+
 		$fordcar_info = $fordcar_json['lockStatus']['value'];
 		log::add('fordcar', 'debug', 'etat lock: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('etat', $fordcar_info);
@@ -878,46 +907,10 @@ class fordcar extends eqLogic {
 		$this->checkAndUpdateCmd('qfuel', $fordcar_info);
 			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
 		log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);
-		}
-			
+		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
 	}
   }
 
-  public function recupjson() {
-	$fordcar_path = realpath(dirname(__FILE__));
-	foreach (self::byType('fordcar', true) as $fordcar) {
-	
-		$fordcar_pass = $this->getConfiguration('password');
-		$fordcar_vin = $this->getConfiguration('vin');
-		$fordcar_user = $this->getConfiguration('user');
-		$fordcar_fichier = $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
-		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
-		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
-		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
-		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		sleep(3);
-		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
-		if ($fordcar_json === null) {
-			log::add('fordcar', 'debug', 'Relance de la commande dans 2s car erreur ' . $fordcar_cmd);
-			sleep(2);
-			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-			sleep(3);
-			$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
-			if ($fordcar_json === null) {
-			throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
-			}
-		}
-		if ($fordcar_json['fuel'] == "null") {
-			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
-			$this->setConfiguration('vehicle_type', 'electrique');
-		}
-		else {
-			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
-			$this->setConfiguration('vehicle_type', 'thermique');
-		}
-  }
-}
   public function commandes($fordcar_statut) {
 	  $fordcar_pass = $this->getConfiguration('password');
 	  $fordcar_vin = $this->getConfiguration('vin');
@@ -957,6 +950,5 @@ class fordcarCmd extends cmd {
 	   $eqlogic->refresh();
 	  //$eqLogic->refreshWidget();
   }
-
 
 }
