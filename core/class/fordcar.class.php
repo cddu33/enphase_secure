@@ -917,6 +917,7 @@ class fordcar extends eqLogic {
 			$this->setConfiguration('vehicle_type', 'thermique');
 		}
   }
+}
   public function commandes($fordcar_statut) {
 	  $fordcar_pass = $this->getConfiguration('password');
 	  $fordcar_vin = $this->getConfiguration('vin');
