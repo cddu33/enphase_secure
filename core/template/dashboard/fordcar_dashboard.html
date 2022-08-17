@@ -546,7 +546,7 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
                 $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
                     $('#combustion_engine#id#').hide();
             }
-            else if (parseInt(_options.display_value) >= 0) {
+            else if (parseInt(_options.display_value) > 0) {
                 $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
                     $('#combustion_engine#id#').hide();
             }
