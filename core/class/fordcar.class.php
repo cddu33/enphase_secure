@@ -861,10 +861,9 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
-
+	
 		
-		
-		if ($fordcar_json['fuel'] == "null") {
+		if (this->getConfiguration('vehicle_type') == 'electrique') {
 			
 		$fordcar_info = $fordcar_json['elVehDTE']['value'];
 		log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
