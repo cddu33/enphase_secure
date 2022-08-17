@@ -135,6 +135,7 @@ class fordcar extends eqLogic {
 
   // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
   public function postSave() {
+	$fordcarCmd->refresh();
 	  $fordcarCmd = $this->getCmd(null, 'refresh');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
@@ -607,7 +608,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->save();
 	 
 	  
-	  if ($this->getConfiguration('vehicle_type') == "electrique") {
+	  if ($fordcar_json['fuel'] == "null") {
 		   $fordcarCmd = $this->getCmd(null, 'elVehDTE');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
@@ -878,7 +879,7 @@ class fordcar extends eqLogic {
 
 		
 		
-		if ($this->getConfiguration('vehicle_type') == "electrique") {
+		if ($fordcar_json['fuel'] == "null") {
 			
 		$fordcar_info = $fordcar_json['elVehDTE']['value'];
 		log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
