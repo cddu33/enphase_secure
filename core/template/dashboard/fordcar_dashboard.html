@@ -135,11 +135,11 @@
 	<script>
         
         if ('#batteryFillLevel#id##' == null )  {
-			
+			$('#electric_engine#id#').hide();
         }
        else	{
         $('#combustion_engine#id#').hide();
-        $('#electric_engine#id#').hide();
+        
        }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
