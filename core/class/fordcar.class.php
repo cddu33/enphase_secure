@@ -85,6 +85,7 @@ class fordcar extends eqLogic {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
 						try {
+							sleep(rand(0,15));
 							$eqLogic->refresh();
 						} catch (Exception $exc) {
 							log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
