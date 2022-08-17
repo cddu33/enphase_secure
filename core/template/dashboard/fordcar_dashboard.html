@@ -134,14 +134,13 @@
 	
 	<script>
         
-        if ('#vehicle_type#id##' == 'electrique' )  {
-			$('#combustion_engine#id#').hide();
+        if ('#batteryFillLevel#id##' == null )  {
+			
         }
-       
-        if (('#vehicle_type#id##' == 'thermique') ||('#vehicle_type#id##' == 'hybride')) {
-           // $('#charge_btn#id#').hide();
-			$('#electric_engine#id#').hide();
-        }
+       else	{
+        $('#combustion_engine#id#').hide();
+        $('#electric_engine#id#').hide();
+       }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
 			if (_options.display_value == "LOCKED") {
