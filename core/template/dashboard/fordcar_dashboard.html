@@ -133,6 +133,16 @@
     </div>
 	
 	<script>
+        
+        if (('#batteryFillLevel#id##') >= 0)  {
+
+			$('#electric_engine#id#').hide();
+        }
+       else	{
+        $('#combustion_engine#id#').hide();
+        
+       }
+		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
 			if (_options.display_value == "LOCKED") {
 				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>');
@@ -538,19 +548,12 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
 
             if (parseInt(_options.display_value) >= 50) {
                 $('.Cmd#batteryFillLevel_id#').empty().append('<span>' + ' Charge restante : <i>' + _options.display_value + '%</i>' + '</span>');
-                $('#combustion_engine#id#').hide();
 			}
             else if (parseInt(_options.display_value) >= 10) {
                 $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
-                    $('#combustion_engine#id#').hide();
-            }
-            else if (parseInt(_options.display_value) > 0) {
-                $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
-                    $('#combustion_engine#id#').hide();
             }
             else {
                 $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
-                    $('#electric_engine#id#').hide();
             }
         }
 		jeedom.cmd.update['#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
