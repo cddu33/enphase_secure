@@ -873,25 +873,18 @@ class fordcar extends eqLogic {
 	log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
 	$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
 	
-		
-	if (this->getConfiguration('vehicle_type') == 'electrique') {
-			
-		$fordcar_info = $fordcar_json['elVehDTE']['value'];
-		log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
-		$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
-		log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
-	}
-	else {
-		$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
-		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('qfuel', $fordcar_info);
-		$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
-		log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
-	}
+	
   }
+  public function commandes($fordcar_statut) {
+	$fordcar_pass = $this->getConfiguration('password');
+	$fordcar_vin = $this->getConfiguration('vin');
+	$fordcar_user = $this->getConfiguration('user');
+	$fordcar_cmd = 'python3 ' . realpath(dirname(__FILE__)) .'/../../resources/fordcmd.py';
+	$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut ;
+	log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
+	exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
+	sleep(30);
+}
 
 }
 
