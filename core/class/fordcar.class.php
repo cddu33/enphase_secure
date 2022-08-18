@@ -80,7 +80,7 @@ class fordcar extends eqLogic {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
 						try {
-							sleep(rand(0,15));
+							//sleep(rand(0,15));
 							$eqLogic->refresh();
 						} catch (Exception $exc) {
 							log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
@@ -631,7 +631,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setConfiguration('maxValue', '110');
 	  $fordcarCmd->save();
 	  
-		    $fordcarCmd = $this->getCmd(null, 'qfuel');
+		$fordcarCmd = $this->getCmd(null, 'qfuel');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
 		  $fordcarCmd->setName(__('Réservoir carburant restant', __FILE__));
@@ -774,7 +774,7 @@ class fordcar extends eqLogic {
 	$this->checkAndUpdateCmd('etat', $fordcar_info);
 
 	$fordcar_info = $fordcar_json['lastRefresh'];
-	log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_info . 'UTC');
+	log::add('fordcar', 'debug', 'dernière actualisation: ' . $fordcar_info . ' UTC');
 	$this->checkAndUpdateCmd('last', $fordcar_info);
 
 	$fordcar_info = $fordcar_json['firmwareUpgInProgress']['value'];
