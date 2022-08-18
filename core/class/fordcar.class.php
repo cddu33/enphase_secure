@@ -32,7 +32,7 @@ class fordcar extends eqLogic {
 		{
 			$return['state'] = 'nok';
 			$output = array();
-			$cmd = "sudo python3 -m pip list | grep fordpass";
+			$cmd = "pip3 list | grep fordpass";
 			unset($output);
 			exec($cmd, $output, $return_var);
         
@@ -80,7 +80,7 @@ class fordcar extends eqLogic {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
 						try {
-							//sleep(rand(0,15));
+							sleep(rand(0,15));
 							$eqLogic->refresh();
 						} catch (Exception $exc) {
 							log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
@@ -754,6 +754,7 @@ class fordcar extends eqLogic {
 	if ($fordcar_json === null) {
 		log::add('fordcar', 'debug', 'Relance de la commande dans 2s car erreur ' . $fordcar_cmd);
 		sleep(2);
+
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		sleep(3);
 		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
