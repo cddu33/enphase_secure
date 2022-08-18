@@ -32,7 +32,7 @@ class fordcar extends eqLogic {
 		{
 			$return['state'] = 'nok';
 			$output = array();
-			$cmd = "python3 -m pip list | grep fordpass";
+			$cmd = "sudo python3 -m pip list | grep fordpass";
 			unset($output);
 			exec($cmd, $output, $return_var);
         
