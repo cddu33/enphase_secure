@@ -133,15 +133,13 @@
     </div>
 	
 	<script>
-        
-        if (('#batteryFillLevel#id##') >= 0)  {
 
+       if ('#vehicle_type#id##' == 'electric' )  {
+			$('#combustion_engine#id#').hide();
+        }
+       else{
 			$('#electric_engine#id#').hide();
         }
-       else	{
-        $('#combustion_engine#id#').hide();
-        
-       }
 		
 		jeedom.cmd.update['#etat_id#'] = function(_options) {
 			if (_options.display_value == "LOCKED") {
