@@ -133,13 +133,11 @@
     </div>
 	
 	<script>
-        
-        if ('#vehicle_type#id##' == 'electrique' )  {
+
+       if ('#vehicle_type#id##' == 'electric' )  {
 			$('#combustion_engine#id#').hide();
         }
-       
-        if (('#vehicle_type#id##' == 'thermique') ||('#vehicle_type#id##' == 'hybride')) {
-           // $('#charge_btn#id#').hide();
+       else{
 			$('#electric_engine#id#').hide();
         }
 		
