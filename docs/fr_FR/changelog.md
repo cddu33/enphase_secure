@@ -10,9 +10,13 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
-# 15/08/2022 (beta)
+# 18/08/2022
 
 Corrections messages json
+
+Adaptation dépendance pour les smart
+
+Reprise des informations elec/therm
 
 # 12/08/2022
 
