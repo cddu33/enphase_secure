@@ -883,6 +883,14 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
 	}
+	else {
+		$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
+		log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('qfuel', $fordcar_info);
+		$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
+		log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
+		$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
+	}
 	
   }
   public function commandes($fordcar_statut) {
