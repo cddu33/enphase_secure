@@ -32,7 +32,7 @@ class fordcar extends eqLogic {
 		{
 			$return['state'] = 'nok';
 			$output = array();
-			$cmd = "pip3 list | grep fordpass";
+			$cmd = "sudo python3 -m pip list | grep fordpass";
 			unset($output);
 			exec($cmd, $output, $return_var);
         
@@ -740,6 +740,7 @@ class fordcar extends eqLogic {
 
   public function refresh() {
 	$fordcar_path = realpath(dirname(__FILE__));
+
 	$fordcar_pass = $this->getConfiguration('password');
 	$fordcar_vin = $this->getConfiguration('vin');
 	$fordcar_user = $this->getConfiguration('user');
@@ -894,6 +895,7 @@ class fordcar extends eqLogic {
 	
   }
   public function commandes($fordcar_statut) {
+
 	$fordcar_pass = $this->getConfiguration('password');
 	$fordcar_vin = $this->getConfiguration('vin');
 	$fordcar_user = $this->getConfiguration('user');
@@ -903,6 +905,7 @@ class fordcar extends eqLogic {
 	exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 	sleep(30);
 }
+
 
 }
 
