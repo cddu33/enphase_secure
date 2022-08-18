@@ -601,7 +601,7 @@ class fordcar extends eqLogic {
 	  //$fordcarCmd->setUnite('bar');
 	  $fordcarCmd->save();
 
-		   $fordcarCmd = $this->getCmd(null, 'elVehDTE');
+		$fordcarCmd = $this->getCmd(null, 'elVehDTE');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
 		  $fordcarCmd->setName(__('Estimation kilométrage restant électrique', __FILE__));
@@ -630,7 +630,7 @@ class fordcar extends eqLogic {
 	  $fordcarCmd->setConfiguration('minValue', '0');
 	  $fordcarCmd->setConfiguration('maxValue', '110');
 	  $fordcarCmd->save();
-	  }
+	  
 		    $fordcarCmd = $this->getCmd(null, 'qfuel');
 	  if (!is_object($fordcarCmd)) {
 		  $fordcarCmd = new fordcarCmd();
