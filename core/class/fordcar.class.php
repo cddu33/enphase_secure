@@ -762,11 +762,11 @@ class fordcar extends eqLogic {
 	}
 	if ($fordcar_json['fuel'] == "null") {
 		log::add('fordcar', 'debug', 'Type véhicule: Electrique');
-		$this->setConfiguration('vehicle_type', 'electrique');
+		//$this->setConfiguration('vehicle_type', 'electrique');
 	}
 	else {
 		log::add('fordcar', 'debug', 'Type véhicule: Thermique');
-		$this->setConfiguration('vehicle_type', 'thermique');
+		//$this->setConfiguration('vehicle_type', 'thermique');
 	}
 
 	$fordcar_info = $fordcar_json['lockStatus']['value'];
