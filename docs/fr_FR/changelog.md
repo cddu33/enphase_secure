@@ -10,7 +10,7 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
-# 18/08/2022
+# 20/08/2022
 
 Corrections messages json
 
