@@ -726,13 +726,13 @@ class fordcar extends eqLogic {
 				throw new Exception(__('Impossible de récupérer les données : ', __FILE__));
 			}
 		}
-		if ($fordcar_json['fuel'] == "null") {
-			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
-			$this->setConfiguration('vehicle_type', 'electrique');
-		}
-		elseif ($fordcar_json['hybridModeStatus'] == "null") {
+		if ($fordcar_json['elVehDTE'] == "null") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
 			$this->setConfiguration('vehicle_type', 'thermique');
+		}
+		elseif ($fordcar_json['fuel'] == "null") {
+			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
+			$this->setConfiguration('vehicle_type', 'electric');
 		}
 		else {
 			log::add('fordcar', 'debug', 'Type véhicule: Hybride');
@@ -891,7 +891,7 @@ class fordcar extends eqLogic {
 			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
 			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
 			$this->checkAndUpdateCmd('qfuel', $fordcar_info);
-			
+
 			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
 			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
 			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
