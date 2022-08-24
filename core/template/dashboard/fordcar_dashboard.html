@@ -360,6 +360,9 @@
             if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
           	else if ( _options.display_value == "Fully_Closed")  {
               	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
@@ -372,27 +375,33 @@
 		
 		jeedom.cmd.update['#vicdar_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
-            	$('.Cmd#vicdar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
           	else if ( _options.display_value == "Fully_Closed")  {
-              	$('.Cmd#vicdar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			else {
-              	$('.Cmd#vicdar_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
 		jeedom.cmd.update['#vicdar_id#']({display_value:'#vicdar#'});
 		
 		
 		jeedom.cmd.update['#vipsav_id#'] = function(_options) {
-            if (_options.display_value.indexOf("Open") != "-1") {
-            	$('.Cmd#vipsav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
           	else if ( _options.display_value == "Fully_Closed")  {
-              	$('.Cmd#vipsav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			else {
-              	$('.Cmd#vipsav_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
 		jeedom.cmd.update['#vipsav_id#']({display_value:'#vipsav#'});
@@ -400,53 +409,65 @@
 		
 		jeedom.cmd.update['#vipsar_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
-            	$('.Cmd#vipsar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
           	else if ( _options.display_value == "Fully_Closed")  {
-              	$('.Cmd#vipsar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			else {
-              	$('.Cmd#vipsar_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
 		jeedom.cmd.update['#vipsar_id#']({display_value:'#vipsar#'});
 				
       
 		jeedom.cmd.update['#hood_id#'] = function(_options) {
-            if ( _options.display_value == "Open")  {
-            	$('.Cmd#hood_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
           	else if ( _options.display_value == "Closed")  {
-              	$('.Cmd#hood_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
 			else {
-              	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
 		}
         jeedom.cmd.update['#hood_id#']({ display_value: '#hood#' });
 
         jeedom.cmd.update['#tailgate_id#'] = function (_options) {
-            if (_options.display_value == "Open") {
-                $('.Cmd#tailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
-            else if (_options.display_value == "Closed") {
-                $('.Cmd#tailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
-            else {
-                $('.Cmd#tailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+			else {
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update['#tailgate_id#']({ display_value: '#tailgate#' });
 
         jeedom.cmd.update['#innertailgate_id#'] = function (_options) {
-            if (_options.display_value == "Open") {
-                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
             }
-            else if (_options.display_value == "Closed") {
-                $('.Cmd#innertailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
             }
-            else {
-                $('.Cmd#innertailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+			else {
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update['#innertailgate_id#']({ display_value: '#innertailgate#' });
