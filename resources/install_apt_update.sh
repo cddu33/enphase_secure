@@ -9,7 +9,7 @@ echo "*  Update des dépendances  *"
 echo "**********************************"
 echo $(date)
 echo 50 > ${PROGRESS_FILE}
-sudo pip3 install --force git+https://github.com/cddu33/fordpass-python.git
+sudo pip3 install git+https://github.com/cddu33/fordpass-python.git
 echo 100 > ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Dépendances update OK  *"
