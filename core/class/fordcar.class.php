@@ -726,11 +726,11 @@ class fordcar extends eqLogic {
 				throw new Exception(__('Impossible de récupérer les données : ', __FILE__));
 			}
 		}
-		if ($fordcar_json['elVehDTE'] == "null") {
+		if ($fordcar_json['elVehDTE'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
 			$this->setConfiguration('vehicle_type', 'thermique');
 		}
-		elseif ($fordcar_json['fuel'] == "null") {
+		elseif ($fordcar_json['fuel'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
 			$this->setConfiguration('vehicle_type', 'electric');
 		}
