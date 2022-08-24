@@ -10,6 +10,14 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 24/08/2022 (beta)
+
+Corrections pressions inversées
+
+Corrections gestion de l'état des fênetres
+
+Support des informations pour les hybrides
+
 # 20/08/2022
 
 Corrections messages json
