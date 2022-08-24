@@ -75,13 +75,11 @@
     <br />
     <script>
 
-        if ('#vehicle_type#id##' == 'electrique') {
-            $('#combustion_engine#id#').hide();
+        if ('#vehicle_type#id##' == 'electric' )  {
+			$('#combustion_engine#id#').hide();
         }
-
-        if (('#vehicle_type#id##' == 'thermique') || ('#vehicle_type#id##' == 'hybride')) {
-            // $('#charge_btn#id#').hide();
-            $('#electric_engine#id#').hide();
+        if ('#vehicle_type#id##' == 'thermique' ) {
+			$('#electric_engine#id#').hide();
         }
 
         jeedom.cmd.update['#etat_id#'] = function (_options) {

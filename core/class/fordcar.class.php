@@ -716,23 +716,27 @@ class fordcar extends eqLogic {
 		sleep(3);
 		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
 		if ($fordcar_json === null) {
-			log::add('fordcar', 'debug', 'Relance de la commande dans 2s car erreur ' . $fordcar_cmd);
-			sleep(2);
+			log::add('fordcar', 'debug', 'Relance de la commande dans 10s car erreur ' . $fordcar_cmd);
+			sleep(10);
 
 			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 			sleep(3);
 			$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
 			if ($fordcar_json === null) {
-				throw new Exception(__('Json invalide ou non décodable : ', __FILE__));
+				throw new Exception(__('Impossible de récupérer les données : ', __FILE__));
 			}
 		}
 		if ($fordcar_json['fuel'] == "null") {
 			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
 			$this->setConfiguration('vehicle_type', 'electrique');
 		}
-		else {
+		elseif ($fordcar_json['hybridModeStatus'] == "null") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
 			$this->setConfiguration('vehicle_type', 'thermique');
+		}
+		else {
+			log::add('fordcar', 'debug', 'Type véhicule: Hybride');
+			$this->setConfiguration('vehicle_type', 'hybride');
 		}
 
 		$fordcar_info = $fordcar_json['lockStatus']['value'];
@@ -874,6 +878,25 @@ class fordcar extends eqLogic {
 			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
 			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
 		}
+		if ($this->getConfiguration('vehicle_type') == 'hybride')
+		{
+			$fordcar_info = $fordcar_json['elVehDTE']['value'];
+			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
+
+			$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
+			log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
+
+			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
+			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('qfuel', $fordcar_info);
+			
+			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
+			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
+		}
+
   	}
 
  	public function commandes($fordcar_statut) {
