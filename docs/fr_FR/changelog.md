@@ -10,6 +10,13 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 25/08/2022 (beta)
+
+Corrections porte arrière droite
+
+Corrections widget en mode hybride
+
+
 # 24/08/2022 (beta)
 
 Corrections pressions inversées
