@@ -928,6 +928,7 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		sleep(30);
+		return;
 	}
 }
 
