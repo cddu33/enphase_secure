@@ -175,7 +175,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
         <sup><i class="fas fa-question-circle tooltips" title=""></i></sup>
       </label>
       <div class="col-md-4">
-	  <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="vehicle_type">
+	  <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="vehicle_type" readonly>
         </select>
       </div>  
     </div>
