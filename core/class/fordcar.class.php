@@ -662,8 +662,9 @@ class fordcar extends eqLogic {
 		$replace['#version#'] = $_version;
 		
 		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vin');
-		$replace['#vehicle_type'.$this->getId().'#'] = $this->getCmd(null, 'vehicle_type'); 
+		$replace['#vehicle_type#'] = $this->getCmd(null, 'vehicle_type'); 
 							
+
 		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
 
 		// Traitement des commandes infos
