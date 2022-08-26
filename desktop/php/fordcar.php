@@ -119,7 +119,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 
 				
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Auto-actualisation}}
+								<label class="col-sm-4 control-label">{{Actualisation données}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement (15min par défaut) des commandes infos du véhicule; On interoge le serveur pas directement la voiture}}"></i></sup>
 								</label>
 								<div class="col-sm-6">
@@ -168,9 +168,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
       <div class="col-md-4">
         <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="vin">
         </select>
-      </div>
+      </div>  
     </div>
-	
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
