@@ -801,19 +801,19 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Etat pneu arrière droit: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('etpnardr', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['TPMS']['leftFrontTirePressure']['value'];
+		$fordcar_info = ($fordcar_json['TPMS']['leftFrontTirePressure']['value'])/100;
 		log::add('fordcar', 'debug', 'Pression pneu avant gauche: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('prpnavgh', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['TPMS']['rightFrontTirePressure']['value'];
+		$fordcar_info = ($fordcar_json['TPMS']['rightFrontTirePressure']['value'])/100;
 		log::add('fordcar', 'debug', 'Pression pneu avant droit: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('prpnavdr', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['TPMS']['outerLeftRearTirePressure']['value'];
+		$fordcar_info = ($fordcar_json['TPMS']['outerLeftRearTirePressure']['value'])/100;
 		log::add('fordcar', 'debug', 'Pression pneu arrière gauche: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('prpnargh', $fordcar_info);
 
-		$fordcar_info = $fordcar_json['TPMS']['outerRightRearTirePressure']['value'];
+		$fordcar_info = ($fordcar_json['TPMS']['outerRightRearTirePressure']['value'])/100;
 		log::add('fordcar', 'debug', 'Pression pneu arrière droit: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('prpnardr', $fordcar_info);
 
