@@ -170,15 +170,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
         </select>
       </div>  
     </div>
-	<div class="form-group">
-      <label class="col-md-4 control-label">{{Type de véhicule}}
-        <sup><i class="fas fa-question-circle tooltips" title=""></i></sup>
-      </label>
-      <div class="col-md-4">
-	  <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="vehicle_type" readonly>
-        </select>
-      </div>  
-    </div>
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
