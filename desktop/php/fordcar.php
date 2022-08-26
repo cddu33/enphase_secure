@@ -179,9 +179,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
         </select>
       </div>  
     </div>
-	<?php
-	$this->getConfiguration('vehicle_type');
-	?>
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
