@@ -1,10 +1,10 @@
 <div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width:#width#; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="mobile">
+    
+    <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
 
     <center class="widget-name" style="padding-right: 0px;">
         <span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
         <a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>
-        <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
-
     </center>
     <div align="center">
 
@@ -177,17 +177,6 @@
         }
         jeedom.cmd.update['#huile_id#']({ display_value: '#huile#' });
 
-        /*
-            jeedom.cmd.update['#blabla_id#'] = function (_options) {
-              if (_options.display_value == "0" || _options.display_value == "") {
-                  $('.Cmd#blabla_id#').empty().append('<i class="fas fa-ban"></i>');
-              }
-              else { $('.Cmd#blabla_id#').empty().append('<span>' + _options.display_value + '</span>'); }
-          }
-          jeedom.cmd.update['#blabla_id#']({ display_value: '#blabla#' });
-          */
-
-
         jeedom.cmd.update['#maj_id#'] = function (_options) {
             if (_options.display_value == "1") {
                 $('.Cmd#maj_id#').empty().append('<i class="icon_red fa fa-exclamation"></i>');
@@ -240,7 +229,6 @@
         }
         jeedom.cmd.update['#hbat_id#']({ display_value: '#hbat#' });
 
-
         jeedom.cmd.update['#doorcd_id#'] = function (_options) {
             if (_options.display_value == "Open") {
                 $('.Cmd#doorcd_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -253,7 +241,6 @@
             }
         }
         jeedom.cmd.update['#doorcd_id#']({ display_value: '#doorcd#' });
-
 
         jeedom.cmd.update['#doorleft_id#'] = function (_options) {
             if (_options.display_value == "Open") {
@@ -268,7 +255,6 @@
         }
         jeedom.cmd.update['#doorleft_id#']({ display_value: '#doorleft#' });
 
-
         jeedom.cmd.update['#doorps_id#'] = function (_options) {
             if (_options.display_value == "Open") {
                 $('.Cmd#doorps_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -282,7 +268,6 @@
         }
         jeedom.cmd.update['#doorps_id#']({ display_value: '#doorps#' });
 
-
         jeedom.cmd.update['#doorright_id#'] = function (_options) {
             if (_options.display_value == "Open") {
                 $('.Cmd#doorright_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -295,7 +280,6 @@
             }
         }
         jeedom.cmd.update['#doorright_id#']({ display_value: '#doorright#' });
-
 
 		jeedom.cmd.update['#vicdav_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
@@ -313,7 +297,6 @@
 		}
 		jeedom.cmd.update['#vicdav_id#']({display_value:'#vicdav#'});
 		
-		
 		jeedom.cmd.update['#vicdar_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vicdar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
@@ -330,7 +313,6 @@
 		}
 		jeedom.cmd.update['#vicdar_id#']({display_value:'#vicdar#'});
 		
-		
 		jeedom.cmd.update['#vipsav_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vipsav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
@@ -346,7 +328,6 @@
             }
 		}
 		jeedom.cmd.update['#vipsav_id#']({display_value:'#vipsav#'});
-		
 		
 		jeedom.cmd.update['#vipsar_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
@@ -410,9 +391,6 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnavgh_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -423,9 +401,6 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnavdr_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -436,9 +411,6 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnardr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnardr_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -449,15 +421,11 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnargh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnargh_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update['#etpnargh_id#']({ display_value: '#etpnargh#' });
-
 
         jeedom.cmd.update['#km_id#'] = function (_options) {
             if (_options.display_value == "0" || _options.display_value == "") {
@@ -489,9 +457,7 @@
         }
         jeedom.cmd.update['#qfuel_id#']({ display_value: '#qfuel#' });
 
-
-
-jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
+        jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
 
             if (parseInt(_options.display_value) >= 50) {
                 $('.Cmd#batteryFillLevel_id#').empty().append('<span>' + ' Charge restante : <i>' + _options.display_value + '%</i>' + '</span>');
@@ -506,15 +472,12 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
 		jeedom.cmd.update['Cmd#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
 
 
-jeedom.cmd.update['#elVehDTE_id#'] = function (_options) {
+        jeedom.cmd.update['#elVehDTE_id#'] = function (_options) {
            	$('.Cmd#elVehDTE_id#').empty().append('<span><i>'+' '+_options.display_value+'kms</i> restants'+'</span>');
         }
 		jeedom.cmd.update['#elVehDTE_id#']({display_value:'#elVehDTE#'});
 
-
-
-jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
-
+        jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
             if (parseInt(_options.display_value) >= 50) {
                 $('.Cmd#batteryFillLevel_id#').empty().append('<span>' + ' Charge restante : <i>' + _options.display_value + '%</i>' + '</span>');
 			}
@@ -526,8 +489,5 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
             }
         }
 		jeedom.cmd.update['#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
-
-
     </script>
-
 </div>

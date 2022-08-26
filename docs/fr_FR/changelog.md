@@ -14,6 +14,10 @@
 
 Corrections pressions unité
 
+Correction refresh widget
+
+Correction type véhicule
+
 # 25/08/2022 (beta)
 
 Corrections porte arrière droite

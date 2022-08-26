@@ -1,10 +1,9 @@
 <div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width: 700px; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+    <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
 
     <center class="widget-name" style="padding-right: 0px;">
         <span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
-        <a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>
-        <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
-        
+        <a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>        
     </center>
     <div class="container-fluid">
         <table width="100%" border="0" align="center" cellpadding="0">
@@ -27,7 +26,7 @@
                         <span class="label cmdName" style="font-weight: bold">Actions</span><br />
                         <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
                         <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
-                        <button class="btn cmd action" data-cmd_id="#refresh_id#" title="Forcer le Rafraichissement" onclick="jeedom.cmd.execute({id: #frefresh_id#});"><i class="fa-2x icon jeedomapp-reload"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#refresh_id#" title="Forcer le Rafraichissement" onclick="jeedom.cmd.execute({id: #frefresh_id#});"><i class="fa-2x fas icon jeedomapp-reload"></i></button>
 
                         <button class="btn cmd action" data-cmd_id="#start_id#" title="Démarrer le moteur" onclick="jeedom.cmd.execute({id: #start_id#});"><i class="fa-2x icon fas fa-toggle-off"></i></button>
                         <button class="btn cmd action" data-cmd_id="#stop_id#" title="Couper le moteur" onclick="jeedom.cmd.execute({id: #stop_id#});"><i class="fa-2x icon fas fa-power-off"></i></button>
@@ -236,17 +235,6 @@
         }
         jeedom.cmd.update['#huile_id#']({ display_value: '#huile#' }); 
 
-      /*  
-	      jeedom.cmd.update['#blabla_id#'] = function (_options) {
-            if (_options.display_value == "0" || _options.display_value == "") {
-                $('.Cmd#blabla_id#').empty().append('<i class="fas fa-ban"></i>');
-            }
-            else { $('.Cmd#blabla_id#').empty().append('<span>' + _options.display_value + '</span>'); }
-        }
-        jeedom.cmd.update['#blabla_id#']({ display_value: '#blabla#' }); 
-		*/
-
-		
         jeedom.cmd.update['#maj_id#'] = function (_options) {
             if (_options.display_value == "1") {
                 $('.Cmd#maj_id#').empty().append('<i class="icon_red fa-2x fa-exclamation"></i>');
@@ -299,7 +287,6 @@
         }
         jeedom.cmd.update['#hbat_id#']({ display_value: '#hbat#' });
 
-		
 		jeedom.cmd.update['#doorcd_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorcd_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -312,7 +299,6 @@
             }
 		}
 		jeedom.cmd.update['#doorcd_id#']({display_value:'#doorcd#'});
-		
 		
 		jeedom.cmd.update['#doorleft_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
@@ -327,7 +313,6 @@
 		}
 		jeedom.cmd.update['#doorleft_id#']({display_value:'#doorleft#'});
 		
-		
 		jeedom.cmd.update['#doorps_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorps_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -341,7 +326,6 @@
 		}
 		jeedom.cmd.update['#doorps_id#']({display_value:'#doorps#'});
 		
-		
 		jeedom.cmd.update['#doorright_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#doorright_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -354,7 +338,6 @@
             }
 		}
 		jeedom.cmd.update['#doorright_id#']({display_value:'#doorright#'});
-		
 		
 		jeedom.cmd.update['#vicdav_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
@@ -372,7 +355,6 @@
 		}
 		jeedom.cmd.update['#vicdav_id#']({display_value:'#vicdav#'});
 		
-		
 		jeedom.cmd.update['#vicdar_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vicdar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
@@ -388,7 +370,6 @@
             }
 		}
 		jeedom.cmd.update['#vicdar_id#']({display_value:'#vicdar#'});
-		
 		
 		jeedom.cmd.update['#vipsav_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
@@ -406,7 +387,6 @@
 		}
 		jeedom.cmd.update['#vipsav_id#']({display_value:'#vipsav#'});
 		
-		
 		jeedom.cmd.update['#vipsar_id#'] = function(_options) {
             if (_options.display_value.indexOf("Open") != "-1")  {
             	$('.Cmd#vipsar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
@@ -423,7 +403,6 @@
 		}
 		jeedom.cmd.update['#vipsar_id#']({display_value:'#vipsar#'});
 				
-      
 		jeedom.cmd.update['#hood_id#'] = function(_options) {
             if ( _options.display_value == "Open")  {
             	$('.Cmd#hood_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
@@ -463,14 +442,10 @@
         }
         jeedom.cmd.update['#innertailgate_id#']({ display_value: '#innertailgate#' });
 
-
         jeedom.cmd.update['#etpnavgh_id#'] = function (_options) {
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-           /* else if (_options.display_value == "Closed") {
-                $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-            }*/
             else {
                 $('.Cmd#etpnavgh_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -481,9 +456,6 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnavdr_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -494,9 +466,6 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnardr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnardr_id#').empty().append('<i class="fas fa-ban"></i>');
             }
@@ -507,15 +476,11 @@
             if (_options.display_value == "Normal") {
                 $('.Cmd#etpnargh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
-            /* else if (_options.display_value == "Closed") {
-                 $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
-             }*/
             else {
                 $('.Cmd#etpnargh_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update['#etpnargh_id#']({ display_value: '#etpnargh#' });
-
 	
 		jeedom.cmd.update['#km_id#'] = function(_options) {
             if (_options.display_value == "0" || _options.display_value == "")  {
@@ -547,14 +512,12 @@
         }
 		jeedom.cmd.update['#qfuel_id#']({display_value:'#qfuel#'});
 		
-jeedom.cmd.update['#elVehDTE_id#'] = function (_options) {
+        jeedom.cmd.update['#elVehDTE_id#'] = function (_options) {
            	$('.Cmd#elVehDTE_id#').empty().append('<span><i>'+' '+_options.display_value+'kms</i> restants'+'</span>');
         }
 		jeedom.cmd.update['#elVehDTE_id#']({display_value:'#elVehDTE#'});
 
-
-
-jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
+        jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
 
             if (parseInt(_options.display_value) >= 50) {
                 $('.Cmd#batteryFillLevel_id#').empty().append('<span>' + ' Charge restante : <i>' + _options.display_value + '%</i>' + '</span>');
@@ -571,19 +534,16 @@ jeedom.cmd.update['#batteryFillLevel_id#'] = function (_options) {
 	</script>
 
 	<style>
-    
-	.fordcar_widget hr {
-		border-top: 1px solid;
-		margin : 10px 10px 10px 10px;
-	}
+	    .fordcar_widget hr {
+		    border-top: 1px solid;
+		    margin : 10px 10px 10px 10px;
+	    }
 	
-	.fordcar_widget .btn {
-		width: 40px !important;
-		height: 40px !important;
-		max-width: 40px !important;
-		max-height: 40px !important;
-	}
-				
+	    .fordcar_widget .btn {
+		    width: 40px !important;
+		    height: 40px !important;
+		    max-width: 40px !important;
+		    max-height: 40px !important;
+	    }			
 	</style>
-	
 </div>
