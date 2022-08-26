@@ -203,6 +203,17 @@ class fordcar extends eqLogic {
 	  	$fordcarCmd->setSubType('string');
 	  	$fordcarCmd->save();
 
+		  $fordcarCmd = $this->getCmd(null, 'vehicle_type');
+	  	if (!is_object($fordcarCmd)) {
+		  	$fordcarCmd = new fordcarCmd();
+		  	$fordcarCmd->setName(__('Motorisation', __FILE__));
+	  	}
+	  	$fordcarCmd->setEqLogic_id($this->getId());
+	  	$fordcarCmd->setLogicalId('vehicle_type');
+	  	$fordcarCmd->setType('info');
+	  	$fordcarCmd->setSubType('string');
+	  	$fordcarCmd->save();
+
 	  	$fordcarCmd = $this->getCmd(null, 'last');
 	  	if (!is_object($fordcarCmd)) {
 		  	$fordcarCmd = new fordcarCmd();
@@ -728,15 +739,15 @@ class fordcar extends eqLogic {
 		}
 		if ($fordcar_json['elVehDTE'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
-			$this->setConfiguration('vehicle_type', 'thermique');
+			$this->checkAndUpdateCmd('vehicle_type', 'thermique');
 		}
 		elseif ($fordcar_json['fuel'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
-			$this->setConfiguration('vehicle_type', 'electric');
+			$this->checkAndUpdateCmd('vehicle_type', 'electric');
 		}
 		else {
 			log::add('fordcar', 'debug', 'Type véhicule: Hybride');
-			$this->setConfiguration('vehicle_type', 'hybride');
+			$this->checkAndUpdateCmd('vehicle_type', 'hybride');
 		}
 
 		$fordcar_info = $fordcar_json['lockStatus']['value'];
