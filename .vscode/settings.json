@@ -1,6 +1,7 @@
 {
     "githubPullRequests.ignoredPullRequestBranches": [
         "dev",
+        "dev",
         "dev"
     ]
 }
