@@ -9,6 +9,10 @@
 
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
+>
+# 26/08/2022 (beta)
+
+Corrections pressions unité
 
 # 25/08/2022 (beta)
 
