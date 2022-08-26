@@ -21,6 +21,23 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 class fordcar extends eqLogic {
   /*     * *************************Attributs****************************** */
 
+  
+	public static $_widgetPossibility = array(
+		'custom' => true,
+		//'custom::layout' => false,
+		'parameters' => array(),
+	);
+
+	public function decrypt() {
+		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
+		$this->setConfiguration('vin', utils::decrypt($this->getConfiguration('vin')));
+	}
+
+	public function encrypt() {
+		$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
+		$this->setConfiguration('vin', utils::encrypt($this->getConfiguration('vin')));
+	}
+
 	public static function dependancy_info() {
 		$return = array();
         $return['log'] = log::getPathToLog(__CLASS__ . '_update');
@@ -58,8 +75,6 @@ class fordcar extends eqLogic {
 		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt_update.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
 	}
 
-	private static $_templateArray = [];
-  	public static $_widgetPossibility = array('custom' => true);
 
   /*     * ***********************Methode static*************************** */
   /*
@@ -702,15 +717,7 @@ class fordcar extends eqLogic {
 	}
 
   // Permet de crypter/décrypter automatiquement des champs de configuration des équipements
-  	public function decrypt() {
-	  	$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
-	  	$this->setConfiguration('vin', utils::decrypt($this->getConfiguration('vin')));
-  	}
-
-  	public function encrypt() {
-	  	$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
-	  	$this->setConfiguration('vin', utils::encrypt($this->getConfiguration('vin')));
-  	}
+  	
 
  	public function refresh() {
 		$fordcar_path = realpath(dirname(__FILE__));
@@ -948,5 +955,7 @@ class fordcarCmd extends cmd {
 		  	break;
 	  	}
 		$eqlogic->refresh();
+		$eqLogic->refreshWidget();
   	}
 }
+?>
