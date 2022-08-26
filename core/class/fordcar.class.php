@@ -662,7 +662,7 @@ class fordcar extends eqLogic {
 		$replace['#version#'] = $_version;
 		
 		$replace['#vehicle_vin'.$this->getId().'#'] = $this->getConfiguration('vin');
-		$replace['#vehicle_type'.$this->getId().'#'] = $this->getCmd('vehicle_type');
+		//$replace['#vehicle_type'.$this->getId().'#'] = $this->getCmd('vehicle_type');
 		log::add('fordcar', 'debug', 'Relance de la commande dans 10s car erreur ' . $this->getCmd('vehicle_type', value));
 							
 		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
