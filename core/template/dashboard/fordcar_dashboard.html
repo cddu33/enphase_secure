@@ -544,11 +544,12 @@
 
         jeedom.cmd.update['#chargingStatus_id#'] = function (_options) {
 
-            if (parseInt(_options.display_value) != null) {
-                $('.Cmd#chargingStatus_id#').empty().append('<span><i>' + _options.display_value + '</i>' + '</span>');
+            if (parseInt(_options.display_value) = 'null') {
+                $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
+                
             }
             else {
-                $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
+                $('.Cmd#chargingStatus_id#').empty().append('<span><i>' + _options.display_value + '</i>' + '</span>');
             }
         }
         jeedom.cmd.update['#chargingStatus_id#']({ display_value: '#chargingStatus#' });
