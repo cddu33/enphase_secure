@@ -51,7 +51,7 @@
                                     <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
 
                                     <div class="label"><i class="fa-xl fas fa-plug"></i>Véhicule branché: <span class="Cmd#connectorStatus_id#"></span></div><br />
-                                    <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div><br />
+                                    <div class="label"><i class="fa-xl fas fa-charging-station"></i> <span class="Cmd#chargingStatus_id#"></span></div><br />
                                 </div>
                             </td>
                             <td align="left">
@@ -542,7 +542,7 @@
         }
         jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
 
-        jeedom.cmd.update['#chargingStatus_id#']({ display_value: ' #chargingStatus#' });
+        jeedom.cmd.update['#chargingStatus_id#']({ display_value: '#chargingStatus#' });
 	</script>
 
 	<style>
