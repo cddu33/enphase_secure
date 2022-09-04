@@ -505,7 +505,7 @@ jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
 
 jeedom.cmd.update['#chargingStatus_id#'] = function (_options) {
 
-if (parseInt(_options.display_value) == "null") {
+if (parseInt(_options.display_value) == "") {
     $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
     
 }
