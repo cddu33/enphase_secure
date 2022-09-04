@@ -537,10 +537,10 @@
                 $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
             else {
-                $('.Cmd#connectorStatus_id#').empty().append(' <<i class="icon_green fas fa-ban"></i>');
+                $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
             }
         }
-        jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus_id#'});
+        jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
 
         jeedom.cmd.update['#chargingStatus_id#"'] = function (_options) {
 
@@ -548,7 +548,7 @@
                 $('.Cmd#chargingStatus_id#').empty().append('<span><i>' + _options.display_value + '</i>' + '</span>');
             }
             else {
-                $('.Cmd#chargingStatus_id#').empty().append(' <<i class="fas fa-ban"></i>');
+                $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
             }
         }
         jeedom.cmd.update['#chargingStatus_id#']({ display_value: '#chargingStatus#' });
