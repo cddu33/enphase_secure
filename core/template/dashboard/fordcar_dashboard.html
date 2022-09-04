@@ -533,7 +533,7 @@
 
         jeedom.cmd.update['#connectorStatus_id#'] = function (_options) {
 
-            if (parseInt(_options.display_value) = 1) {
+            if (parseInt(_options.display_value) = '1') {
                 $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
             }
             else {
