@@ -494,24 +494,25 @@
         
         jeedom.cmd.update['#connectorStatus_id#'] = function (_options) {
 
-            if (parseInt(_options.display_value) = 1) {
-                $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
-            }
-            else {
-                $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
-            }
-        }
-        jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
+if (parseInt(_options.display_value) == "1") {
+    $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+}
+else {
+    $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
+}
+}
+jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus#'});
 
-        jeedom.cmd.update['#chargingStatus_id#'] = function (_options) {
+jeedom.cmd.update['#chargingStatus_id#'] = function (_options) {
 
-        if (parseInt(_options.display_value) != null) {
-                $('.Cmd#chargingStatus_id#').empty().append('<span><i>' + _options.display_value + '</i>' + '</span>');
-        }
-        else {
-            $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
-        }
-    }
-    jeedom.cmd.update['#chargingStatus_id#']({ display_value: '#chargingStatus#' });
+if (parseInt(_options.display_value) == "null") {
+    $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
+    
+}
+else {
+    $('.Cmd#chargingStatus_id#').empty().append('<span><i>' + _options.display_value + '</i>' + '</span>');
+}
+}
+jeedom.cmd.update['#chargingStatus_id#']({ display_value: '#chargingStatus#' });
     </script>
 </div>
