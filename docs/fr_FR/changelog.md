@@ -16,6 +16,8 @@ Rajout informations hybride et electrique:
 - véhicule branché
 - type de charge
 
+Dépandance V4 package
+
 # 31/08/2022 Stable
 Reprise des version beta 26 25 24 aout
 
