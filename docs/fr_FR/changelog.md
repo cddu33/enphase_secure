@@ -10,6 +10,12 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 04/09/2022 (beta)
+
+Rajout informations hybride et electrique:
+- véhicule branché
+- type de charge
+
 # 31/08/2022 Stable
 Reprise des version beta 26 25 24 aout
 
