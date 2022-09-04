@@ -24,7 +24,9 @@
             <br />
             <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#elVehDTE_id#" class="Cmd#elVehDTE_id# #elVehDTE_history#">kms restants</span></div>
             <div class="label "><i class="fa-xl fas fa-car-battery"></i> Charge restant: <span data-cmd_id="#batteryFillLevel_id#" class="Cmd#batteryFillLevel_id#"></span></div>
-            <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
+            <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div>
+            <div class="label"><i class="fa-xl fas fa-plug"></i>Véhicule branché: <span class="Cmd#connectorStatus_id#"></span></div>
+            <div class="label"><i class="fa-xl fas fa-charging-station"></i><span class="Cmd#chargingStatus_id#"></span></div><br />
         </div>
 
         <div id="combustion_engine#id#">
@@ -489,5 +491,19 @@
             }
         }
 		jeedom.cmd.update['#batteryFillLevel_id#']({display_value:'#batteryFillLevel#'});
+        
+        jeedom.cmd.update['#connectorStatus_id#"'] = function (_options) {
+
+            if (parseInt(_options.display_value) = 1) {
+                $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#connectorStatus_id#').empty().append(' <<i class="icon_green fas fa-ban"></i>');
+            }
+        }
+        jeedom.cmd.update['#connectorStatus_id#']({display_value:'#connectorStatus_id#'});
+
+        jeedom.cmd.update['#chargingStatus_id#']({ display_value: '#chargingStatus#' });
+	</script>
     </script>
 </div>
