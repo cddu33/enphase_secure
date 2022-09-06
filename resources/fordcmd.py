@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys, os, logging, time, json
 
-from fordpass import Vehicle
+from fordcar import Vehicle
 
 r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN # Username, Password, VIN
 
