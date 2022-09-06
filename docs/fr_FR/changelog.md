@@ -10,6 +10,11 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 06/09/2022 (beta)
+Modification des dépendances: 
+- intégration du script python
+- utilisation du nouveau système de Jeedom
+
 # 04/09/2022 (beta)
 
 Rajout informations hybride et electrique:

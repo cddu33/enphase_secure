@@ -6,8 +6,6 @@
     "pip3" : {
       "requests"  : {},
       "wheel" : {}
-    },
-    "post-install" : {
     }
   }
   
