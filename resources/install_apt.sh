@@ -22,8 +22,6 @@ echo 40 > ${PROGRESS_FILE}
 sudo pip3 install requests
 echo 60 > ${PROGRESS_FILE}
 sudo pip3 install wheel
-echo 80 > ${PROGRESS_FILE}
-sudo pip3 install git+https://github.com/cddu33/fordpass-python.git
 rm ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépendances OK  *"
