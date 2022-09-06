@@ -8,7 +8,6 @@
       "wheel" : {}
     },
     "post-install" : {
-      "script" : "plugins/fordcar/resources/post-install.sh"
     }
   }
   
