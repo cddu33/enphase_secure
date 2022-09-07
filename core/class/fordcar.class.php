@@ -902,7 +902,8 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
-		log::add('fordcar', 'debug', 'test type:'));
+		log::add('fordcar', 'debug', 'test type:');
+		
 		
 		if ($this->getCmd(null, 'vehicle_type') == 'electric')
 		{
