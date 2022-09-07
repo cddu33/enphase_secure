@@ -49,7 +49,7 @@ class fordcar extends eqLogic {
 		{
 			$return['state'] = 'nok';
 			$output = array();
-			$cmd = "pip3 list | grep fordpass";
+			$cmd = "pip3 list | grep wheel";
 			unset($output);
 			exec($cmd, $output, $return_var);
         
@@ -902,8 +902,7 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
-		
-
+log::add('fordcar', 'debug', 'test type: ' . $this->getCmd(null, 'vehicle_type'));
 		if ($this->getCmd(null, 'vehicle_type') == 'electric')
 		{
 			$fordcar_info = $fordcar_json['elVehDTE']['value'];
@@ -930,8 +929,6 @@ class fordcar extends eqLogic {
 		}
 		if ($this->getCmd(null, 'vehicle_type') == 'hybride')
 		{
-
-			
 			$fordcar_info = $fordcar_json['elVehDTE']['value'];
 			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
 			$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
