@@ -757,20 +757,20 @@ class fordcar extends eqLogic {
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 		sleep(5);
 		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
-		try
+		try {
 			$fordcartest == $fordcar_json['lockStatus']['value'];
-		catch {
+		} catch {
 			log::add('fordcar', 'debug', 'Relance de la commande dans 10s car erreur ' . $fordcar_cmd);
 			sleep(10);
 
 			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
 			sleep(5);
 			$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
-			try {
-				$fordcartest == $fordcar_json['lockStatus']['value'];
-			} catch (\Throwable $th) {
-				throw new Exception(__($th, __FILE__));
-			}
+		}
+		try {
+			$fordcartest == $fordcar_json['lockStatus']['value'];
+		} catch (\Throwable $th) {
+			throw new Exception(__($th, __FILE__));
 		}
 		
 		if ($fordcar_json['elVehDTE'] == "") {
