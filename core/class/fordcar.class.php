@@ -755,18 +755,23 @@ class fordcar extends eqLogic {
 		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-		sleep(3);
+		sleep(5);
 		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
-		if ($fordcar_json === null) {
+		try
+			$fordcartest == $fordcar_json['lockStatus']['value'];
+		catch {
 			log::add('fordcar', 'debug', 'Relance de la commande dans 10s car erreur ' . $fordcar_cmd);
 			sleep(10);
 
 			exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
-			sleep(3);
+			sleep(5);
 			$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
-			if ($fordcar_json === null) {
-				throw new Exception(__('Impossible de récupérer les données : ', __FILE__));
+			try {
+				$fordcartest == $fordcar_json['lockStatus']['value'];
+			} catch (\Throwable $th) {
+				throw new Exception(__($th, __FILE__));
 			}
+		}
 		}
 		if ($fordcar_json['elVehDTE'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
