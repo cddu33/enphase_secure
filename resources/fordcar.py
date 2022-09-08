@@ -288,9 +288,6 @@ elif sys.argv[4] == "stop":
 elif sys.argv[4] == "refresh":
 	r.refresh();
 elif sys.argv[4] == "statut":
-    try:
-        with open(sys.argv[5], "w+") as json_file:
-			#print(r.status())
-            json.dump(r.status(), json_file)
-    except:
-            print('Erreur de connexion')
+    with open(sys.argv[5], "w+") as json_file:
+        #print(r.status())
+        json.dump(r.status(), json_file)
