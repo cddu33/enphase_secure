@@ -769,8 +769,8 @@ class fordcar extends eqLogic {
 		}
 		try {
 			$fordcartest = $fordcar_json['lockStatus']['value'];
-		} catch (\Throwable $th) {
-			throw new Exception(__($th, __FILE__));
+		} catch {
+	
 		}
 		
 		if ($fordcar_json['elVehDTE'] == "") {
