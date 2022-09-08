@@ -10,6 +10,13 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 07/09/2022 (beta)
+Simplification du script python
+
+Les messages d'erreur doivent être plus explicite
+
+Correction autonomie
+
 # 06/09/2022 (beta)
 Modification des dépendances: 
 - intégration du script python

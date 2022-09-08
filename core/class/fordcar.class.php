@@ -49,7 +49,7 @@ class fordcar extends eqLogic {
 		{
 			$return['state'] = 'nok';
 			$output = array();
-			$cmd = "pip3 list | grep fordpass";
+			$cmd = "pip3 list | grep wheel";
 			unset($output);
 			exec($cmd, $output, $return_var);
         
@@ -751,7 +751,7 @@ class fordcar extends eqLogic {
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
 		$fordcar_fichier = $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
-		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordcar.py';
 		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
@@ -771,14 +771,55 @@ class fordcar extends eqLogic {
 		if ($fordcar_json['elVehDTE'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
 			$this->checkAndUpdateCmd('vehicle_type', 'thermique');
+
+			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
+			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('qfuel', $fordcar_info);
+			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
+			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
 		}
 		elseif ($fordcar_json['fuel'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Electrique');
 			$this->checkAndUpdateCmd('vehicle_type', 'electric');
+
+			$fordcar_info = $fordcar_json['elVehDTE']['value'];
+			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
+			$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
+			log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
+			$fordcar_info = $fordcar_json['plugStatus']['value'];
+			log::add('fordcar', 'debug', 'Véhicule branché: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('connectorStatus', $fordcar_info);
+			$fordcar_info = $fordcar_json['chargingStatus']['value'];
+			log::add('fordcar', 'debug', 'Etat de la charge: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('chargingStatus', $fordcar_info);
 		}
 		else {
 			log::add('fordcar', 'debug', 'Type véhicule: Hybride');
 			$this->checkAndUpdateCmd('vehicle_type', 'hybride');
+
+			$fordcar_info = $fordcar_json['elVehDTE']['value'];
+			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
+
+			$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
+			log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
+
+			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
+			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('qfuel', $fordcar_info);
+
+			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
+			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
+
+			$fordcar_info = $fordcar_json['plugStatus']['value'];
+			log::add('fordcar', 'debug', 'Véhicule branché: ' . $fordcar_info);
+			$this->checkAndUpdateCmd('connectorStatus', $fordcar_info);
+
 		}
 
 		$fordcar_info = $fordcar_json['lockStatus']['value'];
@@ -901,57 +942,7 @@ class fordcar extends eqLogic {
 
 		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
-		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);
-		
-
-		if ($this->getCmd(null, 'vehicle_type') == 'electric')
-		{
-			$fordcar_info = $fordcar_json['elVehDTE']['value'];
-			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
-			$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
-			log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
-			$fordcar_info = $fordcar_json['plugStatus']['value'];
-			log::add('fordcar', 'debug', 'Véhicule branché: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('connectorStatus', $fordcar_info);
-			$fordcar_info = $fordcar_json['chargingStatus']['value'];
-			log::add('fordcar', 'debug', 'Etat de la charge: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('chargingStatus', $fordcar_info);
-		}
-		if ($this->getCmd(null, 'vehicle_type') == 'thermique')
-		{
-			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
-			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('qfuel', $fordcar_info);
-			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
-			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
-		}
-		if ($this->getCmd(null, 'vehicle_type') == 'hybride')
-		{
-
-			
-			$fordcar_info = $fordcar_json['elVehDTE']['value'];
-			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('elVehDTE', $fordcar_info);
-
-			$fordcar_info = $fordcar_json['batteryFillLevel']['value'];
-			log::add('fordcar', 'debug', 'Charge batterie: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('batteryFillLevel', $fordcar_info);
-
-			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
-			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('qfuel', $fordcar_info);
-
-			$fordcar_info = $fordcar_json['fuel']['distanceToEmpty'];
-			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
-
-			$fordcar_info = $fordcar_json['plugStatus']['value'];
-			log::add('fordcar', 'debug', 'Véhicule branché: ' . $fordcar_info);
-			$this->checkAndUpdateCmd('connectorStatus', $fordcar_info);
-		}
+		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);	
 
   	}
 
@@ -960,7 +951,7 @@ class fordcar extends eqLogic {
 		$fordcar_pass = $this->getConfiguration('password');
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
-		$fordcar_cmd = 'python3 ' . realpath(dirname(__FILE__)) .'/../../resources/fordcmd.py';
+		$fordcar_cmd = 'python3 ' . realpath(dirname(__FILE__)) .'/../../resources/fordcar.py';
 		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut ;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
@@ -992,7 +983,7 @@ class fordcarCmd extends cmd {
 		  	break;
 	  	}
 		$eqlogic->refresh();
-		$eqLogic->refreshWidget();
+		//$eqLogic->refreshWidget();
   	}
 }
 ?>
