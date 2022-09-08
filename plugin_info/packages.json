@@ -5,6 +5,7 @@
     },
     "pip3" : {
       "requests"  : {},
-      "wheel" : {}
+      "wheel" : {},
+      "setuptools" : {}
     }
 } 
