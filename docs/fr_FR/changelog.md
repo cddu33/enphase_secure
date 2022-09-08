@@ -10,6 +10,11 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 07/09/2022
+
+Reprise des versions beta des 4 6 et 7 septembre 
+
+
 # 07/09/2022 (beta)
 Simplification du script python
 
