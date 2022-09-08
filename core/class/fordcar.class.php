@@ -758,7 +758,7 @@ class fordcar extends eqLogic {
 		sleep(5);
 		$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
 		try {
-			$fordcartest == $fordcar_json['lockStatus']['value'];
+			$fordcartest = $fordcar_json['lockStatus']['value'];
 		} catch {
 			log::add('fordcar', 'debug', 'Relance de la commande dans 10s car erreur ' . $fordcar_cmd);
 			sleep(10);
@@ -768,7 +768,7 @@ class fordcar extends eqLogic {
 			$fordcar_json = json_decode(file_get_contents($fordcar_fichier), true);
 		}
 		try {
-			$fordcartest == $fordcar_json['lockStatus']['value'];
+			$fordcartest = $fordcar_json['lockStatus']['value'];
 		} catch (\Throwable $th) {
 			throw new Exception(__($th, __FILE__));
 		}
