@@ -772,7 +772,7 @@ class fordcar extends eqLogic {
 				throw new Exception(__($th, __FILE__));
 			}
 		}
-		}
+		
 		if ($fordcar_json['elVehDTE'] == "") {
 			log::add('fordcar', 'debug', 'Type véhicule: Thermique');
 			$this->checkAndUpdateCmd('vehicle_type', 'thermique');
