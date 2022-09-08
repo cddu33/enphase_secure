@@ -989,7 +989,7 @@ class fordcarCmd extends cmd {
 		  	break;
 	  	}
 		$eqlogic->refresh();
-		$eqLogic->refreshWidget();
+		//$eqLogic->refreshWidget();
   	}
 }
 ?>
