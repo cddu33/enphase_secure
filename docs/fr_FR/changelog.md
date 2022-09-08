@@ -15,6 +15,8 @@ Simplification du script python
 
 Les messages d'erreur doivent être plus explicite
 
+Correction autonomie
+
 # 06/09/2022 (beta)
 Modification des dépendances: 
 - intégration du script python
