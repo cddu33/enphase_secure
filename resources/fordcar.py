@@ -7,6 +7,8 @@ from re import findall
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 
+
+
 defaultHeaders = {
     "Accept": "*/*",
     "Accept-Language": "en-US",
@@ -278,3 +280,23 @@ class Vehicle(object):
             return self.__pollStatus(url, result["commandId"])
         else:
             command.raise_for_status()
+
+r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN # Username, Password, VIN
+
+if sys.argv[4] == "lock":
+	r.lock();
+elif sys.argv[4] == "unlock":
+	r.unlock();
+elif sys.argv[4] == "start":
+	r.start();
+elif sys.argv[4] == "stop":
+	r.stop();
+elif sys.argv[4] == "refresh":
+	r.refresh();
+elif sys.argv[4] == "statut":
+    try:
+        with open(sys.argv[5], "w+") as json_file:
+			#print(r.status())
+            json.dump(r.status(), json_file)
+    except:
+            print('Erreur de connexion')

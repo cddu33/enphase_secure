@@ -751,7 +751,7 @@ class fordcar extends eqLogic {
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
 		$fordcar_fichier = $fordcar_path .'/../../data/'. $fordcar_vin . '.json';
-		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordstatut.py';
+		$fordcar_cmd = 'python3 ' . $fordcar_path .'/../../resources/fordcar.py';
 		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . 'statut' . ' ' . $fordcar_fichier;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
@@ -943,8 +943,7 @@ class fordcar extends eqLogic {
 		$fordcar_info = $fordcar_json['doorStatus']['innerTailgateDoor']['value'];
 		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);	
-		
-	
+
   	}
 
  	public function commandes($fordcar_statut) {
@@ -952,7 +951,7 @@ class fordcar extends eqLogic {
 		$fordcar_pass = $this->getConfiguration('password');
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
-		$fordcar_cmd = 'python3 ' . realpath(dirname(__FILE__)) .'/../../resources/fordcmd.py';
+		$fordcar_cmd = 'python3 ' . realpath(dirname(__FILE__)) .'/../../resources/fordcar.py';
 		$fordcar_cmd .= ' ' . $fordcar_user . ' ' . $fordcar_pass . ' ' . $fordcar_vin .' ' . $fordcar_statut ;
 		log::add('fordcar', 'debug', 'commande ' . $fordcar_cmd);
 		exec($fordcar_cmd . ' >> ' . log::getPathToLog('fordcar') . ' 2>&1 &');
