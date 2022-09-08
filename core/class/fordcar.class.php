@@ -903,7 +903,8 @@ class fordcar extends eqLogic {
 		log::add('fordcar', 'debug', 'Coffre intérieur: ' . $fordcar_info);
 		$this->checkAndUpdateCmd('innertailgate', $fordcar_info);	
 		
-		if ($this->getCmd(null, 'vehicle_type') = 'electric')
+		if ($this->getCmd(null, 'vehicle_type') == 'electric')
+		
 		{
 			$fordcar_info = $fordcar_json['elVehDTE']['value'];
 			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
@@ -918,7 +919,7 @@ class fordcar extends eqLogic {
 			log::add('fordcar', 'debug', 'Etat de la charge: ' . $fordcar_info);
 			$this->checkAndUpdateCmd('chargingStatus', $fordcar_info);
 		}
-		if ($this->getCmd(null, 'vehicle_type') = 'thermique')
+		if ($this->getCmd(null, 'vehicle_type') == 'thermique')
 		{
 			$fordcar_info = $fordcar_json['fuel']['fuelLevel'];
 			log::add('fordcar', 'debug', 'Pourcentage restant réservoir: ' . $fordcar_info);
@@ -927,7 +928,7 @@ class fordcar extends eqLogic {
 			log::add('fordcar', 'debug', 'Estimation kilométrage restant: ' . $fordcar_info);
 			$this->checkAndUpdateCmd('kmfuel', $fordcar_info);	
 		}
-		if ($this->getCmd(null, 'vehicle_type') = 'hybride')
+		if ($this->getCmd(null, 'vehicle_type') == 'hybride')
 		{
 			$fordcar_info = $fordcar_json['elVehDTE']['value'];
 			log::add('fordcar', 'debug', 'Estimation kilométrage restant en électrique: ' . $fordcar_info);
