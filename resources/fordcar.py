@@ -233,6 +233,21 @@ class Vehicle(object):
         return self.__requestAndPoll(
             "DELETE", f"{API_URI}/api/vehicles/v5/{self.vin}/doors/lock"
         )
+    
+    def signal(self):
+        """
+        Issue an signal
+        """
+        return self.__requestAndPoll(
+            "PUT", f"{API_URI}/api/vehicles/v1/{self.vin}/signal"
+        )
+    def signaloff(self):
+        """
+        Issue off signal
+        """
+        return self.__requestAndPoll(
+            "DELETE", f"{API_URI}/api/vehicles/v1/{self.vin}/signal"
+        )
 
     def __makeRequest(self, method, url, data=None, params=None):
         """
@@ -287,7 +302,10 @@ elif sys.argv[4] == "stop":
 	r.stop();
 elif sys.argv[4] == "refresh":
 	r.refresh();
+elif sys.argv[4] == "signal":
+	r.signal();
+elif sys.argv[4] == "signaloff":
+	r.signaloff();
 elif sys.argv[4] == "statut":
     with open(sys.argv[5], "w+") as json_file:
-        #print(r.status())
         json.dump(r.status(), json_file)
