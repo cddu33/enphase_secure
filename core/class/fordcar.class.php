@@ -215,7 +215,28 @@ class fordcar extends eqLogic {
 	  	$fordcarCmd->setLogicalId('stop');
 	  	$fordcarCmd->setType('action');
 	  	$fordcarCmd->setSubType('other');
+	  	$fordcarCmd->save();
 
+		$fordcarCmd = $this->getCmd(null, 'signal');
+	  	if (!is_object($fordcarCmd)) {
+		  	$fordcarCmd = new fordcarCmd();
+		  	$fordcarCmd->setName(__('Signal ON', __FILE__));
+	  	}
+	  	$fordcarCmd->setEqLogic_id($this->getId());
+	  	$fordcarCmd->setLogicalId('signal');
+	  	$fordcarCmd->setType('action');
+	  	$fordcarCmd->setSubType('other');
+	  	$fordcarCmd->save();
+
+		$fordcarCmd = $this->getCmd(null, 'signaloff');
+	  	if (!is_object($fordcarCmd)) {
+		  	$fordcarCmd = new fordcarCmd();
+		  	$fordcarCmd->setName(__('Signal OFF', __FILE__));
+	  	}
+	  	$fordcarCmd->setEqLogic_id($this->getId());
+	  	$fordcarCmd->setLogicalId('signaloff');
+	  	$fordcarCmd->setType('action');
+	  	$fordcarCmd->setSubType('other');
 	  	$fordcarCmd->save();
 	  
 	  	$fordcarCmd = $this->getCmd(null, 'etat');
@@ -983,6 +1004,12 @@ class fordcarCmd extends cmd {
 		  		case 'frefresh':
 		  		$eqlogic->commandes("refresh"); 
 		  		break;
+				case 'signal':
+				$eqlogic->commandes("signal"); 
+				break;
+				case 'signaloff':
+				$eqlogic->commandes("signaloff"); 
+				break;
 	  		}
 			$eqlogic->refresh();
 		} catch (Exception $exc) {
