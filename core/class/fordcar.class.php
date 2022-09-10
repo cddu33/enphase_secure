@@ -106,6 +106,17 @@ class fordcar extends eqLogic {
 		}
 	}
 
+	public static function cronDaily() {
+		foreach (self::byType('fordcar', true) as $eqLogic) {
+			try {
+				sleep(rand(0,15));
+				$eqlogic->commandes("refresh"); 
+			} catch (Exception $exc) {
+				log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
+			}
+		}
+	}
+
 
   /*     * *********************Méthodes d'instance************************* */
 
@@ -954,25 +965,29 @@ class fordcarCmd extends cmd {
   // Exécution d'une commande
   	public function execute($_options = array()) {
 	  	$eqlogic = $this->getEqLogic();
-	  	switch ($this->getLogicalId()) 
-	  	{ 
-		  	case 'lock':
-		  	$eqlogic->commandes("lock"); 
-		  	break;
-		  	case 'unlock':
-		  	$eqlogic->commandes("unlock"); 
-		  	break;
-		  	case 'start':
-		  	$eqlogic->commandes("start"); 
-		  	break;
-		  	case 'stop':
-		  	$eqlogic->commandes("stop"); 	  
-		  	break;
-		  	case 'frefresh':
-		  	$eqlogic->commandes("refresh"); 
-		  	break;
-	  	}
-		$eqlogic->refresh();
+		try {
+	  		switch ($this->getLogicalId()) 
+	  		{ 
+		  		case 'lock':
+		  		$eqlogic->commandes("lock"); 
+		  		break;
+		  		case 'unlock':
+		  		$eqlogic->commandes("unlock"); 
+		  		break;
+		  		case 'start':
+		  		$eqlogic->commandes("start"); 
+		  		break;
+		  		case 'stop':
+		  		$eqlogic->commandes("stop"); 	  
+		  		break;
+		  		case 'frefresh':
+		  		$eqlogic->commandes("refresh"); 
+		  		break;
+	  		}
+			$eqlogic->refresh();
+		} catch (Exception $exc) {
+			log::add('fordcar', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
+		}
 		//$eqLogic->refreshWidget();
   	}
 }

@@ -10,9 +10,13 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 10/09/2022 (beta)
+
+Ajout d'un forçage du raffraichissement 1 fois par jour
+
 # 07/09/2022
 
-Reprise des versions beta des 4 6 et 7 septembre 
+Reprise des versions beta des 4, 6 et 7 septembre 2022
 
 
 # 07/09/2022 (beta)
