@@ -239,14 +239,14 @@ class Vehicle(object):
         Issue an signal
         """
         return self.__requestAndPoll(
-            "PUT", f"{API_URI}/api/vehicles/v1/{self.vin}/signal"
+            "PUT", f"{API_URI}/api/vehicles/v1/{self.vin}/signal/"
         )
     def signaloff(self):
         """
         Issue off signal
         """
         return self.__requestAndPoll(
-            "DELETE", f"{API_URI}/api/vehicles/v1/{self.vin}/signal"
+            "DELETE", f"{API_URI}/api/vehicles/v1/{self.vin}/signal/"
         )
 
     def __makeRequest(self, method, url, data=None, params=None):
