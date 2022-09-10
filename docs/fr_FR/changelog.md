@@ -13,6 +13,8 @@
 # 10/09/2022 (beta)
 
 Ajout d'un forçage du raffraichissement 1 fois par jour
+Amélioration de la documentation
+Amélioration du code
 
 # 07/09/2022
 

@@ -11,9 +11,9 @@ Paramétrage:
 * Renseigner le VIN du véhicule
 * Sauvegarder
 
-Limite de l'API:
-
-Suivant l'état de la voiture, une commande peut mettre plusieurs dizaines de secondes à être exécutée.
+>Limite de l'API:
+>
+>Suivant l'état de la voiture, une commande peut mettre plusieurs dizaines de secondes à être exécutée.
 
 Les boutons (de gauche à droite):
 - Verrouiller le véhicule
