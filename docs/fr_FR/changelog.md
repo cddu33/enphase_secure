@@ -18,6 +18,8 @@ Amélioration de la documentation
 
 Amélioration du code
 
+Rajout commande signal (non testé)
+
 # 07/09/2022
 
 Reprise des versions beta des 4, 6 et 7 septembre 2022
