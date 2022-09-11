@@ -20,8 +20,15 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 // Fonction exécutée automatiquement après l'installation du plugin
 function fordcar_install() {
   fordcar::dependancy_install();
-  //exec('../ressources/install_apt.sh');
-  //fordcar::refresh();
+  $cron = cron::byClassAndFunction('fordcar', 'pull');
+  if (!is_object($cron)) {
+      $cron = new cron();
+      $cron->setClass('fordcar');
+      $cron->setFunction('pull');
+      $cron->setEnable(1);
+      $cron->setDeamon(1);
+      $cron->setSchedule('2 0 * * *');
+      $cron->save();
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
