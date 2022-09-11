@@ -216,17 +216,6 @@ class fordcar extends eqLogic {
 	  	$fordcarCmd->setType('action');
 	  	$fordcarCmd->setSubType('other');
 	  	$fordcarCmd->save();
-
-		$fordcarCmd = $this->getCmd(null, 'signal');
-	  	if (!is_object($fordcarCmd)) {
-		  	$fordcarCmd = new fordcarCmd();
-		  	$fordcarCmd->setName(__('Signal ON', __FILE__));
-	  	}
-	  	$fordcarCmd->setEqLogic_id($this->getId());
-	  	$fordcarCmd->setLogicalId('signal');
-	  	$fordcarCmd->setType('action');
-	  	$fordcarCmd->setSubType('other');
-	  	$fordcarCmd->save();
 	  
 	  	$fordcarCmd = $this->getCmd(null, 'etat');
 	  	if (!is_object($fordcarCmd)) {

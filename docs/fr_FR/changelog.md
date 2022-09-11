@@ -14,7 +14,7 @@
 
 suppression cron daily non fonctionnel pour le moment
 
-Suppression du bouton arret signal
+Suppression de la commande signal non fonctionnelle
 
 # 10/09/2022 (beta)
 
