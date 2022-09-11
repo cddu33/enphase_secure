@@ -12,7 +12,7 @@
 
 # 11/09/2022 (beta)
 
-Correction cron daily
+suppression cron daily non fonctionnel pour le moment
 
 Suppression du bouton arret signal
 

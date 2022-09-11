@@ -105,7 +105,7 @@ class fordcar extends eqLogic {
 			}
 		}
 	}
-
+/*
 	public static function cronDaily() {
 		foreach (self::byType('fordcar', true) as $eqLogic) {
 			try {
@@ -116,7 +116,7 @@ class fordcar extends eqLogic {
 			}
 		}
 	}
-
+*/
 
   /*     * *********************Méthodes d'instance************************* */
 
@@ -958,7 +958,7 @@ class fordcar extends eqLogic {
   	}
 
  	public function commandes($fordcar_statut) {
-		log::add('fordcar', 'debug', 'test ');
+		//log::add('fordcar', 'debug', 'test ');
 		$fordcar_pass = $this->getConfiguration('password');
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
