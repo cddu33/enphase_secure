@@ -29,6 +29,7 @@ function fordcar_install() {
       $cron->setDeamon(1);
       $cron->setSchedule('2 0 * * *');
       $cron->save();
+  }
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
@@ -39,6 +40,17 @@ function fordcar_update() {
         		$eqLogic->save();
         		log::add('fordcar', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
     		}
+
+        $cron = cron::byClassAndFunction('fordcar', 'pull');
+        if (!is_object($cron)) {
+            $cron = new cron();
+            $cron->setClass('fordcar');
+            $cron->setFunction('pull');
+            $cron->setEnable(1);
+            $cron->setDeamon(1);
+            $cron->setSchedule('2 0 * * *');
+            $cron->save();
+        }
 
 }
 
