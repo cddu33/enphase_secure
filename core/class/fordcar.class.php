@@ -227,17 +227,6 @@ class fordcar extends eqLogic {
 	  	$fordcarCmd->setType('action');
 	  	$fordcarCmd->setSubType('other');
 	  	$fordcarCmd->save();
-
-		$fordcarCmd = $this->getCmd(null, 'signaloff');
-	  	if (!is_object($fordcarCmd)) {
-		  	$fordcarCmd = new fordcarCmd();
-		  	$fordcarCmd->setName(__('Signal OFF', __FILE__));
-	  	}
-	  	$fordcarCmd->setEqLogic_id($this->getId());
-	  	$fordcarCmd->setLogicalId('signaloff');
-	  	$fordcarCmd->setType('action');
-	  	$fordcarCmd->setSubType('other');
-	  	$fordcarCmd->save();
 	  
 	  	$fordcarCmd = $this->getCmd(null, 'etat');
 	  	if (!is_object($fordcarCmd)) {
@@ -969,7 +958,7 @@ class fordcar extends eqLogic {
   	}
 
  	public function commandes($fordcar_statut) {
-
+		log::add('fordcar', 'debug', 'test ');
 		$fordcar_pass = $this->getConfiguration('password');
 		$fordcar_vin = $this->getConfiguration('vin');
 		$fordcar_user = $this->getConfiguration('user');
@@ -1006,9 +995,6 @@ class fordcarCmd extends cmd {
 		  		break;
 				case 'signal':
 				$eqlogic->commandes("signal"); 
-				break;
-				case 'signaloff':
-				$eqlogic->commandes("signaloff"); 
 				break;
 	  		}
 			$eqlogic->refresh();

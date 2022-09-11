@@ -10,6 +10,12 @@
 >
 >Toutes les informations interprétées par le plugin sont disponible dans les log en mode debug.
 
+# 11/09/2022 (beta)
+
+Correction cron daily
+
+Suppression du bouton arret signal
+
 # 10/09/2022 (beta)
 
 Ajout d'un forçage du raffraichissement 1 fois par jour
