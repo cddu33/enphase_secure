@@ -26,7 +26,7 @@ function fordcar_install() {
       $cron->setClass('fordcar');
       $cron->setFunction('pull');
       $cron->setEnable(1);
-      $cron->setDeamon(1);
+      $cron->setDeamon(0);
       $cron->setSchedule('2 0 * * *');
       $cron->save();
   }
@@ -47,7 +47,7 @@ function fordcar_update() {
             $cron->setClass('fordcar');
             $cron->setFunction('pull');
             $cron->setEnable(1);
-            $cron->setDeamon(1);
+            $cron->setDeamon(0;
             $cron->setSchedule('2 0 * * *');
             $cron->save();
         }
