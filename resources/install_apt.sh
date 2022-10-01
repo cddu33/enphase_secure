@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROGRESS_FILE=/tmp/dependancy_fordcar_in_progress
+PROGRESS_FILE=/tmp/dependancy_enphasesecur_in_progress
 if [ ! -z $1 ]; then
     PROGRESS_FILE=$1
 fi
@@ -19,9 +19,7 @@ sudo apt-get install -y python3-pip
 echo 30 > ${PROGRESS_FILE}
 sudo pip3 install --upgrade pip
 echo 40 > ${PROGRESS_FILE}
-sudo pip3 install requests
-echo 60 > ${PROGRESS_FILE}
-sudo pip3 install wheel
+sudo pip3 install pyjwt html.parser html5lib bs4 asyncio httpx lxml
 rm ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépendances OK  *"
