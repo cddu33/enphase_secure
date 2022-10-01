@@ -25,10 +25,10 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<span>{{Configuration}}</span>
 			</div>
 		</div>
-		<legend><i class="fas fa-table"></i> {{Mes véhicules}}</legend>
+		<legend><i class="fas fa-table"></i> {{Mes passerelles Enphase}}</legend>
 		<?php
 		if (count($eqLogics) == 0) {
-			echo '<br><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucun véhicule trouvé, cliquer sur "Ajouter un véhicule" pour commencer}}</div>';
+			echo '<br><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucunne passerelle trouvée, cliquer sur "Ajouter une passerelle" pour commencer}}</div>';
 		} else {
 			// Liste des équipements du plugin
 			echo '<div class="eqLogicThumbnailContainer">';
@@ -39,7 +39,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				echo '<br>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
 				echo '<span class="hiddenAsCard displayTableRight hidden">';
-				echo ($eqLogic->getIsVisible() == 1) ? '<i class="fas fa-eye" title="{{Equipement visible}}"></i>' : '<i class="fas fa-eye-slash" title="{{Equipement non visible}}"></i>';
+				echo ($eqLogic->getIsVisible() == 1) ? '<i class="fas fa-eye" title="{{Paserelles visibles}}"></i>' : '<i class="fas fa-eye-slash" title="{{Passerelels non visibles}}"></i>';
 				echo '</span>';
 				echo '</div>';
 			}
@@ -76,7 +76,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<div class="col-lg-6">
 							<legend><i class="fas fa-wrench"></i> {{Paramètres généraux}}</legend>
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Nom du véhicule}}</label>
+								<label class="col-sm-4 control-label">{{Nom de la passerelle}}</label>
 								<div class="col-sm-6">
 									<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display:none;">
 									<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}">
@@ -143,19 +143,19 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<textarea class="form-control eqLogicAttr autogrow" data-l1key="comment"></textarea>
 								</div>
 							</div>
-							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur}}</legend>
+							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
 							<div class="form-group">
 								
-      <label class="col-md-4 control-label">{{Nom d'utilisateur FordPass}}
-        <sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous connecter à l'application FordPass sur votre téléphone}}"></i></sup>
+      <label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
+        <sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
       </label>
       <div class="col-md-4">
         <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="user"/>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-md-4 control-label">{{Password FordPass}}
-        <sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous connecter à l'application FordPass sur votre téléphone}}"></i></sup>
+      <label class="col-md-4 control-label">{{Password Enphase}}
+        <sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
       </label>
       <div class="col-md-4">
         <input type="password" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="password" autocomplete="new-password"/>
