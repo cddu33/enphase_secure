@@ -1,10 +1,8 @@
-# Plugin FordCar pour Jeedom
+# Plugin passerelles enphases version sécurisé (V7) pour Jeedom
 
-Ce plugin permet de récuperer les informations de tous les véhicule possédant fordpass
-Il s'appuie sur l'API fordcar.
+Ce plugin permet de récuperer les informations des passerelles enphase en version firmware v7 sécurisées
 
 Paramétrage: 
 * Créer un équipement
-* Renseigner le nom d'utilisateur et le mot de passe (identique à l'application mobile)
-* Renseigner le VIN du véhicule
-* Sauvegarder
+
+en cours de réalisarion
