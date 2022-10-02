@@ -20,7 +20,6 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 // Fonction exécutée automatiquement après l'installation du plugin
 function enphasesecur_install() {
   enphasesecur::dependancy_install();
-  }
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
