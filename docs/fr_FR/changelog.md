@@ -6,6 +6,7 @@
 
 # 02/10/2022 (beta)
 Fonctionnement OK pour les informations de production et de consommation
+Correction cron
 Passage en beta
 
 # 01/10/2022 (dev)
