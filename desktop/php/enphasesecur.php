@@ -184,10 +184,10 @@ $eqLogics = eqLogic::byType($plugin->getId());
      							</label>
       							<div class="col-md-4">
         							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
-								</select>
+						
       							</div>
 							</div>
-    					</div>
+    					
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
