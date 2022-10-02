@@ -1,11 +1,6 @@
 #!/usr/bin/env python3
 
-import asyncio
-import logging
-import re
-import time
-import jwt
-import json
+import asyncio, logging, re, time, jwt, json, sys, os
 
 from html.parser import HTMLParser
 from json.decoder import JSONDecodeError
