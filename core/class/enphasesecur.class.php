@@ -231,7 +231,7 @@ class enphasesecur extends eqLogic {
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
   	public function postRemove() {
-		
+
   	}
 
 
@@ -262,7 +262,7 @@ class enphasesecur extends eqLogic {
 		$this->checkAndUpdateCmd('wattHoursToday', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays'];
-		log::add('enphasesecur ', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
+		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattHoursSevenDays', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattsNow'];
