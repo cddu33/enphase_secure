@@ -207,15 +207,13 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->save();
 
-		$enphasesecurCmd = $this->getCmd(null, 'wattsNow
-		');
+		$enphasesecurCmd = $this->getCmd(null, 'wattsNow');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
 		  	$enphasesecurCmd->setName(__('Production instantannée', __FILE__));
 	  	}
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
-	  	$enphasesecurCmd->setLogicalId('wattsNow
-		  ');
+	  	$enphasesecurCmd->setLogicalId('wattsNow');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
 	  	$enphasesecurCmd->setUnite('w');
