@@ -56,6 +56,7 @@ class enphasesecur extends eqLogic {
 				exec($cmd, $output, $return_var);
 				if ($return_var || $output[0] == "") {
 				  $return['state'] = 'nok';
+				  log::add('enphasesecur', 'debug', 'Pakg nok: ' . $deps);
 				  break;
 				}
 			}
