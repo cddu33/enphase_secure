@@ -303,8 +303,12 @@ class enphasesecur extends eqLogic {
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
 		sleep(5);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
-		foreach ($enphasesecur_json as $key=> $data1) {
-			log::add('enphasesecur', 'debug', $key . ' : ' . $data1);
+		foreach ($enphasesecur_json as $key1=> $data1) {
+			log::add('enphasesecur', 'debug', $key1 . ' : ' . $data1);
+			foreach ($data1 as $key2 => $data2) {
+				log::add('enphasesecur', 'debug', 'Enfants: ' . $key . ' : ' . $data2);
+			}
+			
 		}
 /*
 		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/1000;
