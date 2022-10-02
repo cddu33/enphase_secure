@@ -246,7 +246,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie. '.json';
 
 		$enphasesecur_cmd = 'sudo python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
-		$enphasesecur_cmd .= $enphasesecure_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
+		$enphasesecur_cmd .= $enphasesecur_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
 		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
 		sleep(2);
