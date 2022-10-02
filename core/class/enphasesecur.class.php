@@ -51,7 +51,7 @@ class enphasesecur extends eqLogic {
         	$return['state'] = 'ok';
         	$output = array();
 			foreach($deps as $list) {
-				$cmd = "$pip3 list | grep $list";
+				$cmd = "$sudo pip3 list | grep $list";
 				unset($output);
 				exec($cmd, $output, $return_var);
 				if ($return_var || $output[0] == "") {
