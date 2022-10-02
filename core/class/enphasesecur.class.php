@@ -326,7 +326,7 @@ class enphasesecur extends eqLogic {
 		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 */
-		$enphasesecur_info = $enphasesecur_json['production'];
+		$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
 		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 /*
