@@ -179,6 +179,8 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setSubType('numeric');
 	  	$enphasesecurCmd->setUnite('w');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
@@ -192,6 +194,8 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setSubType('numeric');
 	  	$enphasesecurCmd->setUnite('w');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 		$enphasesecurCmd->save();
 		
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
@@ -205,6 +209,8 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setSubType('numeric');
 	  	$enphasesecurCmd->setUnite('w');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
@@ -218,6 +224,8 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setSubType('numeric');
 	  	$enphasesecurCmd->setUnite('w');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday');
@@ -231,6 +239,8 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setSubType('numeric');
 		$enphasesecurCmd->setUnite('w');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 	  $enphasesecurCmd->save();
 
 	  $enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
@@ -244,6 +254,8 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setSubType('numeric');
 		$enphasesecurCmd->setUnite('w');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 	  $enphasesecurCmd->save();
 	  
 	  $enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
@@ -257,7 +269,9 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setSubType('numeric');
 		$enphasesecurCmd->setUnite('w');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
-	  $enphasesecurCmd->save();
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+	  	$enphasesecurCmd->save();
 
 	  $enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
 		if (!is_object($enphasesecurCmd)) {
@@ -270,6 +284,8 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setSubType('numeric');
 		$enphasesecurCmd->setUnite('w');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 	  $enphasesecurCmd->save();
   	}
 
