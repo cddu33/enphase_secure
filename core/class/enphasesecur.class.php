@@ -150,7 +150,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursToday');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('w');
+	  	$enphasesecurCmd->setUnite('kW');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -166,7 +166,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursSevenDays');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('w');
+	  	$enphasesecurCmd->setUnite('kW');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -182,7 +182,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursLifetime');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('w');
+	  	$enphasesecurCmd->setUnite('kW');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -198,7 +198,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattsNow');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('w');
+	  	$enphasesecurCmd->setUnite('kW');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -214,7 +214,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursToday');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('w');
+		$enphasesecurCmd->setUnite('kW');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -230,7 +230,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('w');
+		$enphasesecurCmd->setUnite('kW');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -246,7 +246,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('w');
+		$enphasesecurCmd->setUnite('kW');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -262,7 +262,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattsNow');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('w');
+		$enphasesecurCmd->setUnite('kW');
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -302,33 +302,33 @@ class enphasesecur extends eqLogic {
 		sleep(5);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichierP), true);
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/100;
+		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/1000;
 		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursToday']/100;
+		$enphasesecur_info = $enphasesecur_json['wattHoursToday']/1000;
 		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays']/100;
+		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays']/1000;
 		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattsNow']/100;
+		$enphasesecur_info = $enphasesecur_json['wattsNow']/1000;
 		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichierC), true);
 
-		$enphasesecur_info = ($enphasesecur_json['wattHoursLifetime'])/100;
+		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/1000;
 		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
-		$enphasesecur_info = ($enphasesecur_json['wattHoursToday'])/100;
+		$enphasesecur_info = $enphasesecur_json['wattHoursToday']/1000;
 		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays']/100;
+		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays']/1000;
 		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
 
