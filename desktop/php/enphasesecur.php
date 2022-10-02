@@ -54,9 +54,10 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<div class="input-group pull-right" style="display:inline-flex;">
 			<span class="input-group-btn">
 				<!-- Les balises <a></a> sont volontairement fermées à la ligne suivante pour éviter les espaces entre les boutons. Ne pas modifier -->
-				<a class="btn btn-sm btn-default eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i><span class="hidden-xs"> {{Configuration avancée}}</span> </a>
-				<a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}} </a>
-				<a class="btn btn-sm btn-danger eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}} </a>
+				<a class="btn btn-sm btn-default eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i><span class="hidden-xs"> {{Configuration avancée}}</span>
+				</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}
+				</a><a class="btn btn-sm btn-danger eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}
+				</a>
 			</span>
 		</div>
 		<!-- Onglets -->
@@ -143,7 +144,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 							</div>
 
-							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}} </legend>
+							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
 							<div class="form-group">
       							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
@@ -169,25 +170,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
       							</div>
 							</div>
 
-							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
-    						<div class="form-group">
-      							<label class="col-md-4 control-label">{{Adesse IP local}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{Adesse ip sur vote réseau de votre passerelle Enphase}}"></i></sup>
-     							</label>
-      							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="ip">
-      							</div>
-							</div>
-							<div class="form-group">
-      							<label class="col-md-4 control-label">{{Numéro de série}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
-     							</label>
-      							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
-						
-      							</div>
-							</div>
-    					
+    					</div>
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
