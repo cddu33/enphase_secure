@@ -249,7 +249,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecur_cmd .=' ' .  $enphasesecur_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
 		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
-		sleep(2);
+		sleep(5);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime'];
@@ -262,11 +262,11 @@ class enphasesecur extends eqLogic {
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays'];
 		log::add('enphasesecur ', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
-		$this->checkAndUpdateCmd('wattHoursSevenDays ', $enphasesecur_info);	
+		$this->checkAndUpdateCmd('wattHoursSevenDays', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattsNow'];
 		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
-		$this->checkAndUpdateCmd('wattsNow ', $enphasesecur_info);	
+		$this->checkAndUpdateCmd('wattsNow', $enphasesecur_info);	
 
   	}
 }
