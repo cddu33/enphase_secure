@@ -142,12 +142,10 @@ class enphasesecur extends eqLogic {
 		  	$enphasesecurCmd->setName(__('Prod Jour', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '2');
 			$enphasesecurCmd->setGeneric_type('POWER'); 
 	  	}
-		$enphasesecurCmd->setGeneric_type('POWER');
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('PwattHoursToday');
 	  	$enphasesecurCmd->setType('info');
@@ -162,11 +160,9 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('POWER');
 	  	}
-		  $enphasesecurCmd->setGeneric_type('POWER');
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('PwattHoursSevenDays');
 	  	$enphasesecurCmd->setType('info');
@@ -181,11 +177,9 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('POWER');
 	  	}
-		  $enphasesecurCmd->setGeneric_type('POWER');
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('PwattHoursLifetime');
 	  	$enphasesecurCmd->setType('info');
@@ -199,12 +193,10 @@ class enphasesecur extends eqLogic {
 		  	$enphasesecurCmd->setName(__('Prod Inst', __FILE__));
 			//$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 			$enphasesecurCmd->setGeneric_type('POWER');
 	  	}
-		  $enphasesecurCmd->setGeneric_type('POWER');
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('PwattsNow');
 	  	$enphasesecurCmd->setType('info');
@@ -218,12 +210,10 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setName(__('Conso Jour', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
-		$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursToday');
 		$enphasesecurCmd->setType('info');
@@ -238,11 +228,9 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
-		$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
 		$enphasesecurCmd->setType('info');
@@ -258,11 +246,9 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
-		$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
 		$enphasesecurCmd->setType('info');
@@ -276,12 +262,10 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setName(__('Conso Inst', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '3');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
-		$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattsNow');
 		$enphasesecurCmd->setType('info');
@@ -294,14 +278,11 @@ class enphasesecur extends eqLogic {
 		  	$enphasesecurCmd = new enphasesecurCmd();
 			$enphasesecurCmd->setName(__('Tension', __FILE__));
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0'); 
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('VOLTAGE');
 		}
-
-		$enphasesecurCmd->setGeneric_type('VOLTAGE');
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('tension');
 		$enphasesecurCmd->setType('info');
