@@ -336,7 +336,7 @@ class enphasesecur extends eqLogic {
 		log::add('enphasesecur', 'debug', 'Consommation de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattsNow']/100;
+		$enphasesecur_info = $enphasesecur_json['wattsNow']/1000;
 		log::add('enphasesecur', 'debug', 'Consommation instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
   	}
