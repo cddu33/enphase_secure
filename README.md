@@ -1,8 +1,15 @@
-# Plugin passerelles enphases version sécurisé (V7) pour Jeedom
+# Plugin Enphase Secure V7 pour Jeedom
 
-Ce plugin permet de récuperer les informations des passerelles enphase en version firmware v7 sécurisées
+Le plugin permet de récupérer les donnnées de production et de consommation:
+* Instantanné
+* Jour
+* Semaine
+* Mise en service
+ 
+Il se base sur l'accès par jeton de sécurité de Enphase.
 
-Paramétrage: 
-* Créer un équipement
+Il necessite une connexion internet pour se loguer mais récupère les donnnées directement depuis la passerelle
 
-en cours de réalisarion
+Il faudra donc rentrée utilisateur et mot de passe pour se connecter au site Enphase, le numéro de site ainsi que le numéro de série de la passerelle
+
+L'actualisation des données est de base sur 15min mais il est modifiable dans l'équipement. par contre cela n'influe pas sur la passerelle.
