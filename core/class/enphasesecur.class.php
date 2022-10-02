@@ -84,10 +84,12 @@ class enphasesecur extends eqLogic {
   	public static function cron() {
 		$dateRun = new DateTime();
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
+			
 			$autorefresh = $eqLogic->getConfiguration('autorefresh');
 			if ($eqLogic->getIsEnable() == 1){
 				if ($autorefresh == '') {
 					$autorefresh = '*/15 * * * *';
+					log::add('enphasesecur', 'debug', 'création cron ' . $autorefresh);
 				}
 				try {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
