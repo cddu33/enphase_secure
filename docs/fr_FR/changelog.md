@@ -7,6 +7,8 @@
 # 03/10/2022 (beta)
 Changement du fichier source pour /production.json?details=1
 
+Rajout tension réseau
+
 
 # 02/10/2022 (beta)
 Fonctionnement OK pour les informations de production et de consommation
