@@ -85,29 +85,9 @@ class enphasesecur extends eqLogic {
 		log::add('enphasesecur', 'debug', 'cron lancé');
 		$dateRun = new DateTime();
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			
-			$autorefresh = $eqLogic->getConfiguration('autorefresh');
-			log::add('enphasesecur', 'debug', 'pour chaqun ' . $autorefresh);
 			if ($eqLogic->getIsEnable() == 1){
-				if ($autorefresh == '') {
-					$autorefresh = '*/15 * * * *';
-				}
-				try {
-					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
-					log::add('enphasesecur', 'debug', 'pour chaqun ' . $dateRun);
-					if ($c->isDue($dateRun)) {
-						try {
-							log::add('enphasesecur', 'debug', 'cron good');
-							$eqLogic->refresh();
-						} catch (Exception $exc) {
-							log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
-						}
-					}
-				} 
-				catch (Exception $exc) {
-					log::add('enphasesecur', 'error', __('Expression cron non valide pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $autorefresh);
-				}
-			}
+				$eqLogic->refresh();
+			}			
 		}
 	}
 
