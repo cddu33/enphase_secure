@@ -151,7 +151,6 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 	  	}
-		$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('PwattHoursToday');
 	  	$enphasesecurCmd->setType('info');
@@ -203,7 +202,6 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 	  	}
-		  $enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('PwattsNow');
 	  	$enphasesecurCmd->setType('info');
@@ -221,7 +219,6 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 		}
-		$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursToday');
 		$enphasesecurCmd->setType('info');
@@ -239,7 +236,6 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 		}
-		$enphasesecurCmd->setConfiguration('historizeRound', '0'); 
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
 		$enphasesecurCmd->setType('info');
@@ -276,7 +272,6 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 		}
 		$enphasesecurCmd->setEqLogic_id($this->getId());
-		$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 		$enphasesecurCmd->setLogicalId('CwattsNow');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
@@ -352,7 +347,7 @@ class enphasesecur extends eqLogic {
 		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
+		$enphasesecur_info = $enphasesecur_json['production']['1']['wNow']/1000;
 		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 
