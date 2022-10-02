@@ -49,7 +49,6 @@ function enphasesecur_update() {
   foreach (eqLogic::byType('enphasesecur') as $eqLogic) {
     $eqLogic->save();
     log::add('enphasesecur', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
-    $eqlogic->refresh();
   }
 }
 
