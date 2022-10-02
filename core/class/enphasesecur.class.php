@@ -181,6 +181,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
@@ -196,6 +197,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 		$enphasesecurCmd->save();
 		
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
@@ -211,6 +213,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
@@ -226,6 +229,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday');
@@ -241,6 +245,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 	  $enphasesecurCmd->save();
 
 	  $enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
@@ -256,6 +261,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 	  $enphasesecurCmd->save();
 	  
 	  $enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
@@ -271,6 +277,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
 	  	$enphasesecurCmd->save();
 
 	  $enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
