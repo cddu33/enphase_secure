@@ -35,7 +35,7 @@ function enphasesecur_install() {
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
 function enphasesecur_update() {
-	enphasesecur::dependancy_install_update();
+	//enphasesecur::dependancy_install_update();
   //exec('../ressources/install_apt.sh');
   foreach (eqLogic::byType('enphasesecur') as $eqLogic) {
     $eqLogic->save();
