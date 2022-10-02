@@ -27,7 +27,7 @@ function enphasesecur_install() {
     $cron->setFunction('pull');
     $cron->setEnable(1);
     $cron->setDeamon(0);
-    $cron->setSchedule('*/15 * * * *');
+    $cron->setSchedule('2 0 * * *');
     $cron->save();
   }
 }
@@ -43,7 +43,7 @@ function enphasesecur_update() {
     $cron->setFunction('pull');
     $cron->setEnable(1);
     $cron->setDeamon(0);
-    $cron->setSchedule('*/15 * * * *');
+    $cron->setSchedule('2 0 * * *');
     $cron->save();
   }
   foreach (eqLogic::byType('enphasesecur') as $eqLogic) {
