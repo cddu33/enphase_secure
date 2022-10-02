@@ -95,6 +95,7 @@ class enphasesecur extends eqLogic {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
 					if ($c->isDue($dateRun)) {
 						try {
+							log::add('enphasesecur', 'debug', 'cron lancé');
 							$eqLogic->refresh();
 						} catch (Exception $exc) {
 							log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
@@ -107,18 +108,6 @@ class enphasesecur extends eqLogic {
 			}
 		}
 	}
-/*
-	public static function cronDaily() {
-		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			try {
-				sleep(rand(0,15));
-				$eqlogic->commandes("refresh"); 
-			} catch (Exception $exc) {
-				log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
-			}
-		}
-	}
-*/
 
   /*     * *********************Méthodes d'instance************************* */
 
