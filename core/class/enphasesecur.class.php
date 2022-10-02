@@ -85,8 +85,9 @@ class enphasesecur extends eqLogic {
 		log::add('enphasesecur', 'debug', 'cron lancé');
 		$dateRun = new DateTime();
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			log::add('enphasesecur', 'debug', 'pour chaqun');
+			
 			$autorefresh = $eqLogic->getConfiguration('autorefresh');
+			log::add('enphasesecur', 'debug', 'pour chaqun' . autorefresh);
 			if ($eqLogic->getIsEnable() == 1){
 				if ($autorefresh == '') {
 					$autorefresh = '*/15 * * * *';
