@@ -129,10 +129,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 												<i class="fas fa-question-circle"></i>
 											</a>
 										</span>
-										
 									</div>
-									Si le cron n'est pas modifié, l'actualisatipn des données se fera toutes les 15 min
 								</div>
+								Si le cron n'est pas modifié, l'actualisatipn des données se fera toutes les 15 min
 							</div>
 						</div>
                         
