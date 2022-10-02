@@ -174,16 +174,18 @@ $eqLogics = eqLogic::byType($plugin->getId());
       							<label class="col-md-4 control-label">{{Adesse IP local}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Adesse ip sur vote réseau de votre passerelle Enphase}}"></i></sup>
      							</label>
-      						<div class="col-md-4">
-        						<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="ip">
-      						</div>
+      							<div class="col-md-4">
+        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="ip">
+      							</div>
+							</div>
 							<div class="form-group">
       							<label class="col-md-4 control-label">{{Numéro de série}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
      							</label>
-      						<div class="col-md-4">
-        						<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
-      						</div>
+      							<div class="col-md-4">
+        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
+      							</div>
+							</div>
     					</div>
 					</fieldset>
 				</form>
