@@ -167,7 +167,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
       							<div class="col-md-4">
         							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="site"/>
       							</div>
-								</div>
+							</div>
 
 							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
     						<div class="form-group">
@@ -184,6 +184,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
      							</label>
       							<div class="col-md-4">
         							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
+								</select>
       							</div>
 							</div>
     					</div>
