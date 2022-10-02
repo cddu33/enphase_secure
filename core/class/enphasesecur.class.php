@@ -304,7 +304,7 @@ class enphasesecur extends eqLogic {
 		sleep(5);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
 		foreach ($enphasesecur_json as $key=> $data1) {
-			log::add('enphasesecur', 'debug', $key . " : " . $data1;
+			log::add('enphasesecur', 'debug', $key . " : " . $data1);
 		}
 /*
 		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/1000;
