@@ -286,6 +286,8 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
+		$enphasesecurCmd->setIsHistorized('1');
+
 	  $enphasesecurCmd->save();
   	}
 
