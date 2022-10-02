@@ -314,15 +314,15 @@ class enphasesecur extends eqLogic {
 			}
 		}
 */
-		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']['1']['whLifetime']/1000;
+		$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime']/1000;
 		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursToday']['1']['whToday']/1000;
+		$enphasesecur_info = $enphasesecur_json['production']['1']['whToday']/1000;
 		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays']['1']['whLastSevenDays']/1000;
+		$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays']/1000;
 		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
