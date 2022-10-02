@@ -51,7 +51,7 @@ class enphasesecur extends eqLogic {
         	$return['state'] = 'ok';
         	$output = array();
 			foreach($deps as $list) {
-				$cmd = "sudo pip3 list | grep $list";
+				$cmd = "$pip3 list | grep $list";
 				unset($output);
 				exec($cmd, $output, $return_var);
 				if ($return_var || $output[0] == "") {
@@ -228,9 +228,9 @@ class enphasesecur extends eqLogic {
 
 		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie. '.json';
 
-		$enphasesecur_cmd = 'python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
+		$enphasesecur_cmd = 'sudo python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
 		$enphasesecur_cmd .= $enphasesecure_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
-		log::add('enphasesecure', 'debug', 'commande ' . $enphasesecur_cmd);
+		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
 		sleep(2);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
