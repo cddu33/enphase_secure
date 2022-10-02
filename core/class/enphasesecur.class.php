@@ -231,6 +231,7 @@ class enphasesecur extends eqLogic {
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
   	public function postRemove() {
+		
   	}
 
 
