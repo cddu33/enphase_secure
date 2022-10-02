@@ -168,6 +168,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setSubType('numeric');
 	  	$enphasesecurCmd->setUnite('kW');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->setConfiguration('historizeRound', '0');
 		$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 		$enphasesecurCmd->setTemplate('mobile', 'core::badge');
 		$enphasesecurCmd->setIsHistorized('1');
