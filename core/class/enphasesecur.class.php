@@ -94,10 +94,10 @@ class enphasesecur extends eqLogic {
 				}
 				try {
 					$c = new Cron\CronExpression($autorefresh, new Cron\FieldFactory);
-					log::add('enphasesecur', 'debug', 'pour chaqun ' . $c);
+					log::add('enphasesecur', 'debug', 'pour chaqun ' . $dateRun);
 					if ($c->isDue($dateRun)) {
 						try {
-							log::add('enphasesecur', 'debug', 'cron lancé');
+							log::add('enphasesecur', 'debug', 'cron good');
 							$eqLogic->refresh();
 						} catch (Exception $exc) {
 							log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
