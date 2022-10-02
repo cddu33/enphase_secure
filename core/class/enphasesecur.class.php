@@ -171,7 +171,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'wattHoursToday');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Production sur une heure', __FILE__));
+		  	$enphasesecurCmd->setName(__('Production du jour', __FILE__));
 	  	}
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('wattHoursToday');
@@ -184,7 +184,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd = $this->getCmd(null, 'wattHoursSevenDays');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Production sur 1 semaine', __FILE__));
+		  	$enphasesecurCmd->setName(__('Production de la semaine', __FILE__));
 	  	}
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
 	  	$enphasesecurCmd->setLogicalId('wattHoursSevenDays');
@@ -206,8 +206,24 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setUnite('w');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->save();
+
+		$enphasesecurCmd = $this->getCmd(null, 'wattsNow
+		');
+	  	if (!is_object($enphasesecurCmd)) {
+			$enphasesecurCmd = new enphasesecurCmd();
+		  	$enphasesecurCmd->setName(__('Production instantannée', __FILE__));
+	  	}
+	  	$enphasesecurCmd->setEqLogic_id($this->getId());
+	  	$enphasesecurCmd->setLogicalId('wattsNow
+		  ');
+	  	$enphasesecurCmd->setType('info');
+	  	$enphasesecurCmd->setSubType('numeric');
+	  	$enphasesecurCmd->setUnite('w');
+	  	$enphasesecurCmd->setConfiguration('minValue', '0');
+		$enphasesecurCmd->save();
   	}
 
+	  
 	  
   // Fonction exécutée automatiquement avant la suppression de l'équipement
   	public function preRemove() {
@@ -235,6 +251,10 @@ class enphasesecur extends eqLogic {
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
 		sleep(2);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
+
+		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime'];
+		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
+		$this->checkAndUpdateCmd('wattHoursLifetime', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursToday'];
 		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
