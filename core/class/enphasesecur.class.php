@@ -30,12 +30,12 @@ class enphasesecur extends eqLogic {
 
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
-		//$this->setConfiguration('vin', utils::decrypt($this->getConfiguration('vin')));
+		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
 	}
 
 	public function encrypt() {
 		$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
-		//$this->setConfiguration('vin', utils::encrypt($this->getConfiguration('vin')));
+		$this->setConfiguration('serie', utils::encrypt($this->getConfiguration('serie')));
 	}
 
 	public static function dependancy_info() {
@@ -66,14 +66,11 @@ class enphasesecur extends eqLogic {
 
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
-		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
-		    passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
+		passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
 	}
 
 	public static function dependancy_install_update() {
 		log::remove(__CLASS__ . '_update');
-		//return array('script' => dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency', 'log' => log::getPathToLog(__CLASS__ . '_update'));
-		  //  passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt_update.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
 	}
 
 
@@ -82,8 +79,6 @@ class enphasesecur extends eqLogic {
   * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
  
   	public static function cron() {
-		log::add('enphasesecur', 'debug', 'cron lancé');
-		$dateRun = new DateTime();
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getIsEnable() == 1){
 				$eqLogic->refresh();
@@ -304,7 +299,6 @@ class enphasesecur extends eqLogic {
 
   // Fonction exécutée automatiquement après la suppression de l'équipement
   	public function postRemove() {
-
   	}
 
 
