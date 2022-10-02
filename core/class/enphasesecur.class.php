@@ -135,6 +135,15 @@ class enphasesecur extends eqLogic {
 	 	if ($this->getConfiguration('password') == '') {
 			throw new Exception('Le mot de passe ne peut etre vide');
 	 	}
+		 if ($this->getConfiguration('ip') == '') {
+			throw new Exception('L\'adresse IP ne peu pas être vide');
+	 	}
+		 if ($this->getConfiguration('serie') == '') {
+			throw new Exception('Le numéro de série de la passerelle ne peu pas être vide');
+	 	}
+		 if ($this->getConfiguration('site') == '') {
+			throw new Exception('Le numéro de site ne peu pas être vide');
+	 	}
   	}
   	
   // Fonction exécutée automatiquement après la mise à jour de l'équipement
@@ -196,7 +205,6 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setUnite('w');
 	  	$enphasesecurCmd->setConfiguration('minValue', '0');
 		$enphasesecurCmd->save();
-	  	
   	}
 
 	  
@@ -214,19 +222,30 @@ class enphasesecur extends eqLogic {
 
 		$enphasesecur_pass = $this->getConfiguration('password');
 		$enphasesecur_user = $this->getConfiguration('user');
-		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_vin . '.json';
-		$enphasesecur_cmd = 'python3 ' . $enphasesecur_path .'/../../resources/enphasesecur.py';
-		$enphasesecur_cmd .= ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_vin .' ' . 'statut' . ' ' . $enphasesecur_fichier;
+		$enphasesecur_serie = $this->getConfiguration('serie');
+		$enphasesecur_site = $this->getConfiguration('site');
+		$enphasesecur_ip = $this->getConfiguration('ip');
+
+		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie. '.json';
+
+		$enphasesecur_cmd = 'python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
+		$enphasesecur_cmd .=$enphasesecure_ip ' ' . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
 		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
-		sleep(5);
+		sleep(2);
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
-		
-	
 
-		$enphasesecur_info = $enphasesecur_json['doorStatus']['innerTailgateDoor']['value'];
-		log::add('enphasesecur', 'debug', 'Coffre intérieur: ' . $enphasesecur_info);
-		$this->checkAndUpdateCmd('innertailgate', $enphasesecur_info);	
+		$enphasesecur_info = $enphasesecur_json['wattHoursToday'];
+		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
+		$this->checkAndUpdateCmd('wattHoursToday', $enphasesecur_info);	
+
+		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays '];
+		log::add('enphasesecur ', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
+		$this->checkAndUpdateCmd('wattHoursSevenDays ', $enphasesecur_info);	
+
+		$enphasesecur_info = $enphasesecur_json['wattsNow '];
+		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
+		$this->checkAndUpdateCmd('wattsNow ', $enphasesecur_info);	
 
   	}
 }

@@ -119,7 +119,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				
 							<div class="form-group">
 								<label class="col-sm-4 control-label">{{Actualisation données}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement (15min par défaut) des commandes infos du véhicule; On interoge le serveur pas directement la voiture}}"></i></sup>
+									<sup><i class="fas fa-question-circle tooltips" title="{{Fréquence de rafraîchissement des données (15min par défaut)}}"></i></sup>
 								</label>
 								<div class="col-sm-6">
 									<div class="input-group">
@@ -132,7 +132,6 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									</div>
 								</div>
 							</div>
-							</br>Si le cron n'est pas modifié, l'actualisatipn des données se fera toutes les 15 min
 						</div>
                         
 						<div class="col-lg-6">
