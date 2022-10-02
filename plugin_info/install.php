@@ -20,32 +20,12 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 // Fonction exécutée automatiquement après l'installation du plugin
 function enphasesecur_install() {
   enphasesecur::dependancy_install();
-  $cron = cron::byClassAndFunction('enphasesecur', 'pull');
-  if (!is_object($cron)) {
-    $cron = new cron();
-    $cron->setClass('enphasesecur');
-    $cron->setFunction('pull');
-    $cron->setEnable(1);
-    $cron->setDeamon(0);
-    $cron->setSchedule('2 0 * * *');
-    $cron->save();
-  }
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
 function enphasesecur_update() {
 	enphasesecur::dependancy_install_update();
   //exec('../ressources/install_apt.sh');
-  $cron = cron::byClassAndFunction('enphasesecur', 'pull');
-  if (!is_object($cron)) {
-    $cron = new cron();
-    $cron->setClass('enphasesecur');
-    $cron->setFunction('pull');
-    $cron->setEnable(1);
-    $cron->setDeamon(0);
-    $cron->setSchedule('2 0 * * *');
-    $cron->save();
-  }
   foreach (eqLogic::byType('enphasesecur') as $eqLogic) {
     $eqLogic->save();
     log::add('enphasesecur', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
@@ -54,8 +34,4 @@ function enphasesecur_update() {
 
 // Fonction exécutée automatiquement après la suppression du plugin
 function enphasesecur_remove() {
-	$cron = cron::byClassAndFunction('enphasesecur', 'pull');
-    if (is_object($cron)) {
-        $cron->remove();
-    }
 }
