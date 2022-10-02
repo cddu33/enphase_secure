@@ -20,6 +20,17 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 // Fonction exécutée automatiquement après l'installation du plugin
 function enphasesecur_install() {
   enphasesecur::dependancy_install();
+  $cron = cron::byClassAndFunction('enphasesecur', 'pull');
+    if (!is_object($cron)) {
+      $cron = new cron();
+      $cron->setClass('enphasesecur');
+      $cron->setFunction('pull');
+      $cron->setEnable(1);
+      $cron->setDeamon(0);
+      $cron->setSchedule('*/15 * * * *');
+      $cron->save();
+    }
+  }
 }
 
 // Fonction exécutée automatiquement après la mise à jour du plugin
@@ -30,6 +41,16 @@ function enphasesecur_update() {
     $eqLogic->save();
     log::add('enphasesecur', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
     $eqlogic->refresh();
+    $cron = cron::byClassAndFunction('enphasesecur', 'pull');
+    if (!is_object($cron)) {
+      $cron = new cron();
+      $cron->setClass('enphasesecur');
+      $cron->setFunction('pull');
+      $cron->setEnable(1);
+      $cron->setDeamon(0);
+      $cron->setSchedule('*/15 * * * *');
+      $cron->save();
+    }
   }
 }
 
