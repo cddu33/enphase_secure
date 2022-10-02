@@ -245,7 +245,7 @@ class enphasesecur extends eqLogic {
 
 		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie. '.json';
 
-		$enphasesecur_cmd = 'sudo python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
+		$enphasesecur_cmd = 'python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
 		$enphasesecur_cmd .=' ' .  $enphasesecur_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
 		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
@@ -260,11 +260,11 @@ class enphasesecur extends eqLogic {
 		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattHoursToday', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays '];
+		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays'];
 		log::add('enphasesecur ', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattHoursSevenDays ', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattsNow '];
+		$enphasesecur_info = $enphasesecur_json['wattsNow'];
 		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattsNow ', $enphasesecur_info);	
 

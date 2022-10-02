@@ -43,23 +43,23 @@ client = httpx.Client(verify=False)
 token = ""
 try:
     r = client.post(LOGIN_URL, data=payload_login)
-    print(r.status_code)
+    #print(r.status_code)
     #print(r.text)
     r = client.post(TOKEN_URL, data=payload_token)
-    print(r.status_code)
+   # print(r.status_code)
     #print(r.text)
     parsed_html = BeautifulSoup(r.text, "lxml")
     token = parsed_html.body.find('textarea').text
-    print(token)
+    #print(token)
     decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
-    print(decode["exp"])
+    #print(decode["exp"])
 
     header = {"Authorization": "Bearer " + token}
     r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
-    print(r.text)
+    #print(r.text)
 
     r = client.get(LOCAL_URL + "api/v1/production", headers=header)
-    print(r.text)
+    #print(r.text)
     json.dump(r.json(), open(SORTIE, "w+"))
 finally:
     client.close()
