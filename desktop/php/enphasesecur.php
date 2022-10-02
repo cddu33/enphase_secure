@@ -143,7 +143,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 							</div>
 
-							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
+							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}} </legend>
 							<div class="form-group">
       							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
@@ -169,7 +169,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
       							</div>
 								</div>
 
-							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}}</legend>
+							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
     						<div class="form-group">
       							<label class="col-md-4 control-label">{{Adesse IP local}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Adesse ip sur vote réseau de votre passerelle Enphase}}"></i></sup>

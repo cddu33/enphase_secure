@@ -44,21 +44,21 @@ class enphasesecur extends eqLogic {
         $return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependency';
         if (file_exists(jeedom::getTmpFolder(__CLASS__) . '/dependency')) {
 			$return['state'] = 'in_progress';
-        } 
+        }
 		else 
 		{
-			$return['state'] = 'nok';
-			$output = array();
-			$cmd = "pip3 list | grep bs4";
-			unset($output);
-			exec($cmd, $output, $return_var);
-        
-			if ($return_var || $output[0] == "") {
-				$return['state'] = 'nok';	
+			$deps = array('bs4', 'PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser');
+        	$return['state'] = 'ok';
+        	$output = array();
+			foreach($deps as $list) {
+				$cmd = "$pip3 list | grep $list";
+				unset($output);
+				exec($cmd, $output, $return_var);
+				if ($return_var || $output[0] == "") {
+				  $return['state'] = 'nok';
+				  break;
+				}
 			}
-			else { 
-				$return['state'] = 'ok'; 
-			}	
 		}
 		return $return;
     }
