@@ -131,8 +131,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 										</span>
 									</div>
 								</div>
-								Si le cron n'est pas modifié, l'actualisatipn des données se fera toutes les 15 min
 							</div>
+							</br>Si le cron n'est pas modifié, l'actualisatipn des données se fera toutes les 15 min
 						</div>
                         
 						<div class="col-lg-6">
