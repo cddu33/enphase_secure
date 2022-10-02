@@ -254,19 +254,19 @@ class enphasesecur extends eqLogic {
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime'];
-		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
+		//log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattHoursLifetime', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursToday'];
-		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
+		//log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattHoursToday', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays'];
-		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
+		//log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattHoursSevenDays', $enphasesecur_info);	
 
 		$enphasesecur_info = $enphasesecur_json['wattsNow'];
-		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
+		//log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('wattsNow', $enphasesecur_info);	
 
   	}

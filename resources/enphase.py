@@ -59,7 +59,7 @@ try:
     #print(r.text)
 
     r = client.get(LOCAL_URL + "api/v1/production", headers=header)
-    #print(r.text)
+    print(r.text)
     json.dump(r.json(), open(SORTIE, "w+"))
 finally:
     client.close()
