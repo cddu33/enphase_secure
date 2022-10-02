@@ -144,7 +144,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Prod du jour', __FILE__));
+		  	$enphasesecurCmd->setName(__('Prod jour', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -160,7 +160,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Prod de la semaine', __FILE__));
+		  	$enphasesecurCmd->setName(__('Prod semaine', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
@@ -177,7 +177,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Prod depuis MES', __FILE__));
+		  	$enphasesecurCmd->setName(__('Prod MES', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
@@ -194,7 +194,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Prod instantannée', __FILE__));
+		  	$enphasesecurCmd->setName(__('Prod inst', __FILE__));
 			//$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -210,7 +210,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Conso du jour', __FILE__));
+			$enphasesecurCmd->setName(__('Conso jour', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
@@ -226,7 +226,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Conso de la semaine', __FILE__));
+			$enphasesecurCmd->setName(__('Conso semaine', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
@@ -244,7 +244,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Consom depuis la MES', __FILE__));
+			$enphasesecurCmd->setName(__('Consom MES', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
@@ -261,7 +261,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Conso instantannée', __FILE__));
+			$enphasesecurCmd->setName(__('Conso inst', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setTemplate('mobile', 'core::badge');
