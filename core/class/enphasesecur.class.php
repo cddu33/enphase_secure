@@ -306,9 +306,9 @@ class enphasesecur extends eqLogic {
 		foreach ($enphasesecur_json as $key1=> $data1) {
 			log::add('enphasesecur', 'debug', $key1 . ' : ' . $data1);
 			foreach ($data1 as $key2 => $data2) {
-				log::add('enphasesecur', 'debug', 'Enfants: ' . $key2 . ' : ' . $data2);
+				log::add('enphasesecur', 'debug', 'Enfants1: ' . $key2 . ' : ' . $data2);
 				foreach ($data2 as $key3 => $data3) {
-					log::add('enphasesecur', 'debug', 'Enfants: ' . $key3 . ' : ' . $data3);
+					log::add('enphasesecur', 'debug', 'Enfants2: ' . $key3 . ' : ' . $data3);
 				}
 			}
 			
