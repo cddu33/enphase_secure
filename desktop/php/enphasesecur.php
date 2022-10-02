@@ -14,7 +14,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<legend><i class="fas fa-cog"></i>  {{Gestion}}</legend>
 		<!-- Boutons de gestion du plugin -->
 		<div class="eqLogicThumbnailContainer">
-        <div class="cursor eqLogicAction logoPrimary" data-action="add">
+        	<div class="cursor eqLogicAction logoPrimary" data-action="add">
 				<i class="fas fa-plus-circle"></i>
 				<br>
 				<span>{{Ajouter}}</span>
@@ -54,10 +54,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<div class="input-group pull-right" style="display:inline-flex;">
 			<span class="input-group-btn">
 				<!-- Les balises <a></a> sont volontairement fermées à la ligne suivante pour éviter les espaces entre les boutons. Ne pas modifier -->
-				<a class="btn btn-sm btn-default eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i><span class="hidden-xs"> {{Configuration avancée}}</span>
-				</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}
-				</a><a class="btn btn-sm btn-danger eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}
-				</a>
+				<a class="btn btn-sm btn-default eqLogicAction roundedLeft" data-action="configure"><i class="fas fa-cogs"></i><span class="hidden-xs"> {{Configuration avancée}}</span> </a>
+				<a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}} </a>
+				<a class="btn btn-sm btn-danger eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}} </a>
 			</span>
 		</div>
 		<!-- Onglets -->
@@ -143,33 +142,49 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<textarea class="form-control eqLogicAttr autogrow" data-l1key="comment"></textarea>
 								</div>
 							</div>
+
 							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
 							<div class="form-group">
-								
-      <label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
-        <sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
-      </label>
-      <div class="col-md-4">
-        <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="user"/>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-4 control-label">{{Password Enphase}}
-        <sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
-      </label>
-      <div class="col-md-4">
-        <input type="password" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="password" autocomplete="new-password"/>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-md-4 control-label">{{VIN du véhicule}}
-        <sup><i class="fas fa-question-circle tooltips" title="{{Numéros VIN (identification) de votre véhicule présent sur la carte grise}}"></i></sup>
-      </label>
-      <div class="col-md-4">
-        <input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="vin">
-        </select>
-      </div>  
-    </div>
+      							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
+      							</label>
+      							<div class="col-md-4">
+        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="user"/>
+      							</div>
+    						</div>
+    						<div class="form-group">
+      							<label class="col-md-4 control-label">{{Password Enphase}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
+      							</label>
+      							<div class="col-md-4">
+        							<input type="password" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="password" autocomplete="new-password"/>
+      							</div>
+    						</div>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Id de site}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{ID du ite correspondant à votre passerelle}}"></i></sup>
+      							</label>
+      							<div class="col-md-4">
+        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="site"/>
+      							</div>
+								</div>
+
+							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}}</legend>
+    						<div class="form-group">
+      							<label class="col-md-4 control-label">{{Adesse IP local}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Adesse ip sur vote réseau de votre passerelle Enphase}}"></i></sup>
+     							</label>
+      						<div class="col-md-4">
+        						<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="ip">
+      						</div>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Numéro de série}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
+     							</label>
+      						<div class="col-md-4">
+        						<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
+      						</div>
+    					</div>
 					</fieldset>
 				</form>
 			</div><!-- /.tabpanel #eqlogictab-->
@@ -189,12 +204,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								<th style="min-width:80px;width:200px;">{{Actions}}</th>
 							</tr>
 						</thead>
-						<tbody>
-						</tbody>
 					</table>
 				</div>
 			</div><!-- /.tabpanel #commandtab-->
-
 		</div><!-- /.tab-content -->
 	</div><!-- /.eqLogic -->
 </div><!-- /.row row-overflow -->
