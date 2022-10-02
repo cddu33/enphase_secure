@@ -320,11 +320,11 @@ class enphasesecur extends eqLogic {
 
 		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichierC), true);
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/100;
+		$enphasesecur_info = ($enphasesecur_json['wattHoursLifetime'])/100;
 		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
-		$enphasesecur_info = $enphasesecur_json['wattHoursToday']/100;
+		$enphasesecur_info = ($enphasesecur_json['wattHoursToday'])/100;
 		log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
 
