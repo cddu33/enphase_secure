@@ -27,8 +27,7 @@ USER = sys.argv[2]
 PASSWORD = sys.argv[3]
 SITE_ID = sys.argv[4]
 SERIAL_NUMBER = sys.argv[5]
-SORTIEC= sys.argv[6] + "C.json"
-SORTIEP= sys.argv[6] + "P.json"
+SORTIE= sys.argv[6]
 
 LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
@@ -60,11 +59,9 @@ try:
     #print(r.text)
 
     
-    r = client.get(LOCAL_URL + "api/v1/consumption", headers=header)
-    #print(r.text)
-    json.dump(r.json(), open(SORTIEC, "w+"))
-    r = client.get(LOCAL_URL + "api/v1/production", headers=header)
-    #print(r.text)
-    json.dump(r.json(), open(SORTIEP, "w+"))
+   
+    r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
+    print(r.text)
+    json.dump(r.json(), open(SORTIE, "w+"))
 finally:
     client.close()

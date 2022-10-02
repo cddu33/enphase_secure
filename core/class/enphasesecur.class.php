@@ -296,16 +296,14 @@ class enphasesecur extends eqLogic {
 		$enphasesecur_site = $this->getConfiguration('site');
 		$enphasesecur_ip = $this->getConfiguration('ip');
 
-		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie;
-		$enphasesecur_fichierC = $enphasesecur_fichier . 'C.json';
-		$enphasesecur_fichierP = $enphasesecur_fichier . 'P.json';
+		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie . '.json';
 		$enphasesecur_cmd = 'python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
 		$enphasesecur_cmd .=' ' .  $enphasesecur_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
 		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
 		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
 		sleep(5);
-		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichierP), true);
-
+		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
+/*
 		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/1000;
 		log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
@@ -317,13 +315,11 @@ class enphasesecur extends eqLogic {
 		$enphasesecur_info = $enphasesecur_json['wattHoursSevenDays']/1000;
 		log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
-
-		$enphasesecur_info = $enphasesecur_json['wattsNow']/1000;
+*/
+		$enphasesecur_info = $enphasesecur_json['production']['wNow']/1000;
 		log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-
-		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichierC), true);
-
+/*
 		$enphasesecur_info = $enphasesecur_json['wattHoursLifetime']/1000;
 		log::add('enphasesecur', 'debug', 'Consommation depuis la mise en service: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
@@ -339,6 +335,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecur_info = $enphasesecur_json['wattsNow']/1000;
 		log::add('enphasesecur', 'debug', 'Consommation instantannée: ' . $enphasesecur_info);
 		$this->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
+		*/
   	}
 }
 
