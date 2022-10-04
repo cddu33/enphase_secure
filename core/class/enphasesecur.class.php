@@ -369,6 +369,8 @@ class enphasesecur extends eqLogic {
 			$this->checkAndUpdateCmd('tension', $enphasesecur_info);
 		}
 		else {
+			log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
+			
 			$enphasesecur_info = $enphasesecur_json['production']['0']['whLifetime']/1000;
 			log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
