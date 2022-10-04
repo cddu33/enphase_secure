@@ -330,7 +330,7 @@ class enphasesecur extends eqLogic {
 		}
 */
 
-		if ($enphasesecur_json['production']['1']['whLifetime'] != "") {
+		if ($enphasesecur_json['production']['1']['whLifetime'] != "" && $enphasesecur_json['production']['1']['whLifetime'] != null)   {
 
 			$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime']/1000;
 			log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
