@@ -419,7 +419,7 @@ class enphasesecur extends eqLogic {
         $cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon à modifier
         $cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
         $cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__, '55060'); // port par défaut à modifier
-        $cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeTemplate.php'; // chemin de la callback url à modifier (voir ci-dessous)
+        $cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
         /*$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; // on rajoute les paramètres utiles à votre démon, ici user
         $cmd .= ' --pswd "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; // et password*/
         $cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
@@ -450,6 +450,18 @@ class enphasesecur extends eqLogic {
         }
         system::kill('enphasesecurd.py'); // nom du démon à modifier
         sleep(1);
+    }
+	public static function sendToDaemon($params) {
+        $deamon_info = self::deamon_info();
+        if ($deamon_info['state'] != 'ok') {
+            throw new Exception("Le démon n'est pas démarré");
+        }
+        $params['apikey'] = jeedom::getApiKey(__CLASS__);
+        $payLoad = json_encode($params);
+        $socket = socket_create(AF_INET, SOCK_STREAM, 0);
+        socket_connect($socket, '127.0.0.1', config::byKey('socketport', __CLASS__, '55060')); //port par défaut de votre plugin à modifier
+        socket_write($socket, $payLoad, strlen($payLoad));
+        socket_close($socket);
     }
 }
 
