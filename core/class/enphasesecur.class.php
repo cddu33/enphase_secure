@@ -301,7 +301,6 @@ class enphasesecur extends eqLogic {
   	public function postRemove() {
   	}
 
-
  	public function refresh() {
 		$enphasesecur_path = realpath(dirname(__FILE__));
 
@@ -381,6 +380,77 @@ class enphasesecur extends eqLogic {
 		}
 
   	}
+	  public static function deamon_info() {
+        $return = array();
+        $return['log'] = __CLASS__;
+        $return['state'] = 'nok';
+        $pid_file = jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
+        if (file_exists($pid_file)) {
+            if (@posix_getsid(trim(file_get_contents($pid_file)))) {
+                $return['state'] = 'ok';
+            } else {
+                shell_exec(system::getCmdSudo() . 'rm -rf ' . $pid_file . ' 2>&1 > /dev/null');
+            }
+        }
+        $return['launchable'] = 'ok';
+       /* $user = config::byKey('user', __CLASS__); // exemple si votre démon à besoin de la config user,
+        $pswd = config::byKey('password', __CLASS__); // password,
+        $clientId = config::byKey('clientId', __CLASS__); // et clientId
+        if ($user == '') {
+            $return['launchable'] = 'nok';
+            $return['launchable_message'] = __('Le nom d\'utilisateur n\'est pas configuré', __FILE__);
+        } elseif ($pswd == '') {
+            $return['launchable'] = 'nok';
+            $return['launchable_message'] = __('Le mot de passe n\'est pas configuré', __FILE__);
+        } elseif ($clientId == '') {
+            $return['launchable'] = 'nok';
+            $return['launchable_message'] = __('La clé d\'application n\'est pas configurée', __FILE__);
+        }*/
+        return $return;
+    }
+	public static function deamon_start() {
+        self::deamon_stop();
+        $deamon_info = self::deamon_info();
+        if ($deamon_info['launchable'] != 'ok') {
+            throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+        }
+
+        $path = realpath(dirname(__FILE__) . '/../../resources/demond'); // répertoire du démon à modifier
+        $cmd = 'python3 ' . $path . '/demond.py'; // nom du démon à modifier
+        $cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
+        $cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__, '55060'); // port par défaut à modifier
+        $cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/template/core/php/jeeTemplate.php'; // chemin de la callback url à modifier (voir ci-dessous)
+        /*$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; // on rajoute les paramètres utiles à votre démon, ici user
+        $cmd .= ' --pswd "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; // et password*/
+        $cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
+        $cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // et on précise le chemin vers le pid file (ne pas modifier)
+        log::add(__CLASS__, 'info', 'Lancement démon');
+        $result = exec($cmd . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
+        $i = 0;
+        while ($i < 20) {
+            $deamon_info = self::deamon_info();
+            if ($deamon_info['state'] == 'ok') {
+                break;
+            }
+            sleep(1);
+            $i++;
+        }
+        if ($i >= 30) {
+            log::add(__CLASS__, 'error', __('Impossible de lancer le démon, vérifiez le log', __FILE__), 'unableStartDeamon');
+            return false;
+        }
+        message::removeAll(__CLASS__, 'unableStartDeamon');
+        return true;
+    }
+	public static function deamon_stop() {
+        $pid_file = jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // ne pas modifier
+        if (file_exists($pid_file)) {
+            $pid = intval(trim(file_get_contents($pid_file)));
+            system::kill($pid);
+        }
+        system::kill('enphasesecurd.py'); // nom du démon à modifier
+        sleep(1);
+    }
 }
 
 class enphasesecurCmd extends cmd {

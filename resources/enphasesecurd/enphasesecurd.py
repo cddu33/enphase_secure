@@ -82,21 +82,9 @@ def shutdown():
 
 # ----------------------------------------------------------------------------
 
-public function getPort(){
-	$port = 8001;
-	$max_port = 9000;
-	while($port <= $max_port){
-		$connection = @fsockopen('localhost', $port);
-		if (is_resource($connection)){
-			return $port;
-		}
-		$port++;
-	}
-}
-
 
 _log_level = "error"
-_socket_port = 55009
+_socket_port = 55060
 _socket_host = 'localhost'
 _device = 'auto'
 _pidfile = '/tmp/demond.pid'
