@@ -10,7 +10,7 @@
 	"require": "4.1.0",
 	"category": "energy",
 	"hasDependency": true,
-	"hasOwnDeamon": false,
+	"hasOwnDeamon": true,
 	"maxDependancyInstallTime": 0,
 	"changelog": "https://cddu33.github.io/enphase_secure/#language#/changelog",
 	"documentation": "https://cddu33.github.io/enphase_secure/#language#/",
