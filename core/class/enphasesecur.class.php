@@ -534,7 +534,7 @@ class enphasesecur extends eqLogic {
 		}
 		$template = 'enphase_secure_dashboard';
 		$replace['#template#'] = $template;
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'enphase_secure')));
+		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'enphase_secur')));
 	}
 }
 
