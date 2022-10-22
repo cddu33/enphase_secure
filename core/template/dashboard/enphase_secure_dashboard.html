@@ -1,10 +1,14 @@
-<div id="enphase_secure_widget_ID" class="eqLogic-widget eqLogic tooltips enphase_secure_widget enphase_secure" style="width: 700px; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
-    <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
-
-    <center class="widget-name" style="padding-right: 0px;">
-        <span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
-        <a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>        
-    </center>
+<div class="enphase_secure enphase_secure-widget allowResize allowReorderCmd #custom_layout# #enphase_secure_class# #class#" data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="#version#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" style="width: #width#;height: #height#;#style#">
+    <center class="widget-name">
+        <span class="warning" title="#alert_name#">
+          <i class='#alert_icon#'></i>
+        </span>
+        <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#">
+          <i class="fas fa-sync"></i>
+        </span>
+        <span class="reportModeVisible">#name_display# <span class="object_name">#object_name#</span></span>
+        <a href="#eqLink#" class="reportModeHidden">#name_display# <span class="object_name">#object_name#</span></a>
+      </center>
     <div class="container-fluid">
 
         <table widht="100%" border="0" align="center" cellpadding="0">
@@ -47,6 +51,13 @@
     </div>
 	
 	<script>
+        if ('#refresh_id#' != '') {
+      $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
+        jeedom.cmd.execute({id: '#refresh_id#'})
+      })
+    } else {
+      $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove()
+    }
 jeedom.cmd.addUpdateFunction('#Export#',function(_options) {
       $('.cmd[data-cmd_id=#Export#]').attr('title', ' : '+_options.valueDate+'<br/> : '+_options.collectDate)
       $('.cmd[data-cmd_id=#Export#] .state').empty().append(_options.display_value)
