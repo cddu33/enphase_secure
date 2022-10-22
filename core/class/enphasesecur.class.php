@@ -532,9 +532,9 @@ class enphasesecur extends eqLogic {
 			}
 			$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
 		}
-		$template = 'enphase_secure_dashboard';
+		$template = 'enphasesecur_dashboard';
 		$replace['#template#'] = $template;
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'enphase_secur')));
+		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'enphasesecur')));
 	}
 }
 
