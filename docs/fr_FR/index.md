@@ -1,10 +1,22 @@
 # Plugin Enphase Secure V7 pour Jeedom
 
-Le plugin permet de récupérer les donnnées de production et de consommation:
-* Instantanné
-* Jour
-* Semaine
-* Mise en service
+Le plugin permet de récupérer les données: 
+* de production:
+    * Instantanné
+    * Jour
+    * Semaine
+    * Mise en service
+* de consommation totale (avec la production):
+    * Instantanné
+    * Jour
+    * Semaine
+    * Mise en service
+* de consommation net (importée du réseau):
+    * Instantanné
+    * Jour
+    * Semaine
+    * Mise en service
+* La balance import et export instantanée réseau
  
 Il se base sur l'accès par jeton de sécurité de Enphase.
 
