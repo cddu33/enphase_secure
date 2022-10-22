@@ -535,14 +535,14 @@ class enphasesecur extends eqLogic {
 
 			// On definit le template à appliquer par rapport à la version Jeedom utilisée
 			/*if (version_compare(jeedom::version(), '4.3.0') >= 0) {
-				$template = 'fordcar_dashboard_v43';
+				$template = 'enphase_secure_dashboard_v43';
 			}
-			else { $template = 'fordcar_dashboard'; }
+			else { $template = 'enphase_secure_dashboard'; }
 			$replace['#template#'] = $template;
 	*/
-			$template = 'fordcar_dashboard';
+			$template = 'enphase_secure_dashboard';
 			$replace['#template#'] = $template;
-			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'enphase_secure')));
 		}
 }
 
