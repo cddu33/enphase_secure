@@ -11,7 +11,8 @@
             <tbody>
               <tr>
                 <td> </td>
-                <td>#Export#</td>
+                <td> <span class="label" style="font-weight: bold">Véhicule</span><br />
+                    <span data-cmd_id="#Export_id#" class="state Cmd#etat_id# #etat_history#"></span></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -46,20 +47,12 @@
     </div>
 	
 	<script>
+jeedom.cmd.addUpdateFunction('#id#',function(_options) {
+      $('.cmd[data-cmd_id=#id#]').attr('title', ' : '+_options.valueDate+'<br/> : '+_options.collectDate)
+      $('.cmd[data-cmd_id=#id#] .state').empty().append(_options.display_value)
+      $('.cmd[data-cmd_id=#id#] .unit').empty().append(_options.unit)
+    });
 
+jeedom.cmd.refreshValue([{cmd_id :'#id#',display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#', unit: '#unite#'}])
 	</script>
-
-	<style>
-	    .enphase_secure_widget hr {
-		    border-top: 1px solid;
-		    margin : 10px 10px 10px 10px;
-	    }
-	
-	    .enphase_secure_widget .btn {
-		    width: 40px !important;
-		    height: 40px !important;
-		    max-width: 40px !important;
-		    max-height: 40px !important;
-	    }			
-	</style>
 </div>
