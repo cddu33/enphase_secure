@@ -7,7 +7,7 @@
 	},
 	"licence": "AGPL",
 	"author": "cddu33",
-	"require": "4.1.0",
+	"require": "4.0.0",
 	"category": "energy",
 	"hasDependency": true,
 	"hasOwnDeamon": false,
