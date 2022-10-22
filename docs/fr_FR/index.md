@@ -16,7 +16,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
-* La balance import et export instantannée réseau
+* La balance import et export instantanée réseau
  
 Il se base sur l'accès par jeton de sécurité de Enphase.
 
