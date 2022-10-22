@@ -20,13 +20,12 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class enphasesecur extends eqLogic {
   /*     * *************************Attributs****************************** */
-
-  /*
+  
 	public static $_widgetPossibility = array(
-		'custom' => false,
+		'custom' => true,
 		//'custom::layout' => false,
 		'parameters' => array(),
-	);*/
+	);
 
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
@@ -511,6 +510,7 @@ class enphasesecur extends eqLogic {
 		}
 
   	}
+
 }
 
 class enphasesecurCmd extends cmd {
