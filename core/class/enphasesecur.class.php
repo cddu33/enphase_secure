@@ -20,13 +20,8 @@ require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class enphasesecur extends eqLogic {
   /*     * *************************Attributs****************************** */
-
-  /*
-	public static $_widgetPossibility = array(
-		'custom' => false,
-		//'custom::layout' => false,
-		'parameters' => array(),
-	);*/
+  
+	
 
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
@@ -511,6 +506,33 @@ class enphasesecur extends eqLogic {
 		}
 
   	}
+
+	  public function toHtml($_version = 'dashboard') {
+		if ($this->getConfiguration('widgetTemplate') != 1) {
+			return parent::toHtml($_version);
+		  }
+		$replace = $this->preToHtml($_version);
+		if (!is_array($replace)) {
+		  return $replace;
+		}
+		$version = jeedom::versionAlias($_version);
+	
+		foreach (($this->getCmd('info')) as $cmd) {
+		  $logical = $cmd->getLogicalId();
+		  $collectDate = $cmd->getCollectDate();
+		
+		  $replace['#' . $logical . '_id#'] = $cmd->getId();
+		  $replace['#' . $logical . '#'] = $cmd->execCmd();
+		  $replace['#' . $logical . '_unite#'] = $cmd->getUnite();
+		  $replace['#' . $logical . '_name#'] = $cmd->getName();
+		  $replace['#' . $logical . '_collect#'] = $collectDate;
+		}
+		$replace['#refresh_id#'] = $this->getCmd('action', 'refresh')->getId();
+	
+		$html = template_replace($replace, getTemplate('core', $version, 'enphasesecur_dashboard', __CLASS__));
+		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
+		return $html;
+	  }
 }
 
 class enphasesecurCmd extends cmd {

@@ -1,0 +1,58 @@
+<div id="enphasesecur_widget_ID" class="eqLogic-widget eqLogic tooltips enphasesecur_widget enphasesecur" style="width:auto; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+    <center class="widget-name">
+      <span class="warning" title="#alert_name#">
+        <i class='#alert_icon#'></i>
+      </span>
+      <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#">
+        <i class="fas fa-sync"></i>
+      </span>
+      <span class="reportModeVisible">#name_display# <span class="object_name">#object_name#</span></span>
+      <a href="#eqLink#" class="reportModeHidden">#name_display# <span class="object_name">#object_name#</span></a>
+    </center>
+    <div class="container-fluid">
+      <table border="1" align="center" cellpadding="0">
+        <tbody>
+          <tr>
+            <td align="center">&nbsp;<br>&nbsp;<br>&nbsp;</td>
+            <td align="center"></td>
+            <td align="center">&nbsp;&nbsp;Instantanné&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;Jour&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;Semaine&nbsp;&nbsp;</td>
+            <td align="center">&nbsp;&nbsp;Mise en service&nbsp;&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center"><br>Production<br>&nbsp;</td>
+            <td align="center"></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#PwattsNow_id#">#PwattsNow# #PwattsNow_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#PwattHoursToday_id#">#PwattHoursToday# #PwattHoursToday_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#PwattHoursSevenDays_id#">#PwattHoursSevenDays# #PwattHoursSevenDays_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#PwattHoursLifetime_id#">#PwattHoursLifetime# #PwattHoursLifetime_unite#</div></td>
+          </tr>
+          <tr>
+            <td align="center" rowspan="2"><br>Consommation<br>&nbsp;</td>
+            <td align="center">Net</td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattsNowNet_id#">#CwattsNowNet# #CwattsNowNet_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattHoursTodayNet_id#">#CwattHoursTodayNet# #CwattHoursTodayNet_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattHoursSevenDaysNet_id#">#CwattHoursSevenDaysNet# #CwattHoursSevenDaysNet_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattHoursLifetimeNet_id#">#CwattHoursLifetimeNet# #CwattHoursLifetimeNet_unite#</div></td>
+          </tr>
+          <tr>
+            <td align="center">Totale</td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattsNow_id#">#CwattsNow# #CwattsNow_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattHoursToday_id#">#CwattHoursToday# #CwattHoursToday_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattHoursSevenDays_id#">#CwattHoursSevenDays# #CwattHoursSevenDays_unite#</div></td>
+            <td align="center"><div class="history cursor" data-cmd_id="#CwattHoursLifetime_id#">#CwattHoursLifetime# #CwattHoursLifetime_unite#</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+	  <script>
+        if ('#refresh_id#' != '') {
+      $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
+        jeedom.cmd.execute({id: '#refresh_id#'})
+      })
+    } else {
+      $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove()
+    }
+	</script>
+</div>
