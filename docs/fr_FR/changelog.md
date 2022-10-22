@@ -11,8 +11,7 @@ Compatibilité Jeedom 4.0
 
 Correction Wh et W
 
-Rajout des infos conso net // conso total
-
+Rajout des: infos conso net // conso total // export et import réseau
 
 # 04/10/2022 (beta)
 Intégration Passerelles Standard
