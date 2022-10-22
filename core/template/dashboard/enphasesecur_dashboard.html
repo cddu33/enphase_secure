@@ -16,8 +16,13 @@
               <tr>
                 <td widht="16%"> </td>
                 <td> </td>
-                <td widht="16%"><span data-cmd_id="#Export#"></span></td>
-                  <td widht="16%"><span data-cmd_id="#Import#"></span></td>
+                <td widht="16%">
+                  <div class="history cursor" data-cmd_id="#Export_id#">#Export_name# #Export_unite#
+                  </div>
+                 </td>
+                  <td widht="16%">
+                    <div class="history cursor" data-cmd_id="#Import_id#">#Import_name# <br/> #Import# #Import_unite#
+                  </div></span></td>
                 <td widht="16%"> </td>
                 <td widht="16%"> </td>
               </tr>
@@ -57,12 +62,5 @@
     } else {
       $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove()
     }
-jeedom.cmd.addUpdateFunction('#Export#',function(_options) {
-      $('.cmd[data-cmd_id=#Export#]').attr('title', ' : '+_options.valueDate+'<br/> : '+_options.collectDate)
-      $('.cmd[data-cmd_id=#Export#] .state').empty().append(_options.display_value)
-      $('.cmd[data-cmd_id=#Export#] .unit').empty().append(_options.unit)
-    });
-
-jeedom.cmd.refreshValue([{cmd_id :'#Export#',display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#', unit: '#unite#'}])
 	</script>
 </div>

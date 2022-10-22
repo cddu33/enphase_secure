@@ -507,35 +507,32 @@ class enphasesecur extends eqLogic {
 
   	}
 
-	public function toHtml($_version = 'dashboard') {
-		if ($this->getConfiguration('eqtuile','') == "core"){
-			self::$_widgetPossibility = array('custom' => 'layout');
-			return eqLogic::toHtml($_version);
-	  	}	
+	  public function toHtml($_version = 'dashboard') {
+		if ($this->getConfiguration('widgetTemplate') != 1) {
+		  return parent::toHtml($_version);
+		}
+	
 		$replace = $this->preToHtml($_version);
 		if (!is_array($replace)) {
-			return $replace;
+		  return $replace;
 		}
 		$version = jeedom::versionAlias($_version);
-		$replace['#version#'] = $_version;
-
-		$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
 	
-			// Traitement des commandes infos
-		foreach ($this->getCmd('info') as $cmd) {
-			$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
-			$replace['#' . $cmd->getLogicalId() . '_name#'] = $cmd->getName();
-			$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
-			$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
-			if ($cmd->getIsHistorized() == 1) {
-				$replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
-			}
-			$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+		foreach (($this->getCmd('info')) as $cmd) {
+		  $logical = $cmd->getLogicalId();
+		  $collectDate = $cmd->getCollectDate();
+		
+		  $replace['#' . $logical . '_id#'] = $cmd->getId();
+		  $replace['#' . $logical . '#'] = $cmd->execCmd();
+		  $replace['#' . $logical . '_unite#'] = $cmd->getUnite();
+		  $replace['#' . $logical . '_collect#'] = $collectDate;
 		}
-		$template = 'enphasesecur_dashboard';
-		$replace['#template#'] = $template;
-		return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'enphasesecur')));
-	}
+		$replace['#refresh_id#'] = $this->getCmd('action', 'refresh')->getId();
+	
+		$html = template_replace($replace, getTemplate('core', $version, 'enphasesecur_dashboard', __CLASS__));
+		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
+		return $html;
+	  }
 }
 
 class enphasesecurCmd extends cmd {
