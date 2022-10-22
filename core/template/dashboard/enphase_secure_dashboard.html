@@ -1,69 +1,568 @@
-<div id="enphase_secure_widget_ID" class="eqLogic-widget eqLogic tooltips enphase_secure_widget enphase_secure" style="width: 700px; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
-    <center class="widget-name">
-        <span class="warning" title="#alert_name#">
-          <i class='#alert_icon#'></i>
-        </span>
-        <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#">
-          <i class="fas fa-sync"></i>
-        </span>
-        <span class="reportModeVisible">#name_display# <span class="object_name">#object_name#</span></span>
-        <a href="#eqLink#" class="reportModeHidden">#name_display# <span class="object_name">#object_name#</span></a>
-      </center>
-    <div class="container-fluid">
+<div id="fordcar_widget_ID" class="eqLogic-widget eqLogic tooltips fordcar_widget fordcar" style="width: 700px; height:auto; text-align:center; border:#border#; border-radius:#border-radius#; background-color:#background-color#; color:#color#; #style#;" data-eqType="#eqType#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-version="dashboard">
+    <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#" title="Rafraichir" onclick="jeedom.cmd.execute({id: #refresh_id#});"><i class="fas fa-sync"></i></span>
 
-        <table widht="100%" border="0" align="center" cellpadding="0">
-            <tbody>
-              <tr>
-                <td> </td>
-                <td> <span class="label" style="font-weight: bold">Véhicule</span><br />
-                    <span data-cmd_id="#Export_id#" class="state Cmd#etat_id# #etat_history#"></span></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Production</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td rowspan="2">Consommation</td>
-                <td>Net</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Totale</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-            </table>
+    <center class="widget-name" style="padding-right: 0px;">
+        <span class="object_name" style="font-size:1.1em ;display:none;">#object_name#</span>
+        <a href="#eqLink#" style="font-size:1.1em ;#hideEqLogicName#">#name_display#</a>        
+    </center>
+    <div class="container-fluid">
+        <table width="100%" border="0" align="center" cellpadding="0">
+            <tr>
+                <td bgcolor="" width="210px">
+                    <div align="center">
+                        <span class="label" style="font-weight: bold">Véhicule</span><br />
+                        <span data-cmd_id="#etat_id#" class="state Cmd#etat_id# #etat_history#"></span>
+                    </div>
+                </td>
+                <td bgcolor="" width="210px">
+                    <div align="center">
+                        <span class="label" style="font-weight: bold">Kilométrage</span><br />
+                        <span data-cmd_id="#km_id#" class="Cmd#km_id# iconCmd #km_history#"></span>
+                    </div>
+                </td>
+               
+                <td bgcolor="" width="280px">
+                    <div align="center">
+                        <span class="label cmdName" style="font-weight: bold">Actions</span><br />
+                        <button class="btn cmd action" data-cmd_id="#doorLock_id#" title="Verrouiller" onclick="jeedom.cmd.execute({id: #lock_id#});"><i class="fa-2x icon fas fa-lock"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#doorUnlock_id#" title="Déverrouiller" onclick="jeedom.cmd.execute({id: #unlock_id#});"><i class="fa-2x icon fas fa-lock-open"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#refresh_id#" title="Forcer le Rafraichissement" onclick="jeedom.cmd.execute({id: #frefresh_id#});"><i class="fa-2x fas icon jeedomapp-reload"></i></button>
+                        <br />
+                        <button class="btn cmd action" data-cmd_id="#start_id#" title="Démarrer le moteur" onclick="jeedom.cmd.execute({id: #start_id#});"><i class="fa-2x icon fas fa-toggle-off"></i></button>
+                        <button class="btn cmd action" data-cmd_id="#stop_id#" title="Couper le moteur" onclick="jeedom.cmd.execute({id: #stop_id#});"><i class="fa-2x icon fas fa-power-off"></i></button>
+                        <br />&nbsp;<br />
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td bgcolor="" width="420px" colspan="2" align="center">
+                    <table align="center" width="100%" border="0">
+                        <tr hidden />
+                        <tr>
+                            <td width="5%"></td>
+                            <td align="left" width="45%">
+                                <div id="electric_engine#id#">
+                                    <i class="fa-2x fas fa-charging-station"></i><span class="label cmdName" style="font-weight: bold">Moteur électrique</span>
+                                    <br />
+                                    <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#elVehDTE_id#" class="Cmd#elVehDTE_id# #elVehDTE_history#" >kms restants</span></div><br />
+                                    <div class="label "><i class="fa-xl fas fa-car-battery"></i> <span data-cmd_id="#batteryFillLevel_id#" class="Cmd#batteryFillLevel_id#"></span></div><br />
+                                    <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
+
+                                    <div class="label"><i class="fa-xl fas fa-plug"></i>Véhicule branché: <span class="Cmd#connectorStatus_id#"></span></div><br />
+                                    <div class="label"><i class="fa-xl fas fa-charging-station"></i> <span class="Cmd#chargingStatus_id#"></span></div><br />
+                                </div>
+                            </td>
+                            <td align="left">
+                                    <div id="combustion_engine#id#"><br />
+                                        <i class="fa-2x fas fa-gas-pump"></i><span class="label cmdName" style="font-weight: bold">Moteur thermique</span>
+                                        <br />
+                                        <div class="label"><i class="fa-xl fas fa-map-pin"></i><span data-cmd_id="#kmfuel_id#" class="Cmd#kmfuel_id# #kmfuel_history#"></span></div><br />
+                                        <div class="label"><i class="fa-xl fas fa-gas-pump"></i><span data-cmd_id="#qfuel_id#" class="Cmd#qfuel_id# #qfuel_history#"></span></div><br />
+                                        <div class="label"><i class="fa-xl fas fa-car-battery"></i> Batterie : <span data-cmd_id="#hbat_id#" class="Cmd#hbat_id# #hbat_history#"></span> <i data-cmd_id="#tbat_id#" class="Cmd#tbat_id# #tbat_history#"></i></div><br />
+                                        <div class="label"><i class="fa-xl fas kiko-wrench"></i> Huile : <span data-cmd_id="#ehuile_id#" class="Cmd#ehuile_id# #ehuile_history#"></span> <i data-cmd_id="#huile_id#"" class="Cmd#huile_id# #huile_history#"></i> </div>
+                                    </div>
+                            </td>
+                        </tr>
+                    </table><br />
+                </td>
+                <td bgcolor="" width="210px" align="center">
+                   
+                        <span class="label cmdName" style="font-weight: bold">Localisation</span><br />
+                        Latitude: <i data-cmd_id="#lat_id#" class="Cmd#lat_id# #lat_history#"></i><br />
+                        Longitude: <i data-cmd_id="#long_id#" class="Cmd#long_id# #long_history#"></i><br />
+                        <br />
+                        <a href="https://www.openstreetmap.org/?mlat=#lat#&mlon=#long#" target="_blank">Afficher la carte</a><br />
+                
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" width="420px" align="center">
+                    
+                    <table align="left" width="100%">
+                        <tr>
+                            <td align="left">
+                                    <div class="label">Porte : <i data-cmd_id="#doorcd_id#" class="Cmd#doorcd_id# #doorcd_history#"></i></div>
+                                    <br />
+                                    <div class="label">Fenêtre : <i data-cmd_id="#vicdav_id#" class="Cmd#vicdav_id# #vicdav_history#"></i></div>
+                                    <br />
+                                    <div class="label">Pression : <i data-cmd_id="#etpnavgh_id#" class="Cmd#etpnavgh_id# #etpnavgh_history#"></i> <i data-cmd_id="#prpnavgh_id#" class="Cmd#prpnavgh_id# #prpnavgh_history#"></i></div>
+                                    <br /><br />
+                                    <div class="label">Porte : <i data-cmd_id="#doorleft_id#" class="Cmd#doorleft_id# #doorleft_history#"></i></div>
+                                    <br />
+                                    <div class="label">Fenêtre : <i data-cmd_id="#vicdar_id#" class="Cmd#vicdar_id# #vicdar_history#"></i></div>
+                                    <br />
+                                    <div class="label">Pression : <i data-cmd_id="#etpnargh_id#" class="Cmd#etpnargh_id# #etpnargh_history#"></i> <i data-cmd_id="#prpnargh_id#" class="Cmd#prpnargh_id# #prpnargh_history#"></i></div>
+                            </td>
+                            <td align="left">
+                                <br />
+                                <div class="label"><span class="label pull-center">Capot : <i data-cmd_id="#hood_id#" class="Cmd#hood_id# #hood_history#"></i></span> </div>
+                                <br />
+                                <img src="plugins/fordcar/core/img/widget_car.png" height="150" width="150" />
+                                <div class="label"><span class="label pull-center">Toit ouvrant : <i data-cmd_id="#moonroof_state_id#" class="Cmd#moonroof_state_id# #moonroof_state_history# fas fa-ban"></i></span></div><br />
+                                <div class="label"><span class="label pull-center">Coffre : <i data-cmd_id="#tailgate_id#" class="Cmd#tailgate_id# #tailgate_history#"></i></span> </div><br />
+                                <div class="label"><span class="label pull-center">Coffre intérieur : <i data-cmd_id="#innertailgate_id#" class="Cmd#innertailgate_id# #innertailgate_history#"></i></span> </div> <br /> <br />
+                            </td>
+                            <td align="left">
+                                    <div class="label">Porte : <i data-cmd_id="#doorps_id#" class="Cmd#doorps_id# #etpnargh_history#"></i></div>
+                                    <br />
+                                    <div class="label">Fenêtre : <i data-cmd_id="#vipsav_id#" class="Cmd#vipsav_id# #vipsav_history#"></i></div>
+                                    <br />
+                                    <div class="label">Pression : <i data-cmd_id="#etpnavdr_id#" class="Cmd#etpnavdr_id# #etpnavdr_history#"></i> <i data-cmd_id="#prpnavdr_id#" class="Cmd#prpnavdr_id# #prpnavdr_history#"></i></div>
+                                    <br /><br />
+                                    <div class="label">Porte : <i data-cmd_id="#doorright_id#" class="Cmd#doorright_id# #doorright_history#"></i></div>
+                                    <br />
+                                    <div class="label">Fenêtre : <i data-cmd_id="#vipsar_id#" class="Cmd#vipsar_id# #vipsar_history#"></i></div>
+                                    <br />
+                                    <div class="label">Pression : <i data-cmd_id="#etpnardr_id#" class="Cmd#etpnardr_id# #etpnardr_history#"></i> <i data-cmd_id="#prpnardr_id#" class="Cmd#prpnardr_id# #prpnardr_history#"></i></div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+           
+                <td bgcolor="" width="280px" align="center">
+                        <div class="label pull-center">Dernière connexion avec le véhicule : <br /><i data-cmd_id="#last_id#" class="Cmd#last_id# #last_history#"></i></div><br />
+                        <div class="label pull-center">Veille profonde : <i data-cmd_id="#veille_id#" class="Cmd#veille_id# #veille_history#"></i></div><br />
+                        <div class="label pull-center">Mise à jour Firmware : <i data-cmd_id="#maj_id#" class="Cmd#maj_id# #maj_history#"></i></div>
+                </td>
+            </tr>
+        </table>
 
     </div>
 	
 	<script>
-        if ('#refresh_id#' != '') {
-      $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
-        jeedom.cmd.execute({id: '#refresh_id#'})
-      })
-    } else {
-      $('.eqLogic[data-eqLogic_uid=#uid#] .refresh').remove()
-    }
-jeedom.cmd.addUpdateFunction('#Export#',function(_options) {
-      $('.cmd[data-cmd_id=#Export#]').attr('title', ' : '+_options.valueDate+'<br/> : '+_options.collectDate)
-      $('.cmd[data-cmd_id=#Export#] .state').empty().append(_options.display_value)
-      $('.cmd[data-cmd_id=#Export#] .unit').empty().append(_options.unit)
-    });
 
-jeedom.cmd.refreshValue([{cmd_id :'#Export#',display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#', unit: '#unite#'}])
+        if ('#vehicle_type#' == 'electric' )  {
+			$('#combustion_engine#id#').hide();
+        }
+        if ('#vehicle_type#' == 'thermique' ) {
+			$('#electric_engine#id#').hide();
+        }
+		
+		jeedom.cmd.addUpdateFunction('#etat_id#',function(_options) {
+			if (_options.display_value == "LOCKED") {
+				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_green fas fa-lock"></i>')
+			}
+			else if (_options.display_value == "UNLOCKED") {
+				$('.Cmd#etat_id#').empty().append('<i class="fa-2x icon_red fas fa-lock-open"></i>')
+			}
+			else {
+                $('.Cmd#etat_id#').empty().append('<i class="fa-2x fas fa-ban"></i>')
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#etat_id#',display_value: '#etat#'}]);
+    
+        jeedom.cmd.addUpdateFunction('#last_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#last_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else {
+                var datelast = new Date(_options.display_value);
+                var datelast1 = new Date(datelast.setHours(datelast.getHours() + 2));
+           
+                $('.Cmd#last_id#').empty().append('<span>' + datelast1.toLocaleString() + '</span>');
+            }
+        });
+		jeedom.cmd.refreshValue([{cmd_id :'#last_id#',display_value: '#last#'}]); 
+
+        jeedom.cmd.addUpdateFunction('#long_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#long_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else {
+                $('.Cmd#long_id#').empty().append('<span>' + _options.display_value + '</span>');
+            }
+        });
+		jeedom.cmd.refreshValue([{cmd_id :'#long_id#',display_value: '#long#'}]);
+
+        jeedom.cmd.addUpdateFunction('#lat_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#lat_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else {
+                $('.Cmd#lat_id#').empty().append('<span>' + _options.display_value + '</span>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#lat_id#',display_value: '#lat#'}]);
+
+        jeedom.cmd.addUpdateFunction('#prpnardr_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#prpnardr_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#prpnardr_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#prpnardr_id#',display_value: '#prpnardr#', unit: '#unite#'}]);
+        
+
+        jeedom.cmd.addUpdateFunction('#prpnavdr_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#prpnavdr_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#prpnavdr_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#prpnavdr_id#',display_value: '#prpnavdr#', unit: '#unite#'}]);
+
+        jeedom.cmd.addUpdateFunction('#prpnavgh_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#prpnavgh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#prpnavgh_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#prpnavgh_id#',display_value: '#prpnavgh#', unit: '#unite#'}]);
+
+        jeedom.cmd.addUpdateFunction('#prpnargh_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "") {
+                $('.Cmd#prpnargh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#prpnargh_id#').empty().append('<span>' + _options.display_value + '</span>'); }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#prpnargh_id#',display_value: '#prpnargh#', unit: '#unite#'}]);
+
+        jeedom.cmd.addUpdateFunction('#tbat_id#',function(_options) {
+            if (_options.display_value == "") {
+                $('.Cmd#tbat_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#tbat_id#').empty().append('<span>' + _options.display_value + 'V</span>'); }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#tbat_id#',display_value: '#tbat#'}]);
+
+        jeedom.cmd.addUpdateFunction('#huile_id#',function(_options) {
+            if (_options.display_value == "") {
+                $('.Cmd#huile_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else { $('.Cmd#huile_id#').empty().append('<span>' + _options.display_value + '% propre</span>'); }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#huile_id#', display_value: '#huile#'}]);
+
+        jeedom.cmd.addUpdateFunction('#maj_id#',function(_options) {
+            if (_options.display_value == "1") {
+                $('.Cmd#maj_id#').empty().append('<i class="icon_red fa-2x fa-exclamation"></i>');
+            }
+            else {
+                $('.Cmd#maj_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#maj_id#', display_value: '#maj#'}]);
+
+        jeedom.cmd.addUpdateFunction('#veille_id#',function(_options) {
+            if (_options.display_value == "1") {
+                $('.Cmd#veille_id#').empty().append('<i class="icon_orange jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#veille_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#veille_id#',display_value: '#veille#'}]);
+
+        jeedom.cmd.addUpdateFunction('#ehuile_id#',function(_options) {
+            if (_options.display_value == "STATUS_GOOD") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else if (_options.display_value == "STATUS_NOT_GOOD") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_red jeedom-alerte2"></i>');
+			}
+            else if (_options.display_value == "STATUS_LOW") {
+                $('.Cmd#ehuile_id#').empty().append('<i class="icon_orange fas fa-exclamation"></i>');
+            }
+            else {
+                $('.Cmd#ehuile_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#ehuile_id#',display_value: '#ehuile#'}]);
+
+        jeedom.cmd.addUpdateFunction('#hbat_id#',function(_options) {
+            if (_options.display_value == "STATUS_GOOD") {
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else if (_options.display_value == "STATUS_NOT_GOOD") {
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_orange jeedom-alerte2"></i>');
+            }
+            else if (_options.display_value == "STATUS_LOW") {
+                $('.Cmd#hbat_id#').empty().append('<i class="icon_red fas fa-exclamation"></i>');
+            }
+            else {
+                $('.Cmd#hbat_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#hbat_id#',display_value: '#hbat#'}]);
+
+		jeedom.cmd.addUpdateFunction('#doorcd_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#doorcd_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#doorcd_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#doorcd_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#doorcd_id#',display_value: '#doorcd#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#doorleft_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#doorleft_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#doorleft_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#doorleft_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#doorleft_id#', display_value: '#doorleft#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#doorps_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#doorps_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#doorps_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#doorps_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#doorps_id#',display_value: '#doorps#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#doorright_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#doorright_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#doorright_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#doorright_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#doorright_id#',display_value: '#doorright#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#vicdav_id#',function(_options) {
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
+          	else if ( _options.display_value == "Fully_Closed")  {
+              	$('.Cmd#vicdav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#vicdav_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#vicdav_id#',display_value: '#vicdav#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#vicdar_id#',function(_options) {
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vicdar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vicdar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
+          	else if ( _options.display_value == "Fully_Closed")  {
+              	$('.Cmd#vicdar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#vicdar_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#vicdar_id#',display_value: '#vicdar#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#vipsav_id#',function(_options) {
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vipsav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vipsav_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
+          	else if ( _options.display_value == "Fully_Closed")  {
+              	$('.Cmd#vipsav_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#vipsav_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#vipsav_id#',display_value: '#vipsav#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#vipsar_id#',function(_options) {
+            if (_options.display_value.indexOf("Open") != "-1")  {
+            	$('.Cmd#vipsar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            }
+            else if (_options.display_value.indexOf("Bet") != "-1")  {
+            	$('.Cmd#vipsar_id#').empty().append('<i class="icon_orange jeedom-fenetre-ouverte"></i>');
+            } 
+          	else if ( _options.display_value == "Fully_Closed")  {
+              	$('.Cmd#vipsar_id#').empty().append('<i class="icon_green jeedom-fenetre-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#vipsar_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#vipsar_id#',display_value: '#vipsar#'}]);
+				
+		jeedom.cmd.addUpdateFunction('#hood_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#hood_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#hood_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#hood_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#hood_id#',display_value: '#hood#'}]);
+
+        jeedom.cmd.addUpdateFunction('#tailgate_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#tailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#tailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#tailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#tailgate_id#',display_value: '#tailgate#'}]);
+
+        jeedom.cmd.addUpdateFunction('#innertailgate_id#',function(_options) {
+            if ( _options.display_value == "Open")  {
+            	$('.Cmd#innertailgate_id#').empty().append('<i class="icon_orange jeedom-porte-ouverte"></i>');
+            }
+          	else if ( _options.display_value == "Closed")  {
+              	$('.Cmd#innertailgate_id#').empty().append('<i class="icon_green jeedom-porte-ferme"></i>');
+            }
+			else {
+              	$('.Cmd#innertailgate_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#innertailgate_id#',display_value: '#innertailgate#'}]);
+
+        jeedom.cmd.addUpdateFunction('#etpnavgh_id#',function(_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#etpnavgh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+		});
+        jeedom.cmd.refreshValue([{cmd_id :'#etpnavgh_id#',display_value: '#etpnavgh#'}]);
+
+        jeedom.cmd.addUpdateFunction('#etpnavdr_id#',function(_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnavdr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#etpnavdr_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#etpnavdr_id#', display_value: '#etpnavdr#'}]);
+
+        jeedom.cmd.addUpdateFunction('#etpnardr_id#',function(_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnardr_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#etpnardr_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#etpnardr_id#',display_value: '#etpnardr#'}]);
+
+        jeedom.cmd.addUpdateFunction('#etpnargh_id#',function(_options) {
+            if (_options.display_value == "Normal") {
+                $('.Cmd#etpnargh_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#etpnargh_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#etpnargh_id#', display_value: '#etpnargh#'}]);
+	
+		jeedom.cmd.addUpdateFunction('#km_id#',function(_options) {
+            if (_options.display_value == "0" || _options.display_value == "")  {
+			 $('.Cmd#km_id#').empty().append('<i class="fa-2x fas fa-ban"></i>');
+			}
+			else {
+				$('.Cmd#km_id#').empty().append('<span>' + _options.display_value + '</span> <small>km</small>');
+			}
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#km_id#',display_value: '#km#'}]);
+	
+		jeedom.cmd.addUpdateFunction('#kmfuel_id#',function(_options) {
+           	$('.Cmd#kmfuel_id#').empty().append('<span><i>'+' '+_options.display_value+'kms</i> restants'+'</span>');
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#kmfuel_id#', display_value: '#kmfuel#'}]);
+		
+		jeedom.cmd.addUpdateFunction('#qfuel_id#',function(_options) {
+
+            if (parseInt(_options.display_value) >= 50) {
+                $('.Cmd#qfuel_id#').empty().append('<span>' + ' Volume restant : <i>' + _options.display_value + '%</i>' + '</span>');
+			}
+            else if (parseInt(_options.display_value) >= 10) {
+                $('.Cmd#qfuel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Volume restant : <i>' + _options.display_value + '%</i> ' + '</span >');
+            }
+            else {
+                $('.Cmd#qfuel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Volume restant : <i>' + _options.display_value + '%</i> ' + '</span >');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#qfuel_id#',display_value: '#qfuel#'}]);
+		
+        jeedom.cmd.addUpdateFunction('#elVehDTE_id#',function(_options) {
+           	$('.Cmd#elVehDTE_id#').empty().append('<span><i>'+' '+_options.display_value+'kms</i> restants'+'</span>');
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#elVehDTE_id#',display_value: '#elVehDTE#'}]);
+
+        jeedom.cmd.addUpdateFunction('#batteryFillLevel_id#',function(_options) {
+
+            if (parseInt(_options.display_value) >= 50) {
+                $('.Cmd#batteryFillLevel_id#').empty().append('<span>' + ' Charge restante : <i>' + _options.display_value + '%</i>' + '</span>');
+			}
+            else if (parseInt(_options.display_value) >= 10) {
+                $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_orange fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
+            }
+            else {
+                $('.Cmd#batteryFillLevel_id#').empty().append(' <i class="icon_red fas fa-exclamation"></i><span> ' + ' Charge restante : <i>' + _options.display_value + '%</i> ' + '</span >');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#batteryFillLevel_id#',display_value: '#batteryFillLevel#'}]);
+
+        jeedom.cmd.addUpdateFunction('#connectorStatus_id#',function(_options) {
+
+            if (parseInt(_options.display_value) == "1") {
+                $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green jeedomapp-done"></i>');
+            }
+            else {
+                $('.Cmd#connectorStatus_id#').empty().append('<i class="icon_green fas fa-ban"></i>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#connectorStatus_id#',display_value: '#connectorStatus#'}]);
+
+        jeedom.cmd.addUpdateFunction('#chargingStatus_id#',function(_options) {
+
+            if (parseInt(_options.display_value) == "") {
+                $('.Cmd#chargingStatus_id#').empty().append('<i class="fas fa-ban"></i>');
+            }
+            else {
+                $('.Cmd#chargingStatus_id#').empty().append('<span><i>' + _options.display_value + '</i>' + '</span>');
+            }
+        });
+        jeedom.cmd.refreshValue([{cmd_id :'#chargingStatus_id#',display_value: '#chargingStatus#'}]);
 	</script>
+
+	<style>
+	    .fordcar_widget hr {
+		    border-top: 1px solid;
+		    margin : 10px 10px 10px 10px;
+	    }
+	
+	    .fordcar_widget .btn {
+		    width: 40px !important;
+		    height: 40px !important;
+		    max-width: 40px !important;
+		    max-height: 40px !important;
+	    }			
+	</style>
 </div>
