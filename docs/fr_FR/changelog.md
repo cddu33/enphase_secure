@@ -13,6 +13,7 @@ Correction Wh et W
 
 Rajout des: infos conso net // conso total // export et import réseau
 
+Rajout d'un début de widget accessible sur validation dans l'équipement
 
 # 04/10/2022 (beta)
 Intégration Passerelles Standard
