@@ -523,6 +523,7 @@ class enphasesecur extends eqLogic {
 		  $replace['#' . $logical . '_id#'] = $cmd->getId();
 		  $replace['#' . $logical . '#'] = $cmd->execCmd();
 		  $replace['#' . $logical . '_unite#'] = $cmd->getUnite();
+		  $replace['#' . $logical . '_name#'] = $cmd->getName();
 		  $replace['#' . $logical . '_collect#'] = $collectDate;
 		}
 		$replace['#refresh_id#'] = $this->getCmd('action', 'refresh')->getId();
