@@ -150,7 +150,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursToday');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('W');
+	  	$enphasesecurCmd->setUnite('Wh');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
@@ -167,7 +167,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursSevenDays');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('W');
+	  	$enphasesecurCmd->setUnite('Wh');
 		$enphasesecurCmd->save();
 		
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
@@ -184,7 +184,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursLifetime');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('W');
+	  	$enphasesecurCmd->setUnite('Wh');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
@@ -218,7 +218,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursToday');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('W');
+		$enphasesecurCmd->setUnite('Wh');
 	  	$enphasesecurCmd->save();
 
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
@@ -235,7 +235,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('W');
+		$enphasesecurCmd->setUnite('Wh');
 
 	  	$enphasesecurCmd->save();
 	  
@@ -253,7 +253,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('W');
+		$enphasesecurCmd->setUnite('Wh');
 	  	$enphasesecurCmd->save();
 
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');

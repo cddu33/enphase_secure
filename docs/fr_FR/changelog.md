@@ -9,6 +9,10 @@ Compatibilité Jeedom 4.3
 
 Compatibilité Jeedom 4.0
 
+Passage en Watt pour correspondre à Jeedom 4.3
+
+Adaptation des formules de calcul pour correspondre à la réalisé des mesures
+
 # 04/10/2022 (beta)
 Intégration Passerelles Standard
 
