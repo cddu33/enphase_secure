@@ -6,17 +6,17 @@ Le plugin permet de récupérer les donnnées:
     * Jour
     * Semaine
     * Mise en service
-* de consomamtion totale (avec la production):
+* de consommation totale (avec la production):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-* de consommation net (que la partie importé du réseau):
+* de consommation net (importée du réseau):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-* La balance Import et export instantanné réseau
+* La balance import et export instantanné réseau
  
 Il se base sur l'accès par jeton de sécurité de Enphase.
 
