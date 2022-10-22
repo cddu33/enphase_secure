@@ -448,7 +448,7 @@ class enphasesecur extends eqLogic {
 			$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday'];
-			if ($enphasesecur_info == 0){
+			if ($enphasesecur_info = 0){
 				//merci Bison
 				$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 			}
@@ -456,7 +456,7 @@ class enphasesecur extends eqLogic {
 			$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
 
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLastSevenDays'];
-			if ($enphasesecur_info == 0){
+			if ($enphasesecur_info = 0){
 				//merci Bison
 				$enphasesecur_info = $enphasesecur_json['consumption'][0]['whLastSevenDays']-$enphasesecur_json['production'][1]['whLastSevenDays'];
 			}
