@@ -450,7 +450,7 @@ class enphasesecur extends eqLogic {
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday'];
 			if ($enphasesecur_info == 0){
 				//merci Bison
-				$enphasesecur_info = (($enphasesecur_json['consumption'][0]['whToday'])-($enphasesecur_json['production'][1]['whToday'));
+				$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 			}
 			log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
