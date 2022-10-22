@@ -177,7 +177,7 @@ class enphasesecur extends eqLogic {
 			
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setIsHistorized('1');
+			$enphasesecurCmd->setIsHistorized('0');
 			$enphasesecurCmd->setGeneric_type('POWER');
 	  	}
 	  	$enphasesecurCmd->setEqLogic_id($this->getId());
@@ -245,7 +245,7 @@ class enphasesecur extends eqLogic {
 			
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setIsHistorized('1');
+			$enphasesecurCmd->setIsHistorized('0');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
 		$enphasesecurCmd->setEqLogic_id($this->getId());
@@ -327,7 +327,7 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setName(__('Conso Net MES', __FILE__));
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			$enphasesecurCmd->setIsHistorized('1');
+			$enphasesecurCmd->setIsHistorized('0');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
 		$enphasesecurCmd->setEqLogic_id($this->getId());
