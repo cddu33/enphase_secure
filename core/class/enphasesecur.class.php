@@ -511,6 +511,39 @@ class enphasesecur extends eqLogic {
 
   	}
 
+	  public function toHtml($_version = 'dashboard') {
+			$replace = $this->preToHtml($_version);
+			if (!is_array($replace)) {
+				return $replace;
+			}
+			$version = jeedom::versionAlias($_version);
+			$replace['#version#'] = $_version;
+
+			$this->emptyCacheWidget(); 		//vide le cache. Pratique pour le développement
+	
+			// Traitement des commandes infos
+			foreach ($this->getCmd('info') as $cmd) {
+				$replace['#' . $cmd->getLogicalId() . '_id#'] = $cmd->getId();
+				$replace['#' . $cmd->getLogicalId() . '_name#'] = $cmd->getName();
+				$replace['#' . $cmd->getLogicalId() . '#'] = $cmd->execCmd();
+				$replace['#' . $cmd->getLogicalId() . '_visible#'] = $cmd->getIsVisible();
+				if ($cmd->getIsHistorized() == 1) {
+					$replace['#' . $cmd->getLogicalId() . '_history#'] = 'history cursor';
+				}
+				$replace['#' . $cmd->getLogicalId() . '_collect#'] = $cmd->getCollectDate();
+			}
+
+			// On definit le template à appliquer par rapport à la version Jeedom utilisée
+			/*if (version_compare(jeedom::version(), '4.3.0') >= 0) {
+				$template = 'fordcar_dashboard_v43';
+			}
+			else { $template = 'fordcar_dashboard'; }
+			$replace['#template#'] = $template;
+	*/
+			$template = 'fordcar_dashboard';
+			$replace['#template#'] = $template;
+			return $this->postToHtml($_version, template_replace($replace, getTemplate('core', $version, $template, 'fordcar')));
+		}
 }
 
 class enphasesecurCmd extends cmd {
