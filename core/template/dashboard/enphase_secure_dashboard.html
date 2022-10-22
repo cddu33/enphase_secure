@@ -47,12 +47,12 @@
     </div>
 	
 	<script>
-jeedom.cmd.addUpdateFunction('#id#',function(_options) {
-      $('.cmd[data-cmd_id=#id#]').attr('title', ' : '+_options.valueDate+'<br/> : '+_options.collectDate)
-      $('.cmd[data-cmd_id=#id#] .state').empty().append(_options.display_value)
-      $('.cmd[data-cmd_id=#id#] .unit').empty().append(_options.unit)
+jeedom.cmd.addUpdateFunction('#Export#',function(_options) {
+      $('.cmd[data-cmd_id=#Export#]').attr('title', ' : '+_options.valueDate+'<br/> : '+_options.collectDate)
+      $('.cmd[data-cmd_id=#Export#] .state').empty().append(_options.display_value)
+      $('.cmd[data-cmd_id=#Export#] .unit').empty().append(_options.unit)
     });
 
-jeedom.cmd.refreshValue([{cmd_id :'#id#',display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#', unit: '#unite#'}])
+jeedom.cmd.refreshValue([{cmd_id :'#Export#',display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#', unit: '#unite#'}])
 	</script>
 </div>
