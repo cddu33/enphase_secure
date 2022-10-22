@@ -150,7 +150,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursToday');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('kW');
+	  	$enphasesecurCmd->setUnite('W');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
@@ -167,7 +167,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursSevenDays');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('kW');
+	  	$enphasesecurCmd->setUnite('W');
 		$enphasesecurCmd->save();
 		
 		$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
@@ -184,7 +184,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattHoursLifetime');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('kW');
+	  	$enphasesecurCmd->setUnite('W');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
@@ -201,7 +201,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setLogicalId('PwattsNow');
 	  	$enphasesecurCmd->setType('info');
 	  	$enphasesecurCmd->setSubType('numeric');
-	  	$enphasesecurCmd->setUnite('kW');
+	  	$enphasesecurCmd->setUnite('W');
 		$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday');
@@ -218,7 +218,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursToday');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('kW');
+		$enphasesecurCmd->setUnite('W');
 	  	$enphasesecurCmd->save();
 
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
@@ -235,7 +235,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('kW');
+		$enphasesecurCmd->setUnite('W');
 
 	  	$enphasesecurCmd->save();
 	  
@@ -253,7 +253,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('kW');
+		$enphasesecurCmd->setUnite('W');
 	  	$enphasesecurCmd->save();
 
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
@@ -270,7 +270,7 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setLogicalId('CwattsNow');
 		$enphasesecurCmd->setType('info');
 		$enphasesecurCmd->setSubType('numeric');
-		$enphasesecurCmd->setUnite('kW');
+		$enphasesecurCmd->setUnite('W');
 	  	$enphasesecurCmd->save();
 
 		$enphasesecurCmd = $this->getCmd(null, 'tension');
@@ -332,35 +332,35 @@ class enphasesecur extends eqLogic {
 
 		if ($enphasesecur_json['production']['1']['whLifetime'] != "" && $enphasesecur_json['production']['1']['whLifetime'] != null)   {
 
-			$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime']/1000;
+			$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
 			log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['production']['1']['whToday']/1000;
+			$enphasesecur_info = $enphasesecur_json['production']['1']['whToday'];
 			log::add('enphasesecur', 'debug', 'Production du jour: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays']/1000;
+			$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays'];
 			log::add('enphasesecur', 'debug', 'Production de la semaine: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['production']['1']['wNow']/1000;
+			$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
 			log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime']/1000;
+			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'];
 			log::add('enphasesecur', 'debug', 'Consommation depuis la mise en service: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday']/1000;
+			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday'];
 			log::add('enphasesecur', 'debug', 'Consommation du jour: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLastSevenDays']/1000;
+			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLastSevenDays'];
 			log::add('enphasesecur', 'debug', 'Consommation de la semaine: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow']/1000;
+			$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow'];
 			log::add('enphasesecur', 'debug', 'Consommation instantannée: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
 		
@@ -371,11 +371,11 @@ class enphasesecur extends eqLogic {
 		else {
 			log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
 			
-			$enphasesecur_info = $enphasesecur_json['production']['0']['whLifetime']/1000;
+			$enphasesecur_info = $enphasesecur_json['production']['0']['whLifetime'];
 			log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
 
-			$enphasesecur_info = $enphasesecur_json['production']['0']['wNow']/1000;
+			$enphasesecur_info = $enphasesecur_json['production']['0']['wNow'];
 			log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 		}

@@ -9,7 +9,6 @@ Compatibilité Jeedom 4.3
 
 Compatibilité Jeedom 4.0
 
-
 # 04/10/2022 (beta)
 Intégration Passerelles Standard
 
