@@ -116,6 +116,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked>{{Visible}}</label>
 								</div>
 							</div>
+							<legend><i class="fas fa-tablet-alt"></i> {{Template de Widget}}</legend>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">{{Activer}}
+									<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour utiliser le template de widget pour ce plugin}}"></i></sup>
+								</label>
+								<div class="col-sm-6">
+									<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="widgetTemplate">
+								</div>
+							</div>
 						</div>
                         
 						<div class="col-lg-6">
