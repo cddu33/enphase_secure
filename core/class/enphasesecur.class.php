@@ -207,13 +207,14 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Conso Jour', __FILE__));
+			$enphasesecurCmd->setName(__('Conso Total Jour', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
+		$enphasesecurCmd->setName(__('Conso Total Jour', __FILE__));
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursToday');
 		$enphasesecurCmd->setType('info');
@@ -224,13 +225,14 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Conso Semaine', __FILE__));
+			$enphasesecurCmd->setName(__('Conso Total Semaine', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
+		$enphasesecurCmd->setName(__('Conso Total Semaine', __FILE__));
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
 		$enphasesecurCmd->setType('info');
@@ -242,13 +244,14 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Consom MES', __FILE__));
+			$enphasesecurCmd->setName(__('Conso Total MES', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setConfiguration('historizeRound', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
+		$enphasesecurCmd->setName(__('Conso Total MES', __FILE__));
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
 		$enphasesecurCmd->setType('info');
@@ -259,13 +262,14 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
 		if (!is_object($enphasesecurCmd)) {
 		  	$enphasesecurCmd = new enphasesecurCmd();
-			$enphasesecurCmd->setName(__('Conso Inst', __FILE__));
+			$enphasesecurCmd->setName(__('Conso Total Inst', __FILE__));
 			$enphasesecurCmd->setConfiguration('minValue', '0');
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '3');
 			$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 		}
+		$enphasesecurCmd->setName(__('Conso Total Inst', __FILE__));
 		$enphasesecurCmd->setEqLogic_id($this->getId());
 		$enphasesecurCmd->setLogicalId('CwattsNow');
 		$enphasesecurCmd->setType('info');
@@ -349,19 +353,19 @@ class enphasesecur extends eqLogic {
 			$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'];
-			log::add('enphasesecur', 'debug', 'Consommation depuis la mise en service: ' . $enphasesecur_info);
+			log::add('enphasesecur', 'debug', 'Consommation Total depuis la mise en service: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday'];
-			log::add('enphasesecur', 'debug', 'Consommation du jour: ' . $enphasesecur_info);
+			log::add('enphasesecur', 'debug', 'Consommation Total du jour: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
 
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLastSevenDays'];
-			log::add('enphasesecur', 'debug', 'Consommation de la semaine: ' . $enphasesecur_info);
+			log::add('enphasesecur', 'debug', 'Consommation Total de la semaine: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
 
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow'];
-			log::add('enphasesecur', 'debug', 'Consommation instantannée: ' . $enphasesecur_info);
+			log::add('enphasesecur', 'debug', 'Consommation Total instantannée: ' . $enphasesecur_info);
 			$this->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
 		
 			$enphasesecur_info = $enphasesecur_json['consumption']['0']['rmsVoltage'];
