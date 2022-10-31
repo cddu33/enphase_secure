@@ -24,7 +24,7 @@ Il necessite une connexion internet pour se loguer mais récupère les donnnées
 
 Il faudra donc rentrée utilisateur et mot de passe pour se connecter au site Enphase, le numéro de site ainsi que le numéro de série de la passerelle
 
-L'actualisation des données est toutes les minutes.
+L'actualisation des données est de base sur 10s.
 
 
 
