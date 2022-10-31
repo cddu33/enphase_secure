@@ -158,7 +158,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
         							<sup><i class="fas fa-question-circle tooltips" title="{{ID du ite correspondant à votre passerelle}}"></i></sup>
       							</label>
       							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="site"/>
+        							<input type="number" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="site"/>
       							</div>
 							</div>
 							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
@@ -175,7 +175,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
         							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
      							</label>
       							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
+        							<input type="number" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
+      							</div>
+							</div>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Actualisation}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Délais d'intéroggation de votre passerelle Enphase}}"></i></sup>
+     							</label>
+      							<div class="col-md-4">
+        							<input type="number" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="delais">
       							</div>
 							</div>
     					</div>
