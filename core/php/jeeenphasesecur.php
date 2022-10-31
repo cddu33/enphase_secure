@@ -17,7 +17,7 @@ try {
 	foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getIsEnable() == 1)
 			{
-				//if (isset($enphasesecur_json['production']['1']['whLifetime']) && isset($enphasesecur_json['production']['1']['whLifetime']))   {
+				if (isset($enphasesecur_json['production']['1']['whLifetime']) && isset($enphasesecur_json['production']['1']['whLifetime']))   {
 				
 					$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
@@ -89,20 +89,18 @@ try {
 						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
-				//}
-				//else {
-				//	log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
-			//
-				//	$enphasesecur_info = intval($enphasesecur_json['production']['0']['whLifetime']);
-				//	log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
-				//	$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
+				}
+				else {
+					log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
+			
+					$enphasesecur_info = intval($enphasesecur_json['production']['0']['whLifetime']);
+					log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
 
-				//	$enphasesecur_info = intval($enphasesecur_json['production']['0']['wNow']);
-				//	log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
-				//	$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-				//}
-
-				
+					$enphasesecur_info = intval($enphasesecur_json['production']['0']['wNow']);
+					log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
+				}
 			}
 	}
 }
