@@ -20,7 +20,7 @@ Le plugin permet de récupérer les données:
  
 Il se base sur l'accès par jeton de sécurité de Enphase, donc il nécessite une connexion internet pour se loguer mais récupère les donnnées toutes les 10s (modifiables) directement depuis la passerelle jusqu'à expiration du jeton.
 
-Une fois les dépandances installées;
+Une fois les dépendances installées;
 Il faudra commencer par créer un équipement puis lui rentrer les informations suivante:
 * Utilisateur Enphase
 * Mot de passe Enphase
