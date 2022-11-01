@@ -14,9 +14,9 @@ try {
     $result = json_decode(file_get_contents("php://input"), true);
 
 	$enphasesecur_json = $result;
-	foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getIsEnable() == 1)
-			{
+	if (count(self::byType('enphasesecur', true)) == 1){
+		$eqLogic = self::byType('enphasesecur', true)[0];
+		if ($eqLogic->getIsEnable() == 1) {
 				if (isset($enphasesecur_json['production']['1']['whLifetime']) && isset($enphasesecur_json['production']['1']['whLifetime']))   {
 				
 					$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
