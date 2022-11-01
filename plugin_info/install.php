@@ -35,4 +35,6 @@
     }
 
     // Fonction exécutée automatiquement après la suppression du plugin
-    function enphasesecur_remove() {}
+    function enphasesecur_remove() {
+        enphasesecur::deamon_stop();
+    }
