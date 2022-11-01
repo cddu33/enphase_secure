@@ -69,7 +69,7 @@ class enphasesecur extends eqLogic {
 	public static function creationmaj() {
 		$numberwidget = count(self::byType('enphasesecur', true)); 
 		if ($numberwidget != 0) {
-			if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 3 && $numberwidget != 3 && $numberwidget)) {
+			if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 3 && $numberwidget != 3)) {
 				log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
 				foreach (self::byType('enphasesecur', true) as $eqLogic) {
 					$eqLogic->remove();
@@ -172,7 +172,7 @@ class enphasesecur extends eqLogic {
 
 	// Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
 	public function postSave() {
-		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'prod') {
+		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'prod' || $this->getConfiguration('type') == '' || $this->getConfiguration('type') == null) {
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
