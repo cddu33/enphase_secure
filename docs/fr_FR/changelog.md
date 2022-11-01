@@ -13,7 +13,6 @@ Correction Wh et W
 
 Rajout des: infos conso net // conso total // export et import réseau
 
-Rajout d'un début de widget accessible sur validation dans l'équipement
 
 Intégration Passerelles Standard
 

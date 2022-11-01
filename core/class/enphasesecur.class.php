@@ -19,9 +19,7 @@
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
 class enphasesecur extends eqLogic {
-  /*     * *************************Attributs****************************** */
-  
-	
+	/*     * *************************Attributs****************************** */
 
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
@@ -51,8 +49,8 @@ class enphasesecur extends eqLogic {
 				unset($output);
 				exec($cmd, $output, $return_var);
 				if ($return_var || $output[0] == "") {
-				  $return['state'] = 'nok';
-				  break;
+					$return['state'] = 'nok';
+					break;
 				}
 			}
 		}
@@ -69,30 +67,23 @@ class enphasesecur extends eqLogic {
 	}
 
 
-  /*     * ***********************Methode static*************************** */
-  /*
-  * Fonction exécutée automatiquement toutes les minutes par Jeedom  */
- 
-  	public static function cron() {
-		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getIsEnable() == 1){
-				$eqLogic->refresh();
-			}			
+	/*     * ***********************Methode static*************************** */
+
+	/*     * *********************Méthodes d'instance************************* */
+
+	// Fonction exécutée automatiquement avant la création de l'équipement
+	public function preInsert() {
+		if (count(self::byType('enphasesecur', true))>= 1 ){
+			throw new Exception('Il ne peu y avoir qu\'une seule passerelle sur ce plugin');
 		}
 	}
 
-  /*     * *********************Méthodes d'instance************************* */
+	// Fonction exécutée automatiquement après la création de l'équipement
+	public function postInsert() {}
 
-  // Fonction exécutée automatiquement avant la création de l'équipement
-  	public function preInsert() {
-  	}
-
-  // Fonction exécutée automatiquement après la création de l'équipement
-  	public function postInsert() {
-  	}
-
-  // Fonction exécutée automatiquement avant la mise à jour de l'équipement
-  	public function preUpdate() {
+	// Fonction exécutée automatiquement avant la mise à jour de l'équipement
+  	
+	public function preUpdate() {
 	 	if ($this->getConfiguration('user') == '') {
 			throw new Exception('L\'identifiant ne peut pas être vide');
 	 	}
@@ -108,17 +99,21 @@ class enphasesecur extends eqLogic {
 		 if ($this->getConfiguration('site') == '') {
 			throw new Exception('Le numéro de site ne peu pas être vide');
 	 	}
+		if ($this->getConfiguration('delais') == '') {
+			throw new Exception('Le délais ne peu pas être 0 ');
+		}
+		if ($this->getConfiguration('delais') < '10') {
+			throw new Exception('Le délais ne peux pas être inférieur à 10s');
+		}
   	}
   	
-  // Fonction exécutée automatiquement après la mise à jour de l'équipement
-  	public function postUpdate() {
-  	}
+	// Fonction exécutée automatiquement après la mise à jour de l'équipement
+  	public function postUpdate() {}
 
-  // Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
-  	public function preSave() {
-  	}
+	// Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
+  	public function preSave() {}
 
-  // Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
+	// Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
 	public function postSave() {
 		$enphasesecurCmd = $this->getCmd(null, 'refresh');
 		if (!is_object($enphasesecurCmd)) {
@@ -186,7 +181,7 @@ class enphasesecur extends eqLogic {
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
 		  	$enphasesecurCmd->setName(__('Prod Inst', __FILE__));
-			//
+
 			$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			$enphasesecurCmd->setIsHistorized('1');
 			$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
@@ -380,164 +375,149 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->setUnite('W');
 		$enphasesecurCmd->save();
   	}
-
-	  
-	  
-  // Fonction exécutée automatiquement avant la suppression de l'équipement
+	// Fonction exécutée automatiquement avant la suppression de l'équipement
   	public function preRemove() {
-  	}
+		self::deamon_stop();
+	}
 
-  // Fonction exécutée automatiquement après la suppression de l'équipement
-  	public function postRemove() {
-  	}
+	// Fonction exécutée automatiquement après la suppression de l'équipement
+  	public function postRemove() {}
 
-
- 	public function refresh() {
-		$enphasesecur_path = realpath(dirname(__FILE__));
-
-		$enphasesecur_pass = $this->getConfiguration('password');
-		$enphasesecur_user = $this->getConfiguration('user');
-		$enphasesecur_serie = $this->getConfiguration('serie');
-		$enphasesecur_site = $this->getConfiguration('site');
-		$enphasesecur_ip = $this->getConfiguration('ip');
-
-		$enphasesecur_fichier = $enphasesecur_path .'/../../data/'. $enphasesecur_serie . '.json';
-		$enphasesecur_cmd = 'python3 ' . $enphasesecur_path .'/../../resources/enphase.py';
-		$enphasesecur_cmd .=' ' .  $enphasesecur_ip . ' ' . $enphasesecur_user . ' ' . $enphasesecur_pass . ' ' . $enphasesecur_site . ' ' . $enphasesecur_serie . ' ' . $enphasesecur_fichier;
-		log::add('enphasesecur', 'debug', 'commande ' . $enphasesecur_cmd);
-		exec($enphasesecur_cmd . ' >> ' . log::getPathToLog('enphasesecur') . ' 2>&1 &');
-		sleep(5);
-		$enphasesecur_json = json_decode(file_get_contents($enphasesecur_fichier), true);
-		/*
-		foreach ($enphasesecur_json as $key1=> $data1) {
-			log::add('enphasesecur', 'debug', $key1 . ' : ' . $data1);
-			foreach ($data1 as $key2 => $data2) {
-				log::add('enphasesecur', 'debug', 'Enfants1: ' . $key2 . ' : ' . $data2);
-				foreach ($data2 as $key3 => $data3) {
-					log::add('enphasesecur', 'debug', 'Enfants2: ' . $key3 . ' : ' . $data3);
-				}
-			}
-		}
-*/
-
-		if ($enphasesecur_json['production']['1']['whLifetime'] != "" && $enphasesecur_json['production']['1']['whLifetime'] != null)   {
-
-			$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
-			log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['production']['1']['whToday'];
-			log::add('enphasesecur', 'debug', 'Production totale du jour: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays'];
-			log::add('enphasesecur', 'debug', 'Production totale de la semaine: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
-			log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'];
-			log::add('enphasesecur', 'debug', 'Consommation totale depuis la mise en service: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday'];
-		
-			log::add('enphasesecur', 'debug', 'Consommation totale du jour: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLastSevenDays'];
-			log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow'];
-			log::add('enphasesecur', 'debug', 'Consommation totale instantannée: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
-		
-			$enphasesecur_info = $enphasesecur_json['consumption']['0']['rmsVoltage'];
-			log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('tension', $enphasesecur_info);
-
-			
-			$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
-			log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
-			if ($enphasesecur_info == 0){
-				//merci Bison
-				$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
-			}
-			log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
-			if ($enphasesecur_info == 0){
-				//merci Bison
-				$enphasesecur_info = $enphasesecur_json['consumption'][0]['whLastSevenDays']-$enphasesecur_json['production'][1]['whLastSevenDays'];
-			}
-			log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattHoursSevenDaysNet', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
-			log::add('enphasesecur', 'debug', 'Consommation Net instantannée: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('CwattsNowNet', $enphasesecur_info);	
-
-			if ($enphasesecur_info<0) {
-				$this->checkAndUpdateCmd('Export', ($enphasesecur_info*(-1)));	
-				$this->checkAndUpdateCmd('Import', 0);
-			}
-			else {
-				$this->checkAndUpdateCmd('Import', ($enphasesecur_info));
-				$this->checkAndUpdateCmd('Export', 0);
-			}
-		}
-		else {
-			log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
-			
-			$enphasesecur_info = $enphasesecur_json['production']['0']['whLifetime'];
-			log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
-
-			$enphasesecur_info = $enphasesecur_json['production']['0']['wNow'];
-			log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
-			$this->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-		}
-
-  	}
-
-	  public function toHtml($_version = 'dashboard') {
+	public function toHtml($_version = 'dashboard') {
 		if ($this->getConfiguration('widgetTemplate') != 1) {
 			return parent::toHtml($_version);
-		  }
+		 }
 		$replace = $this->preToHtml($_version);
 		if (!is_array($replace)) {
-		  return $replace;
+			return $replace;
 		}
 		$version = jeedom::versionAlias($_version);
 	
 		foreach (($this->getCmd('info')) as $cmd) {
-		  $logical = $cmd->getLogicalId();
-		  $collectDate = $cmd->getCollectDate();
+			$logical = $cmd->getLogicalId();
+			$collectDate = $cmd->getCollectDate();
 		
-		  $replace['#' . $logical . '_id#'] = $cmd->getId();
-		  $replace['#' . $logical . '#'] = $cmd->execCmd();
-		  $replace['#' . $logical . '_unite#'] = $cmd->getUnite();
-		  $replace['#' . $logical . '_name#'] = $cmd->getName();
-		  $replace['#' . $logical . '_collect#'] = $collectDate;
+			$replace['#' . $logical . '_id#'] = $cmd->getId();
+			$replace['#' . $logical . '#'] = $cmd->execCmd();
+			$replace['#' . $logical . '_unite#'] = $cmd->getUnite();
+			$replace['#' . $logical . '_name#'] = $cmd->getName();
+			$replace['#' . $logical . '_collect#'] = $collectDate;
 		}
 		$replace['#refresh_id#'] = $this->getCmd('action', 'refresh')->getId();
 	
 		$html = template_replace($replace, getTemplate('core', $version, 'enphasesecur_dashboard', __CLASS__));
 		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
 		return $html;
-	  }
+	}
+
+	public static function getFreePort() {
+		$freePortFound = false;
+		while (!$freePortFound) {
+			$port = mt_rand(1024, 65535);
+			exec('sudo fuser '.$port.'/tcp',$out,$return);
+			if ($return==1) {
+				$freePortFound = true;
+			}
+		}
+		config::save('socketport',$port,'enphasesecur');
+		return $port;
+	}
+
+	public static function deamon_info() {
+        $return = array();
+        $return['log'] = __CLASS__;
+        $return['state'] = 'nok';
+        $pid_file = jeedom::getTmpFolder(__CLASS__) . '/deamon.pid';
+        if (file_exists($pid_file)) {
+            if (@posix_getsid(trim(file_get_contents($pid_file)))) {
+                $return['state'] = 'ok';
+            } else {
+                shell_exec(system::getCmdSudo() . 'rm -rf ' . $pid_file . ' 2>&1 > /dev/null');
+            }
+        }
+        $return['launchable'] = 'ok';
+		if (count(self::byType('enphasesecur', true)) == 1){
+			$eqLogic = self::byType('enphasesecur', true)[0];
+			if ($eqLogic->getIsEnable() == 1) {
+				config::save('user', $eqLogic->getConfiguration('user'), __CLASS__);
+				config::save('password', $eqLogic->getConfiguration('password'), __CLASS__);
+				config::save('ip', $eqLogic->getConfiguration('ip'), __CLASS__);
+				config::save('serie', $eqLogic->getConfiguration('serie'), __CLASS__);
+				config::save('site', $eqLogic->getConfiguration('site'), __CLASS__);
+				config::save('delais', $eqLogic->getConfiguration('delais'), __CLASS__);
+			}
+		}
+		else {
+			$return['launchable'] = 'nok';
+            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
+		}
+        if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
+            $return['launchable'] = 'nok';
+            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
+		}
+		if ((config::byKey('delais', __CLASS__) == '')||(config::byKey('delais', __CLASS__) < 10)) {
+			config::save('delais', '10', __CLASS__);
+        }
+        return $return;
+    }
+
+	public static function deamon_start() {
+        self::deamon_stop();
+		if (config::byKey('socketport', __CLASS__) == ''){
+			self::getFreePort();
+		}
+        $deamon_info = self::deamon_info();
+        if ($deamon_info['launchable'] != 'ok') {
+            throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
+        }
+		
+		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon à modifier
+		$cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon à modifier
+		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
+		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut à modifier
+		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
+		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
+		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
+		$cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
+		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 
+		$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
+		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
+		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // et on précise le chemin vers le pid file (ne pas modifier)
+		$cmd .= ' --delais '  . config::byKey('delais', __CLASS__); // delais actualisation
+
+        log::add(__CLASS__, 'info', 'Lancement démon');
+        $result = exec($cmd . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
+        $i = 0;
+        while ($i < 20) {
+            $deamon_info = self::deamon_info();
+            if ($deamon_info['state'] == 'ok') {
+                break;
+            }
+            sleep(1);
+            $i++;
+        }
+        if ($i >= 30) {
+            log::add(__CLASS__, 'error', __('Impossible de lancer le démon, vérifiez le log', __FILE__), 'unableStartDeamon');
+            return false;
+        }
+        message::removeAll(__CLASS__, 'unableStartDeamon');
+        return true;
+    }
+	
+	public static function deamon_stop() {
+        $pid_file = jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // ne pas modifier
+        if (file_exists($pid_file)) {
+            $pid = intval(trim(file_get_contents($pid_file)));
+            system::kill($pid);
+        }
+        system::kill('enphasesecurd.py'); // nom du démon à modifier
+        sleep(1);
+    }
 }
 
 class enphasesecurCmd extends cmd {
 
-  // Exécution d'une commande
+	// Exécution d'une commande
   	public function execute($_options = array()) {
 	  	$eqlogic = $this->getEqLogic();
 		try {
@@ -547,4 +527,3 @@ class enphasesecurCmd extends cmd {
 		}
   	}
 }
-?>
