@@ -430,7 +430,7 @@ class enphasesecur extends eqLogic {
             }
         }
         $return['launchable'] = 'ok';
-		log::add('enphasesecur', 'info', 'compteur: '. count(self::byType('enphasesecur', true));
+		log::add('enphasesecur', 'info', 'compteur: '. count(self::byType('enphasesecur', true)));
 		
 		//if (count(self::byType('enphasesecur', true)) != 1)
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
