@@ -437,13 +437,8 @@ class enphasesecur extends eqLogic {
         }
         $return['launchable'] = 'ok';
 		if (count(self::byType('enphasesecur', true))!= 1){
-			$return['launchable'] = 'nok';
-			$return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
-		}
-		$eqLogic = (self::byType('enphasesecur', true))[1];
-		//foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getIsEnable() == 1)
-			{
+			 (self::byType('enphasesecur', true))[1];
+			if ($eqLogic->getIsEnable() == 1) {
 				config::save('user', $eqLogic->getConfiguration('user'), __CLASS__);
 				config::save('password', $eqLogic->getConfiguration('password'), __CLASS__);
 				config::save('ip', $eqLogic->getConfiguration('ip'), __CLASS__);
@@ -451,7 +446,11 @@ class enphasesecur extends eqLogic {
 				config::save('site', $eqLogic->getConfiguration('site'), __CLASS__);
 				config::save('delais', $eqLogic->getConfiguration('delais'), __CLASS__);
 			}
-		//}
+		}
+		else {
+			$return['launchable'] = 'nok';
+            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
+		}
         if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
             $return['launchable'] = 'nok';
             $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
