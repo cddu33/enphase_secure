@@ -436,8 +436,8 @@ class enphasesecur extends eqLogic {
             }
         }
         $return['launchable'] = 'ok';
-		if (count(self::byType('enphasesecur', true))!= 1){
-			 (self::byType('enphasesecur', true))[1];
+		if (count(self::byType('enphasesecur', true)) == 1){
+			eqLogic = self::byType('enphasesecur', true)[1];
 			if ($eqLogic->getIsEnable() == 1) {
 				config::save('user', $eqLogic->getConfiguration('user'), __CLASS__);
 				config::save('password', $eqLogic->getConfiguration('password'), __CLASS__);
