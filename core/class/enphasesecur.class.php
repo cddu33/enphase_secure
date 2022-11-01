@@ -449,7 +449,7 @@ class enphasesecur extends eqLogic {
 		}
 		else {
 			$return['launchable'] = 'nok';
-            $return['launchable_message'] = __('Il n\'y a pas d\'équipement EnphaseSecure de créé', __FILE__);
+            $return['launchable_message'] = __('Il n\'y a pas d\'équipement EnphaseSecure ou il n\'est pas activé', __FILE__);
 		}
         if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
             $return['launchable'] = 'nok';
