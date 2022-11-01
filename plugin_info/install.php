@@ -20,6 +20,7 @@
     // Fonction exécutée automatiquement après l'installation du plugin
     function enphasesecur_install() {
         enphasesecur::dependancy_install();
+        enphasesecur::deamon_start();
     }
 
     // Fonction exécutée automatiquement après la mise à jour du plugin
@@ -30,6 +31,7 @@
             $eqLogic->save();
             log::add('enphasesecur', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
         }
+        enphasesecur::deamon_start();
     }
 
     // Fonction exécutée automatiquement après la suppression du plugin
