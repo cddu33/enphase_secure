@@ -176,8 +176,7 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
-		  		$enphasesecurCmd->setName(__('Prod Jour', __FILE__));
-			
+		  	$enphasesecurCmd->setName(__('Prod Jour', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '2');
@@ -495,9 +494,6 @@ class enphasesecur extends eqLogic {
             $return['launchable'] = 'nok';
             $return['launchable_message'] = __('Les informations ne sont pas remplies', __FILE__);
 		}
-		if ((config::byKey('delais', __CLASS__) == '')||(config::byKey('delais', __CLASS__) < 10)) {
-			config::save('delais', '10', __CLASS__);
-        }
         return $return;
     }
 
@@ -563,11 +559,11 @@ class enphasesecurCmd extends cmd {
 
 	// Exécution d'une commande
   	public function execute($_options = array()) {
-	  	$eqlogic = $this->getEqLogic();
+	  	/*$eqlogic = $this->getEqLogic();
 		try {
 			$eqlogic->refresh();
 		} catch (Exception $exc) {
 			log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
-		}
+		}*/
   	}
 }

@@ -22,6 +22,7 @@ Ces données sont soit sur un seul widget soit sur 3 différents
  
 Il se base sur l'accès par jeton de sécurité de Enphase, donc il nécessite une connexion internet pour se loguer mais récupère les donnnées toutes les 10s (modifiables) directement depuis la passerelle jusqu'à expiration du jeton.
 
+
 Une fois les dépandances installées;
 Il faudra  rentrer les informations suivante dans la page de configuration du plugin:
 * Utilisateur Enphase
