@@ -152,7 +152,7 @@ _device = 'auto'
 _pidfile = '/tmp/demond.pid'
 _apikey = ''
 _callback = ''
-_cycle = 5
+_cycle = 0.5
 
 parser = argparse.ArgumentParser(
     description='Desmond Daemon for Enphase Secure plugin')

@@ -22,3 +22,70 @@ if (!isConnect()) {
   die();
 }
 ?>
+<form class="form-horizontal">
+    <fieldset>
+        <legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
+      							</label>
+      							<div class="col-md-4">
+        							<input class="configKey form-control" data-l1key="user"/>
+      							</div>
+    						</div>
+    						<div class="form-group">
+      							<label class="col-md-4 control-label">{{Password Enphase}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
+      							</label>
+      							<div class="col-md-4">
+        							<input type="password" class="configKey form-control" data-l1key="password" autocomplete="new-password"/>
+      							</div>
+    						</div>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Id de site}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{ID du ite correspondant à votre passerelle}}"></i></sup>
+      							</label>
+      							<div class="col-md-4">
+        							<input type="number" class="configKey form-control" data-l1key="site"/>
+      							</div>
+							</div>
+							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
+    						<div class="form-group">
+      							<label class="col-md-4 control-label">{{Adesse IP local}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Adesse ip sur vote réseau de votre passerelle Enphase}}"></i></sup>
+     							</label>
+      							<div class="col-md-4">
+        							<input class="configKey form-control" data-l1key="ip">
+      							</div>
+							</div>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Numéro de série}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
+     							</label>
+      							<div class="col-md-4">
+        							<input type="number" class="configKey form-control" data-l1key="serie">
+      							</div>
+							</div>
+							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Actualisation}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Délais d'intéroggation de votre passerelle Enphase}}"></i></sup>
+     							</label>
+      							<div class="col-md-4">
+        							<input type="number" class="configKey form-control" data-l1key="delais">
+      							</div>
+							</div>
+                            <legend><i class="fas fa-tablet-alt"></i> {{Equipement}}</legend>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">{{Production et Consommation}}
+									<sup><i class="fas fa-question-circle tooltips" title="{{Choississez si vous voulez que la production soit sur un équipement différent de la consommation}}"></i></sup>
+								</label>
+								<div class="col-sm-4">
+									<select id="sel_object" class="configKey form-control" data-l1key="widget">
+                                    <option value="1">{{Mode combiné}}</option>
+                                    <option value="3">{{Mode divisé}}</option>
+                                    </select>
+                                        {{Le changement de mode supprimera les équipements}}
+								</div>
+							</div>
+                            </fieldset>
+                            </form>
