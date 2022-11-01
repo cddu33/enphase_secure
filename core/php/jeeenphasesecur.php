@@ -14,8 +14,8 @@ try {
     $result = json_decode(file_get_contents("php://input"), true);
 
 	$enphasesecur_json = $result;
-	if (count(self::byType('enphasesecur', true)) == 1){
-		$eqLogic = self::byType('enphasesecur', true)[0];
+	if (count(enphasesecur::byType('enphasesecur', true)) == 1){
+		$eqLogic = enphasesecur::byType('enphasesecur', true)[0];
 		if ($eqLogic->getIsEnable() == 1) {
 				if (isset($enphasesecur_json['production']['1']['whLifetime']) && isset($enphasesecur_json['production']['1']['whLifetime']))   {
 				
@@ -102,6 +102,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 				}
 			}
+		
 	}
 }
 catch (Exception $e) {
