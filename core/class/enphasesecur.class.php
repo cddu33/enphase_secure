@@ -74,7 +74,7 @@ class enphasesecur extends eqLogic {
 	// Fonction exécutée automatiquement avant la création de l'équipement
 	public function preInsert() {
 		if (count(self::byType('enphasesecur', true))>= 1 ){
-			throw new Exception('Il ne peu y avoir qu\'une seul passerelle sur ce plugin');
+			throw new Exception('Il ne peu y avoir qu\'une seule passerelle sur ce plugin');
 		}
 	}
 
@@ -376,7 +376,9 @@ class enphasesecur extends eqLogic {
 		$enphasesecurCmd->save();
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
-  	public function preRemove() {}
+  	public function preRemove() {
+		self::deamon_stop();
+	}
 
 	// Fonction exécutée automatiquement après la suppression de l'équipement
   	public function postRemove() {}
@@ -434,12 +436,9 @@ class enphasesecur extends eqLogic {
             }
         }
         $return['launchable'] = 'ok';
-		
-		//if (count(self::byType('enphasesecur', true)) != 1)
-		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getIsEnable() == 1)
-			{
-
+		if (count(self::byType('enphasesecur', true)) == 1){
+			$eqLogic = self::byType('enphasesecur', true)[0];
+			if ($eqLogic->getIsEnable() == 1) {
 				config::save('user', $eqLogic->getConfiguration('user'), __CLASS__);
 				config::save('password', $eqLogic->getConfiguration('password'), __CLASS__);
 				config::save('ip', $eqLogic->getConfiguration('ip'), __CLASS__);
@@ -448,9 +447,13 @@ class enphasesecur extends eqLogic {
 				config::save('delais', $eqLogic->getConfiguration('delais'), __CLASS__);
 			}
 		}
+		else {
+			$return['launchable'] = 'nok';
+            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
+		}
         if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
             $return['launchable'] = 'nok';
-            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\équipement passerelle', __FILE__);
+            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
 		}
 		if ((config::byKey('delais', __CLASS__) == '')||(config::byKey('delais', __CLASS__) < 10)) {
 			config::save('delais', '10', __CLASS__);
