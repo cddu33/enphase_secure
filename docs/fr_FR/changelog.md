@@ -15,21 +15,8 @@ Rajout des: infos conso net // conso total // export et import réseau
 
 Rajout d'un début de widget accessible sur validation dans l'équipement
 
-# 04/10/2022 (beta)
 Intégration Passerelles Standard
 
-# 03/10/2022 (beta)
 Changement du fichier source pour /production.json?details=1
 
 Rajout tension réseau
-
-
-# 02/10/2022 (beta)
-Fonctionnement OK pour les informations de production et de consommation sur passerelle Metered
-
-Correction cron
-
-Passage en beta
-
-# 01/10/2022 (dev)
-Initial
