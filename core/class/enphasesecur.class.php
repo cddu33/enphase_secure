@@ -115,7 +115,7 @@ class enphasesecur extends eqLogic {
 
 	// Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
 	public function postSave() {
-		$enphasesecurCmd = $this->getCmd(null, 'refresh');
+		/*$enphasesecurCmd = $this->getCmd(null, 'refresh');
 		if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
 		  	$enphasesecurCmd->setName(__('Rafraichir', __FILE__));
@@ -125,7 +125,7 @@ class enphasesecur extends eqLogic {
 	  	$enphasesecurCmd->setType('action');
 	  	$enphasesecurCmd->setSubType('other');
 	  	$enphasesecurCmd->save();
-
+		*/
 	  	$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  	if (!is_object($enphasesecurCmd)) {
 			$enphasesecurCmd = new enphasesecurCmd();
@@ -449,15 +449,12 @@ class enphasesecur extends eqLogic {
 		}
 		else {
 			$return['launchable'] = 'nok';
-            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
+            $return['launchable_message'] = __('Il n\'y a pas d\'équipement EnphaseSecure de créé', __FILE__);
 		}
         if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
             $return['launchable'] = 'nok';
-            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement passerelle', __FILE__);
+            $return['launchable_message'] = __('Les informations ne sont pas remplies dans l\'équipement EnphaseSecure ', __FILE__);
 		}
-		if ((config::byKey('delais', __CLASS__) == '')||(config::byKey('delais', __CLASS__) < 10)) {
-			config::save('delais', '10', __CLASS__);
-        }
         return $return;
     }
 
@@ -519,11 +516,11 @@ class enphasesecurCmd extends cmd {
 
 	// Exécution d'une commande
   	public function execute($_options = array()) {
-	  	$eqlogic = $this->getEqLogic();
+	  	/*$eqlogic = $this->getEqLogic();
 		try {
 			$eqlogic->refresh();
 		} catch (Exception $exc) {
 			log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
-		}
+		}*/
   	}
 }
