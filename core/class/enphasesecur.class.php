@@ -72,7 +72,11 @@ class enphasesecur extends eqLogic {
 	/*     * *********************Méthodes d'instance************************* */
 
 	// Fonction exécutée automatiquement avant la création de l'équipement
-	public function preInsert() {}
+	public function preInsert() {
+		if (count(self::byType('enphasesecur', true))>= 1 ){
+			throw new Exception('Il ne peu y avoir qu\'une seul passerelle sur ce plugin');
+		}
+	}
 
 	// Fonction exécutée automatiquement après la création de l'équipement
 	public function postInsert() {}
@@ -430,7 +434,6 @@ class enphasesecur extends eqLogic {
             }
         }
         $return['launchable'] = 'ok';
-		log::add('enphasesecur', 'info', 'compteur: '. count(self::byType('enphasesecur', true)));
 		
 		//if (count(self::byType('enphasesecur', true)) != 1)
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
