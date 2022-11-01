@@ -1,4 +1,4 @@
-# Plugin Enphase Secure V7 pour Jeedom
+# Plugin Enphase Secure V7 Beta pour Jeedom
 
 Le plugin permet de récupérer les données: 
 * de production:
@@ -18,15 +18,17 @@ Le plugin permet de récupérer les données:
     * Mise en service
 * La balance import et export instantanée réseau
  
-Il se base sur l'accès par jeton de sécurité de Enphase.
+Il se base sur l'accès par jeton de sécurité de Enphase, donc il nécessite une connexion internet pour se loguer mais récupère les donnnées toutes les 10s (modifiables) directement depuis la passerelle jusqu'à expiration du jeton.
 
-Il necessite une connexion internet pour se loguer mais récupère les donnnées directement depuis la passerelle
+Une fois les dépandances installées;
+Il faudra commencer par créer un équipement puis lui rentrer les informations suivante:
+* Utilisateur Enphase
+* Mot de passe Enphase
+* Adresse IP locale de la passerelle
+* ID du site (dispponible sur l'application)
+* Numéro de série de la passerelle (disponnible sur l'application)
 
-Il faudra donc rentrée utilisateur et mot de passe pour se connecter au site Enphase, le numéro de site ainsi que le numéro de série de la passerelle
 
-L'actualisation des données est de base sur 10s.
-
-
-
+Attention, pensez à relancer le démon si vous changer les paramètres dans l'équipement
 
 Inspiré de https://github.com/dlmcpaul/EnphaseCollector
