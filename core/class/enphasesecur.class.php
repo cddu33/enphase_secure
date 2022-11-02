@@ -172,7 +172,10 @@ class enphasesecur extends eqLogic {
 
 	// Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
 	public function postSave() {
-		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'prod' || $this->getConfiguration('type') == '' || $this->getConfiguration('type') == null) {
+      if ($this->getConfiguration('type') == '' || $this->getConfiguration('type') == null) {
+        $this->setConfiguration('type', 'combine');
+      }
+		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'prod') {
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
