@@ -14,21 +14,21 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<legend><i class="fas fa-cog"></i>  {{Gestion}}</legend>
 		<!-- Boutons de gestion du plugin -->
 		<div class="eqLogicThumbnailContainer">
-        	<div class="cursor eqLogicAction logoPrimary" data-action="add">
+        	<!--<div class="cursor eqLogicAction logoPrimary" data-action="add">
 				<i class="fas fa-plus-circle"></i>
 				<br>
 				<span>{{Ajouter}}</span>
-			</div>
+			</div>-->
 			<div class="cursor eqLogicAction logoSecondary" data-action="gotoPluginConf">
 				<i class="fas fa-wrench"></i>
 				<br>
 				<span>{{Configuration}}</span>
 			</div>
 		</div>
-		<legend><i class="fas fa-table"></i> {{Mes passerelles Enphase}}</legend>
+		<legend><i class="fas fa-table"></i> {{Mes équipements Enphase}}</legend>
 		<?php
 		if (count($eqLogics) == 0) {
-			echo '<br><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucunne passerelle trouvée, cliquer sur "Ajouter une passerelle" pour commencer}}</div>';
+			echo '<br><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucunne équipement trouvé, allez dans les paramètre du plugin pour renseigner les paramètres de connexion}}</div>';
 		} else {
 			// Liste des équipements du plugin
 			echo '<div class="eqLogicThumbnailContainer">';
@@ -116,15 +116,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked>{{Visible}}</label>
 								</div>
 							</div>
-							<legend><i class="fas fa-tablet-alt"></i> {{Template de Widget}}</legend>
-							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Activer}}
-									<sup><i class="fas fa-question-circle tooltips" title="{{Cocher la case pour utiliser le template de widget pour ce plugin}}"></i></sup>
-								</label>
-								<div class="col-sm-6">
-									<input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="widgetTemplate">
-								</div>
-							</div>
+							
 						</div>
                         
 						<div class="col-lg-6">
@@ -136,48 +128,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 								</div>
 							</div>
 
-							<legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
-							<div class="form-group">
-      							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
-      							</label>
-      							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="user"/>
-      							</div>
-    						</div>
-    						<div class="form-group">
-      							<label class="col-md-4 control-label">{{Password Enphase}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
-      							</label>
-      							<div class="col-md-4">
-        							<input type="password" class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="password" autocomplete="new-password"/>
-      							</div>
-    						</div>
-							<div class="form-group">
-      							<label class="col-md-4 control-label">{{Id de site}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{ID du ite correspondant à votre passerelle}}"></i></sup>
-      							</label>
-      							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="site"/>
-      							</div>
-							</div>
-							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
-    						<div class="form-group">
-      							<label class="col-md-4 control-label">{{Adesse IP local}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{Adesse ip sur vote réseau de votre passerelle Enphase}}"></i></sup>
-     							</label>
-      							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="ip">
-      							</div>
-							</div>
-							<div class="form-group">
-      							<label class="col-md-4 control-label">{{Numéro de série}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
-     							</label>
-      							<div class="col-md-4">
-        							<input class="eqLogicAttr configuration form-control" data-l1key="configuration" data-l2key="serie">
-      							</div>
-							</div>
+							
     					</div>
 					</fieldset>
 				</form>

@@ -17,11 +17,23 @@ Le plugin permet de récupérer les données:
     * Semaine
     * Mise en service
 * La balance import et export instantanée réseau
+
+Ces données sont soit sur un seul widget soit sur 3 différents
  
-Il se base sur l'accès par jeton de sécurité de Enphase.
+Il se base sur l'accès par jeton de sécurité de Enphase, donc il nécessite une connexion internet pour se loguer mais récupère les donnnées toutes les 10s (modifiables) directement depuis la passerelle jusqu'à expiration du jeton.
 
-Il necessite une connexion internet pour se loguer mais récupère les donnnées directement depuis la passerelle ensuite jusqu'à expiration du jeton
 
-Il faudra donc rentrer utilisateur et mot de passe pour se connecter au site Enphase, le numéro de site ainsi que le numéro de série de la passerelle
+Une fois les dépandances installées;
+Il faudra  rentrer les informations suivante dans la page de configuration du plugin:
+* Utilisateur Enphase
+* Mot de passe Enphase
+* Adresse IP locale de la passerelle
+* ID du site (dispponible sur l'application)
+* Numéro de série de la passerelle (disponnible sur l'application)
 
-L'actualisation des données se fait au minimum à 10s
+Le plugin ajoutera les équipements dont il a besoin.
+
+
+Attention, pensez à relancer le démon si vous changer les paramètres.
+
+Si vous changer de mode entre 1 ou 3 widget, les équipements seront effacés

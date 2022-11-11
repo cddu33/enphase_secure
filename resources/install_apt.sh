@@ -1,5 +1,4 @@
 #!/bin/bash
-
 PROGRESS_FILE=/tmp/dependancy_enphasesecur_in_progress
 if [ ! -z $1 ]; then
     PROGRESS_FILE=$1
@@ -24,4 +23,3 @@ rm ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépendances OK  *"
 echo "**********************************"
-
