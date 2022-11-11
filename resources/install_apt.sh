@@ -18,7 +18,9 @@ sudo apt-get install -y python3-pip
 echo 30 > ${PROGRESS_FILE}
 sudo pip3 install --upgrade pip
 echo 40 > ${PROGRESS_FILE}
-sudo pip3 install pyjwt html.parser html5lib bs4 asyncio httpx lxml setuptools
+sudo apt-get install -y python3-setuptools
+echo 60 > ${PROGRESS_FILE}
+sudo pip3 install pyjwt html.parser html5lib bs4 asyncio httpx lxml
 rm ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépendances OK  *"
