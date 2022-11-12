@@ -18,7 +18,7 @@ Le plugin permet de récupérer les données:
     * Mise en service
 * La balance import et export instantanée réseau
 * Le stockage
-    * La puissance délivré
+    * La puissance délivrée
     * Le pourcentage de charge restant
 
 Ces données sont soit sur un seul widget soit sur 4 différents
