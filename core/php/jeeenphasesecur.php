@@ -103,7 +103,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('batperc', $enphasesecur_info);	
 					}
 				}
-				else {
+				elseif ($eqLogic->getConfiguration('type') == 'bat') {
 					$eqLogic->setIsEnable(0);
 					$eqLogic->save();
 				}
