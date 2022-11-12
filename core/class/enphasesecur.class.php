@@ -68,16 +68,29 @@ class enphasesecur extends eqLogic {
 
 	public static function creationmaj() {
 		$numberwidget = count(self::byType('enphasesecur', true)); 
-		if ($numberwidget != 0) {
-			if !(config::bykey('widget', __CLASS__) == 4 && $numberwidget == 3){
-				if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 4 && $numberwidget != 4)) {
+		if ($numberwidget != 0 || $numberwidget != 4) {
+			if (config::bykey('widget', __CLASS__) == 3 && $numberwidget == 3){
+
+					log::add('enphasesecur', 'debug', 'Upgrade config 3 vers 4 widgets');
+					log::add('enphasesecur', 'debug', 'Création équipement Consommation Réelle');
+					$eqLogic = new self();
+					$eqLogic->setLogicalId('enphasesecur_conso_reel');
+					$eqLogic->setName('Enphase Consomamtion Réel');
+					$eqLogic->setCategory('energy', 1);
+					$eqLogic->setEqType_name('enphasesecur');
+					$eqLogic->setConfiguration('type', 'reel');
+					$eqLogic->setIsVisible(1);
+					$eqLogic->setIsEnable(1);
+					$eqLogic->save();
+			}
+				elseif ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 4 && $numberwidget != 4)) {
 					log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
 					foreach (self::byType('enphasesecur', true) as $eqLogic) {
 						$eqLogic->remove();
 					}
 					$numberwidget = 0;
 				}
-			}
+
 		}
 		
 		if ($numberwidget == 0) {
@@ -139,19 +152,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->save();
 			}
 		}
-		else {
-			log::add('enphasesecur', 'debug', 'Upgrade config 3 vers 4 widgets');
-			log::add('enphasesecur', 'debug', 'Création équipement Consommation Réelle');
-            $eqLogic = new self();
-            $eqLogic->setLogicalId('enphasesecur_conso_reel');
-            $eqLogic->setName('Enphase Consomamtion Réel');
-			$eqLogic->setCategory('energy', 1);
-			$eqLogic->setEqType_name('enphasesecur');
-			$eqLogic->setConfiguration('type', 'reel');
-			$eqLogic->setIsVisible(1);
-			$eqLogic->setIsEnable(1);
-			$eqLogic->save();
-		}
+		
 	}
 
 	// Fonction exécutée automatiquement avant la création de l'équipement
