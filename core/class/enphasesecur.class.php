@@ -137,6 +137,18 @@ class enphasesecur extends eqLogic {
 				$eqLogic->save();
 			}
 		}
+		elseif (($numberwidget == 3)) {
+			log::add('enphasesecur', 'debug', 'Création équipement Stockage');
+                $eqLogic = new self();
+                $eqLogic->setLogicalId('enphasesecur_bat');
+                $eqLogic->setName('Enphase Stockage');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'bat');
+				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
+		}
 	}
 
 	// Fonction exécutée automatiquement avant la création de l'équipement
