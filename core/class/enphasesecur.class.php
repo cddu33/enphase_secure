@@ -127,7 +127,7 @@ class enphasesecur extends eqLogic {
 
 				log::add('enphasesecur', 'debug', 'Création équipement Stockage');
                 $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_conso_total');
+                $eqLogic->setLogicalId('enphasesecur_bat');
                 $eqLogic->setName('Enphase Stockage');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
