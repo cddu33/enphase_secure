@@ -93,28 +93,28 @@ try {
 				}
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'reel') {
 					
-					$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'] - $enphasesecur_json['production']['1']['wNow'];
+					$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow'] - $enphasesecur_json['production']['1']['wNow'];
 					if ($enphasesecur_info <= 0) {
 						$enphasesecur_info = 0;
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Réelle instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CReelle', $enphasesecur_info);
 
-					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'] - $enphasesecur_json['production']['1']['whToday'];
+					$enphasesecur_info = $enphasesecur_json['consumption']['0']['whToday'] - $enphasesecur_json['production']['1']['whToday'];
 					if ($enphasesecur_info <= 0) {
 						$enphasesecur_info = 0;
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Réelle Jour: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CReelleday', $enphasesecur_info);
 
-					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'] - $enphasesecur_json['production']['1']['whLastSevenDays'];
+					$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLastSevenDays'] - $enphasesecur_json['production']['1']['whLastSevenDays'];
 					if ($enphasesecur_info <= 0) {
 						$enphasesecur_info = 0;
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Réelle Jour: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CReelle7day', $enphasesecur_info);
 
-					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'] - $enphasesecur_json['production']['1']['whLifetime'];
+					$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'] - $enphasesecur_json['production']['1']['whLifetime'];
 					if ($enphasesecur_info <= 0) {
 						$enphasesecur_info = 0;
 					}
