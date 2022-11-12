@@ -50,7 +50,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow'];
-					log::add('enphasesecur', 'debug', 'Consommation totale instantannée: ' . $enphasesecur_info);
+					log::add('enphasesecur', 'debug', 'Consommation net instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
 				}
 				$enphasesecur_info = $enphasesecur_json['consumption']['0']['rmsVoltage'];
