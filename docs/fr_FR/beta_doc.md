@@ -17,8 +17,11 @@ Le plugin permet de récupérer les données:
     * Semaine
     * Mise en service
 * La balance import et export instantanée réseau
+* Le stockage
+    * La puissance délivré
+    * Le pourcentage de charge restant
 
-Ces données sont soit sur un seul widget soit sur 3 différents
+Ces données sont soit sur un seul widget soit sur 4 différents
  
 Il se base sur l'accès par jeton de sécurité de Enphase, donc il nécessite une connexion internet pour se loguer mais récupère les donnnées toutes les 10s (modifiables) directement depuis la passerelle jusqu'à expiration du jeton.
 
