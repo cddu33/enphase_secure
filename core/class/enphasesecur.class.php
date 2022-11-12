@@ -69,12 +69,14 @@ class enphasesecur extends eqLogic {
 	public static function creationmaj() {
 		$numberwidget = count(self::byType('enphasesecur', true)); 
 		if ($numberwidget != 0) {
-			if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 3 && $numberwidget != 3)) {
-				log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
-				foreach (self::byType('enphasesecur', true) as $eqLogic) {
-					$eqLogic->remove();
+			if !(config::bykey('widget', __CLASS__) == 4 && $numberwidget == 3){
+				if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 4 && $numberwidget != 4)) {
+					log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
+					foreach (self::byType('enphasesecur', true) as $eqLogic) {
+						$eqLogic->remove();
+					}
+					$numberwidget = 0;
 				}
-				$numberwidget = 0;
 			}
 		}
 		
@@ -91,7 +93,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setConfiguration('type', 'combine');
 				$eqLogic->save();
 			}
-			elseif (config::bykey('widget', __CLASS__) == 3) {
+			elseif (config::bykey('widget', __CLASS__) == 4) {
 				log::add('enphasesecur', 'debug', 'Création équipement Production');
                 $eqLogic = new self();
                 $eqLogic->setLogicalId('enphasesecur_prod');
@@ -124,7 +126,31 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setIsVisible(1);
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
+
+				log::add('enphasesecur', 'debug', 'Création équipement Réel');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_reel');
+				$eqLogic->setName('Enphase Réel');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'reel');
+				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
 			}
+		}
+		else {
+			log::add('enphasesecur', 'debug', 'Upgrade config 3 vers 4 widgets');
+			log::add('enphasesecur', 'debug', 'Création équipement Consommation Réelle');
+            $eqLogic = new self();
+            $eqLogic->setLogicalId('enphasesecur_conso_reel');
+            $eqLogic->setName('Enphase Consomamtion Réel');
+			$eqLogic->setCategory('energy', 1);
+			$eqLogic->setEqType_name('enphasesecur');
+			$eqLogic->setConfiguration('type', 'reel');
+			$eqLogic->setIsVisible(1);
+			$eqLogic->setIsEnable(1);
+			$eqLogic->save();
 		}
 	}
 
@@ -429,6 +455,72 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setUnite('W');
 			$enphasesecurCmd->save();
 		
+			
+		}
+		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'reel') {
+			$enphasesecurCmd = $this->getCmd(null, 'CReelle');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Conso Réelle Inst', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setLogicalId('CReelle');
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
+			
+			$enphasesecurCmd = $this->getCmd(null, 'CReelle7day');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Conso Réelle Semaine', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setLogicalId('CReelle7day');
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('Wh');
+			$enphasesecurCmd->save();
+
+			$enphasesecurCmd = $this->getCmd(null, 'CReellemes');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Conso Réelle MES', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setLogicalId('CReellemes');
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('Wh');
+			$enphasesecurCmd->save();
+
+			$enphasesecurCmd = $this->getCmd(null, 'CReelleday');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Conso Réelle Jour', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setLogicalId('CReelleday');
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement

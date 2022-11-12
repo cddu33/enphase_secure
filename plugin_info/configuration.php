@@ -82,7 +82,7 @@ if (!isConnect()) {
 								<div class="col-sm-4">
 									<select id="sel_object" class="configKey form-control" data-l1key="widget">
                                     <option value="1">{{Mode combiné}}</option>
-                                    <option value="3">{{Mode divisé}}</option>
+                                    <option value="4">{{Mode divisé}}</option>
                                     </select>
                                         {{Le changement de mode supprimera les équipements}}
 								</div>
