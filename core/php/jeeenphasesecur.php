@@ -91,6 +91,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
 				}
+				log::add('enphasesecur', 'debug', 'Nombre de batteries: ' . $enphasesecur_json['storage']['activeCount']);
 				if ($enphasesecur_json['storage']['activeCount'] > 0){
 					if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
 						$enphasesecur_info = $enphasesecur_json['storage']['wNow'];
