@@ -91,14 +91,14 @@ try {
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
 				}
-				log::add('enphasesecur', 'debug', 'Nombre de batteries: ' . $enphasesecur_json['storage']['activeCount']);
-				if ($enphasesecur_json['storage']['activeCount'] > 0){
+				log::add('enphasesecur', 'debug', 'Nombre de batteries: ' . $enphasesecur_json['storage']['0']['activeCount']);
+				if ($enphasesecur_json['storage']['0']['activeCount'] > 0){
 					if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
-						$enphasesecur_info = $enphasesecur_json['storage']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['storage']['0']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production batterie: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('batnow', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['storage']['percentFull'];
+						$enphasesecur_info = $enphasesecur_json['storage']['0']['percentFull'];
 						log::add('enphasesecur', 'debug', 'Pourcentage de charge de la batterie: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('batperc', $enphasesecur_info);	
 					}
