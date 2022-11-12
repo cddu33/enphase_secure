@@ -124,6 +124,17 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setIsVisible(1);
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
+
+				log::add('enphasesecur', 'debug', 'Création équipement Stockage');
+                $eqLogic = new self();
+                $eqLogic->setLogicalId('enphasesecur_conso_total');
+                $eqLogic->setName('Enphase Stockage');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'bat');
+				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
 			}
 		}
 	}
@@ -429,6 +440,40 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setUnite('W');
 			$enphasesecurCmd->save();
 		
+		}
+		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'bat') {
+			$enphasesecurCmd = $this->getCmd(null, 'batnow');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance délivrée', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setLogicalId('batnow');
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
+
+			$enphasesecurCmd = $this->getCmd(null, 'batperc');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Pourcentage charge', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				//$enphasesecurCmd->setConfiguration('historizeRound', '0');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setLogicalId('batperc');
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('%');
+			$enphasesecurCmd->save();
+
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
