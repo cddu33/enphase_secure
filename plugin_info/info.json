@@ -3,7 +3,8 @@
 	"name": "Enphase Secure",
 
 	"description": {
-		"fr_FR": "Plugin permettant de ce connecter aux passerelles Enphase en version V7 minimum."
+		"fr_FR": "Plugin permettant de ce connecter aux passerelles Enphase en version V7 minimum.
+<br>le plugin récupérer automatiquement le token et de ligue ensuite en local sur la passerelle. Il reste en local jusqu'à l'expiration du jeton"
 	},
 	"licence": "AGPL",
 	"author": "cddu33",
