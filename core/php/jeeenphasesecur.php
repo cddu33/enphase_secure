@@ -91,9 +91,10 @@ try {
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
 				}
-				log::add('enphasesecur', 'debug', 'Nombre de batteries: ' . $enphasesecur_json['storage']['0']['activeCount']);
-				if ($enphasesecur_json['storage']['0']['activeCount'] > 0){
-					if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
+				
+				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
+					log::add('enphasesecur', 'debug', 'Nombre de batteries: ' . $enphasesecur_json['storage']['0']['activeCount']);
+					if ($enphasesecur_json['storage']['0']['activeCount'] > 0){
 						$enphasesecur_info = $enphasesecur_json['storage']['0']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production batterie: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('batnow', $enphasesecur_info);	
@@ -102,10 +103,10 @@ try {
 						log::add('enphasesecur', 'debug', 'Pourcentage de charge de la batterie: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('batperc', $enphasesecur_info);	
 					}
-				}
-				elseif ($eqLogic->getConfiguration('type') == 'bat') {
-					$eqLogic->setIsEnable(0);
-					$eqLogic->save();
+					elseif ($eqLogic->getConfiguration('type') == 'bat') {
+						$eqLogic->setIsEnable(0);
+						$eqLogic->save();
+					}
 				}
 			}
 		}
