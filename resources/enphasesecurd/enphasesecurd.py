@@ -48,10 +48,11 @@ def read_socket():
 			logging.error('Send command to demon error : '+str(e))
 
 def listen():
-	
+	global limit
 #	jeedom_socket.open()
 	try:
 		while limit < 2:
+			logging.debug("Tentative de connexion:" + str(limit))
 			try:
 				time.sleep(int(args.delais))
 			except:
@@ -59,7 +60,9 @@ def listen():
 			enphase()
 	except KeyboardInterrupt:
 		shutdown()
-
+	logging.exception('Erreur de connexion')
+	logging.error('Erreur de connexion')
+	shutdown()
 
 # ----------------------------------------------------------------------------
 
@@ -216,6 +219,6 @@ try:
 		shutdown()
 	listen()
 except Exception as e:
-	logging.error('Fatal error : '+str(e))
+	logging.exception('Fatal error : '+str(e))
 	logging.info(traceback.format_exc())
 	shutdown()
