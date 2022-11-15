@@ -67,7 +67,7 @@ class enphasesecur extends eqLogic {
 	}
 
 	public static function creationmaj() {
-		$numberwidget = count(self::byType('enphasesecur', true)); 
+		$numberwidget = count(self::byType('enphasesecur', false)); 
 		if ($numberwidget != 0) {
 			if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 3 && $numberwidget != 4 && $numberwidget != 3)) {
 				log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
