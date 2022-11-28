@@ -14,10 +14,8 @@ try {
 		log::add('enphasesecur', 'debug', 'Test OK');
         die();
     }
-	log::add('enphasesecur', 'error', $result);
 	if ($result == '"error"') {
-        echo 'OK';
-		log::add('enphasesecur', 'error', $result);
+		log::add('enphasesecur', 'error', 'Erreur de connexion, vérifier les log du daemon');
         die();
     }
 	
