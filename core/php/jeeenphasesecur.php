@@ -14,6 +14,12 @@ try {
 		log::add('enphasesecur', 'debug', 'Test OK');
         die();
     }
+
+	if ($result == 'error') {
+        echo 'OK';
+		log::add('enphasesecur', 'error', $result);
+        die();
+    }
 	
     $enphasesecur_json = json_decode($result, true);
 
