@@ -52,7 +52,8 @@ def listen():
 #	jeedom_socket.open()
 	try:
 		while limit < 2:
-			logging.debug("Tentative de connexion:" + str(limit))
+			if not limit == 0:
+				logging.debug("Tentative de connexion:" + str(limit))
 			try:
 				time.sleep(int(args.delais))
 			except:
