@@ -113,19 +113,17 @@ def enphase():
 		PASSWORD = args.password
 		SITE_ID = args.site
 		SERIAL_NUMBER = args.serie
-		LOGIN_URL = "https://enlighten.enphaseenergy.com/login"
-		TOKEN_URL = "https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=" + SERIAL_NUMBER
-		payload_login = {'uuser[email]': USER, 'user[password]': PASSWORD}
+		LOGIN_URL = "https://entrez.enphaseenergy.com/login"
+		TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
+		payload_login = {'username': USER, 'password': PASSWORD}
 		payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 		headers = {'Content-Type': 'application/json'}
 
 		token = ""
 		try:
 			r = client.post(LOGIN_URL, data=payload_login)
+			r = client.post(TOKEN_URL, data=payload_token)
 			parsed_html = BeautifulSoup(r.text, "lxml")
-			r = client.post(TOKEN_URL)
-			parsed_html = BeautifulSoup(r.text, "lxml")
-			logging.debug(parsed_html.body)
 			token = parsed_html.body.find('textarea').text
 			logging.debug("Token: " + token)
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
@@ -140,6 +138,7 @@ def enphase():
 		if testjeton == True:
 			logging.debug("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+			logging.debug(r)
 			logging.debug("Recuperation mesure")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			logging.debug(r.json())
