@@ -15,7 +15,7 @@ try {
         die();
     }
 
-	if ($result == 'error') {
+	if ($result == '\'error\'') {
         echo 'OK';
 		log::add('enphasesecur', 'error', $result);
         die();
