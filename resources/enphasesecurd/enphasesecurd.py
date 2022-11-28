@@ -123,10 +123,10 @@ def enphase():
 			r = client.post(LOGIN_URL, data=payload_login)
 			
 			r = client.post(TOKEN_URL, data=payload_token)
-			logging.debug(r)
 			parsed_html = BeautifulSoup(r.text, "lxml")
+			ogging.debug("COucou:" + parsed_html)
 			token = parsed_html.body.find('textarea').text
-			logging.debug(token)
+			logging.debug("Token: " + token)
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
 			
