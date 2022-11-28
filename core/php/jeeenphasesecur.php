@@ -8,7 +8,8 @@ try {
         die();
     }
 	$result = file_get_contents("php://input");
-	echo $result;
+	log::add('enphasesecur', 'debug', $result); 
+	die();
     if ($result == '') {
         echo 'OK';
 		log::add('enphasesecur', 'debug', 'Test OK');
