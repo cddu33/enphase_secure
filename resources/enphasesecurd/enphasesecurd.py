@@ -113,17 +113,16 @@ def enphase():
 		PASSWORD = args.password
 		SITE_ID = args.site
 		SERIAL_NUMBER = args.serie
-		LOGIN_URL = "https://enlighten.enphaseenergy.com/login/login/login"
+		LOGIN_URL = "https://enlighten.enphaseenergy.com/login"
 		TOKEN_URL = "https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=" + SERIAL_NUMBER
-		payload_login = {'user_email': USER, 'user_password': PASSWORD}
+		payload_login = {'uuser[email]': USER, 'user[password]': PASSWORD}
 		payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 		headers = {'Content-Type': 'application/json'}
 
 		token = ""
 		try:
 			r = client.post(LOGIN_URL, data=payload_login)
-			
-			logging.debug(parsed_html.body)
+			parsed_html = BeautifulSoup(r.text, "lxml")
 			r = client.post(TOKEN_URL)
 			parsed_html = BeautifulSoup(r.text, "lxml")
 			logging.debug(parsed_html.body)
