@@ -122,7 +122,7 @@ def enphase():
 		token = ""
 		try:
 			r = client.post(LOGIN_URL, data=payload_login)
-			parsed_html = BeautifulSoup(r.text, "lxml")
+			
 			logging.debug(parsed_html.body)
 			r = client.post(TOKEN_URL)
 			parsed_html = BeautifulSoup(r.text, "lxml")
