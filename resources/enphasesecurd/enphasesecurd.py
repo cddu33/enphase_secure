@@ -133,6 +133,7 @@ def enphase():
 			limit = limit + 1
 			testjeton = False
 			logging.error("Erreur de connexion aux serveurs Enphase")
+			JEEDOM_COM.send_change_immediate('error serveur')
 
 	try:
 		if testjeton == True:
@@ -146,7 +147,7 @@ def enphase():
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
-		JEEDOM_COM.send_change_immediate('error')
+		JEEDOM_COM.send_change_immediate('error check')
 		testjeton = False
 		client.close()
 		time.sleep(60)
