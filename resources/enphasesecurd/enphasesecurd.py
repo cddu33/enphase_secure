@@ -139,19 +139,22 @@ def enphase():
 		if testjeton == True:
 			logging.debug("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
-			logging.debug("Recuperation mesure")
-			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			logging.info(r.json())
-			JEEDOM_COM.send_change_immediate(r.json())
-			limit = 0
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
 		JEEDOM_COM.send_change_immediate('error check')
 		testjeton = False
 		client.close()
-		time.sleep(60)
-
+		time.sleep(60)	
+	try:	
+		if testjeton == True:	
+			logging.debug("Recuperation mesure")
+			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
+			logging.info(r.json())
+			JEEDOM_COM.send_change_immediate(r.json())
+			limit = 0
+	except Exception as e:
+		time.sleep(6)	
 
 _log_level = "error"
 _socket_port = 55060
