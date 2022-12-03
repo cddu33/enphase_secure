@@ -113,20 +113,21 @@ def enphase():
 		PASSWORD = args.password
 		SITE_ID = args.site
 		SERIAL_NUMBER = args.serie
-		LOGIN_URL = "https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=" + SERIAL_NUMBER
-		#TOKEN_URL = "https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=" + SERIAL_NUMBER
-		payload_login = {'user_email': USER, 'user_password': PASSWORD}
-		payload_token = {"serialNum": SERIAL_NUMBER}
+		
+		#LOGIN_URL = "https://entrez.enphaseenergy.com/login"
+		#TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
+		#payload_login = {'username': USER, 'password': PASSWORD}
+		#payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 		#payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 		headers = {'Content-Type': 'application/json'}
 
 		token = ""
 		try:
-			r = client.get(LOGIN_URL, data=payload_login)
+			r = client.post(LOGIN_URL, data=payload_login)
 			#r = client.post(TOKEN_URL)
-		#	r = client.post(TOKEN_URL, data=payload_token)
+			r = client.post(TOKEN_URL, data=payload_token)
 			parsed_html = BeautifulSoup(r.text, "lxml")
-			token = parsed_html.body.find('textarea').text
+			token = "eyJraWQiOiI3ZDEwMDA1ZC03ODk5LTRkMGQtYmNiNC0yNDRmOThlZTE1NmIiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiIxMjIyMjQwNzc4MzkiLCJpc3MiOiJFbnRyZXoiLCJlbnBoYXNlVXNlciI6Im93bmVyIiwiZXhwIjoxNzAxNjMzNjQ0LCJpYXQiOjE2NzAwOTc2NDQsImp0aSI6ImVkZjE1YjU3LTE5MzgtNGNlNi1iYTY3LTNiY2VjOGRlZWNlOSIsInVzZXJuYW1lIjoiY2RpYm91dEBnbWFpbC5jb20ifQ.p7pi_xxAbmHF7ln9VWPcPQNuJlaOMlWjyiwdjG7nKS4TBEZH-u3uBGbbEzkbjZarjD5qT2tG2_ll_T9D-gQkEg"
 			logging.debug("Token: " + token)
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
