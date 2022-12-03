@@ -116,7 +116,7 @@ def enphase():
 		LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 		TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
 		payload_login = {'username': USER, 'password': PASSWORD}
-		payload_token = {'Site': SITE_ID}
+		payload_token = {"serialNum": SERIAL_NUMBER}
 		#payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 		headers = {'Content-Type': 'application/json'}
 
