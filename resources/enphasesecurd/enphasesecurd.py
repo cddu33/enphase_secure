@@ -116,14 +116,15 @@ def enphase():
 		LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 		TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
 		payload_login = {'username': USER, 'password': PASSWORD}
+		payload_token = {'Site': SITE_ID}
 		#payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 		headers = {'Content-Type': 'application/json'}
 
 		token = ""
 		try:
 			r = client.post(LOGIN_URL, data=payload_login)
-			r = client.post(TOKEN_URL)
-			#r = client.post(TOKEN_URL, data=payload_token)
+			#r = client.post(TOKEN_URL)
+			r = client.post(TOKEN_URL, data=payload_token)
 			parsed_html = BeautifulSoup(r.text, "lxml")
 			token = parsed_html.body.find('textarea').text
 			logging.debug("Token: " + token)
