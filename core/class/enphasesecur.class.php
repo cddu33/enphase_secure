@@ -595,7 +595,7 @@ class enphasesecur extends eqLogic {
 			$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
 			$cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
 			$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
-			$cmd .= ' --token " "'; 
+			$cmd .= ' --token "' . trim(str_replace('"', '\"', " ")) . '"'; 
 
 		}
 		else {
