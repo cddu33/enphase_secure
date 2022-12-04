@@ -604,7 +604,7 @@ class enphasesecur extends eqLogic {
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
 		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // et on précise le chemin vers le pid file (ne pas modifier)
 		$cmd .= ' --delais '  . config::byKey('delais', __CLASS__); // delais actualisation
-
+		log::add(__CLASS__, 'info', $cmd);
         log::add(__CLASS__, 'info', 'Lancement démon');
         $result = exec($cmd . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
         $i = 0;
