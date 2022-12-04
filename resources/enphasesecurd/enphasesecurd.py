@@ -138,11 +138,12 @@ def enphase():
 				JEEDOM_COM.send_change_immediate('error serveur')
 	else: 
 		try:
+			testjeton == True
 			logging.debug("coucou")
 			token = args.token
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
-			testjeton == True
+			
 		except Exception as e:
 			logging.error('Fatal error : '+str(e))
 			logging.info(traceback.format_exc())
@@ -151,8 +152,9 @@ def enphase():
 			client.close()
 			time.sleep(60)	
 	try:
-		logging.debug("coucoubis")
+		logging.debug("coucouter")
 		if testjeton == True:
+			logging.debug("coucouter")
 			logging.debug("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
 			logging.debug("Recuperation mesure")
