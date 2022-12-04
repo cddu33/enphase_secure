@@ -37,11 +37,9 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
     * Numéro de série de la passerelle (disponnible sur l'application)
 
 * Génération du token manuellement par l'utilisateur
+   * Se loguer sur cette page: https://enlighten.enphaseenergy.com/
 
-Pour cela il faut:  
-    * Se loguer sur cette page: https://enlighten.enphaseenergy.com/
-
-    * Se rendre sur cette page en mettant le numéro de serie de votre passerelle à la fin de l'adresse de la page:  https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=<LE NUMERO DE SERIE DE VOTRE PASSERELLE> 
+   * Se rendre sur cette page en mettant le numéro de serie de votre passerelle à la fin de l'adresse de la page:  https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=LE NUMERO DE SERIE DE VOTRE PASSERELLE 
 
 Une fois réalisé, il faudra  rentrer les informations suivante dans la page de configuration du plugin:
     * Adresse IP locale de la passerelle
