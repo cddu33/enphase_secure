@@ -37,7 +37,7 @@ if (!isConnect()) {
                 </select>
       		</div>
     	</div>
-        <legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
+        <legend><i class="fas fa-wrench auto"></i> {{Connexion Serveur Enphase}}</legend>
 							<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
@@ -46,7 +46,7 @@ if (!isConnect()) {
         							<input class="configKey form-control" data-l1key="user"/>
       							</div>
     						</div>
-    						<div class="form-group">
+    						<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Password Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
       							</label>
@@ -54,7 +54,7 @@ if (!isConnect()) {
         							<input type="password" class="configKey form-control" data-l1key="password" autocomplete="new-password"/>
       							</div>
     						</div>
-							<div class="form-group">
+							<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Id de site}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{ID du site correspondant à votre passerelle}}"></i></sup>
       							</label>
