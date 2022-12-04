@@ -33,22 +33,19 @@ Ce mode nécessite une connexion internet pour se loguer et récupérer le nouve
 
 Une fois les dépandances installées;
 Il faudra  rentrer les informations suivante dans la page de configuration du plugin:
-    * Utilisateur Enphase
-    * Mot de passe Enphase
-    * Adresse IP locale de la passerelle
-    * ID du site (dispponible sur l'application)
-    * Numéro de série de la passerelle (disponnible sur l'application)
+* Utilisateur Enphase
+* Mot de passe Enphase
+* Adresse IP locale de la passerelle
+* ID du site (dispponible sur l'application)
+* Numéro de série de la passerelle (disponnible sur l'application)
 
 * Génération du token manuellement par l'utilisateur
-
-Pour cela il faut:  
-    * Se loguer sur cette page: https://enlighten.enphaseenergy.com/
-
-    * Se rendre sur cette page en mettant le numéro de serie de votre passerelle à la fin de l'adresse de la page:  https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=<LE NUMERO DE SERIE DE VOTRE PASSERELLE> 
+   * Se loguer sur cette page: https://enlighten.enphaseenergy.com/
+   * Se rendre sur cette page en mettant le numéro de serie de votre passerelle à la fin de l'adresse de la page:  https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=<LE NUMERO DE SERIE DE VOTRE PASSERELLE> 
 
 Une fois réalisé, il faudra  rentrer les informations suivante dans la page de configuration du plugin:
-    * Adresse IP locale de la passerelle
-    * Token généré sur la page web
+* Adresse IP locale de la passerelle
+* Token généré sur la page web
 
 Le plugin ajoutera les équipements dont il a besoin.
 
