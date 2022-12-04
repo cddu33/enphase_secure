@@ -98,7 +98,7 @@ def enphase():
 	global JEEDOM_COM
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
-	if args.token == "": 
+	if args.renew == "auto": 
 		if testjeton != True:
 			logging.debug("Recuperation token")
 			class MyHTMLParser(HTMLParser):
@@ -212,7 +212,7 @@ if args.cycle:
     _cycle = float(args.cycle)
 if args.socketport:
 	_socket_port = int(args.socketport)
-	
+
 jeedom_utils.set_log_level(_log_level)
 
 logging.info('Start demond')
