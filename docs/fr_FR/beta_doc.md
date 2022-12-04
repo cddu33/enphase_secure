@@ -17,11 +17,8 @@ Le plugin permet de récupérer les données:
     * Semaine
     * Mise en service
 * La balance import et export instantanée réseau
-* Le stockage
-    * La puissance délivrée
-    * Le pourcentage de charge restant
 
-Ces données sont soit sur un seul widget soit sur 4 différents
+Ces données sont soit sur un seul widget soit sur 3 différents
  
 Le plugin se base sur l'accès par jeton de sécurité de Enphase, 2 possibilité de configuration:
 * Génération du token Automatique:
@@ -31,7 +28,7 @@ Par contre dans certaints cas (quand propriétaire et instalalteur sont la même
 
 Ce mode nécessite une connexion internet pour se loguer et récupérer le nouveau token
 
-Une fois les dépandances installées;
+Une fois les dépendances installées;
 Il faudra  rentrer les informations suivante dans la page de configuration du plugin:
     * Utilisateur Enphase
     * Mot de passe Enphase
@@ -55,6 +52,6 @@ Le plugin ajoutera les équipements dont il a besoin.
 L'actualisation des données est réglable avec un minimum de 10s
 
 
-Attention, pensez à relancer le démon si vous changer les paramètres.
+Attention, pensez à relancer le démon si vous changez les paramètres.
 
 Si vous changer de mode entre 1 ou 4 widget, les équipements seront effacés

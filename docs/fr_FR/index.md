@@ -23,7 +23,7 @@ Ces données sont soit sur un seul widget soit sur 3 différents
 Il se base sur l'accès par jeton de sécurité de Enphase, donc il nécessite une connexion internet pour se loguer mais récupère les donnnées toutes les 10s (modifiables) directement depuis la passerelle jusqu'à expiration du jeton.
 
 
-Une fois les dépandances installées;
+Une fois les dépendances installées;
 Il faudra  rentrer les informations suivante dans la page de configuration du plugin:
 * Utilisateur Enphase
 * Mot de passe Enphase
@@ -34,6 +34,6 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 Le plugin ajoutera les équipements dont il a besoin.
 
 
-Attention, pensez à relancer le démon si vous changer les paramètres.
+Attention, pensez à relancer le démon si vous changez les paramètres.
 
-Si vous changer de mode entre 1 ou 3 widget, les équipements seront effacés
+Si vous changez de mode entre 1 ou 3 widgets, les équipements seront effacés
