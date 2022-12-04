@@ -138,11 +138,11 @@ def enphase():
 				JEEDOM_COM.send_change_immediate('error serveur')
 	else: 
 		try:
-			
 			logging.debug("coucou")
 			token = args.token
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
+			logging.debug("coucou" + token + " " + testjeton)
 			testjeton = True
 			
 		except Exception as e:
