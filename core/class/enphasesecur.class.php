@@ -554,10 +554,10 @@ class enphasesecur extends eqLogic {
         }
         $return['launchable'] = 'ok';
 	
-        if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
+       /* if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
             $return['launchable'] = 'nok';
             $return['launchable_message'] = __('Les informations ne sont pas remplies', __FILE__);
-		}
+		}*/
         return $return;
     }
 
