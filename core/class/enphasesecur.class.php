@@ -587,10 +587,11 @@ class enphasesecur extends eqLogic {
 		
 		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
 		$cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon
+		$cmd .= ' --renew "' . trim(str_replace('"', '\"', config::byKey('ctoken', __CLASS__))) . '"'; 
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
 		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
-		$cmd .= ' --renew "' . trim(str_replace('"', '\"', config::byKey('ctoken', __CLASS__))) . '"'; 
+		
 		if (config::byKey('ctoken', __CLASS__) == 'auto') {
 			$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
 			$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 

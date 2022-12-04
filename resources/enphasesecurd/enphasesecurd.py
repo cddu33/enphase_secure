@@ -126,7 +126,6 @@ def enphase():
 				r = client.post(TOKEN_URL, data=payload_token)
 				parsed_html = BeautifulSoup(r.text, "lxml")
 				token = parsed_html.body.find('textarea').text
-				#token = "eyJraWQiOiI3ZDEwMDA1ZC03ODk5LTRkMGQtYmNiNC0yNDRmOThlZTE1NmIiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiIxMjIyMjQwNzc4MzkiLCJpc3MiOiJFbnRyZXoiLCJlbnBoYXNlVXNlciI6Im93bmVyIiwiZXhwIjoxNzAxNjMzNjQ0LCJpYXQiOjE2NzAwOTc2NDQsImp0aSI6ImVkZjE1YjU3LTE5MzgtNGNlNi1iYTY3LTNiY2VjOGRlZWNlOSIsInVzZXJuYW1lIjoiY2RpYm91dEBnbWFpbC5jb20ifQ.p7pi_xxAbmHF7ln9VWPcPQNuJlaOMlWjyiwdjG7nKS4TBEZH-u3uBGbbEzkbjZarjD5qT2tG2_ll_T9D-gQkEg"
 				decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 				header = {"Authorization": "Bearer " + token}
 				logging.debug("Token: " + token)
@@ -167,6 +166,8 @@ def enphase():
 		client.close()
 		time.sleep(60)	
 
+#Demon
+
 _log_level = "error"
 _socket_port = 55060
 _socket_host = 'localhost'
@@ -180,7 +181,7 @@ parser1 = argparse.ArgumentParser(
     description='Auto Manu token')
 parser1.add_argument("--renew", help="Auto Manu", type=str)
 args1 = parser1.parse_args()
-
+args, unknown = parser.parse_known_args()
 parser = argparse.ArgumentParser(
     description='Daemon for Enphase Secure')
 
