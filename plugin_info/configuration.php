@@ -71,7 +71,7 @@ if (!isConnect()) {
         							<input class="configKey form-control" data-l1key="ip">
       							</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group serie">
       							<label class="col-md-4 control-label">{{Numéro de série}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
      							</label>
