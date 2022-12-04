@@ -16,6 +16,7 @@
 */
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
+include_file('desktop', 'configuration', 'js', 'enphasesecur');
 include_file('core', 'authentification', 'php');
 if (!isConnect()) {
   include_file('desktop', '404', 'php');
@@ -24,6 +25,18 @@ if (!isConnect()) {
 ?>
 <form class="form-horizontal">
     <fieldset>
+		<legend><i class="fas fa-wrench"></i> {{Choix Token de connexion}}</legend>
+		<div class="form-group">
+      		<label class="col-md-4 control-label">{{Méthode de gestion du token}}
+        		<sup><i class="fas fa-question-circle tooltips" title="{{Mode auto: renouvellement automatique // Mode manuel: Fourniture du token par l'utilisateur (voir documentation)}}"></i></sup>
+      		</label>
+      		<div class="col-md-4">
+			  <select id="sel_object" onchange="renew();" class="configKey form-control" data-l1key="ctoken">
+                    <option value="auto">{{Renouvellement automatique}}</option>
+                    <option value="manu">{{Renouvellement Manuel}}</option>
+                </select>
+      		</div>
+    	</div>
         <legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
 							<div class="form-group">
       							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
@@ -43,7 +56,7 @@ if (!isConnect()) {
     						</div>
 							<div class="form-group">
       							<label class="col-md-4 control-label">{{Id de site}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{ID du ite correspondant à votre passerelle}}"></i></sup>
+        							<sup><i class="fas fa-question-circle tooltips" title="{{ID du site correspondant à votre passerelle}}"></i></sup>
       							</label>
       							<div class="col-md-4">
         							<input type="number" class="configKey form-control" data-l1key="site"/>
