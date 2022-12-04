@@ -177,7 +177,6 @@ _apikey = ''
 _callback = ''
 _cycle = 0.5
 
-args, unknown = parser.parse_known_args()
 parser = argparse.ArgumentParser(
     description='Daemon for Enphase Secure')
 parser.add_argument("--renew", help="Auto Manu", type=str)
