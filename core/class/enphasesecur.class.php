@@ -591,16 +591,11 @@ class enphasesecur extends eqLogic {
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
 		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
-		
-		if (config::byKey('ctoken', __CLASS__) == 'auto') {
-			$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
-			$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
-			$cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
-			$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
-		}
-		else {
-			$cmd .= ' --token "' . trim(str_replace('"', '\"', config::byKey('token', __CLASS__))) . '"'; 
-		}
+		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
+		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
+		$cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
+		$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
+		$cmd .= ' --token "' . trim(str_replace('"', '\"', config::byKey('token', __CLASS__))) . '"'; 
 		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
 		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // et on précise le chemin vers le pid file (ne pas modifier)
