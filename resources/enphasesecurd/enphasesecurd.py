@@ -235,6 +235,7 @@ logging.info('User : '+str(args.user))
 logging.info('Password : '+str(args.password))
 logging.info('Id Site : '+str(args.site))
 logging.info('Numero de serie : '+str(args.serie))
+logging.info('Token manuel : '+str(args.token))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	
