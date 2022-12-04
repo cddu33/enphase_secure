@@ -67,6 +67,14 @@ if (!isConnect()) {
       							</div>
 							</div>
 							<div class="form-group">
+      							<label class="col-md-4 control-label">{{Token}}
+        							<sup><i class="fas fa-question-circle tooltips" title="{{Token généré manuellement depuis le site Enphase}}"></i></sup>
+     							</label>
+      							<div class="col-md-4">
+        							<input class="configKey form-control" data-l1key="token">
+      							</div>
+							</div>
+							<div class="form-group">
       							<label class="col-md-4 control-label">{{Actualisation}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Délais d'intéroggation de votre passerelle Enphase}}"></i></sup>
      							</label>

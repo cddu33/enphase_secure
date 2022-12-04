@@ -98,48 +98,62 @@ def enphase():
 	global JEEDOM_COM
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
-	
-	if testjeton != True:
-		logging.debug("Recuperation token")
-		class MyHTMLParser(HTMLParser):
-			def handle_starttag(self, tag, attrs):
-				print("Encountered a start tag:", tag)
-			def handle_endtag(self, tag):
-				print("Encountered an end tag :", tag)
-			def handle_data(self, data):
-				print("Encountered some data  :", data)
+	if args.token == "":
+		if testjeton != True:
+			logging.debug("Recuperation token")
+			class MyHTMLParser(HTMLParser):
+				def handle_starttag(self, tag, attrs):
+					print("Encountered a start tag:", tag)
+				def handle_endtag(self, tag):
+					print("Encountered an end tag :", tag)
+				def handle_data(self, data):
+					print("Encountered some data  :", data)
 
-		USER = args.user
-		PASSWORD = args.password
-		SITE_ID = args.site
-		SERIAL_NUMBER = args.serie
+			USER = args.user
+			PASSWORD = args.password
+			SITE_ID = args.site
+			SERIAL_NUMBER = args.serie
 		
-		#LOGIN_URL = "https://entrez.enphaseenergy.com/login"
-		#TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
-		#payload_login = {'username': USER, 'password': PASSWORD}
-		#payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
-		#payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
-		headers = {'Content-Type': 'application/json'}
+			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
+			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
+			payload_login = {'username': USER, 'password': PASSWORD}
+			payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
+			headers = {'Content-Type': 'application/json'}
 
-		token = ""
+			token = ""
+			try:
+				r = client.post(LOGIN_URL, data=payload_login)
+				r = client.post(TOKEN_URL)
+				r = client.post(TOKEN_URL, data=payload_token)
+				parsed_html = BeautifulSoup(r.text, "lxml")
+				token = parsed_html.body.find('textarea').text
+				#token = "eyJraWQiOiI3ZDEwMDA1ZC03ODk5LTRkMGQtYmNiNC0yNDRmOThlZTE1NmIiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiIxMjIyMjQwNzc4MzkiLCJpc3MiOiJFbnRyZXoiLCJlbnBoYXNlVXNlciI6Im93bmVyIiwiZXhwIjoxNzAxNjMzNjQ0LCJpYXQiOjE2NzAwOTc2NDQsImp0aSI6ImVkZjE1YjU3LTE5MzgtNGNlNi1iYTY3LTNiY2VjOGRlZWNlOSIsInVzZXJuYW1lIjoiY2RpYm91dEBnbWFpbC5jb20ifQ.p7pi_xxAbmHF7ln9VWPcPQNuJlaOMlWjyiwdjG7nKS4TBEZH-u3uBGbbEzkbjZarjD5qT2tG2_ll_T9D-gQkEg"
+				decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
+				header = {"Authorization": "Bearer " + token}
+				logging.debug("Token: " + token)
+				testjeton = True
+			except:
+				limit = limit + 1
+				testjeton = False
+				logging.error("Erreur de connexion aux serveurs Enphase")
+				JEEDOM_COM.send_change_immediate('error serveur')
+	else: 
 		try:
-			#r = client.post(LOGIN_URL, data=payload_login)
-			#r = client.post(TOKEN_URL)
-			#r = client.post(TOKEN_URL, data=payload_token)
-			#parsed_html = BeautifulSoup(r.text, "lxml")
-			token = "eyJraWQiOiI3ZDEwMDA1ZC03ODk5LTRkMGQtYmNiNC0yNDRmOThlZTE1NmIiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiIxMjIyMjQwNzc4MzkiLCJpc3MiOiJFbnRyZXoiLCJlbnBoYXNlVXNlciI6Im93bmVyIiwiZXhwIjoxNzAxNjMzNjQ0LCJpYXQiOjE2NzAwOTc2NDQsImp0aSI6ImVkZjE1YjU3LTE5MzgtNGNlNi1iYTY3LTNiY2VjOGRlZWNlOSIsInVzZXJuYW1lIjoiY2RpYm91dEBnbWFpbC5jb20ifQ.p7pi_xxAbmHF7ln9VWPcPQNuJlaOMlWjyiwdjG7nKS4TBEZH-u3uBGbbEzkbjZarjD5qT2tG2_ll_T9D-gQkEg"
-			logging.debug("Token: " + token)
+			token = args.token
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
-			testjeton = True
-		except:
-			limit = limit + 1
+			testjeton == True
+		except Exception as e:
+			logging.error('Fatal error : '+str(e))
+			logging.info(traceback.format_exc())
+			JEEDOM_COM.send_change_immediate('error check')
 			testjeton = False
-			logging.error("Erreur de connexion aux serveurs Enphase")
-			JEEDOM_COM.send_change_immediate('error serveur')
+			client.close()
+			time.sleep(60)	
 
 	try:
 		if testjeton == True:
+			
 			logging.debug("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
 			logging.debug("Recuperation mesure")
@@ -177,6 +191,7 @@ parser.add_argument("--password", help="Password for Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
 parser.add_argument("--site", help="Site for Enphase Server", type=str)
+parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--socketport", help="Port for Enphase Server", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
