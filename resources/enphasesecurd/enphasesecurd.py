@@ -194,7 +194,6 @@ parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
 
-
 jeedom_utils.set_log_level(_log_level)
 
 logging.info('Start demond')
