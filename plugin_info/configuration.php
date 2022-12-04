@@ -31,7 +31,7 @@ if (!isConnect()) {
         		<sup><i class="fas fa-question-circle tooltips" title="{{Mode auto: renouvellement automatique // Mode manuel: Fourniture du token par l'utilisateur (voir documentation)}}"></i></sup>
       		</label>
       		<div class="col-md-4">
-			  <select id="sel_object" onchange="renew();" class="configKey form-control" data-l1key="ctoken">
+			  <select id="sel_token" onchange="renew();" class="configKey form-control" data-l1key="ctoken">
                     <option value="auto">{{Renouvellement automatique}}</option>
                     <option value="manu">{{Renouvellement Manuel}}</option>
                 </select>

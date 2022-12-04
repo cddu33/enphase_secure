@@ -2,7 +2,7 @@
     //$('.cf_z2m').hide();
     //$('.cf_mqtt').hide();
     //$('.cf_mqttcli').hide();
-    if ($('#ctoken').val()=='manu') {
+    if ($('#sel_token').val()=='manu') {
       $('.token').show();
       $('.user').hide();
       $('.password').hide();
