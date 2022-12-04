@@ -177,22 +177,36 @@ _callback = ''
 _cycle = 0.5
 
 parser = argparse.ArgumentParser(
-    description='Desmond Daemon for Enphase Secure plugin')
-parser.add_argument("--device", help="Device", type=str)
-parser.add_argument("--loglevel", help="Log Level for the daemon", type=str)
-parser.add_argument("--callback", help="Callback", type=str)
-parser.add_argument("--apikey", help="Apikey", type=str)
-parser.add_argument("--cycle", help="Cycle to send event", type=str)
-parser.add_argument("--pid", help="Pid file", type=str)
-parser.add_argument("--user", help="User for Enphase Server", type=str)
-parser.add_argument("--password", help="Password for Enphase Server", type=str)
-parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
-parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
-parser.add_argument("--site", help="Site for Enphase Server", type=str)
-parser.add_argument("--token", help="Token Enphase Server", type=str)
-parser.add_argument("--socketport", help="Port for Enphase Server", type=str)
-parser.add_argument("--delais", help="Delais actualisation", type=str)
-args = parser.parse_args()
+    description='Auto Manu token')
+parser.add_argument("--renew", help="Auto Manu", type=str)
+args1 = parser.parse_args()
+
+parser1 = argparse.ArgumentParser(
+    description='Daemon for Enphase Secure')
+
+parser1.add_argument("--device", help="Device", type=str)
+parser1.add_argument("--loglevel", help="Log Level for the daemon", type=str)
+parser1.add_argument("--callback", help="Callback", type=str)
+parser1.add_argument("--apikey", help="Apikey", type=str)
+parser1.add_argument("--cycle", help="Cycle to send event", type=str)
+parser1.add_argument("--pid", help="Pid file", type=str)
+parser1.add_argument("--socketport", help="Port for Enphase Server", type=str)
+
+if args1.renew == "auto":
+	parser1.add_argument("--user", help="User for Enphase Server", type=str)
+	parser1.add_argument("--password", help="Password for Enphase Server", type=str)
+	parser1.add_argument("--serie", help="Serie for Enphase Server", type=str)
+	parser1.add_argument("--site", help="Site for Enphase Server", type=str)
+else:
+	parser1.add_argument("--token", help="Token Enphase Server", type=str)
+parser1.add_argument("--ip", help="Adresse IP passrelle", type=str)
+parser1.add_argument("--delais", help="Delais actualisation", type=str)
+args = parser1.parse_args()
+
+
+jeedom_utils.set_log_level(_log_level)
+
+logging.info('Start demond')
 
 if args.device:
 	_device = args.device
@@ -209,9 +223,6 @@ if args.cycle:
 if args.socketport:
 	_socket_port = int(args.socketport)
 
-jeedom_utils.set_log_level(_log_level)
-
-logging.info('Start demond')
 logging.info('Log level : '+str(_log_level))
 logging.info('Socket port : '+str(_socket_port))
 logging.info('Socket host : '+str(_socket_host))
@@ -220,10 +231,10 @@ logging.info('Apikey : '+str(_apikey))
 logging.info('Device : '+str(_device))
 logging.info('Callback : '+str(_callback))
 logging.info('Delais actualisation : '+str(args.delais))
-logging.debug('User : '+str(args.user))
-logging.debug('Password : '+str(args.password))
-logging.debug('Id Site : '+str(args.site))
-logging.debug('Numero de serie : '+str(args.serie))
+logging.info('User : '+str(args.user))
+logging.info('Password : '+str(args.password))
+logging.info('Id Site : '+str(args.site))
+logging.info('Numero de serie : '+str(args.serie))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	
