@@ -18,7 +18,7 @@ Le plugin permet de récupérer les données:
     * Mise en service
 * La balance import et export instantanée réseau
 
-Ces données sont soit sur un seul widget soit sur 3 différents
+Ces données sont soit sur un seul widget soit sur 4 différents
  
 Le plugin se base sur l'accès par jeton de sécurité de Enphase, 2 possibilité de configuration:
 * Génération du token Automatique:
