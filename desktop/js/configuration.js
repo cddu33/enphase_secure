@@ -1,4 +1,4 @@
-﻿function cfg_type_apply() {
+﻿function renew() {
     //$('.cf_z2m').hide();
     //$('.cf_mqtt').hide();
     //$('.cf_mqttcli').hide();
