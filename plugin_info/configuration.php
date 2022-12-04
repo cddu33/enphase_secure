@@ -46,7 +46,7 @@ if (!isConnect()) {
         							<input class="configKey form-control" data-l1key="user"/>
       							</div>
     						</div>
-    						<div class="form-group auto">
+    						<div class="form-group">
       							<label class="col-md-4 control-label">{{Password Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
       							</label>
@@ -54,7 +54,7 @@ if (!isConnect()) {
         							<input type="password" class="configKey form-control" data-l1key="password" autocomplete="new-password"/>
       							</div>
     						</div>
-							<div class="form-group auto">
+							<div class="form-group">
       							<label class="col-md-4 control-label">{{Id de site}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{ID du site correspondant à votre passerelle}}"></i></sup>
       							</label>
