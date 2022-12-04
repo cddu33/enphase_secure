@@ -151,8 +151,8 @@ def enphase():
 			client.close()
 			time.sleep(60)	
 	try:
+		logging.debug("coucoubis")
 		if testjeton == True:
-			
 			logging.debug("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
 			logging.debug("Recuperation mesure")
