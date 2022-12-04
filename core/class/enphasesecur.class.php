@@ -24,11 +24,13 @@ class enphasesecur extends eqLogic {
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
+		$this->setConfiguration('token', utils::decrypt($this->getConfiguration('token')));
 	}
 
 	public function encrypt() {
 		$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::encrypt($this->getConfiguration('serie')));
+		$this->setConfiguration('token', utils::encrypt($this->getConfiguration('token')));
 	}
 
 	public static function dependancy_info() {
@@ -40,7 +42,7 @@ class enphasesecur extends eqLogic {
         }
 		else 
 		{
-			$deps = array('bs4', 'PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser');
+			$deps = array('bs4', 'PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'python3-setuptools', 'six');
         	$return['state'] = 'ok';
         	$output = array();
 			foreach($deps as $list) {
@@ -553,11 +555,19 @@ class enphasesecur extends eqLogic {
             }
         }
         $return['launchable'] = 'ok';
-	
-       /* if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
-            $return['launchable'] = 'nok';
-            $return['launchable_message'] = __('Les informations ne sont pas remplies', __FILE__);
-		}*/
+
+		if (config::byKey('ctoken', __CLASS__) == 'auto'){
+        	if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
+            	$return['launchable'] = 'nok';
+            	$return['launchable_message'] = __('Toutes les informations obligatoires ne sont pas remplies', __FILE__);
+			}
+		}
+		else {
+			if ((config::byKey('token', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '')) {
+            	$return['launchable'] = 'nok';
+            	$return['launchable_message'] = __('Toutes les informations obligatoires ne sont pas remplies', __FILE__);
+			}
+		}
         return $return;
     }
 
