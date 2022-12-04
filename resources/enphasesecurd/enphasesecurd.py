@@ -98,8 +98,9 @@ def enphase():
 	global JEEDOM_COM
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
-	if args.token == null: 
-		
+	logging.debug("Tokkk" + args.token)
+	if args.token == "": 
+
 		if testjeton != True:
 			logging.debug("Recuperation token")
 			class MyHTMLParser(HTMLParser):
