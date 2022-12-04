@@ -197,9 +197,6 @@ parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
 
 
-jeedom_utils.set_log_level(_log_level)
-
-logging.info('Start demond')
 
 if args.device:
 	_device = args.device
@@ -215,6 +212,10 @@ if args.cycle:
     _cycle = float(args.cycle)
 if args.socketport:
 	_socket_port = int(args.socketport)
+	
+jeedom_utils.set_log_level(_log_level)
+
+logging.info('Start demond')
 
 logging.info('Log level : '+str(_log_level))
 logging.info('Socket port : '+str(_socket_port))
