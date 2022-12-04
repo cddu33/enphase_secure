@@ -176,8 +176,14 @@ _apikey = ''
 _callback = ''
 _cycle = 0.5
 
+parser1 = argparse.ArgumentParser(
+    description='Auto Manu token')
+parser1.add_argument("--renew", help="Auto Manu", type=str)
+args1 = parser1.parse_args()
+
 parser = argparse.ArgumentParser(
     description='Daemon for Enphase Secure')
+
 parser.add_argument("--device", help="Device", type=str)
 parser.add_argument("--loglevel", help="Log Level for the daemon", type=str)
 parser.add_argument("--callback", help="Callback", type=str)
@@ -185,14 +191,18 @@ parser.add_argument("--apikey", help="Apikey", type=str)
 parser.add_argument("--cycle", help="Cycle to send event", type=str)
 parser.add_argument("--pid", help="Pid file", type=str)
 parser.add_argument("--socketport", help="Port for Enphase Server", type=str)
-parser.add_argument("--user", help="User for Enphase Server", type=str)
-parser.add_argument("--password", help="Password for Enphase Server", type=str)
-parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
-parser.add_argument("--site", help="Site for Enphase Server", type=str)
-parser.add_argument("--token", help="Token Enphase Server", type=str)
+
+if args1.renew == "auto":
+	parser.add_argument("--user", help="User for Enphase Server", type=str)
+	parser.add_argument("--password", help="Password for Enphase Server", type=str)
+	parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
+	parser.add_argument("--site", help="Site for Enphase Server", type=str)
+else:
+	parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
+
 
 jeedom_utils.set_log_level(_log_level)
 
