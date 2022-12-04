@@ -38,7 +38,7 @@ if (!isConnect()) {
       		</div>
     	</div>
         <legend><i class="fas fa-wrench"></i> {{Connexion Serveur Enphase}}</legend>
-							<div class="form-group">
+							<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
       							</label>
@@ -46,7 +46,7 @@ if (!isConnect()) {
         							<input class="configKey form-control" data-l1key="user"/>
       							</div>
     						</div>
-    						<div class="form-group">
+    						<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Password Enphase}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Mot de passe que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
       							</label>
@@ -54,7 +54,7 @@ if (!isConnect()) {
         							<input type="password" class="configKey form-control" data-l1key="password" autocomplete="new-password"/>
       							</div>
     						</div>
-							<div class="form-group">
+							<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Id de site}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{ID du site correspondant à votre passerelle}}"></i></sup>
       							</label>
@@ -71,7 +71,7 @@ if (!isConnect()) {
         							<input class="configKey form-control" data-l1key="ip">
       							</div>
 							</div>
-							<div class="form-group serie">
+							<div class="form-group auto">
       							<label class="col-md-4 control-label">{{Numéro de série}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Numéro de série de votre passerelle Enphase}}"></i></sup>
      							</label>
@@ -79,7 +79,7 @@ if (!isConnect()) {
         							<input type="number" class="configKey form-control" data-l1key="serie">
       							</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group manu">
       							<label class="col-md-4 control-label">{{Token}}
         							<sup><i class="fas fa-question-circle tooltips" title="{{Token généré manuellement depuis le site Enphase}}"></i></sup>
      							</label>

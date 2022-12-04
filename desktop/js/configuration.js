@@ -3,17 +3,11 @@
     //$('.cf_mqtt').hide();
     //$('.cf_mqttcli').hide();
     if ($('#sel_token').val()=='manu') {
-      $('.token').show();
-      $('.user').hide();
-      $('.password').hide();
-      $('.serie').hide();
-      $('.site').hide();
+      $('.manu').show();
+      $('.auto').hide();
     }
     else {
-        $('.token').hide();
-        $('.user').show();
-        $('.password').show();
-        $('.serie').show();
-        $('.site').show();
+        $('.auto').show();
+      $('.manu').hide();
     }
   }
