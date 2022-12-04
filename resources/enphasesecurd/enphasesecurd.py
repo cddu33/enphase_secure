@@ -178,7 +178,7 @@ _cycle = 0.5
 
 parser1 = argparse.ArgumentParser(
     description='Auto Manu token')
-parser1.add_argument("--renew", help="Auto Manu", type=str)
+#parser1.add_argument("--renew", help="Auto Manu", type=str)
 args1 = parser1.parse_args()
 
 parser = argparse.ArgumentParser(
