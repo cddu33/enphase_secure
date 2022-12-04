@@ -98,9 +98,7 @@ def enphase():
 	global JEEDOM_COM
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
-	logging.debug("Tokkk" + args.token)
 	if args.token == "": 
-
 		if testjeton != True:
 			logging.debug("Recuperation token")
 			class MyHTMLParser(HTMLParser):
@@ -140,6 +138,7 @@ def enphase():
 				JEEDOM_COM.send_change_immediate('error serveur')
 	else: 
 		try:
+			logging.debug("coucou")
 			token = args.token
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
@@ -151,7 +150,6 @@ def enphase():
 			testjeton = False
 			client.close()
 			time.sleep(60)	
-
 	try:
 		if testjeton == True:
 			
