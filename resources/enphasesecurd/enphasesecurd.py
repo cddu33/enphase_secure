@@ -52,7 +52,8 @@ def listen():
 #	jeedom_socket.open()
 	try:
 		while limit < 2:
-			logging.debug("Tentative de connexion:" + str(limit))
+			if not limit == 0:
+				logging.debug("Tentative de connexion:" + str(limit))
 			try:
 				time.sleep(int(args.delais))
 			except:
@@ -97,58 +98,75 @@ def enphase():
 	global JEEDOM_COM
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
-	
-	if testjeton != True:
-		logging.debug("Recuperation token")
-		class MyHTMLParser(HTMLParser):
-			def handle_starttag(self, tag, attrs):
-				print("Encountered a start tag:", tag)
-			def handle_endtag(self, tag):
-				print("Encountered an end tag :", tag)
-			def handle_data(self, data):
-				print("Encountered some data  :", data)
+	if args.renew == "auto": 
+		if testjeton != True:
+			logging.debug("Recuperation token")
+			class MyHTMLParser(HTMLParser):
+				def handle_starttag(self, tag, attrs):
+					print("Encountered a start tag:", tag)
+				def handle_endtag(self, tag):
+					print("Encountered an end tag :", tag)
+				def handle_data(self, data):
+					print("Encountered some data  :", data)
 
-		USER = args.user
-		PASSWORD = args.password
-		SITE_ID = args.site
-		SERIAL_NUMBER = args.serie
-		LOGIN_URL = "https://entrez.enphaseenergy.com/login"
-		TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
-		payload_login = {'username': USER, 'password': PASSWORD}
-		payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
-		headers = {'Content-Type': 'application/json'}
+			USER = args.user
+			PASSWORD = args.password
+			SITE_ID = args.site
+			SERIAL_NUMBER = args.serie
+		
+			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
+			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
+			payload_login = {'username': USER, 'password': PASSWORD}
+			payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
+			headers = {'Content-Type': 'application/json'}
 
-		token = ""
+			token = ""
+			try:
+				r = client.post(LOGIN_URL, data=payload_login)
+				r = client.post(TOKEN_URL, data=payload_token)
+				parsed_html = BeautifulSoup(r.text, "lxml")
+				token = parsed_html.body.find('textarea').text
+				decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
+				header = {"Authorization": "Bearer " + token}
+				logging.debug("Token: " + token)
+				testjeton = True
+			except:
+				limit = limit + 1
+				testjeton = False
+				logging.error("Erreur de connexion aux serveurs Enphase")
+				JEEDOM_COM.send_change_immediate('error serveur')
+	else: 
 		try:
-			r = client.post(LOGIN_URL, data=payload_login)
-			r = client.post(TOKEN_URL, data=payload_token)
-			parsed_html = BeautifulSoup(r.text, "lxml")
-			token = parsed_html.body.find('textarea').text
+			token = args.token
 			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
-			
 			testjeton = True
-		except:
-			limit = limit + 1
+			
+		except Exception as e:
+			logging.error('Fatal error : '+str(e))
+			logging.info(traceback.format_exc())
+			JEEDOM_COM.send_change_immediate('error check')
 			testjeton = False
-			logging.error("Erreur de connexion aux serveurs Enphase")
-
+			client.close()
+			time.sleep(60)	
 	try:
 		if testjeton == True:
 			logging.debug("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
 			logging.debug("Recuperation mesure")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			logging.debug(r.json())
+			logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
 			limit = 0
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
+		JEEDOM_COM.send_change_immediate('error check')
 		testjeton = False
 		client.close()
-		time.sleep(60)
+		time.sleep(60)	
 
+#Demon
 
 _log_level = "error"
 _socket_port = 55060
@@ -160,21 +178,25 @@ _callback = ''
 _cycle = 0.5
 
 parser = argparse.ArgumentParser(
-    description='Desmond Daemon for Enphase Secure plugin')
+    description='Daemon for Enphase Secure')
+parser.add_argument("--renew", help="Auto Manu", type=str)
 parser.add_argument("--device", help="Device", type=str)
 parser.add_argument("--loglevel", help="Log Level for the daemon", type=str)
 parser.add_argument("--callback", help="Callback", type=str)
 parser.add_argument("--apikey", help="Apikey", type=str)
 parser.add_argument("--cycle", help="Cycle to send event", type=str)
 parser.add_argument("--pid", help="Pid file", type=str)
+parser.add_argument("--socketport", help="Port for Enphase Server", type=str)
 parser.add_argument("--user", help="User for Enphase Server", type=str)
 parser.add_argument("--password", help="Password for Enphase Server", type=str)
-parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
 parser.add_argument("--site", help="Site for Enphase Server", type=str)
-parser.add_argument("--socketport", help="Port for Enphase Server", type=str)
+parser.add_argument("--token", help="Token Enphase Server", type=str)
+parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
+
+
 
 if args.device:
 	_device = args.device
@@ -194,6 +216,7 @@ if args.socketport:
 jeedom_utils.set_log_level(_log_level)
 
 logging.info('Start demond')
+
 logging.info('Log level : '+str(_log_level))
 logging.info('Socket port : '+str(_socket_port))
 logging.info('Socket host : '+str(_socket_host))
@@ -202,10 +225,12 @@ logging.info('Apikey : '+str(_apikey))
 logging.info('Device : '+str(_device))
 logging.info('Callback : '+str(_callback))
 logging.info('Delais actualisation : '+str(args.delais))
-logging.debug('User : '+str(args.user))
-logging.debug('Password : '+str(args.password))
-logging.debug('Id Site : '+str(args.site))
-logging.debug('Numero de serie : '+str(args.serie))
+logging.info('Adresse IP Passerelle : '+str(args.ip))
+logging.info('User : '+str(args.user))
+logging.info('Password : '+str(args.password))
+logging.info('Id Site : '+str(args.site))
+logging.info('Numero de serie : '+str(args.serie))
+logging.info('Token manuel (non obligatoire) : '+str(args.token))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	

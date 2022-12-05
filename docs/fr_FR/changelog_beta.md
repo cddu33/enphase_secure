@@ -3,6 +3,17 @@
 >**IMPORTANT**
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+# 05/12/2022
+Amelioration dépendances
+
+# 04/12/2022
+Rajout de la possibilité de désactiver le renouvellement du token et de le gérer depuis le site enphase (token de 1 ans)
+
+Correction erreur sur renouvellement token
+
+Amelioration de la documentation
+
 # 14/11/2022
 Correction création multiple stockage widget
 

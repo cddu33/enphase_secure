@@ -8,10 +8,18 @@ try {
         die();
     }
 	$result = file_get_contents("php://input");
-	
+
     if ($result == '') {
         echo 'OK';
 		log::add('enphasesecur', 'debug', 'Test OK');
+        die();
+    }
+	if ($result == '"error serveur"') {
+		log::add('enphasesecur', 'error', 'Erreur de connexion, vérifier les log du daemon et vos identifiants');
+        die();
+    }
+	if ($result == '"error check"') {
+		log::add('enphasesecur', 'error', 'Mauvais token ou renouvellement');
         die();
     }
 	

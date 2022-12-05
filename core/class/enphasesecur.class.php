@@ -24,11 +24,13 @@ class enphasesecur extends eqLogic {
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
+		$this->setConfiguration('token', utils::decrypt($this->getConfiguration('token')));
 	}
 
 	public function encrypt() {
 		$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::encrypt($this->getConfiguration('serie')));
+		$this->setConfiguration('token', utils::encrypt($this->getConfiguration('token')));
 	}
 
 	public static function dependancy_info() {
@@ -40,7 +42,7 @@ class enphasesecur extends eqLogic {
         }
 		else 
 		{
-			$deps = array('bs4', 'PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser');
+			$deps = array('bs4', 'PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six');
         	$return['state'] = 'ok';
         	$output = array();
 			foreach($deps as $list) {
@@ -66,9 +68,10 @@ class enphasesecur extends eqLogic {
 		log::remove(__CLASS__ . '_update');
 	}
 
+
 	public static function creationmaj() {
 		$numberwidget = count(self::byType('enphasesecur', false)); 
-		log::add('enphasesecur', 'debug', 'Nombre de widget: ' . $numberwidget);
+		log::add('enphasesecur', 'debug', 'Nombre de widget:  ' . $numberwidget);
 		if ($numberwidget != 0) {
 			if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 3 && $numberwidget != 4 && $numberwidget != 3)) {
 				log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
@@ -552,10 +555,18 @@ class enphasesecur extends eqLogic {
             }
         }
         $return['launchable'] = 'ok';
-	
-        if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
-            $return['launchable'] = 'nok';
-            $return['launchable_message'] = __('Les informations ne sont pas remplies', __FILE__);
+
+		if (config::byKey('ctoken', __CLASS__) == 'auto'){
+        	if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
+            	$return['launchable'] = 'nok';
+            	$return['launchable_message'] = __('Toutes les informations obligatoires ne sont pas remplies', __FILE__);
+			}
+		}
+		else {
+			if ((config::byKey('token', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '')) {
+            	$return['launchable'] = 'nok';
+            	$return['launchable_message'] = __('Toutes les informations obligatoires ne sont pas remplies', __FILE__);
+			}
 		}
         return $return;
     }
@@ -574,20 +585,22 @@ class enphasesecur extends eqLogic {
 
 		enphasesecur::creationmaj();
 		
-		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon à modifier
-		$cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon à modifier
+		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
+		$cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon
+		$cmd .= ' --renew "' . trim(str_replace('"', '\"', config::byKey('ctoken', __CLASS__))) . '"'; 
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
-		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut à modifier
+		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
 		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
 		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
 		$cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
-		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 
 		$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
+		$cmd .= ' --token "' . trim(str_replace('"', '\"', config::byKey('token', __CLASS__))) . '"'; 
+		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
 		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // et on précise le chemin vers le pid file (ne pas modifier)
 		$cmd .= ' --delais '  . config::byKey('delais', __CLASS__); // delais actualisation
-
+		log::add(__CLASS__, 'info', $cmd);
         log::add(__CLASS__, 'info', 'Lancement démon');
         $result = exec($cmd . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
         $i = 0;
