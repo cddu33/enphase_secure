@@ -20,7 +20,7 @@ sudo pip3 install --upgrade pip
 echo 40 > ${PROGRESS_FILE}
 sudo apt-get install -y python3-setuptools
 echo 50 > ${PROGRESS_FILE}
-sudo apt-get install -y python3-requests
+sudo apt-get install -y python3-requests python3-pyudev
 echo 60 > ${PROGRESS_FILE}
 sudo pip3 install pyjwt html.parser html5lib bs4 asyncio httpx lxml
 echo 70 > ${PROGRESS_FILE}
