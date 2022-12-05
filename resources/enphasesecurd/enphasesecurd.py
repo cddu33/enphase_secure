@@ -155,7 +155,7 @@ def enphase():
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
 			logging.debug("Recuperation mesure")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			logging.info(r.json())
+			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
 			limit = 0
 	except Exception as e:
