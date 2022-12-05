@@ -168,7 +168,7 @@ def enphase():
 			JEEDOM_COM.send_change_immediate(r.json())
 			limit = 0
 	except Exception as e:
-		logging.ERROR("Deuxième tentative de connexion a la passerelle")
+		logging.ERROR("Deuxième tentative de connexion à la passerelle")
 		time.sleep(15)	
 		logging.debug("Recuperation mesure")
 		r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
