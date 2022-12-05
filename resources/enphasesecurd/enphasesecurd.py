@@ -144,7 +144,7 @@ def enphase():
 			
 		except Exception as e:
 			logging.error('Fatal error : '+str(e))
-			logging.info(traceback.format_exc())
+			#logging.info(traceback.format_exc())
 			JEEDOM_COM.send_change_immediate('error check')
 			testjeton = False
 			client.close()
