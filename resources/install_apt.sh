@@ -19,9 +19,13 @@ echo 30 > ${PROGRESS_FILE}
 sudo pip3 install --upgrade pip
 echo 40 > ${PROGRESS_FILE}
 sudo apt-get install -y python3-setuptools
+echo 50 > ${PROGRESS_FILE}
+sudo apt-get install -y python3-requests
 echo 60 > ${PROGRESS_FILE}
 sudo pip3 install pyjwt html.parser html5lib bs4 asyncio httpx lxml
-echo 60 > ${PROGRESS_FILE}
+echo 70 > ${PROGRESS_FILE}
+sudo pip3 install --ignore-installed pyserial
+echo 80 > ${PROGRESS_FILE}
 sudo pip3 install six -U
 rm ${PROGRESS_FILE}
 echo "**********************************"
