@@ -138,7 +138,7 @@ def enphase():
 	else: 
 		try:
 			token = args.token
-			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
+			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
 			testjeton = True
 			
