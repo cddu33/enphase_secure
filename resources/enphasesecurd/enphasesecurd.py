@@ -225,8 +225,6 @@ parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
 
-
-
 if args.device:
 	_device = args.device
 if args.loglevel:

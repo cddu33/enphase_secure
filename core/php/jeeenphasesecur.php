@@ -159,9 +159,6 @@ try {
 			}
 		}
 	}
-	else { 
-		die(); 
-	}
 				
 }
 catch (Exception $e) {
