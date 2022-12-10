@@ -164,7 +164,7 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			if inventory < 100 & inventory != 0:
+			if inventory < 50 & inventory != 0:
 				inventory = inventory + 1
 			else:
 				logging.debug("Recuperation Inventaire")
