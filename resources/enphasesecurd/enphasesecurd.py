@@ -170,7 +170,7 @@ def enphase():
 				logging.debug("Recuperation Inventaire")
 				r = client.get(LOCAL_URL + "inventory.json", headers=header)
 				JEEDOM_COM.send(r.json())
-				inventory == 0
+				inventory = 0
 				time.sleep(20)
 				
 			logging.debug("Recuperation mesures passerelle")
