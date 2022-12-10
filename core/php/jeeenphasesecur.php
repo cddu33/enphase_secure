@@ -26,6 +26,7 @@ try {
     $enphasesecur_json = json_decode($result, true);
 	//prod passerelle
 	if (isset($enphasesecur_json['production']['0']['wNow'])) {
+		log::add('enphasesecur', 'info', 'Réception mesures passerelle');
 		if (isset($enphasesecur_json['production']['1']['whLifetime'])) {
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'prod') {
@@ -141,11 +142,12 @@ try {
 	}
 	//prod convertisseurs
 	elseif (isset($enphasesecur_json['0']['serialNumber'])) {
-		log::add('enphasesecur', 'debug', 'coucou ' . $enphasesecur_info);
+		log::add('enphasesecur', 'info', 'Réception mesures convertisseurs');
 		
 	}
 	//inventaire
 	elseif (isset($enphasesecur_json['devices']['0']['part_num'])) {
+		log::add('enphasesecur', 'info', 'Réception inventaire');
 		foreach ($enphasesecur_json[0]['devices'] as $conv) {
 			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $enphase['serial_num']);
 			if (!is_object($newconv)) {
