@@ -149,7 +149,7 @@ try {
 	elseif (isset($enphasesecur_json[0]['devices'])) {
 		log::add('enphasesecur', 'info', 'Réception inventaire');
 		foreach ($enphasesecur_json[0]['devices'] as $conv) {
-			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $enphase['serial_num']);
+			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $conv['serial_num']);
 			if (!is_object($newconv)) {
 				$newconv =  new self();
 				$newconv->setEqType_name('enphasesecur');
