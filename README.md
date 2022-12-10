@@ -21,40 +21,53 @@ Le plugin permet de récupérer les données:
     * La puissance délivrée
     * Le pourcentage de charge restant
 
-Ces données sont soit sur un seul widget soit sur 4 différents
- 
-Le plugin se base sur l'accès par jeton de sécurité de Enphase, 2 possibilité de configuration:
-* Génération du token Automatique:
-Le plugin gère tous seul la demande de token sur le site Enphase et le renouvelle quand il en a besoin
+L'actualisation des données est réglable avec un minimum de 10s.
 
-Par contre dans certaints cas (quand propriétaire et instalalteur sont la même personnne) le token généré ne dure que 12h donc ilk sera renouvellé souvent.
+L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 
-Ce mode nécessite une connexion internet pour se loguer et récupérer le nouveau token
+# Configuration
 
-Une fois les dépandances installées;
+**Equipements**
+
+2 possibilités:
+* Equipement Unique Enphase: 
+   * Toutes les données sont regroupées sur un seul équipement et donc un seul widget
+* 4 équipements/widgets différents Enphase:
+   * Production
+   * Consommation Net (si Passerelle Metered)
+   * Concommation Totale (si Passerelle Metered)
+   * Stockage (si présence batteries Enphase)
+   
+> Pensez à relancer le démon si vous changer les paramètres.
+>
+> Si vous changer de mode, les équipements seront effacés.
+
+**Mode de récupération du Token**
+
+Le plugin permet de gérer le Token d'identification de 2 manières différentes:
+* Automatique: Il s'occupe automatiquement de la demande initiale et du renouvellemen
+   > Ce mode demande une connexion internet pour le renouvellement du token (entre 12h et 1 an suivant la configuration de votre compte Enphase)
+
+* Manuel: c'est à vous de founir le token au plugin en le générant depuis le site enphase
+   * Se loguer sur cette page: https://enlighten.enphaseenergy.com/
+   * Se rendre sur cette page en mettant le numéro de serie de votre passerelle à la fin de l'adresse de la page:  https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=<LE NUMERO DE SERIE DE VOTRE PASSERELLE> 
+   * Copier le token inclus après: "token":"
+   > Ce mode permet de s'affranchir de connexion internet et génère un token d'une durée de 1 an.
+
+**Paramètres à configurer**
+
+Une fois les dépendances installées;
 Il faudra  rentrer les informations suivante dans la page de configuration du plugin:
-    * Utilisateur Enphase
-    * Mot de passe Enphase
-    * Adresse IP locale de la passerelle
-    * ID du site (dispponible sur l'application)
-    * Numéro de série de la passerelle (disponnible sur l'application)
-
-* Génération du token manuellement par l'utilisateur
-
-Pour cela il faut:  
-    * Se loguer sur cette page: https://enlighten.enphaseenergy.com/
-
-    * Se rendre sur cette page en mettant le numéro de serie de votre passerelle à la fin de l'adresse de la page:  https://enlighten.enphaseenergy.com/entrez-auth-token?serial_num=<LE NUMERO DE SERIE DE VOTRE PASSERELLE> 
-
-Une fois réalisé, il faudra  rentrer les informations suivante dans la page de configuration du plugin:
-    * Adresse IP locale de la passerelle
-    * Token généré sur la page web
+* Mode Token Auto:
+   * Utilisateur Enphase
+   * Mot de passe Enphase
+   * Adresse IP locale de la passerelle
+   * ID du site (dispponible sur l'application)
+   * Numéro de série de la passerelle (disponnible sur l'application)
+* Mode Token Manuel:
+   * Adresse IP locale de la passerelle
+   * Token généré précédement depuis le site Enphase
 
 Le plugin ajoutera les équipements dont il a besoin.
 
-L'actualisation des données est réglable avec un minimum de 10s
-
-
-Attention, pensez à relancer le démon si vous changer les paramètres.
-
-Si vous changer de mode entre 1 ou 4 widget, les équipements seront effacés
+>Attention, pensez à relancer le démon si vous changer les paramètres.
