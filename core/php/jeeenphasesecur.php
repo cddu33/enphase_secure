@@ -148,11 +148,11 @@ try {
 	elseif (isset($enphasesecur_json['devices']['0']['part_num'])) {
 		foreach ($enphasesecur_json[0]['devices'] as $conv) {
 			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $enphase['serial_num']);
-			if (!is_object($conv)) {
+			if (!is_object($newconv)) {
 				$newconv =  new self();
 				$newconv->setEqType_name('enphasesecur');
 				$newconv->setIsEnable(1);
-				$newconv->setName(. $conv['serial_num']);
+				$newconv->setName($conv['serial_num']);
 				$newconv->setLogicalId($conv['serial_num']);
 				$newconv->setIsVisible(1);
 				$newconv->save();
