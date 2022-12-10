@@ -24,7 +24,8 @@ try {
     }
 	
     $enphasesecur_json = json_decode($result, true);
-
+	//prod passerelle
+	if (isset($enphasesecur_json['production']['0']['wNow'])) {
 		if (isset($enphasesecur_json['production']['1']['whLifetime'])) {
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'prod') {
@@ -137,6 +138,28 @@ try {
 				}
 			}
 		}
+	}
+	//prod convertisseurs
+	elseif (isset($enphasesecur_json['0']['serialNumber'])) {
+		
+		
+	}
+	//inventaire
+	elseif (isset($enphasesecur_json['devices']['0']['part_num'])) {
+		foreach ($enphasesecur_json[0]['devices'] as $conv) {
+			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $enphase['serial_num']);
+			if (!is_object($conv)) {
+				$newconv =  new self();
+				$newconv->setEqType_name('enphasesecur');
+				$newconv->setIsEnable(1);
+				$newconv->setName(. $conv['serial_num']);
+				$newconv->setLogicalId($conv['serial_num']);
+				$newconv->setIsVisible(1);
+				$newconv->save();
+			}
+		}
+	}
+	else { die(); }
 				
 }
 catch (Exception $e) {
