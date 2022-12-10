@@ -153,10 +153,10 @@ try {
 			if (!is_object($newconv)) {
 				$newconv =  new self();
 				$newconv->setEqType_name('enphasesecur');
-				$newconv->setIsEnable(1);
 				$newconv->setName($conv['serial_num']);
 				$newconv->setLogicalId($conv['serial_num']);
 				$newconv->setIsVisible(1);
+				$newconv->setIsEnable(1);
 				$newconv->save();
 			}
 		}
