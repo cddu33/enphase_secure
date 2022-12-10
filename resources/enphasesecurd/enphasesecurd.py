@@ -97,6 +97,7 @@ def enphase():
 	global limit
 	global JEEDOM_COM
 	global inventory
+	inventory = 0
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	if args.renew == "auto": 
