@@ -171,7 +171,7 @@ def enphase():
 				inventory == 0
 				time.sleep(20)
 			else:
-				inventory == inventory + 1
+				inventory = inventory + 1
 			logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
