@@ -152,7 +152,7 @@ try {
 			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $conv['serial_num']);
 			if (!is_object($newconv)) {
 				log::add('enphasesecur', 'info', 'Création convertisseur: '. $conv['serial_num']);
-				$newconv =  new self();
+				$newconv = new eqLogic();
 				$newconv->setEqType_name('enphasesecur');
 				$newconv->setName($conv['serial_num']);
 				$newconv->setLogicalId($conv['serial_num']);
