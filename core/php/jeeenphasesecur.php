@@ -159,7 +159,9 @@ try {
 			}
 		}
 	}
-	else { die(); }
+	else { 
+		die(); 
+	}
 				
 }
 catch (Exception $e) {
