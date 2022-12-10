@@ -156,6 +156,7 @@ try {
 				$newconv->setEqType_name('enphasesecur');
 				$newconv->setName($conv['serial_num']);
 				$newconv->setLogicalId($conv['serial_num']);
+				$eqLogic->setConfiguration('type', 'conv');
 				$newconv->setIsVisible(1);
 				$newconv->setIsEnable(1);
 				$newconv->save();
