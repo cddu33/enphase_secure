@@ -138,13 +138,13 @@ def enphase():
 	else: 
 		try:
 			token = args.token
-			decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
+			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
 			testjeton = True
 			
 		except Exception as e:
 			logging.error('Fatal error : '+str(e))
-			logging.info(traceback.format_exc())
+			#logging.info(traceback.format_exc())
 			JEEDOM_COM.send_change_immediate('error check')
 			testjeton = False
 			client.close()
@@ -153,18 +153,28 @@ def enphase():
 		if testjeton == True:
 			logging.debug("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
-			logging.debug("Recuperation mesure")
-			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			logging.info(r.json())
-			JEEDOM_COM.send_change_immediate(r.json())
-			limit = 0
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
 		JEEDOM_COM.send_change_immediate('error check')
 		testjeton = False
 		client.close()
-		time.sleep(60)	
+		time.sleep(60)
+	try:
+		if testjeton == True:
+			logging.debug("Recuperation mesure")
+			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
+			#logging.info(r.json())
+			JEEDOM_COM.send_change_immediate(r.json())
+			limit = 0
+	except Exception as e:
+		logging.ERROR("Deuxième tentative de connexion à la passerelle")
+		time.sleep(15)	
+		logging.debug("Recuperation mesure")
+		r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
+		#logging.info(r.json())
+		JEEDOM_COM.send_change_immediate(r.json())
+		limit = 0
 
 #Demon
 
