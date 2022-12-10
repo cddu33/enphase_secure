@@ -164,6 +164,14 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
+			if inventory >= 10 | inventory == 0:
+				logging.debug("Recuperation Inventaire")
+				r = client.get(LOCAL_URL + "inventory.json", headers=header)
+				JEEDOM_COM.send(r.json())
+				inventory == 0
+				time.sleep(20)
+			else:
+				inventory == inventory + 1
 			logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
@@ -175,13 +183,7 @@ def enphase():
 			JEEDOM_COM.send_change_immediate(r.json())
 
 			limit = 0
-			if inventory >= 10 | inventory == 0:
-				logging.debug("Recuperation Inventaire")
-				r = client.get(LOCAL_URL + "inventory.json", headers=header)
-				JEEDOM_COM.send(r.json())
-				inventory == 0
-			else:
-				inventory == inventory + 1
+			
 
 	except Exception as e:
 		logging.ERROR("Deuxième tentative de connexion à la passerelle")
