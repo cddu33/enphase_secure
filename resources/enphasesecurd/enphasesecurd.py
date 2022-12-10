@@ -164,14 +164,16 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			if inventory >= 10 | inventory == 0:
+			logging.debug("inventory" + inventory)
+			if inventory < 10 & inventory != 0:
+				inventory = inventory + 1
+			else:
 				logging.debug("Recuperation Inventaire")
 				r = client.get(LOCAL_URL + "inventory.json", headers=header)
 				JEEDOM_COM.send(r.json())
 				inventory == 0
 				time.sleep(20)
-			else:
-				inventory = inventory + 1
+				
 			logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
