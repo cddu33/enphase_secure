@@ -169,7 +169,7 @@ def enphase():
 			JEEDOM_COM.send_change_immediate(r.json())
 
 			logging.debug("Recuperation mesures")
-			r = client.get(LOCAL_URL + "/api/v1/production/inverters", headers=header)
+			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
 			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
 
