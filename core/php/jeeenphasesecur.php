@@ -141,7 +141,7 @@ try {
 	}
 	//prod convertisseurs
 	elseif (isset($enphasesecur_json['0']['serialNumber'])) {
-		
+		log::add('enphasesecur', 'debug', 'coucou ' . $enphasesecur_info);
 		
 	}
 	//inventaire
