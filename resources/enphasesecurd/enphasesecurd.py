@@ -96,6 +96,7 @@ def enphase():
 	global header
 	global limit
 	global JEEDOM_COM
+	global inventory
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	if args.renew == "auto": 
@@ -162,11 +163,25 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			logging.debug("Recuperation mesure")
+			logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
+
+			logging.debug("Recuperation mesures")
+			r = client.get(LOCAL_URL + "/api/v1/production/inverters", headers=header)
+			#logging.info(r.json())
+			JEEDOM_COM.send_change_immediate(r.json())
+
 			limit = 0
+			if inventory >= 10 | inventory == 0:
+				logging.debug("Recuperation Inventaire")
+				r = client.get(LOCAL_URL + "inventory.json", headers=header)
+				JEEDOM_COM.send(r.json())
+				inventory == 0
+			else:
+				inventory == inventory + 1
+
 	except Exception as e:
 		logging.ERROR("Deuxième tentative de connexion à la passerelle")
 		time.sleep(15)	
