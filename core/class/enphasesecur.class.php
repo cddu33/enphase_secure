@@ -580,9 +580,9 @@ class enphasesecur extends eqLogic {
 		if (config::byKey('delais', __CLASS__) == ''){
 			config::save('delais','60','enphasesecur');
 		}
-		elseif (config::byKey('delais', __CLASS__) < 10){
+		/*elseif (config::byKey('delais', __CLASS__) < 10){
 			config::save('delais','10','enphasesecur');
-		}
+		}*/
 		
         $deamon_info = self::deamon_info();
         if ($deamon_info['launchable'] != 'ok') {
