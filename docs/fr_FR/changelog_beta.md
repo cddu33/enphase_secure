@@ -4,6 +4,13 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 10/12/2022
+Possibilité de passer le delais à 1s mais sans garantie de résultat, le minimum recommandé est de 1s
+
+
+# 10/12/2022
+Si auccun délais d'actualisation n'est rentré, 60s par défaut
+
 # 05/12/2022
 Amelioration dépendances
 
@@ -36,6 +43,7 @@ Création d'un démon à la place du cron; cela permet:
 Possibilité de divier les informations en 3 widget (depuis la configuration du plugin)
 
 Les paramètres de la passerelle sont maintenant dans la page de configuration du plugin
+
 
 # 22/10/2022
 Compatibilité Jeedom 4.3 (passage en watts et affichage instantané dans le configurateur)
