@@ -7,7 +7,7 @@
 	},
 	"licence": "AGPL",
 	"author": "cddu33",
-	"require": "4.0.0",
+	"require": "3.0.0",
 	"category": "energy",
 	"hasDependency": true,
 	"hasOwnDeamon": true,
@@ -30,6 +30,7 @@
 		"diy",
 		"mobile",
 		"v4",
+"v3",
 		"atlas"
 	]
 }
