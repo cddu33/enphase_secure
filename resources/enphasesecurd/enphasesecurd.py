@@ -49,7 +49,7 @@ def read_socket():
 
 def listen():
 	global limit
-#	jeedom_socket.open()
+	jeedom_socket.open()
 	try:
 		while limit < 2:
 			if not limit == 0:
@@ -115,7 +115,8 @@ def enphase():
 			PASSWORD = args.password
 			SITE_ID = args.site
 			SERIAL_NUMBER = args.serie
-		
+            OP = args.op
+
 			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
 			payload_login = {'username': USER, 'password': PASSWORD}
@@ -164,13 +165,10 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			if inventory < 50 & inventory != 0:
-				inventory = inventory + 1
-			else:
+			if OP == 'invent':
 				logging.debug("Recuperation Inventaire")
 				r = client.get(LOCAL_URL + "inventory.json", headers=header)
 				JEEDOM_COM.send_change_immediate(r.json())
-				inventory = 0
 				time.sleep(20)
 				
 			logging.debug("Recuperation mesures passerelle")
@@ -184,7 +182,6 @@ def enphase():
 			JEEDOM_COM.send_change_immediate(r.json())
 
 			limit = 0
-			
 
 	except Exception as e:
 		logging.ERROR("Deuxième tentative de connexion à la passerelle")
@@ -223,6 +220,7 @@ parser.add_argument("--site", help="Site for Enphase Server", type=str)
 parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
+parser.add_argument("--op", help="Commandes", type=str)
 args = parser.parse_args()
 
 if args.device:
@@ -258,6 +256,7 @@ logging.info('Password : '+str(args.password))
 logging.info('Id Site : '+str(args.site))
 logging.info('Numero de serie : '+str(args.serie))
 logging.info('Token manuel (non obligatoire) : '+str(args.token))
+logging.info('Commande à réaliser: ' +str(args.op))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	
