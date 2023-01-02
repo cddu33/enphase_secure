@@ -273,7 +273,7 @@ try:
 	if not JEEDOM_COM.test():
 		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
 		shutdown()
-	listen()
+	#listen()
 except Exception as e:
 	logging.exception('Fatal error : '+str(e))
 	logging.info(traceback.format_exc())
