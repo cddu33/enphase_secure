@@ -115,7 +115,6 @@ def enphase():
 			PASSWORD = args.password
 			SITE_ID = args.site
 			SERIAL_NUMBER = args.serie
-			OP = args.op
 
 			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
@@ -273,7 +272,7 @@ try:
 	if not JEEDOM_COM.test():
 		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')
 		shutdown()
-	#listen()
+	listen()
 except Exception as e:
 	logging.exception('Fatal error : '+str(e))
 	logging.info(traceback.format_exc())
