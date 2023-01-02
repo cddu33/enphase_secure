@@ -49,7 +49,7 @@ def read_socket():
 
 def listen():
 	global limit
-	jeedom_socket.open()
+	#jeedom_socket.open()
 	try:
 		while limit < 2:
 			if not limit == 0:
