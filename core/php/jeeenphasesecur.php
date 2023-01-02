@@ -22,6 +22,10 @@ try {
 		log::add('enphasesecur', 'error', 'Mauvais token ou renouvellement');
         die();
     }
+	elseif ($result == '"error inv"') {
+		log::add('enphasesecur', 'error', 'Erreur lors de la récupération du matériel');
+        die();
+    }
 	
     $enphasesecur_json = json_decode($result, true);
 	//prod passerelle

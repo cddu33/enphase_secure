@@ -115,7 +115,7 @@ def enphase():
 			PASSWORD = args.password
 			SITE_ID = args.site
 			SERIAL_NUMBER = args.serie
-            OP = args.op
+			OP = args.op
 
 			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
@@ -155,7 +155,7 @@ def enphase():
 	try:
 		if testjeton == True:
 			logging.debug("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
+			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
@@ -165,12 +165,19 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			if OP == 'invent':
-				logging.debug("Recuperation Inventaire")
-				r = client.get(LOCAL_URL + "inventory.json", headers=header)
-				JEEDOM_COM.send_change_immediate(r.json())
-				time.sleep(20)
-				
+			logging.debug("Recuperation Inventaire")
+			r = client.get(LOCAL_URL + "inventory.json", headers=header)
+			JEEDOM_COM.send_change_immediate(r.json())
+			time.sleep(20)	
+	except Exception as e:
+		logging.error('Fatal error : '+str(e))
+		logging.info(traceback.format_exc())
+		JEEDOM_COM.send_change_immediate('error inv')
+		testjeton = False
+		client.close()
+		time.sleep(60)
+	try:
+		if testjeton == True:	
 			logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
@@ -220,7 +227,6 @@ parser.add_argument("--site", help="Site for Enphase Server", type=str)
 parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
-parser.add_argument("--op", help="Commandes", type=str)
 args = parser.parse_args()
 
 if args.device:
@@ -256,7 +262,6 @@ logging.info('Password : '+str(args.password))
 logging.info('Id Site : '+str(args.site))
 logging.info('Numero de serie : '+str(args.serie))
 logging.info('Token manuel (non obligatoire) : '+str(args.token))
-logging.info('Commande à réaliser: ' +str(args.op))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	
