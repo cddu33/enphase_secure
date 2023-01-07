@@ -97,7 +97,8 @@ def enphase():
 	global limit
 	global JEEDOM_COM
 	global inventory
-	inventory = 0
+	inventory = false
+	
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	if args.renew == "auto": 
@@ -163,10 +164,11 @@ def enphase():
 		client.close()
 		time.sleep(60)
 	try:
-		if testjeton == True:
+		if testjeton == True & inventory == false:
 			logging.debug("Recuperation Inventaire")
 			r = client.get(LOCAL_URL + "inventory.json", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
+			inventory = true
 			time.sleep(20)	
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
