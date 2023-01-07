@@ -520,21 +520,19 @@ class enphasesecur extends eqLogic {
 
 		}
 		if ($this->getConfiguration('type') == 'conv') {
-
 			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
-				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-				$enphasesecurCmd->setIsHistorized('1');
-				
+				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('maxWatt');
 			}
 			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('maxWatt');
 			$enphasesecurCmd->setType('info');
 			$enphasesecurCmd->setSubType('numeric');
 			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save()
+			$enphasesecurCmd->save();
 
 			$enphasesecurCmd = $this->getCmd(null, 'Watt');
 			if (!is_object($enphasesecurCmd)) {
@@ -543,7 +541,6 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsVisible(true);
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('Watt');
-				//$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 			}
 			$enphasesecurCmd->setEqLogic_id($this->getId());
