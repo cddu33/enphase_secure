@@ -521,7 +521,7 @@ class enphasesecur extends eqLogic {
 		}
 		if ($this->getConfiguration('type') == 'conv') {
 			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
-			if (!is_object($newconvCmd)) {
+			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
 				$enphasesecurCmd->setIsVisible(true);
@@ -535,7 +535,7 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->save();
 
 			$enphasesecurCmd = $this->getCmd(null, 'Watt');
-			if (!is_object($newconvCmd)) {
+			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new newconvCmd();
 				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
 				$enphasesecurCmd->setIsVisible(true);
