@@ -175,7 +175,7 @@ try {
 			}
 			$newconvCmd = $newconv->getCmd(null, 'maxWatt');
 			if (!is_object($newconvCmd)) {
-				$newconvCmd = new eqLogicCmd();
+				$newconvCmd = new newconvCmd();
 				$newconvCmd->setName(__('Puissance Max', __FILE__));
 				$newconvCmd->setIsVisible(true);
 				$newconvCmd->setIsHistorized(true);
@@ -189,7 +189,7 @@ try {
 
 			$newconvCmd = $newconv->getCmd(null, 'Watt');
 			if (!is_object($newconvCmd)) {
-				$newconvCmd = new eqLogicCmd();
+				$newconvCmd = new newconvCmd();
 				$newconvCmd->setName(__('Puissance Max', __FILE__));
 				$newconvCmd->setIsVisible(true);
 				$newconvCmd->setIsHistorized(true);
