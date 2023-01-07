@@ -153,7 +153,7 @@ try {
 	elseif (isset($enphasesecur_json[0]['devices'])) {
 		log::add('enphasesecur', 'info', 'Réception inventaire');
 		foreach ($enphasesecur_json[0]['devices'] as $conv) {
-			$newconv = eqLogic::byTypeAndSearhConfiguration('enphasesecur', $conv['serial_num']);
+			$newconv = enphasesecur::byTypeAndSearhConfiguration('enphasesecur', $conv['serial_num']);
 			if (!is_object($newconv)) {
 				log::add('enphasesecur', 'info', 'Création convertisseur: '. $conv['serial_num']);
 				$newconv = new eqLogic();
