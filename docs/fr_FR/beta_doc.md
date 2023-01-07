@@ -16,12 +16,16 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
-* La balance import et export instantanée réseau
-* Le stockage
+* la balance import et export instantanée réseau
+* le stockage
     * La puissance délivrée
     * Le pourcentage de charge restant
+* es onduleurs
+    * La puissance délivrée par onduleur
+    * Le puissance délivrée max par onduleur
 
-L'actualisation des données est réglable avec un minimum de 10s.
+
+L'actualisation des données est réglable avec un minimum de 10s sauf pour les onduleurs (environ 5min)
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 
@@ -70,4 +74,4 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 
 Le plugin ajoutera les équipements dont il a besoin.
 
->Attention, pensez à relancer le démon si vous changer les paramètres.
+>Attention, pensez à relancer le démon si vous changez les paramètres.

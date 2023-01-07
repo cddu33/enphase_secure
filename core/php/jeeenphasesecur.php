@@ -14,17 +14,23 @@ try {
 		log::add('enphasesecur', 'debug', 'Test OK');
         die();
     }
-	if ($result == '"error serveur"') {
+	elseif ($result == '"error serveur"') {
 		log::add('enphasesecur', 'error', 'Erreur de connexion, vérifier les log du daemon et vos identifiants');
         die();
     }
-	if ($result == '"error check"') {
+	elseif ($result == '"error check"') {
 		log::add('enphasesecur', 'error', 'Mauvais token ou renouvellement');
+        die();
+    }
+	elseif ($result == '"error inv"') {
+		log::add('enphasesecur', 'error', 'Erreur lors de la récupération du matériel');
         die();
     }
 	
     $enphasesecur_json = json_decode($result, true);
-
+	//prod passerelle
+	if (isset($enphasesecur_json['production']['0']['wNow'])) {
+		log::add('enphasesecur', 'info', 'Réception mesures passerelle');
 		if (isset($enphasesecur_json['production']['1']['whLifetime'])) {
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'prod') {
@@ -61,9 +67,12 @@ try {
 					log::add('enphasesecur', 'debug', 'Consommation net instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
 				}
-				$enphasesecur_info = $enphasesecur_json['consumption']['0']['rmsVoltage'];
-				log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
-				$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);
+
+				if ($eqLogic->getConfiguration('type') != 'conv') {
+					$enphasesecur_info = $enphasesecur_json['consumption']['0']['rmsVoltage'];
+					log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);
+				}
 
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
@@ -137,6 +146,39 @@ try {
 				}
 			}
 		}
+	}
+	//prod convertisseurs
+	elseif (isset($enphasesecur_json['0']['serialNumber'])) {
+		log::add('enphasesecur', 'info', 'Réception mesures des convertisseurs');
+
+		foreach ($enphasesecur_json as $enphasesecur) {
+			$eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
+			if (is_object($eqLogic)) {
+				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance: ' . $enphasesecur['lastReportWatts']);
+				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
+				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
+				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
+			}
+		}
+	}
+	//inventaire
+	elseif (isset($enphasesecur_json[0]['devices'])) {
+		log::add('enphasesecur', 'info', 'Réception inventaire');
+		foreach ($enphasesecur_json[0]['devices'] as $conv) {
+			$newconv = eqLogic::byLogicalId($conv['serial_num'], 'enphasesecur', );
+			if (!is_object($newconv)) {
+				log::add('enphasesecur', 'info', 'Création convertisseur: '. $conv['serial_num']);
+				$newconv = new eqLogic();
+				$newconv->setEqType_name('enphasesecur');
+				$newconv->setName($conv['serial_num']);
+				$newconv->setLogicalId($conv['serial_num']);
+				$newconv->setConfiguration('type', 'conv');
+				$newconv->setIsVisible(1);
+				$newconv->setIsEnable(1);
+				$newconv->save();
+			}
+		}
+	}
 				
 }
 catch (Exception $e) {
