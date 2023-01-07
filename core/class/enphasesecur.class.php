@@ -527,6 +527,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsVisible(true);
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('maxWatt');
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			}
 			$enphasesecurCmd->setEqLogic_id($this->getId());
 			$enphasesecurCmd->setType('info');
@@ -542,6 +543,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('Watt');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 			}
 			$enphasesecurCmd->setEqLogic_id($this->getId());
 			$enphasesecurCmd->setType('info');
