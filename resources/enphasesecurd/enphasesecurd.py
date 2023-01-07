@@ -164,7 +164,7 @@ def enphase():
 		client.close()
 		time.sleep(60)
 	try:
-		if testjeton == True & inventory != True:
+		if testjeton == True & inventory == False:
 			logging.debug("Recuperation Inventaire")
 			r = client.get(LOCAL_URL + "inventory.json", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
