@@ -173,7 +173,7 @@ try {
 				$newconv->setIsEnable(1);
 				$newconv->save();
 			}
-			$newconvCmd = $this->getCmd(null, 'maxWatt');
+			$newconvCmd = $newconv->getCmd(null, 'maxWatt');
 			if (!is_object($newconvCmd)) {
 				$newconvCmd = new eqLogicCmd();
 				$newconvCmd->setName(__('Puissance Max', __FILE__));
@@ -187,7 +187,7 @@ try {
 			$newconvCmd->setUnite('W');
 			$newconvCmd->save();
 
-			$newconvCmd = $this->getCmd(null, 'Watt');
+			$newconvCmd = $newconv->getCmd(null, 'Watt');
 			if (!is_object($newconvCmd)) {
 				$newconvCmd = new eqLogicCmd();
 				$newconvCmd->setName(__('Puissance Max', __FILE__));
