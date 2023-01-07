@@ -149,10 +149,9 @@ try {
 		log::add('enphasesecur', 'info', 'Réception mesures des convertisseurs');
 
 		foreach ($enphasesecur_json as $enphasesecur) {
-			log::add('enphasesecur', 'debug', 'Réception mesures convertisseurs ' . $enphasesecur);
 			$eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
 			if (is_object($eqLogic)) {
-				log::add('enphasesecur', 'debug', 'Réception mesures convertisseurs ' . $enphasesecur);
+				log::add('enphasesecur', 'debug', 'Réception mesures convertisseurs ' . $enphasesecur['serialNumber']);
 				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
 				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
 			}
