@@ -4,6 +4,13 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 07/01/2023
+Création d'un équipement par onduleur au lancement du démon
+
+Récupération de la puissance par onduleur
+
+Récupération de la puissance max par onduleur
+
 # 05/12/2022
 Amelioration dépendances
 
