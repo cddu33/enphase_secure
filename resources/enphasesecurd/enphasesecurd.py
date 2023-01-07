@@ -29,10 +29,11 @@ except ImportError:
 	print("Error: importing module jeedom.jeedom")
 	sys.exit(1)
 
-testjeton = ''
+testjeton = False
 header = ''
 limit = 0
 JEEDOM_COM = ''
+inventory = False
 
 def read_socket():
 	global JEEDOM_SOCKET_MESSAGE
