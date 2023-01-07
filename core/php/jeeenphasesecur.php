@@ -146,7 +146,17 @@ try {
 	}
 	//prod convertisseurs
 	elseif (isset($enphasesecur_json['0']['serialNumber'])) {
-		log::add('enphasesecur', 'info', 'Réception mesures convertisseurs');
+		log::add('enphasesecur', 'info', 'Réception mesures des convertisseurs');
+
+		foreach ($enphasesecur_json[0]['devices'] as $enphasesecur) {
+			$eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
+			if (is_object($eqLogic)) {
+				log::add('enphasesecur', 'debug', 'Réception mesures convertisseurs ' . $enphasesecur['serialNumber']);
+				$eqLogic->checkAndUpdateCmd('Watt', $enphase['lastReportWatts']);
+				$eqLogic->checkAndUpdateCmd('maxWatt', $enphase['maxReportWatts']);
+			}
+			
+		}
 		
 	}
 	//inventaire
@@ -165,6 +175,33 @@ try {
 				$newconv->setIsEnable(1);
 				$newconv->save();
 			}
+			$newconvCmd = $this->getCmd(null, 'maxWatt');
+			if (!is_object($newconvCmd)) {
+				$newconvCmd = new eqLogicCmd();
+				$newconvCmd->setName(__('Puissance Max', __FILE__));
+				$newconvCmd->setIsVisible(true);
+				$newconvCmd->setIsHistorized(true);
+				$newconvCmd->setLogicalId('maxWatt');
+			}
+			$newconvCmd->setEqLogic_id($this->getId());
+			$newconvCmd->setType('info');
+			$newconvCmd->setSubType('numeric');
+			$newconvCmd->setUnite('W');
+			$newconvCmd->save();
+
+			$newconvCmd = $this->getCmd(null, 'Watt');
+			if (!is_object($newconvCmd)) {
+				$newconvCmd = new eqLogicCmd();
+				$newconvCmd->setName(__('Puissance Max', __FILE__));
+				$newconvCmd->setIsVisible(true);
+				$newconvCmd->setIsHistorized(true);
+				$newconvCmd->setLogicalId('Watt');
+			}
+			$newconvCmd->setEqLogic_id($this->getId());
+			$newconvCmd->setType('info');
+			$newconvCmd->setSubType('numeric');
+			$newconvCmd->setUnite('W');
+			$newconvCmd->save();
 		}
 	}
 				
