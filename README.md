@@ -1,4 +1,4 @@
-# Plugin Enphase Secure V7 Beta pour Jeedom
+# Plugin Enphase Secure V7 pour Jeedom
 
 Le plugin permet de récupérer les données: 
 * de production:
