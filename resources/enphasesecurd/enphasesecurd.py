@@ -164,12 +164,14 @@ def enphase():
 		client.close()
 		time.sleep(60)
 	try:
-		if testjeton == True & inventory == False:
-			logging.debug("Recuperation Inventaire")
-			r = client.get(LOCAL_URL + "inventory.json", headers=header)
-			JEEDOM_COM.send_change_immediate(r.json())
-			inventory = True
-			time.sleep(20)	
+		if testjeton == True:
+			logging.debug(inventory)
+			if inventory == False:
+				logging.debug("Recuperation Inventaire")
+				r = client.get(LOCAL_URL + "inventory.json", headers=header)
+				JEEDOM_COM.send_change_immediate(r.json())
+				inventory = True
+				time.sleep(20)
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
