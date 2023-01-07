@@ -365,6 +365,9 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setUnite('W');
 	  		$enphasesecurCmd->save();
 		}
+
+		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net' || $this->getConfiguration('type') == 'total') {
+
 			$enphasesecurCmd = $this->getCmd(null, 'tension');
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
@@ -381,6 +384,8 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setSubType('numeric');
 			$enphasesecurCmd->setUnite('V');
 	  		$enphasesecurCmd->save();
+		}
+			
 
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net') {
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet');
