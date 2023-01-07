@@ -20,7 +20,7 @@ Le plugin permet de récupérer les données:
 * le stockage
     * La puissance délivrée
     * Le pourcentage de charge restant
-* es onduleurs
+* les onduleurs
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
 
