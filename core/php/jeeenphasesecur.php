@@ -68,7 +68,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
 				}
 
-				if ($eqLogic->getConfiguration('type') != 'conv' {
+				if ($eqLogic->getConfiguration('type') != 'conv') {
 					$enphasesecur_info = $enphasesecur_json['consumption']['0']['rmsVoltage'];
 					log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);

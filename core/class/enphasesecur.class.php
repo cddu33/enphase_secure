@@ -612,14 +612,16 @@ class enphasesecur extends eqLogic {
 	public static function deamon_start() {
         self::deamon_stop();
 		//self::creationmaj();
-		if (config::byKey('socketport', __CLASS__) == ''){
-			self::getFreePort();
-		}
+		self::getFreePort();
 		
         $deamon_info = self::deamon_info();
         if ($deamon_info['launchable'] != 'ok') {
             throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
         }
+
+		if (config::byKey('delais', __CLASS__) == ''){
+			config::save('delais','60','enphasesecur');
+		}
 
 		enphasesecur::creationmaj();
 		
