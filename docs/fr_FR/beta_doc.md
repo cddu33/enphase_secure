@@ -25,7 +25,7 @@ Le plugin permet de récupérer les données:
     * Le puissance délivrée max par onduleur
 
 
-L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualsie toutes les 15min (non modifiable)
+L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 5min environ (non modifiable)
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 
