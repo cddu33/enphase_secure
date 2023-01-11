@@ -4,12 +4,17 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# 10/12/2022
-Possibilité de passer le delais à 1s mais sans garantie de résultat, le minimum recommandé est de 1s
+# 07/01/2023
+Création d'un équipement par onduleur au lancement du démon
 
+Récupération de la puissance par onduleur
+
+Récupération de la puissance max par onduleur
 
 # 10/12/2022
-Si auccun délais d'actualisation n'est rentré, 60s par défaut
+Possibilité de passer le delais à 1s mais sans garantie de résultat, le minimum recommandé est de 10s
+
+Si aucun délais d'actualisation n'est rentré, 60s par défaut
 
 # 05/12/2022
 Amelioration dépendances

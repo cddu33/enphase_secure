@@ -71,42 +71,50 @@ class enphasesecur extends eqLogic {
 
 	public static function creationmaj() {
 		$numberwidget = count(self::byType('enphasesecur', false)); 
-		log::add('enphasesecur', 'debug', 'Nombre de widget:  ' . $numberwidget);
-		if ($numberwidget != 0) {
-			if ((config::bykey('widget', __CLASS__) == 1 && $numberwidget != 1) || (config::bykey('widget', __CLASS__) == 3 && $numberwidget != 4 && $numberwidget != 3)) {
-				log::add('enphasesecur', 'debug', 'Suppression de tous les équipements');
-				foreach (self::byType('enphasesecur', true) as $eqLogic) {
+		foreach (self::byType('enphasesecur', true) as $eqLogic) {
+			if (config::bykey('widget', __CLASS__) == 1){
+				if ($eqLogic->getConfiguration('type') == 'net' || $eqLogic->getConfiguration('type') == 'total' || $eqLogic->getConfiguration('type') == 'bat' || $eqLogic->getConfiguration('type') == 'prod') {
+					log::add('enphasesecur', 'info', 'Suppression équipement suite à changement de mode vers combiné');
 					$eqLogic->remove();
 				}
-				$numberwidget = 0;
+			}
+			else {
+				if ($eqLogic->getConfiguration('type') == 'combine') {
+					log::add('enphasesecur', 'info', 'Suppression équipement suite à changement de mode vers divisé');
+					$eqLogic->remove();
+				}
 			}
 		}
-		
-		if ($numberwidget == 0) {
-			if (config::bykey('widget', __CLASS__) == 1){
+
+		if (config::bykey('widget', __CLASS__) == 1){
+
+			if (!is_object(eqLogic::byLogicalId('enphasesecur_combine', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement combiné');
-                $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_combine');
-                $eqLogic->setName('Passerelle Enphase');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_combine');
+				$eqLogic->setName('Passerelle Enphase');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'combine');
 				$eqLogic->setIsVisible(1);
 				$eqLogic->setIsEnable(1);
-				$eqLogic->setConfiguration('type', 'combine');
 				$eqLogic->save();
 			}
-			elseif (config::bykey('widget', __CLASS__) == 3) {
+		}
+		else {
+			if(!is_object(eqLogic::byLogicalId('enphasesecur_prod', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Production');
-                $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_prod');
-                $eqLogic->setName('Enphase Production');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_prod');
+				$eqLogic->setName('Enphase Production');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
-				$eqLogic->setConfiguration('type', 'prod');
 				$eqLogic->setIsVisible(1);
 				$eqLogic->setIsEnable(1);
+				$eqLogic->setConfiguration('type', 'prod');
 				$eqLogic->save();
-
+			}
+			if(!is_object(eqLogic::byLogicalId('enphasesecur_conso_net', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Consommation Net');
                 $eqLogic = new self();
                 $eqLogic->setLogicalId('enphasesecur_conso_net');
@@ -117,7 +125,8 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setIsVisible(1);
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
-
+			}
+			if(!is_object(eqLogic::byLogicalId('enphasesecur_conso_total', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Consommation Total');
                 $eqLogic = new self();
                 $eqLogic->setLogicalId('enphasesecur_conso_total');
@@ -128,7 +137,8 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setIsVisible(1);
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
-
+			}
+			if(!is_object(eqLogic::byLogicalId('enphasesecur_bat', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Stockage');
                 $eqLogic = new self();
                 $eqLogic->setLogicalId('enphasesecur_bat');
@@ -140,20 +150,12 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
 			}
-		}
-		elseif (($numberwidget == 3)) {
-			log::add('enphasesecur', 'debug', 'Création équipement Stockage');
-                $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_bat');
-                $eqLogic->setName('Enphase Stockage');
-				$eqLogic->setCategory('energy', 1);
-				$eqLogic->setEqType_name('enphasesecur');
-				$eqLogic->setConfiguration('type', 'bat');
-				$eqLogic->setIsVisible(1);
-				$eqLogic->setIsEnable(1);
-				$eqLogic->save();
+
+
 		}
 	}
+
+
 
 	// Fonction exécutée automatiquement avant la création de l'équipement
 	public function preInsert() {
@@ -342,6 +344,9 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setUnite('W');
 	  		$enphasesecurCmd->save();
 		}
+
+		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net' || $this->getConfiguration('type') == 'total') {
+
 			$enphasesecurCmd = $this->getCmd(null, 'tension');
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
@@ -358,6 +363,8 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setSubType('numeric');
 			$enphasesecurCmd->setUnite('V');
 	  		$enphasesecurCmd->save();
+		}
+			
 
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net') {
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet');
@@ -491,6 +498,37 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->save();
 
 		}
+		if ($this->getConfiguration('type') == 'conv') {
+			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
+				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('maxWatt');
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
+
+			$enphasesecurCmd = $this->getCmd(null, 'Watt');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance', __FILE__));
+				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('Watt');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
+		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
   	public function preRemove() {
@@ -580,14 +618,15 @@ class enphasesecur extends eqLogic {
 		if (config::byKey('delais', __CLASS__) == ''){
 			config::save('delais','60','enphasesecur');
 		}
-		/*elseif (config::byKey('delais', __CLASS__) < 10){
-			config::save('delais','10','enphasesecur');
-		}*/
 		
-        $deamon_info = self::deamon_info();
+       $deamon_info = self::deamon_info();
         if ($deamon_info['launchable'] != 'ok') {
             throw new Exception(__('Veuillez vérifier la configuration', __FILE__));
         }
+
+		if (config::byKey('delais', __CLASS__) == ''){
+			config::save('delais','60','enphasesecur');
+		}
 
 		enphasesecur::creationmaj();
 		
