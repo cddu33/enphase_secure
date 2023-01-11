@@ -1,10 +1,10 @@
-# Changelog plugin Enphase Secure V7
+# Changelog plugin Enphase Secure V7 version Stable
 
 >**IMPORTANT**
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-#11/01/2023
+# 11/01/2023
 Création d'un équipement par onduleur au lancement du démon
 
 Récupération de la puissance par onduleur
