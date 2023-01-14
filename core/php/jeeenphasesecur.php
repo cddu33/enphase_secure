@@ -26,6 +26,10 @@ try {
 		log::add('enphasesecur', 'error', 'Erreur lors de la récupération du matériel');
         die();
     }
+	elseif ($result == '"error arret"') {
+		log::add('enphasesecur', 'error', 'Arrêt du démoinn après 3 tentative de connexion à la');
+        die();
+    }
 	
     $enphasesecur_json = json_decode($result, true);
 	//prod passerelle
@@ -178,6 +182,10 @@ try {
 				$newconv->save();
 			}
 		}
+		foreach (eqLogic::byType('enphasesecur') as $eqLogic) {
+            $eqLogic->save();
+            log::add('enphasesecur', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
+        }
 	}
 				
 }
