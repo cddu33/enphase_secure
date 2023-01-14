@@ -29,11 +29,10 @@ except ImportError:
 	print("Error: importing module jeedom.jeedom")
 	sys.exit(1)
 
-testjeton = False
+testjeton = ''
 header = ''
 limit = 0
 JEEDOM_COM = ''
-inventory = False
 
 def read_socket():
 	global JEEDOM_SOCKET_MESSAGE
@@ -50,7 +49,7 @@ def read_socket():
 
 def listen():
 	global limit
-	#jeedom_socket.open()
+#	jeedom_socket.open()
 	try:
 		while limit < 2:
 			if not limit == 0:
@@ -97,8 +96,6 @@ def enphase():
 	global header
 	global limit
 	global JEEDOM_COM
-	global inventory
-
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	if args.renew == "auto": 
@@ -116,7 +113,7 @@ def enphase():
 			PASSWORD = args.password
 			SITE_ID = args.site
 			SERIAL_NUMBER = args.serie
-
+		
 			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
 			payload_login = {'username': USER, 'password': PASSWORD}
@@ -155,7 +152,7 @@ def enphase():
 	try:
 		if testjeton == True:
 			logging.debug("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
 	except Exception as e:
 		logging.error('Fatal error : '+str(e))
 		logging.info(traceback.format_exc())
@@ -165,38 +162,19 @@ def enphase():
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			#logging.debug(inventory)
-			if inventory == False:
-				logging.debug("Recuperation Inventaire")
-				r = client.get(LOCAL_URL + "inventory.json", headers=header)
-				JEEDOM_COM.send_change_immediate(r.json())
-				inventory = True
-				logging.debug("Attente de 10s")
-				time.sleep(10)
-	except Exception as e:
-		logging.error('Fatal error : '+str(e))
-		logging.info(traceback.format_exc())
-		JEEDOM_COM.send_change_immediate('error inv')
-		testjeton = False
-		client.close()
-		time.sleep(60)
-	try:
-		if testjeton == True:	
-			logging.debug("Recuperation mesures passerelle")
+			logging.debug("Recuperation mesure")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
-			time.sleep(1)
-			logging.debug("Recuperation mesures")
-			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
-			#logging.info(r.json())
-			JEEDOM_COM.send_change_immediate(r.json())
-
 			limit = 0
-
 	except Exception as e:
-		
-		limit = 1
+		logging.ERROR("Deuxième tentative de connexion à la passerelle")
+		time.sleep(15)	
+		logging.debug("Recuperation mesure")
+		r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
+		#logging.info(r.json())
+		JEEDOM_COM.send_change_immediate(r.json())
+		limit = 0
 
 #Demon
 
@@ -227,6 +205,8 @@ parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
+
+
 
 if args.device:
 	_device = args.device
