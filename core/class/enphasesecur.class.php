@@ -499,8 +499,10 @@ class enphasesecur extends eqLogic {
 
 		}
 		if ($this->getConfiguration('type') == 'conv') {
+			log::add('enphasesecur', 'info', 'Coucou je crée');
 			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
 			if (!is_object($enphasesecurCmd)) {
+				log::add('enphasesecur', 'info', 'Coucou je crée bis');
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
 				$enphasesecurCmd->setIsVisible(true);
@@ -516,6 +518,7 @@ class enphasesecur extends eqLogic {
 
 			$enphasesecurCmd = $this->getCmd(null, 'Watt');
 			if (!is_object($enphasesecurCmd)) {
+				log::add('enphasesecur', 'info', 'Coucou je crée ter');
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Puissance', __FILE__));
 				$enphasesecurCmd->setIsVisible(true);
