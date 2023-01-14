@@ -531,6 +531,21 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->setSubType('numeric');
 			$enphasesecurCmd->setUnite('W');
 			$enphasesecurCmd->save();
+			
+			$enphasesecurCmd = $this->getCmd(null, 'calWH');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance', __FILE__));
+				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('calWH');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('Wh');
+			$enphasesecurCmd->save();
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
