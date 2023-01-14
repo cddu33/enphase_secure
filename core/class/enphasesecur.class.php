@@ -535,7 +535,7 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd = $this->getCmd(null, 'calWH');
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
-				$enphasesecurCmd->setName(__('Puissance', __FILE__));
+				$enphasesecurCmd->setName(__('Production journalière', __FILE__));
 				$enphasesecurCmd->setIsVisible(true);
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('calWH');
