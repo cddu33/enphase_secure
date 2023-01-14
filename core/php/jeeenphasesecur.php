@@ -168,7 +168,7 @@ try {
 					$prodj = ($enphasesecur['lastReportWatts']*0.25);
 				}
 				else {
-					$prodj = ($enphasesecur['lastReportWatts']*0.25) + $eqLogic->getCmd(null, 'calWH');
+					$prodj = ($enphasesecur['lastReportWatts']*0.25) + $eqLogic->getCmd(null,'calWH');
 				}
 			
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Production: ' . $prodj);
