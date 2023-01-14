@@ -52,7 +52,7 @@ def listen():
 	global limit
 	#jeedom_socket.open()
 	try:
-		while limit < 2:
+		while limit < 3:
 			if not limit == 0:
 				logging.debug("Tentative de connexion:" + str(limit))
 			try:
@@ -77,6 +77,7 @@ def handler(signum=None, frame=None):
 def shutdown():
 	logging.debug("Shutdown")
 	logging.debug("Removing PID file " + str(_pidfile))
+	JEEDOM_COM.send_change_immediate('error arret')
 	try:
 		os.remove(_pidfile)
 	except:
