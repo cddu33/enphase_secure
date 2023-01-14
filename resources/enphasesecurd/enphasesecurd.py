@@ -248,11 +248,13 @@ logging.info('Device : '+str(_device))
 logging.info('Callback : '+str(_callback))
 logging.info('Delais actualisation : '+str(args.delais))
 logging.info('Adresse IP Passerelle : '+str(args.ip))
-logging.info('User : '+str(args.user))
-logging.info('Password : '+str(args.password))
-logging.info('Id Site : '+str(args.site))
-logging.info('Numero de serie : '+str(args.serie))
-logging.info('Token manuel (non obligatoire) : '+str(args.token))
+if args.renew == "auto":
+	logging.info('User : '+str(args.user))
+	logging.info('Password : '+str(args.password))
+	logging.info('Id Site : '+str(args.site))
+	logging.info('Numero de serie : '+str(args.serie))
+else:
+	logging.info('Token: '+str(args.token))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	
