@@ -131,7 +131,7 @@ def enphase():
 				r = client.post(TOKEN_URL, data=payload_token)
 				parsed_html = BeautifulSoup(r.text, "lxml")
 				token = parsed_html.body.find('textarea').text
-				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+				
 			except:
 				limit = limit + 1
 				testjeton = False
@@ -140,7 +140,7 @@ def enphase():
 	else:
 		token = args.token
 	try:
-		
+		decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 		header = {"Authorization": "Bearer " + token}
 		logging.debug("Test Token")
 		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
