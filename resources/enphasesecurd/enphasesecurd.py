@@ -60,7 +60,9 @@ def listen():
 			except:
 				time.sleep(10)
 			enphase()
-	except KeyboardInterrupt:
+	except:
+		logging.exception('Erreur de connexion')
+		logging.error('Erreur de connexion')
 		shutdown()
 	logging.exception('Erreur de connexion')
 	logging.error('Erreur de connexion')
@@ -129,39 +131,25 @@ def enphase():
 				r = client.post(TOKEN_URL, data=payload_token)
 				parsed_html = BeautifulSoup(r.text, "lxml")
 				token = parsed_html.body.find('textarea').text
-				decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
-				header = {"Authorization": "Bearer " + token}
-				logging.debug("Token: " + token)
-				testjeton = True
 			except:
 				limit = limit + 1
 				testjeton = False
 				logging.error("Erreur de connexion aux serveurs Enphase")
 				JEEDOM_COM.send_change_immediate('error serveur')
-	else: 
-		try:
-			token = args.token
-			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
-			header = {"Authorization": "Bearer " + token}
-			testjeton = True
-			
-		except Exception as e:
-			logging.error('Fatal error : '+str(e))
-			#logging.info(traceback.format_exc())
-			JEEDOM_COM.send_change_immediate('error check')
-			testjeton = False
-			client.close()
-			time.sleep(60)	
+	else:
+		token = args.token
 	try:
-		if testjeton == True:
-			logging.debug("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
-	except Exception as e:
-		logging.error('Fatal error : '+str(e))
-		logging.info(traceback.format_exc())
-		JEEDOM_COM.send_change_immediate('error check')
+		decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+		header = {"Authorization": "Bearer " + token}
+		logging.debug("Test Token")
+		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+		testjeton = True	
+		time.sleep(1)
+	except:
+		limit = limit + 1
 		testjeton = False
-		client.close()
+		logging.error("Erreur de vérification du jeton, attente de 60s pour recommmencer")
+		JEEDOM_COM.send_change_immediate('error check')
 		time.sleep(60)
 	try:
 		if testjeton == True:
@@ -173,13 +161,13 @@ def enphase():
 				inventory = True
 				logging.debug("Attente de 10s")
 				time.sleep(10)
-	except Exception as e:
-		logging.error('Fatal error : '+str(e))
-		logging.info(traceback.format_exc())
+	except:
+		limit = limit + 1
+		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
 		JEEDOM_COM.send_change_immediate('error inv')
 		testjeton = False
-		client.close()
 		time.sleep(60)
+
 	try:
 		if testjeton == True:	
 			logging.debug("Recuperation mesures passerelle")
@@ -194,9 +182,10 @@ def enphase():
 
 			limit = 0
 
-	except Exception as e:
-		
-		limit = 1
+	except:
+		limit = limit + 1
+		testjeton = False
+		time.sleep(1)
 
 #Demon
 
