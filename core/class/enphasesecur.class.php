@@ -167,37 +167,7 @@ class enphasesecur extends eqLogic {
 	// Fonction exécutée automatiquement après la création de l'équipement
 	public function postInsert() {
 
-		if ($this->getConfiguration('type') == 'conv') {
-			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
-			if (!is_object($enphasesecurCmd)) {
-				$enphasesecurCmd = new enphasesecurCmd();
-				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
-				$enphasesecurCmd->setIsVisible(true);
-				$enphasesecurCmd->setIsHistorized(true);
-				$enphasesecurCmd->setLogicalId('maxWatt');
-				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
-
-			$enphasesecurCmd = $this->getCmd(null, 'Watt');
-			if (!is_object($enphasesecurCmd)) {
-				$enphasesecurCmd = new enphasesecurCmd();
-				$enphasesecurCmd->setName(__('Puissance', __FILE__));
-				$enphasesecurCmd->setIsVisible(true);
-				$enphasesecurCmd->setIsHistorized(true);
-				$enphasesecurCmd->setLogicalId('Watt');
-				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
-		}
+		
 	}
 
 	// Fonction exécutée automatiquement avant la mise à jour de l'équipement
@@ -531,7 +501,37 @@ class enphasesecur extends eqLogic {
 			$enphasesecurCmd->save();
 
 		}
-		
+		if ($this->getConfiguration('type') == 'conv') {
+			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
+				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('maxWatt');
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
+
+			$enphasesecurCmd = $this->getCmd(null, 'Watt');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance', __FILE__));
+				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('Watt');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+			}
+			$enphasesecurCmd->setEqLogic_id($this->getId());
+			$enphasesecurCmd->setType('info');
+			$enphasesecurCmd->setSubType('numeric');
+			$enphasesecurCmd->setUnite('W');
+			$enphasesecurCmd->save();
+		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
   	public function preRemove() {
