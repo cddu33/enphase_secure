@@ -177,6 +177,7 @@ try {
 				$newconv->setIsEnable(1);
 				$newconv->save();
 			}
+			$newconv->save();
 		}
 	}
 				
