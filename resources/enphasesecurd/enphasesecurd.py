@@ -138,10 +138,12 @@ def enphase():
 				logging.error("Erreur de connexion aux serveurs Enphase")
 				JEEDOM_COM.send_change_immediate('error serveur')
 	else:
-		token = args.token
+		if testjeton != True:
+			token = args.token
 	try:
-		decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
-		header = {"Authorization": "Bearer " + token}
+		if testjeton != True:
+			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+			header = {"Authorization": "Bearer " + token}
 		logging.debug("Test Token")
 		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
 		testjeton = True	
