@@ -4,6 +4,13 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 14/01/2023
+Correction blocage démon lors d'un problème de connexion
+
+Correction création des commandes onduleurs
+
+Suppression des logs suivant le mode utilisé (user, password...)
+
 # 07/01/2023
 Création d'un équipement par onduleur au lancement du démon
 

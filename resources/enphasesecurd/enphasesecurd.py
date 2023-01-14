@@ -29,10 +29,11 @@ except ImportError:
 	print("Error: importing module jeedom.jeedom")
 	sys.exit(1)
 
-testjeton = ''
+testjeton = False
 header = ''
 limit = 0
 JEEDOM_COM = ''
+inventory = False
 
 def read_socket():
 	global JEEDOM_SOCKET_MESSAGE
@@ -49,9 +50,9 @@ def read_socket():
 
 def listen():
 	global limit
-#	jeedom_socket.open()
+	#jeedom_socket.open()
 	try:
-		while limit < 2:
+		while limit < 3:
 			if not limit == 0:
 				logging.debug("Tentative de connexion:" + str(limit))
 			try:
@@ -59,7 +60,9 @@ def listen():
 			except:
 				time.sleep(10)
 			enphase()
-	except KeyboardInterrupt:
+	except:
+		logging.exception('Erreur de connexion')
+		logging.error('Erreur de connexion')
 		shutdown()
 	logging.exception('Erreur de connexion')
 	logging.error('Erreur de connexion')
@@ -74,6 +77,7 @@ def handler(signum=None, frame=None):
 def shutdown():
 	logging.debug("Shutdown")
 	logging.debug("Removing PID file " + str(_pidfile))
+	JEEDOM_COM.send_change_immediate('error arret')
 	try:
 		os.remove(_pidfile)
 	except:
@@ -96,6 +100,8 @@ def enphase():
 	global header
 	global limit
 	global JEEDOM_COM
+	global inventory
+
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	if args.renew == "auto": 
@@ -113,7 +119,7 @@ def enphase():
 			PASSWORD = args.password
 			SITE_ID = args.site
 			SERIAL_NUMBER = args.serie
-		
+
 			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
 			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
 			payload_login = {'username': USER, 'password': PASSWORD}
@@ -126,55 +132,64 @@ def enphase():
 				r = client.post(TOKEN_URL, data=payload_token)
 				parsed_html = BeautifulSoup(r.text, "lxml")
 				token = parsed_html.body.find('textarea').text
-				decode = jwt.decode(token, options={"verify_signature": False}, algorithms="ES256")
-				header = {"Authorization": "Bearer " + token}
-				logging.debug("Token: " + token)
-				testjeton = True
+				
 			except:
 				limit = limit + 1
 				testjeton = False
 				logging.error("Erreur de connexion aux serveurs Enphase")
 				JEEDOM_COM.send_change_immediate('error serveur')
-	else: 
-		try:
+	else:
+		if testjeton != True:
 			token = args.token
+	try:
+		if testjeton != True:
 			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
-			testjeton = True
-			
-		except Exception as e:
-			logging.error('Fatal error : '+str(e))
-			#logging.info(traceback.format_exc())
-			JEEDOM_COM.send_change_immediate('error check')
-			testjeton = False
-			client.close()
-			time.sleep(60)	
-	try:
-		if testjeton == True:
-			logging.debug("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)	
-	except Exception as e:
-		logging.error('Fatal error : '+str(e))
-		logging.info(traceback.format_exc())
-		JEEDOM_COM.send_change_immediate('error check')
+		logging.debug("Test Token")
+		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+		testjeton = True	
+		time.sleep(1)
+	except:
+		limit = limit + 1
 		testjeton = False
-		client.close()
+		logging.error("Erreur de vérification du jeton, attente de 60s pour recommmencer")
+		JEEDOM_COM.send_change_immediate('error check')
 		time.sleep(60)
 	try:
 		if testjeton == True:
-			logging.debug("Recuperation mesure")
+			#logging.debug(inventory)
+			if inventory == False:
+				logging.debug("Recuperation Inventaire")
+				r = client.get(LOCAL_URL + "inventory.json", headers=header)
+				JEEDOM_COM.send_change_immediate(r.json())
+				inventory = True
+				logging.debug("Attente de 10s")
+				time.sleep(10)
+	except:
+		limit = limit + 1
+		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
+		JEEDOM_COM.send_change_immediate('error inv')
+		testjeton = False
+		time.sleep(60)
+
+	try:
+		if testjeton == True:	
+			logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
+			time.sleep(1)
+			logging.debug("Recuperation mesures")
+			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
+			#logging.info(r.json())
+			JEEDOM_COM.send_change_immediate(r.json())
+
 			limit = 0
-	except Exception as e:
-		logging.ERROR("Deuxième tentative de connexion à la passerelle")
-		time.sleep(15)	
-		logging.debug("Recuperation mesure")
-		r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-		#logging.info(r.json())
-		JEEDOM_COM.send_change_immediate(r.json())
-		limit = 0
+
+	except:
+		limit = limit + 1
+		testjeton = False
+		time.sleep(1)
 
 #Demon
 
@@ -206,8 +221,6 @@ parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
 args = parser.parse_args()
 
-
-
 if args.device:
 	_device = args.device
 if args.loglevel:
@@ -236,11 +249,13 @@ logging.info('Device : '+str(_device))
 logging.info('Callback : '+str(_callback))
 logging.info('Delais actualisation : '+str(args.delais))
 logging.info('Adresse IP Passerelle : '+str(args.ip))
-logging.info('User : '+str(args.user))
-logging.info('Password : '+str(args.password))
-logging.info('Id Site : '+str(args.site))
-logging.info('Numero de serie : '+str(args.serie))
-logging.info('Token manuel (non obligatoire) : '+str(args.token))
+if args.renew == "auto":
+	logging.info('User : '+str(args.user))
+	logging.info('Password : '+str(args.password))
+	logging.info('Id Site : '+str(args.site))
+	logging.info('Numero de serie : '+str(args.serie))
+else:
+	logging.info('Token: '+str(args.token))
 
 signal.signal(signal.SIGINT, handler)
 signal.signal(signal.SIGTERM, handler)	
