@@ -150,8 +150,10 @@ try {
 
 					$enphasesecur_info = $enphasesecur_json['production']['0']['wNow'];
 					log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
-					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
+					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);
+					}	
 					
+						
 				}
 			}
 		}
