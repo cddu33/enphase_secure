@@ -7,6 +7,8 @@
 # 18/01/2023
 correction réinitialisation unité au démarrage du démon
 
+ccorrection rafraîchissement données passerelle standard
+
 # 14/01/2023
 Correction blocage démon lors d'un problème de connexion
 
