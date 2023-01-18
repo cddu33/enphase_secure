@@ -138,7 +138,11 @@ try {
 					$eqLogic->save();
 				}
 				else {
-					log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
+                                        if ( $test != 'good') {
+                                                $test= 'good';
+
+					
+                                                log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
 			
 					$enphasesecur_info = $enphasesecur_json['production']['0']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
@@ -147,7 +151,7 @@ try {
 					$enphasesecur_info = $enphasesecur_json['production']['0']['wNow'];
 					log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-					die();
+					
 				}
 			}
 		}
