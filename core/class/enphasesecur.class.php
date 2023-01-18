@@ -359,12 +359,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setConfiguration('historizeRound', '0'); 
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setGeneric_type('VOLTAGE');
-			}
+			
 			$enphasesecurCmd->setEqLogic_id($this->getId());
 			$enphasesecurCmd->setLogicalId('tension');
 			$enphasesecurCmd->setType('info');
 			$enphasesecurCmd->setSubType('numeric');
 			$enphasesecurCmd->setUnite('V');
+			}
 	  		$enphasesecurCmd->save();
 		}
 			
@@ -378,12 +379,14 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-			}
+			
 			$enphasesecurCmd->setEqLogic_id($this->getId());
 			$enphasesecurCmd->setLogicalId('CwattHoursTodayNet');
 			$enphasesecurCmd->setType('info');
 			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
+			$enphasesecurCmd->setUnite('Wh'); 
+			}
+				
 			$enphasesecurCmd->save();
   
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDaysNet');
