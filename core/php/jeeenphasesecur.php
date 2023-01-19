@@ -1,37 +1,37 @@
 <?php
-
 try {
-    require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
-
-    if (!jeedom::apiAccess(init('apikey'), 'enphasesecur')) { //remplacez template par l'id de votre plugin
-        echo __('Vous n\'etes pas autorisé à effectuer cette action', __FILE__);
-        die();
-    }
+	require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
+	
+	if (!jeedom::apiAccess(init('apikey'), 'enphasesecur')) { //remplacez template par l'id de votre plugin
+		echo __('Vous n\'etes pas autorisé à effectuer cette action', __FILE__);
+		die();
+	}
 	$result = file_get_contents("php://input");
 
-    if ($result == '') {
-        echo 'OK';
+    	if ($result == '') {
+        	echo 'OK';
 		log::add('enphasesecur', 'debug', 'Test OK');
-        die();
-    }
-	elseif ($result == '"error serveur"') {
-		log::add('enphasesecur', 'error', 'Erreur de connexion, vérifier les log du daemon et vos identifiants');
-        die();
-    }
-	elseif ($result == '"error check"') {
-		log::add('enphasesecur', 'error', 'Mauvais token ou renouvellement');
-        die();
-    }
-	elseif ($result == '"error inv"') {
-		log::add('enphasesecur', 'error', 'Erreur lors de la récupération du matériel');
-        die();
-    }
-	elseif ($result == '"error arret"') {
-		log::add('enphasesecur', 'error', 'Arrêt du démoinn après 3 tentative de connexion à la');
-        die();
-    }
+        	die();
+	}
+		elseif ($result == '"error serveur"') {
+			log::add('enphasesecur', 'error', 'Erreur de connexion, vérifier les log du daemon et vos identifiants');
+		die();
+	}
+		elseif ($result == '"error check"') {
+			log::add('enphasesecur', 'error', 'Mauvais token ou renouvellement');
+		die();
+	}
+		elseif ($result == '"error inv"') {
+			log::add('enphasesecur', 'error', 'Erreur lors de la récupération du matériel');
+		die();
+	}
+		elseif ($result == '"error arret"') {
+			log::add('enphasesecur', 'error', 'Arrêt du démoinn après 3 tentative de connexion à la');
+		die();
+	}
 	
-    $enphasesecur_json = json_decode($result, true);
+	$enphasesecur_json = json_decode($result, true);
+	
 	//prod passerelle
 	if (isset($enphasesecur_json['production']['0']['wNow'])) {
 		log::add('enphasesecur', 'info', 'Réception mesures passerelle');
@@ -137,13 +137,9 @@ try {
 					$eqLogic->setIsEnable(0);
 					$eqLogic->save();
 				}
-				else {
-                                        if ( $test != 'good') {
-                                                $test= 'good';
-
+				elseif ($eqLogic->getConfiguration('type') == 'prod' || $eqLogic->getConfiguration('type') == 'combine')  { 
+                                        log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
 					
-                                                log::add('enphasesecur', 'debug', 'Envoy-S-Standard-EU');
-			
 					$enphasesecur_info = $enphasesecur_json['production']['0']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
