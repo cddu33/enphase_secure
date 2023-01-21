@@ -116,9 +116,9 @@ class enphasesecur extends eqLogic {
 			}
 			if(!is_object(eqLogic::byLogicalId('enphasesecur_conso_net', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Consommation Net');
-                $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_conso_net');
-                $eqLogic->setName('Enphase Consommation Net');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_conso_net');
+				$eqLogic->setName('Enphase Consommation Net');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'net');
@@ -128,9 +128,9 @@ class enphasesecur extends eqLogic {
 			}
 			if(!is_object(eqLogic::byLogicalId('enphasesecur_conso_total', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Consommation Total');
-                $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_conso_total');
-                $eqLogic->setName('Enphase Consommation Total');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_conso_total');
+				$eqLogic->setName('Enphase Consommation Total');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'total');
@@ -140,9 +140,9 @@ class enphasesecur extends eqLogic {
 			}
 			if(!is_object(eqLogic::byLogicalId('enphasesecur_bat', 'enphasesecur'))) {
 				log::add('enphasesecur', 'debug', 'Création équipement Stockage');
-                $eqLogic = new self();
-                $eqLogic->setLogicalId('enphasesecur_bat');
-                $eqLogic->setName('Enphase Stockage');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_bat');
+				$eqLogic->setName('Enphase Stockage');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'bat');
@@ -150,51 +150,17 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
 			}
-
-
 		}
 	}
-
-
-
 	// Fonction exécutée automatiquement avant la création de l'équipement
-	public function preInsert() {
-		/*if (count(self::byType('enphasesecur', true))>= 1 ){
-			throw new Exception('Il ne peu y avoir qu\'une seule passerelle sur ce plugin');
-		}*/
-	}
+	public function preInsert() {}
 
 	// Fonction exécutée automatiquement après la création de l'équipement
-	public function postInsert() {
-
-		
-	}
+	public function postInsert() {}
 
 	// Fonction exécutée automatiquement avant la mise à jour de l'équipement
   	
-	public function preUpdate() {
-	 /*	if ($this->getConfiguration('user') == '') {
-			throw new Exception('L\'identifiant ne peut pas être vide');
-	 	}
-	 	if ($this->getConfiguration('password') == '') {
-			throw new Exception('Le mot de passe ne peut etre vide');
-	 	}
-		 if ($this->getConfiguration('ip') == '') {
-			throw new Exception('L\'adresse IP ne peu pas être vide');
-	 	}
-		 if ($this->getConfiguration('serie') == '') {
-			throw new Exception('Le numéro de série de la passerelle ne peu pas être vide');
-	 	}
-		 if ($this->getConfiguration('site') == '') {
-			throw new Exception('Le numéro de site ne peu pas être vide');
-	 	}
-		if ($this->getConfiguration('delais') == '') {
-			throw new Exception('Le délais ne peu pas être 0 ');
-		}
-		if ($this->getConfiguration('delais') < '10') {
-			throw new Exception('Le délais ne peux pas être inférieur à 10s');
-		}*/
-  	}
+	public function preUpdate() {}
   	
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
   	public function postUpdate() {}
@@ -204,78 +170,74 @@ class enphasesecur extends eqLogic {
 
 	// Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
 	public function postSave() {
-     
-      if ($this->getConfiguration('type') == '' || $this->getConfiguration('type') == null) {
-        $this->setConfiguration('type', 'combine');
-        $this->save();
-      }
+		if ($this->getConfiguration('type') == '' || $this->getConfiguration('type') == null) {
+			$this->setConfiguration('type', 'combine');
+			$this->save();
+		}
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'prod') {
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
-		  	$enphasesecurCmd->setName(__('Prod Jour', __FILE__));
+		  		$enphasesecurCmd->setName(__('Prod Jour', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '2');
 				$enphasesecurCmd->setGeneric_type('POWER'); 
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('PwattHoursToday');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 	  		}
-	  		$enphasesecurCmd->setEqLogic_id($this->getId());
-	  		$enphasesecurCmd->setLogicalId('PwattHoursToday');
-	  		$enphasesecurCmd->setType('info');
-	  		$enphasesecurCmd->setSubType('numeric');
-	  		$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
-
+	  		
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 		  		$enphasesecurCmd->setName(__('Prod Semaine', __FILE__));
-			
 				$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setGeneric_type('POWER');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('PwattHoursSevenDays');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 	  		}
-	  		$enphasesecurCmd->setEqLogic_id($this->getId());
-	  		$enphasesecurCmd->setLogicalId('PwattHoursSevenDays');
-	  		$enphasesecurCmd->setType('info');
-	  		$enphasesecurCmd->setSubType('numeric');
-	  		$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
-		
+
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 		  		$enphasesecurCmd->setName(__('Prod MES', __FILE__));
-			
 				$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('POWER');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+	  			$enphasesecurCmd->setLogicalId('PwattHoursLifetime');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 	  		}
-	  		$enphasesecurCmd->setEqLogic_id($this->getId());
-	  		$enphasesecurCmd->setLogicalId('PwattHoursLifetime');
-	  		$enphasesecurCmd->setType('info');
-	  		$enphasesecurCmd->setSubType('numeric');
-	  		$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
 
 			$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 		  		$enphasesecurCmd->setName(__('Prod Inst', __FILE__));
-
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 				$enphasesecurCmd->setGeneric_type('POWER');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('PwattsNow');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 	  		}
-	  		$enphasesecurCmd->setEqLogic_id($this->getId());
-	  		$enphasesecurCmd->setLogicalId('PwattsNow');
-	  		$enphasesecurCmd->setType('info');
-	  		$enphasesecurCmd->setSubType('numeric');
-	  		$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
 		}
 
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'total') {
@@ -283,69 +245,65 @@ class enphasesecur extends eqLogic {
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Total Jour', __FILE__));
-			
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattHoursToday');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattHoursToday');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-	  		$enphasesecurCmd->save();
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Total Semaine', __FILE__));
-			
 				$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattHoursSevenDays');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-	  		$enphasesecurCmd->save();
-	  
+
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Total MES', __FILE__));
-			
 				$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattHoursLifetime');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-	  		$enphasesecurCmd->save();
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Total Inst', __FILE__));
-			
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '3');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattsNow');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattsNow');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-	  		$enphasesecurCmd->save();
 		}
 
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net' || $this->getConfiguration('type') == 'total') {
@@ -355,20 +313,18 @@ class enphasesecur extends eqLogic {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Tension', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-			
 				$enphasesecurCmd->setConfiguration('historizeRound', '0'); 
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setGeneric_type('VOLTAGE');
-			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('tension');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('V');
-	  		$enphasesecurCmd->save();
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('tension');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('V');
+				$enphasesecurCmd->save();
+			}	
 		}
 			
-
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net') {
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -378,13 +334,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '2'); 
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattHoursTodayNet');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh'); 
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattHoursTodayNet');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
   
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDaysNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -394,13 +350,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattHoursSevenDaysNet');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattHoursSevenDaysNet');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
 		
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetimeNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -410,13 +366,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattHoursLifetimeNet');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattHoursLifetimeNet');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
   
 			$enphasesecurCmd = $this->getCmd(null, 'CwattsNowNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -426,14 +382,14 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '3');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('CwattsNowNet');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('CwattsNowNet');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
-
+			
 			$enphasesecurCmd = $this->getCmd(null, 'Export');
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
@@ -442,13 +398,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '3');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('Export');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('Export');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
 
 			$enphasesecurCmd = $this->getCmd(null, 'Import');
 			if (!is_object($enphasesecurCmd)) {
@@ -458,15 +414,15 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '3');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('Import');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('Import');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
-		
 		}
+		
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'bat') {
 			$enphasesecurCmd = $this->getCmd(null, 'batnow');
 			if (!is_object($enphasesecurCmd)) {
@@ -476,13 +432,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				$enphasesecurCmd->setConfiguration('historizeRound', '3');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('batnow');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('batnow');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
 
 			$enphasesecurCmd = $this->getCmd(null, 'batperc');
 			if (!is_object($enphasesecurCmd)) {
@@ -492,15 +448,15 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized('1');
 				//$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('batperc');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('%');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setLogicalId('batperc');
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('%');
-			$enphasesecurCmd->save();
-
 		}
+		
 		if ($this->getConfiguration('type') == 'conv') {
 			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
 			if (!is_object($enphasesecurCmd)) {
@@ -510,12 +466,12 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('maxWatt');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
 
 			$enphasesecurCmd = $this->getCmd(null, 'Watt');
 			if (!is_object($enphasesecurCmd)) {
@@ -525,12 +481,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('Watt');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('W');
-			$enphasesecurCmd->save();
+
+		
 			
 			$enphasesecurCmd = $this->getCmd(null, 'calWH');
 			if (!is_object($enphasesecurCmd)) {
@@ -540,12 +497,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('calWH');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+        $enphasesecurCmd->setEqLogic_id($this->getId());
+        $enphasesecurCmd->setType('info');
+        $enphasesecurCmd->setSubType('numeric');
+        $enphasesecurCmd->setUnite('Wh');
+        $enphasesecurCmd->save();
 			}
-			$enphasesecurCmd->setEqLogic_id($this->getId());
-			$enphasesecurCmd->setType('info');
-			$enphasesecurCmd->setSubType('numeric');
-			$enphasesecurCmd->setUnite('Wh');
-			$enphasesecurCmd->save();
+			
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
