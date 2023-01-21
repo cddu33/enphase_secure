@@ -147,6 +147,7 @@ try {
 					$enphasesecur_info = $enphasesecur_json['production']['0']['wNow'];
 					log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);				
+
 				}
 			}
 		}
@@ -162,6 +163,11 @@ try {
 				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
 				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
+				
+				$prodj = ($enphasesecur['lastReportWatts']*0.25) + $eqLogic->getCmd(null, 'calWH');
+			
+				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Production: ' . $prodj);
+				$eqLogic->checkAndUpdateCmd('calWH', $prodj);
 			}
 		}
 	}
