@@ -4,6 +4,12 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 21/01/2023
+rajout d'une donnée calculé pour les onduleur les WH
+
+=> Attention, cette valeur est a tester car le calcul est actuellement: "puissance * 0.25" (car un relevé toutes les 15min)
+A voir ce que ça donne dans le long terme
+
 # 19/01/2023
 correction réinitialisation unité au démarrage du démon
 
