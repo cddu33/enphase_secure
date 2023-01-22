@@ -180,7 +180,8 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron1d->setClass('enphasesecur');
             $enphasesecurCron1d->setFunction('enphasesecurCron1d');
             $enphasesecurCron1d->setEnable(1);
-            $enphasesecurCron1d->setSchedule('1 0 * * *');
+           // $enphasesecurCron1d->setSchedule('1 0 * * *');
+		   	$enphasesecurCron15->setSchedule('*/5 * * * *');
             $enphasesecurCron1d->setTimeout('20');
             $enphasesecurCron1d->save();
         }
