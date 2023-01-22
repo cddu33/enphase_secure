@@ -6,7 +6,8 @@
 
 # 22/01/2023
 Mise à zéro des wh si puissanc égale à 0
-cumule dans la commande production des onduleurs
+
+Cumule dans la commande production des onduleurs
 
 # 21/01/2023
 rajout d'une donnée calculé pour les onduleur les WH
