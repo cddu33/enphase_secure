@@ -70,7 +70,6 @@ class enphasesecur extends eqLogic {
 
 
 	public static function creationmaj() {
-		$numberwidget = count(self::byType('enphasesecur', false)); 
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
 			if (config::bykey('widget', __CLASS__) == 1){
 				if ($eqLogic->getConfiguration('type') == 'net' || $eqLogic->getConfiguration('type') == 'total' || $eqLogic->getConfiguration('type') == 'bat' || $eqLogic->getConfiguration('type') == 'prod') {
@@ -163,7 +162,53 @@ class enphasesecur extends eqLogic {
 	public function preUpdate() {}
   	
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
-  	public function postUpdate() {}
+  	public function postUpdate() {
+
+		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
+        if (!is_object($enphasesecurCron15)) {
+            $enphasesecurCron15 = new cron();
+            $enphasesecurCron15->setClass('enphasesecur');
+            $enphasesecurCron15->setFunction('enphasesecurCron15');
+            $enphasesecurCron15->setEnable(1);
+            $enphasesecurCron15->setSchedule('*/1 * * * *');
+            $enphasesecurCron15->setTimeout('20');
+            $enphasesecurCron15->save();
+        }
+		$enphasesecurCron60 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+        if (!is_object($enphasesecurCron1d)) {
+            $enphasesecurCron1d = new cron();
+            $enphasesecurCron1d->setClass('enphasesecur');
+            $enphasesecurCron1d->setFunction('enphasesecurCron1d');
+            $enphasesecurCron1d->setEnable(1);
+            $enphasesecurCron1d->setSchedule('1 0 * * *');
+            $enphasesecurCron1d->setTimeout('20');
+            $enphasesecurCron1d->save();
+        }
+
+	}
+
+	public function enphasesecurCron15(){
+		foreach (self::byType('enphasesecur', true) as $eqLogic) {
+			if ($this->getConfiguration('type') == 'conv') {
+				$ancienprod = this->getCmd(null, 'calwh')
+				$puissance = this->getCmd(null, 'Watt')
+				if ($puissance!=0) {
+					$prod = ancienprod + $puissance*0.25
+					$this->checkAndUpdateCmd('calwh', $prod);
+				}
+			}
+		}
+	}
+
+	public function enphasesecurCron1d(){
+		foreach (self::byType('enphasesecur', true) as $eqLogic) {
+			if ($this->getConfiguration('type') == 'conv') {
+				$this->checkAndUpdateCmd('calwh', 0);	
+			}
+		}
+	}
+
+
 
 	// Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
   	public function preSave() {}
