@@ -36,13 +36,8 @@
 
     // Fonction exécutée automatiquement après la suppression du plugin
     function enphasesecur_remove() {
+       
         enphasesecur::deamon_stop();
-        $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
-      	if(is_object($cron)) {
-        	$cron->remove();
-      	}
-        $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
-        if(is_object($cron)) {
-        	$cron->remove();
-        }
+        enphasesecur::removecron();
+       
     }

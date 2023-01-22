@@ -209,6 +209,17 @@ class enphasesecur extends eqLogic {
 		}
 	}
 
+	public function removecron(){
+		$cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
+		if(is_object($cron)) {
+		  $cron->remove();
+		}
+	  $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+	  if(is_object($cron)) {
+		  $cron->remove();
+	  }
+	}
+
 
 
 	// Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
