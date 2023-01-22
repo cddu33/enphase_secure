@@ -170,8 +170,9 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron15->setClass('enphasesecur');
             $enphasesecurCron15->setFunction('enphasesecurCron15');
             $enphasesecurCron15->setEnable(1);
-            $enphasesecurCron15->setSchedule('*/1 * * * *');
-            $enphasesecurCron15->setTimeout('20');
+            //$enphasesecurCron15->setSchedule('*/1 * * * *');
+			$enphasesecurCron15->setSchedule('*/15 * * * *');
+            $enphasesecurCron15->setTimeout('5');
             $enphasesecurCron15->save();
         }
 		$enphasesecurCron60 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
@@ -180,9 +181,9 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron1d->setClass('enphasesecur');
             $enphasesecurCron1d->setFunction('enphasesecurCron1d');
             $enphasesecurCron1d->setEnable(1);
-           // $enphasesecurCron1d->setSchedule('1 0 * * *');
-		   	$enphasesecurCron1d->setSchedule('*/5 * * * *');
-            $enphasesecurCron1d->setTimeout('20');
+           	$enphasesecurCron1d->setSchedule('1 0 * * *');
+		   	//$enphasesecurCron1d->setSchedule('*/5 * * * *');
+            $enphasesecurCron1d->setTimeout('5');
             $enphasesecurCron1d->save();
         }
 
