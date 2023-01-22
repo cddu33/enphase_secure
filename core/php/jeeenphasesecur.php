@@ -167,10 +167,11 @@ try {
 					$prodj = 0;
 				}
 				else {
-					$prodj = ($enphasesecur['lastReportWatts']*0.25);
+					$proddayond = $eqLogic->getCmd(null, 'calWH')->execCmd();
+					$prodond = $proddayond + ($enphasesecur['lastReportWatts']*0.25);
 				}
-				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Production: ' . $prodj);
-				$eqLogic->checkAndUpdateCmd('calWH', $prodj);
+				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Production journalière: ' . $prodond);
+				$eqLogic->checkAndUpdateCmd('calWH', $prodond);
 			}
 		}
 	}
