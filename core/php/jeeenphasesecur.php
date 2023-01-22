@@ -167,7 +167,7 @@ try {
 				$proddayond = $eqLogic->getCmd(null, 'calWH')->execCmd();
 
 				$puisond = $eqLogic->getCmd(null, 'Watt')->execCmd();
-
+				log::add('enphasesecur', 'debug', 'Convertisseurs test ' . $puisond);
 				if ($enphasesecur['lastReportWatts']==0||$enphasesecur['lastReportWatts']==$puisond) {
 					$prodond = $proddayond;
 				}
