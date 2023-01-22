@@ -190,10 +190,10 @@ class enphasesecur extends eqLogic {
 	public function enphasesecurCron15(){
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
 			if ($this->getConfiguration('type') == 'conv') {
-				$ancienprod = this->getCmd(null, 'calwh')
-				$puissance = this->getCmd(null, 'Watt')
+				$ancienprod = this->getCmd(null, 'calwh');
+				$puissance = this->getCmd(null, 'Watt');
 				if ($puissance!=0) {
-					$prod = ancienprod + $puissance*0.25
+					$prod = ancienprod + $puissance*0.25;
 					$this->checkAndUpdateCmd('calwh', $prod);
 				}
 			}
