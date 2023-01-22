@@ -163,11 +163,12 @@ try {
 				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
 				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
-				if ($enphasesecur['lastReportWatts']==0) {
-					$prodj = 0;
+				$proddayond = $eqLogic->getCmd(null, 'calWH')->execCmd();
+				if ($enphasesecur['lastReportWatts']==0||$enphasesecur['lastReportWatts']==$proddayond) {
+					$prodond = $proddayond;
 				}
 				else {
-					$proddayond = $eqLogic->getCmd(null, 'calWH')->execCmd();
+					
 					$prodond = $proddayond + ($enphasesecur['lastReportWatts']*0.25);
 				}
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Production journalière: ' . $prodond);
