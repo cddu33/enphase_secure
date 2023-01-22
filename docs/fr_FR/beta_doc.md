@@ -1,12 +1,14 @@
 # Plugin Enphase Secure V7 Beta pour Jeedom
 
 > Vérifiez bien que votre passerelle Enphase est en Firmware V7
-Pour cela:
-* Ouvrir l'application "Toolkit"
-* Onglet Système puis Selection de votre Site
-* 2 Appareils & Calepinage
-* Iq Gateway
-* Version: V7. au minimum
+> 
+> Pour cela:
+> * Ouvrir l'application "Toolkit"
+> * Onglet Système
+> * Sélection de votre Site
+> * Clic sur 2 Appareils & Calepinage
+> * Clic sur Iq Gateway
+> * Version: V7. au minimum
 
 Le plugin permet de récupérer les données: 
 * de production:
@@ -34,7 +36,7 @@ Le plugin permet de récupérer les données:
     * La production cumulée sur la journée
 
 
-L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 5min environ (non modifiable)
+L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 
