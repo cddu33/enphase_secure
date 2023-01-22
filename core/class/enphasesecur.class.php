@@ -188,22 +188,22 @@ class enphasesecur extends eqLogic {
 	}
 
 	public function enphasesecurCron15(){
-		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			if ($this->getConfiguration('type') == 'conv') {
-				$ancienprod = this->getCmd(null, 'calwh');
-				$puissance = this->getCmd(null, 'Watt');
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				$ancienprod = this->getCmd(null, 'calwh')->execCmd();;
+				$puissance = this->getCmd(null, 'Watt')->execCmd();;
 				if ($puissance!=0) {
-					$prod = ancienprod + $puissance*0.25;
-					$this->checkAndUpdateCmd('calwh', $prod);
+					$prod = $ancienprod + ($puissance*0.25);
+					$eqLogic->checkAndUpdateCmd('calwh', $prod);
 				}
 			}
 		}
 	}
 
 	public function enphasesecurCron1d(){
-		foreach (self::byType('enphasesecur', true) as $eqLogic) {
-			if ($this->getConfiguration('type') == 'conv') {
-				$this->checkAndUpdateCmd('calwh', 0);	
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				$eqLogic->checkAndUpdateCmd('calwh', 0);
 			}
 		}
 	}
