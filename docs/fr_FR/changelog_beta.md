@@ -12,15 +12,15 @@ Cron 15min => cumule de la production journalière
 Si la puissance est nulle, on ne prend pas en compte la valeur
 
 # 21/01/2023
-rajout d'une donnée calculé pour les onduleur les WH
+rajout d'une donnée calculée pour les onduleur les WH
 
 => Attention, cette valeur est a tester car le calcul est actuellement: "puissance * 0.25" (car un relevé toutes les 15min)
 A voir ce que ça donne dans le long terme
 
 # 19/01/2023
-correction réinitialisation unité au démarrage du démon
+Correction réinitialisation unité au démarrage du démon
 
-ccorrection rafraîchissement données passerelle standard
+Correction rafraîchissement données passerelle standard
 
 # 14/01/2023
 Correction blocage démon lors d'un problème de connexion
