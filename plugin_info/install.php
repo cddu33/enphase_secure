@@ -44,4 +44,5 @@
         $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
         if(is_object($cron)) {
         	$cron->remove();
+        }
     }
