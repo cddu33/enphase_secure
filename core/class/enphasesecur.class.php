@@ -192,8 +192,8 @@ class enphasesecur extends eqLogic {
 	public function enphasesecurCron15(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'conv') {
-				$ancienprod = $eqLogic->getCmd(null, 'calwh')->execCmd();;
-				$puissance = $eqLogic->getCmd(null, 'Watt')->execCmd();;
+				$ancienprod = $eqLogic->getCmd(null, 'calwh')->execCmd();
+				$puissance = $eqLogic->getCmd(null, 'Watt')->execCmd();
 				if ($puissance!=0) {
 					$prod = $ancienprod + ($puissance*0.25);
 					$eqLogic->checkAndUpdateCmd('calwh', $prod);
