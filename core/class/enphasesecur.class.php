@@ -162,8 +162,30 @@ class enphasesecur extends eqLogic {
 	public function preUpdate() {}
   	
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
-  	public function postUpdate() {
+  	public function postUpdate() {}
 
+	public function enphasesecurCron15(){
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				$ancienprod = $eqLogic->getCmd(null, 'calwh')->execCmd();
+				$puissance = $eqLogic->getCmd(null, 'Watt')->execCmd();
+				if ($puissance!=0) {
+					$prod = $ancienprod + ($puissance*0.25);
+					$eqLogic->checkAndUpdateCmd('calwh', $prod);
+				}
+			}
+		}
+	}
+
+	public function enphasesecurCron1d(){
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				$eqLogic->checkAndUpdateCmd('calwh', 0);
+			}
+		}
+	}
+
+	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
         if (!is_object($enphasesecurCron15)) {
             $enphasesecurCron15 = new cron();
@@ -186,29 +208,7 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron1d->setTimeout('1');
             $enphasesecurCron1d->save();
         }
-
-	}
-
-	public function enphasesecurCron15(){
-		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getConfiguration('type') == 'conv') {
-				$ancienprod = $eqLogic->getCmd(null, 'calwh')->execCmd();
-				$puissance = $eqLogic->getCmd(null, 'Watt')->execCmd();
-				if ($puissance!=0) {
-					$prod = $ancienprod + ($puissance*0.25);
-					$eqLogic->checkAndUpdateCmd('calwh', $prod);
-				}
-			}
-		}
-	}
-
-	public function enphasesecurCron1d(){
-		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getConfiguration('type') == 'conv') {
-				$eqLogic->checkAndUpdateCmd('calwh', 0);
-			}
-		}
-	}
+	  }
 
 	public function removecron(){
 		$cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
