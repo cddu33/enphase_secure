@@ -20,16 +20,13 @@
     // Fonction exécutée automatiquement après l'installation du plugin
     function enphasesecur_install() {
         enphasesecur::dependancy_install();
-        enphasesecur::creacron();
         enphasesecur::deamon_start();
         
     }
 
     // Fonction exécutée automatiquement après la mise à jour du plugin
     function enphasesecur_update() {
-        enphasesecur::removecron();
 	    enphasesecur::dependancy_install_update();
-        enphasesecur::creacron();
     //exec('../ressources/install_apt.sh');
         foreach (eqLogic::byType('enphasesecur') as $eqLogic) {
             $eqLogic->save();
