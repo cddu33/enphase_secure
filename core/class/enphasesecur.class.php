@@ -543,6 +543,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setType('info');
 				$enphasesecurCmd->setSubType('numeric');
 				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
 			}
 
 		
@@ -555,11 +556,11 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('calWH');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-        $enphasesecurCmd->setEqLogic_id($this->getId());
-        $enphasesecurCmd->setType('info');
-        $enphasesecurCmd->setSubType('numeric');
-        $enphasesecurCmd->setUnite('Wh');
-        $enphasesecurCmd->save();
+        			$enphasesecurCmd->setEqLogic_id($this->getId());
+        			$enphasesecurCmd->setType('info');
+        			$enphasesecurCmd->setSubType('numeric');
+        			$enphasesecurCmd->setUnite('Wh');
+        			$enphasesecurCmd->save();
 			}
 			 self::creacron();
 			
