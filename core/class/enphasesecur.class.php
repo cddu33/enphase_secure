@@ -561,6 +561,7 @@ class enphasesecur extends eqLogic {
         $enphasesecurCmd->setUnite('Wh');
         $enphasesecurCmd->save();
 			}
+			 self::creacron();
 			
 		}
   	}
