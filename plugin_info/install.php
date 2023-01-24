@@ -27,6 +27,7 @@
 
     // Fonction exécutée automatiquement après la mise à jour du plugin
     function enphasesecur_update() {
+        enphasesecur::removecron();
 	    enphasesecur::dependancy_install_update();
         enphasesecur::creacron();
     //exec('../ressources/install_apt.sh');
