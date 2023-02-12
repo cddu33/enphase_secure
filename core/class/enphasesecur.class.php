@@ -304,7 +304,6 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
 				$enphasesecurCmd->setGeneric_type('POWER');
 				$enphasesecurCmd->setEqLogic_id($this->getId());
-				
 				$enphasesecurCmd->setLogicalId('PwattsNow');
 				$enphasesecurCmd->setType('info');
 				$enphasesecurCmd->setSubType('numeric');
@@ -489,7 +488,7 @@ class enphasesecur extends eqLogic {
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				if (config::bykey('typereseau', __CLASS__) == 'tri') {
-					$enphasesecurCmd->setName(__('Conso Total MES 1 ', __FILE__));
+					$enphasesecurCmd->setName(__('Conso Total MES 1', __FILE__));
 				}
 				else { $enphasesecurCmd->setName(__('Conso Total MES', __FILE__)); }
 				$enphasesecurCmd->setConfiguration('historizeRound', '0');
@@ -1034,6 +1033,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
+			}
 		}
 		
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'bat') {

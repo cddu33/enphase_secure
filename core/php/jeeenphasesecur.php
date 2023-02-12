@@ -249,7 +249,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][2]['whToday']-$enphasesecur_json['production'][2]['whToday'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['2']['whToday']-$enphasesecur_json['production'][2]['whToday'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net 2 du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet2', $enphasesecur_info);	
@@ -257,7 +257,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][2]['whLastSevenDays']-$enphasesecur_json['production'][2]['whLastSevenDays'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLastSevenDays']-$enphasesecur_json['production'][2]['whLastSevenDays'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net 2 de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet2', $enphasesecur_info);	
@@ -283,7 +283,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][3]['whToday']-$enphasesecur_json['production'][3]['whToday'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['3']['whToday']-$enphasesecur_json['production'][3]['whToday'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net 3 du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet3', $enphasesecur_info);	
@@ -291,7 +291,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][3]['whLastSevenDays']-$enphasesecur_json['production'][3]['whLastSevenDays'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLastSevenDays']-$enphasesecur_json['production'][3]['whLastSevenDays'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net 3 de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet3', $enphasesecur_info);	
@@ -318,7 +318,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][1]['whToday']-$enphasesecur_json['production'][1]['whToday'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday']-$enphasesecur_json['production']['1']['whToday'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);	
@@ -326,7 +326,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][1]['whLastSevenDays']-$enphasesecur_json['production'][1]['whLastSevenDays'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays']-$enphasesecur_json['production']['1']['whLastSevenDays'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet', $enphasesecur_info);	
