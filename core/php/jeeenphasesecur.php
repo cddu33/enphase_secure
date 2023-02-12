@@ -38,7 +38,7 @@ try {
 		if (isset($enphasesecur_json['production']['1']['whLifetime'])) {
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'prod') {
-					if (config::bykey('typereseau', __CLASS__) == 'tri'){
+					if (config::bykey('typereseau', 'enphasesecur") == 'tri'){
 						//phase1
 						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Production 1 depuis la mise en service: ' . $enphasesecur_info);
@@ -110,7 +110,7 @@ try {
 					
 				}
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'total') {
-					if (config::bykey('typereseau', __CLASS__) == 'tri'){
+					if (config::bykey('typereseau', 'enphasesecur") == 'tri'){
 						//phase1
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 1 depuis la mise en service: ' . $enphasesecur_info);
@@ -183,7 +183,7 @@ try {
 				}
 
 				if ($eqLogic->getConfiguration('type') != 'conv') {
-					if (config::bykey('typereseau', __CLASS__) == 'tri'){
+					if (config::bykey('typereseau', 'enphasesecur") == 'tri'){
 						//phase1
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 1: ' . $enphasesecur_info);
@@ -206,7 +206,7 @@ try {
 				}
 
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
-					if (config::bykey('typereseau', __CLASS__) == 'tri'){
+					if (config::bykey('typereseau', 'enphasesecur") == 'tri'){
 						//phase1
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 1: ' . $enphasesecur_info);
