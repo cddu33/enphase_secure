@@ -4,8 +4,13 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 12/02/2023
+Gestion du triphasé avec lmes passerelle metered uniquement:
+- Consommation
+- Production
+
 # 10/02/2023
-Crorrection compatibilité 4.4
+Correction compatibilité 4.4
 
 # 24/01/2023
 Crorrection Cron
