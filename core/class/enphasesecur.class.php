@@ -780,7 +780,7 @@ class enphasesecur extends eqLogic {
 			
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase 1
-				$enphasesecurCmd = $this->getCmd(null, 'tension');
+				$enphasesecurCmd = $this->getCmd(null, 'tension1');
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Tension 1', __FILE__));
