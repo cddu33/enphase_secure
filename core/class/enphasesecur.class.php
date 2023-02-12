@@ -1027,7 +1027,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('Import2');
+					$enphasesecurCmd->setLogicalId('Import3');
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('W');
