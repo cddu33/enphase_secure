@@ -40,234 +40,234 @@ try {
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'prod') {
 					if (config::bykey('typereseau', __CLASS__) == 'tri'){
 						//phase1
-						$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Production 1 depuis la mise en service: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('PwattHoursLifetime1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['1']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['whToday'];
 						log::add('enphasesecur', 'debug', 'Production 1 totale du jour: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('PwattHoursToday1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Production 1 totale de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production 1 instantannée: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('PwattsNow1', $enphasesecur_info);	
 
 						//phase2
-						$enphasesecur_info = $enphasesecur_json['production']['2']['whLifetime'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Production 2 depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursLifetime2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['2']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['whToday'];
 						log::add('enphasesecur', 'debug', 'Production 2 totale du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursToday2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['2']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Production 2 totale de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['2']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production 2 instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattsNow2', $enphasesecur_info);	
 
 						//phase3
-						$enphasesecur_info = $enphasesecur_json['production']['3']['whLifetime'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Production 3 depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursLifetime3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['3']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['whToday'];
 						log::add('enphasesecur', 'debug', 'Production 3 totale du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursToday3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['3']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Production 3 totale de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['3']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production 3 instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattsNow3', $enphasesecur_info);	
 
 					}
-					else {
-						$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
-						log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
+					//total
+					$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
+					log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['1']['whToday'];
-						log::add('enphasesecur', 'debug', 'Production totale du jour: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
+					$enphasesecur_info = $enphasesecur_json['production']['1']['whToday'];
+					log::add('enphasesecur', 'debug', 'Production totale du jour: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PwattHoursToday', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays'];
-						log::add('enphasesecur', 'debug', 'Production totale de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
+					$enphasesecur_info = $enphasesecur_json['production']['1']['whLastSevenDays'];
+					log::add('enphasesecur', 'debug', 'Production totale de la semaine: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
-						log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-					}
+					$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
+					log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
+					
 				}
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'total') {
 					if (config::bykey('typereseau', __CLASS__) == 'tri'){
 						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 1 depuis la mise en service: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('CwattHoursLifetime1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whToday'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 1 du jour: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('CwattHoursToday1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Consommation Net 1 de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['wNow'];
 						log::add('enphasesecur', 'debug', 'Consommation net 1 instantannée: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('CwattsNow1', $enphasesecur_info);	
 
 						//phase2
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLifetime'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 2 depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetime2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whToday'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 2 du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursToday2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Consommation Net 2 de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['wNow'];
 						log::add('enphasesecur', 'debug', 'Consommation net instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattsNow2', $enphasesecur_info);	
 
 						//phase3
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLifetime'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 3 depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetime3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whToday'];
 						log::add('enphasesecur', 'debug', 'Consommation totale 3 du jour: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursToday3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Consommation Net 3 de la semaine: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['wNow'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['wNow'];
 						log::add('enphasesecur', 'debug', 'Consommation net instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattsNow3', $enphasesecur_info);	
 					}
-					else {
-						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
-						log::add('enphasesecur', 'debug', 'Consommation totale depuis la mise en service: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
+					
+					//total
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
+					log::add('enphasesecur', 'debug', 'Consommation totale depuis la mise en service: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
-						log::add('enphasesecur', 'debug', 'Consommation totale du jour: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
+					log::add('enphasesecur', 'debug', 'Consommation totale du jour: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattHoursToday', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
-						log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
+					log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattHoursSevenDays', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
-						log::add('enphasesecur', 'debug', 'Consommation net instantannée: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
-					}
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
+					log::add('enphasesecur', 'debug', 'Consommation net instantannée: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
+					
 				}
 
 				if ($eqLogic->getConfiguration('type') != 'conv') {
 					if (config::bykey('typereseau', __CLASS__) == 'tri'){
 						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['rmsVoltage'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 1: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('tension1', $enphasesecur_info);
 						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['rmsVoltage'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('tension2', $enphasesecur_info);
 						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['rmsVoltage'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['2']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('tension3', $enphasesecur_info);
 					}
-					else {
-						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['rmsVoltage'];
-						log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);
-					}
+					
+					//total
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['rmsVoltage'];
+					log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);
+					
 				}
 
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 					if (config::bykey('typereseau', __CLASS__) == 'tri'){
 						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
-						log::add('enphasesecur', 'debug', 'Consommation Net 1 depuis la mise en service: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['whLifetime'];
+						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 1: ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][1]['whToday']-$enphasesecur_json['production'][1]['whToday'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whToday']-$enphasesecur_json['production']['1']['lines']['0']['whToday'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net 1 du jour: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);	
+						log::add('enphasesecur', 'debug', 'Consommation Net du jour 1: ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption'][1]['whLastSevenDays']-$enphasesecur_json['production'][1]['whLastSevenDays'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whLastSevenDays']-$enphasesecur_json['production']['0']['lines']['0']['whLastSevenDays'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net 1 de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet', $enphasesecur_info);	
+						log::add('enphasesecur', 'debug', 'Consommation Net de la semaine 1: ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet1', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
-						log::add('enphasesecur', 'debug', 'Consommation Net 1 instantannée: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattsNowNet', $enphasesecur_info);	
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['wNow'];
+						log::add('enphasesecur', 'debug', 'Consommation Net instantannée 1: ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('CwattsNowNet1', $enphasesecur_info);	
 
 						if ($enphasesecur_info<0) {
-							$eqLogic->checkAndUpdateCmd('Export', ($enphasesecur_info*(-1)));	
-							$eqLogic->checkAndUpdateCmd('Import', 0);
+							$eqLogic->checkAndUpdateCmd('Export1', ($enphasesecur_info*(-1)));	
+							$eqLogic->checkAndUpdateCmd('Import1', 0);
 						}
 						else {
-							$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
-							$eqLogic->checkAndUpdateCmd('Export', 0);
+							$eqLogic->checkAndUpdateCmd('Import1', ($enphasesecur_info));
+							$eqLogic->checkAndUpdateCmd('Export1', 0);
 						}
 
 						//phase2
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLifetime'];
-						log::add('enphasesecur', 'debug', 'Consommation Net 2 depuis la mise en service: ' . $enphasesecur_info);
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLifetime'];
+						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption']['2']['whToday']-$enphasesecur_json['production'][2]['whToday'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whToday']-$enphasesecur_json['production']['1']['lines']['1']['whToday'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net 2 du jour: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Consommation Net du jour 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption']['2']['whLastSevenDays']-$enphasesecur_json['production'][2]['whLastSevenDays'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLastSevenDays']-$enphasesecur_json['production']['0']['lines']['1']['whLastSevenDays'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net 2 de la semaine: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Consommation Net de la semaine 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet2', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['2']['wNow'];
-						log::add('enphasesecur', 'debug', 'Consommation Net 2 instantannée: ' . $enphasesecur_info);
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['wNow'];
+						log::add('enphasesecur', 'debug', 'Consommation Net instantannée 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattsNowNet2', $enphasesecur_info);	
 
 						if ($enphasesecur_info<0) {
-							$eqLogic->checkAndUpdateCmd('Export2', ($enphasesecur_info*(-2)));	
+							$eqLogic->checkAndUpdateCmd('Export2', ($enphasesecur_info*(-1)));	
 							$eqLogic->checkAndUpdateCmd('Import2', 0);
 						}
 						else {
@@ -276,32 +276,32 @@ try {
 						}
 						
 						//phase3
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLifetime'];
-						log::add('enphasesecur', 'debug', 'Consommation Net 3 depuis la mise en service: ' . $enphasesecur_info);
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLifetime'];
+						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whToday'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption']['3']['whToday']-$enphasesecur_json['production'][3]['whToday'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['2']['whToday']-$enphasesecur_json['production']['1']['lines']['2']['whToday'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net 3 du jour: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Consommation Net du jour 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLastSevenDays'];
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
 							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption']['3']['whLastSevenDays']-$enphasesecur_json['production'][3]['whLastSevenDays'];
+							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLastSevenDays']-$enphasesecur_json['production']['0']['lines']['2']['whLastSevenDays'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net 3 de la semaine: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Consommation Net de la semaine 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet3', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['3']['wNow'];
-						log::add('enphasesecur', 'debug', 'Consommation Net 3 instantannée: ' . $enphasesecur_info);
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['wNow'];
+						log::add('enphasesecur', 'debug', 'Consommation Net instantannée 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattsNowNet3', $enphasesecur_info);	
 
 						if ($enphasesecur_info<0) {
-							$eqLogic->checkAndUpdateCmd('Export3', ($enphasesecur_info*(-3)));	
+							$eqLogic->checkAndUpdateCmd('Export3', ($enphasesecur_info*(-1)));	
 							$eqLogic->checkAndUpdateCmd('Import3', 0);
 						}
 						else {
@@ -309,41 +309,41 @@ try {
 							$eqLogic->checkAndUpdateCmd('Export3', 0);
 						}
 					}
-					else {
-						//phase1
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
-						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
+					
+					//total
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
+					log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
 
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
-						if ($enphasesecur_info == 0){
-							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday']-$enphasesecur_json['production']['1']['whToday'];
-						}
-						log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);	
-
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
-						if ($enphasesecur_info == 0){
-							//merci Bison
-							$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays']-$enphasesecur_json['production']['1']['whLastSevenDays'];
-						}
-						log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet', $enphasesecur_info);	
-
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
-						log::add('enphasesecur', 'debug', 'Consommation Net instantannée: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattsNowNet', $enphasesecur_info);	
-
-						if ($enphasesecur_info<0) {
-							$eqLogic->checkAndUpdateCmd('Export', ($enphasesecur_info*(-1)));	
-							$eqLogic->checkAndUpdateCmd('Import', 0);
-						}
-						else {
-							$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
-							$eqLogic->checkAndUpdateCmd('Export', 0);
-						}
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
+					if ($enphasesecur_info == 0){
+						//merci Bison
+						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 					}
+					log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);	
+
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
+					if ($enphasesecur_info == 0){
+						//merci Bison
+						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whLastSevenDays']-$enphasesecur_json['production'][1]['whLastSevenDays'];
+					}
+					log::add('enphasesecur', 'debug', 'Consommation Net de la semaine: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattHoursSevenDaysNet', $enphasesecur_info);	
+
+					$enphasesecur_info = $enphasesecur_json['consumption']['1']['wNow'];
+					log::add('enphasesecur', 'debug', 'Consommation Net instantannée: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('CwattsNowNet', $enphasesecur_info);	
+
+					if ($enphasesecur_info<0) {
+						$eqLogic->checkAndUpdateCmd('Export', ($enphasesecur_info*(-1)));	
+						$eqLogic->checkAndUpdateCmd('Import', 0);
+					}
+					else {
+						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
+						$eqLogic->checkAndUpdateCmd('Export', 0);
+					}
+					
 				}
 				
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
