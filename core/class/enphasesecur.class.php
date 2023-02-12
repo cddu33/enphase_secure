@@ -197,7 +197,7 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron15->setTimeout('1');
             $enphasesecurCron15->save();
         }
-		$enphasesecurCron60 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+		$enphasesecurCron1d = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
         if (!is_object($enphasesecurCron1d)) {
             $enphasesecurCron1d = new cron();
             $enphasesecurCron1d->setClass('enphasesecur');
