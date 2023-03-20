@@ -11,22 +11,22 @@
 > * Version: V7. au minimum
 
 Le plugin permet de récupérer les données: 
-* de production:
+* de production mono ou tri:
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-* de consommation totale (avec la production):
+* de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-* de consommation net (importée du réseau):
+* de consommation net mono ou tri (importée du réseau):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-* la balance import et export instantanée réseau
+* la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée
     * Le pourcentage de charge restant
@@ -82,6 +82,10 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 * Mode Token Manuel:
    * Adresse IP locale de la passerelle
    * Token généré précédement depuis le site Enphase
+
+* Racordement de l'installation:
+   * Mode Monophasé
+   * Mode triphasé
 
 Le plugin ajoutera les équipements dont il a besoin.
 
