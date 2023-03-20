@@ -4,6 +4,14 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+
+# 20/03/2023
+Gestion du triphasé avec lmes passerelle metered uniquement:
+- Consommation
+- Production
+
+Diverses corrections de la beta
+
 # 22/01/2023
 Cron 1day => remise à 0 de la production par onduleur
 
