@@ -370,7 +370,7 @@ try {
 					log::add('enphasesecur', 'debug', 'Injection depuis la MES: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet', $enphasesecur_info);	
 
-					$enphasesecur_info = max($this->getConfiguration("InjectionLifetimeNet", "")-min($this->getConfiguration("InjectionLifetimeNet", ""),today),0);
+					$enphasesecur_info = max($eqLogic->getConfiguration("InjectionLifetimeNet", "")-min($eqLogic->getConfiguration("InjectionLifetimeNet", ""),today),0);
 					log::add('enphasesecur', 'debug', 'Injection Journalière: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('InjectionJourNet', $enphasesecur_info);	
 
