@@ -389,7 +389,7 @@ try {
 					 {
 					 	$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet")-min($eqLogic->getCmd(null,"InjectionLifetimeNet"),today),0);
 					 	log::add('enphasesecur', 'debug', 'Injection Journalière: ' . $enphasesecur_info);
-					 	log::add('enphasesecur', 'debug', 'COucou test Injection Journalière : ' . $eqLogic->getCmd(null,"InjectionLifetimeNet"));
+					 	//log::add('enphasesecur', 'debug', 'COucou test Injection Journalière : ' . $eqLogic->getCmd(null,"InjectionLifetimeNet"));
 					 	$eqLogic->checkAndUpdateCmd('InjectionJourNet', $enphasesecur_info);	
 					 }
 
