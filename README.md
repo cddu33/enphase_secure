@@ -27,7 +27,7 @@ Le plugin permet de récupérer les données:
     * Semaine
     * Mise en service
 * la balance import et export instantanée réseau mono ou tri
-* l'estimation de l'injection sur le réseau journalière
+* l'estimation de l'injection sur le réseau journalière => en cours de réalisation
 * l'estimation de l'injection sur le réseau depuis la mise en service
 * le stockage
     * La puissance délivrée
