@@ -246,6 +246,12 @@ try {
 						log::add('enphasesecur', 'debug', 'Injection depuis la MES 1: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet1', $enphasesecur_info);	
 
+
+						$enphasesecur_info = max($this->getConfiguration("InjectionLifetimeNet1", "")-min($this->getConfiguration("InjectionLifetimeNet1", ""),today),0);
+						log::add('enphasesecur', 'debug', 'Injection Journalière 1: ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('InjectionJourNet1', $enphasesecur_info);	
+
+
 						//phase2
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 2: ' . $enphasesecur_info);
@@ -363,6 +369,10 @@ try {
 					$enphasesecur_info = -($enphasesecur_json['consumption']['0']['whLifetime'] - $enphasesecur_json['consumption']['1']['whLifetime'] - $enphasesecur_json['production']['1']['whLifetime']);
 					log::add('enphasesecur', 'debug', 'Injection depuis la MES: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet', $enphasesecur_info);	
+
+					$enphasesecur_info = max($this->getConfiguration("InjectionLifetimeNet", "")-min($this->getConfiguration("InjectionLifetimeNet", ""),today),0);
+					log::add('enphasesecur', 'debug', 'Injection Journalière: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('InjectionJourNet', $enphasesecur_info);	
 
 					
 				}
