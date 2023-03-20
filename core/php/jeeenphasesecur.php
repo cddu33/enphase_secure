@@ -246,12 +246,12 @@ try {
 						log::add('enphasesecur', 'debug', 'Injection depuis la MES 1: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet1', $enphasesecur_info);	
 
-						if ($eqLogic->getCmd(null,"InjectionLifetimeNet1")>0)
-						{
-							$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet1")-min($eqLogic->getCmd(null,"InjectionLifetimeNet1"),today),0);
-							log::add('enphasesecur', 'debug', 'Injection Journalière 1: ' . $enphasesecur_info);
-							$eqLogic->checkAndUpdateCmd('InjectionJourNet1', $enphasesecur_info);	
-						}
+						// if ($eqLogic->getCmd(null,"InjectionLifetimeNet1")>0)
+						// {
+						// 	$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet1")-min($eqLogic->getCmd(null,"InjectionLifetimeNet1"),today),0);
+						// 	log::add('enphasesecur', 'debug', 'Injection Journalière 1: ' . $enphasesecur_info);
+						// 	$eqLogic->checkAndUpdateCmd('InjectionJourNet1', $enphasesecur_info);	
+						// }
 
 					
 						//phase2
@@ -292,12 +292,12 @@ try {
 						$enphasesecur_info = -($enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'] - $enphasesecur_json['consumption']['1']['lines']['1']['whLifetime'] - $enphasesecur_json['production']['1']['lines']['1']['whLifetime']);
 						log::add('enphasesecur', 'debug', 'Injection depuis la MES 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet2', $enphasesecur_info);	
-						if ($eqLogic->getCmd(null,"InjectionLifetimeNet2")>0)
-						{
-							$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet2")-min($eqLogic->getCmd(null,"InjectionLifetimeNet2"),today),0);
-							log::add('enphasesecur', 'debug', 'Injection Journalière 2: ' . $enphasesecur_info);
-							$eqLogic->checkAndUpdateCmd('InjectionJourNet2', $enphasesecur_info);	
-						}
+						// if ($eqLogic->getCmd(null,"InjectionLifetimeNet2")>0)
+						// {
+						// 	$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet2")-min($eqLogic->getCmd(null,"InjectionLifetimeNet2"),today),0);
+						// 	log::add('enphasesecur', 'debug', 'Injection Journalière 2: ' . $enphasesecur_info);
+						// 	$eqLogic->checkAndUpdateCmd('InjectionJourNet2', $enphasesecur_info);	
+						// }
 						
 						//phase3
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLifetime'];
@@ -337,13 +337,13 @@ try {
 						$enphasesecur_info = -($enphasesecur_json['consumption']['0']['lines']['2']['whLifetime'] - $enphasesecur_json['consumption']['1']['lines']['2']['whLifetime'] - $enphasesecur_json['production']['1']['lines']['3']['whLifetime']);
 						log::add('enphasesecur', 'debug', 'Injection depuis la MES 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet3', $enphasesecur_info);	
-						if ($eqLogic->getCmd(null,"InjectionLifetimeNet3")>0)
-						{
-							$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet3")-min($eqLogic->getCmd(null,"InjectionLifetimeNet3"),today),0);
-							log::add('enphasesecur', 'debug', 'Injection Journalière 3: ' . $enphasesecur_info);
+						// if ($eqLogic->getCmd(null,"InjectionLifetimeNet3")>0)
+						// {
+						// 	$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet3")-min($eqLogic->getCmd(null,"InjectionLifetimeNet3"),today),0);
+						// 	log::add('enphasesecur', 'debug', 'Injection Journalière 3: ' . $enphasesecur_info);
 							
-							$eqLogic->checkAndUpdateCmd('InjectionJourNet3', $enphasesecur_info);	
-						}
+						// 	$eqLogic->checkAndUpdateCmd('InjectionJourNet3', $enphasesecur_info);	
+						// }
 
 					}
 					
@@ -385,13 +385,13 @@ try {
 					$enphasesecur_info = -($enphasesecur_json['consumption']['0']['whLifetime'] - $enphasesecur_json['consumption']['1']['whLifetime'] - $enphasesecur_json['production']['1']['whLifetime']);
 					log::add('enphasesecur', 'debug', 'Injection depuis la MES: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('InjectionLifetimeNet', $enphasesecur_info);	
-					if ($eqLogic->getCmd(null,"InjectionLifetimeNet")>0)
-					{
-						$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet")-min($eqLogic->getCmd(null,"InjectionLifetimeNet"),today),0);
-						log::add('enphasesecur', 'debug', 'Injection Journalière: ' . $enphasesecur_info);
-						log::add('enphasesecur', 'debug', 'COucou test Injection Journalière : ' . $eqLogic->getCmd(null,"InjectionLifetimeNet"));
-						$eqLogic->checkAndUpdateCmd('InjectionJourNet', $enphasesecur_info);	
-					}
+					// if ($eqLogic->getCmd(null,"InjectionLifetimeNet")>0)
+					// {
+					// 	$enphasesecur_info = max($eqLogic->getCmd(null,"InjectionLifetimeNet")-min($eqLogic->getCmd(null,"InjectionLifetimeNet"),today),0);
+					// 	log::add('enphasesecur', 'debug', 'Injection Journalière: ' . $enphasesecur_info);
+					// 	log::add('enphasesecur', 'debug', 'COucou test Injection Journalière : ' . $eqLogic->getCmd(null,"InjectionLifetimeNet"));
+					// 	$eqLogic->checkAndUpdateCmd('InjectionJourNet', $enphasesecur_info);	
+					// }
 
 					
 				}

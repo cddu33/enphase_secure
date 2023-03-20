@@ -7,7 +7,6 @@
 # 20/03/2023
 
 Ajout de la donnée estimée Injection MES dans le réseau
-Ajout de la donnée estimée Injection Journalmière dans le réseau
 
 # 14/02/2023
 
