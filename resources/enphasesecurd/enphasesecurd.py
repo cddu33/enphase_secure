@@ -104,25 +104,26 @@ def enphase():
 	LOCAL_URL ="https://" + args.ip + "/" 
 	#recupération Token auto
 	if args.renew == "auto": 
-		if testjeton == False & token == "" :
-			logging.info("Recuperation token")
-			user = args.user
-			password = args.password
-			envoy_serial = args.serie
-			headers = {'Content-Type': 'application/json'}
-			try:
-				data = {'user[email]': user, 'user[password]': password}
-				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
-				response_data = json.loads(response.text)
-				data = {'session_id': response_data['session_id'], 'serial_num': envoy_serial, 'username':user}
-				response = requests.post('https://entrez.enphaseenergy.com/tokens', json=data)
-				token = response.text
-				logging.debug(token)
-			except:
-				logging.error("Erreur de connexion aux serveurs Enphase")
-				JEEDOM_COM.send_change_immediate('error serveur')
-				time.sleep(5)
-				shutdown()
+		if testjeton == False :
+			if token == "" :
+				logging.info("Recuperation token")
+				user = args.user
+				password = args.password
+				envoy_serial = args.serie
+				headers = {'Content-Type': 'application/json'}
+				try:
+					data = {'user[email]': user, 'user[password]': password}
+					response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
+					response_data = json.loads(response.text)
+					data = {'session_id': response_data['session_id'], 'serial_num': envoy_serial, 'username':user}
+					response = requests.post('https://entrez.enphaseenergy.com/tokens', json=data)
+					token = response.text
+					logging.debug(token)
+				except:
+					logging.error("Erreur de connexion aux serveurs Enphase")
+					JEEDOM_COM.send_change_immediate('error serveur')
+					time.sleep(5)
+					shutdown()
 
 	#utilisation du token manuel
 	else:
