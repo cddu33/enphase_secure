@@ -153,7 +153,7 @@ def enphase():
 			time.sleep(60)
 
 			#renouvellement du token
-			if limit==3:
+			if limit>=3:
 				logging.info("Renouvellement du token")
 				token = ""
 				JEEDOM_COM.send_change_immediate('error check bis')
