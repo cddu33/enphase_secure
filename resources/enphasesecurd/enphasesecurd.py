@@ -102,7 +102,7 @@ def enphase():
 	LOCAL_URL ="https://" + args.ip + "/" 
 	#recupération Token auto
 	if args.renew == "auto": 
-		if testjeton == False :
+		if testjeton == False & token == "" :
 			logging.info("Recuperation token")
 			user = args.user
 			password = args.password
@@ -128,8 +128,12 @@ def enphase():
 		if testjeton == False:
 			token = args.token
 	
+	#retest du jeton si utilisé 60 fois
+	if  renew>60:
+		testjeton == False
+
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
-	while ((testjeton==False & limit < 3)|renew>60 ):
+	while (testjeton==False & limit < 3):
 		try:
 			renew == 0
 			if args.renew == "manu": 
@@ -148,6 +152,7 @@ def enphase():
 			#renouvellement du token
 			if limit==3:
 				logging.info("Renouvellement du token")
+				token = ""
 				JEEDOM_COM.send_change_immediate('error check bis')
 	try:
 		#si le token et bon on regarde si l'inventaire est présent
