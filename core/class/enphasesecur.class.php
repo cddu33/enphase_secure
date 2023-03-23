@@ -928,36 +928,6 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 
-			$enphasesecurCmd = $this->getCmd(null, 'InjectionLifetimeNet');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection MES', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionLifetimeNet');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionJourNet');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection Jour', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionJourNet');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
 
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase1
@@ -1057,36 +1027,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionLifetimeNet1');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection MES 1', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionLifetimeNet1');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionJourNet1');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection Jour 1', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionJourNet1');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
+				
 				
 				//phase 2
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet2');
@@ -1185,37 +1126,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionLifetimeNet2');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection MES 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionLifetimeNet2');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionJourNet2');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection Jour 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionJourNet2');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
-
+				
 				//phase 3
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet3');
 				if (!is_object($enphasesecurCmd)) {
@@ -1314,37 +1225,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionLifetimeNet3');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection MES 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionLifetimeNet3');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
-				$enphasesecurCmd = $this->getCmd(null, 'InjectionJourNet3');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Injection Jour 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('InjectionJourNet3');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
-			}
+				
 		}
 		
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'bat') {
