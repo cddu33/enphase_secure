@@ -1225,7 +1225,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
-				
+			}
 		}
 		
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'bat') {
