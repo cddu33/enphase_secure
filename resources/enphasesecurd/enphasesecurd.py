@@ -115,33 +115,29 @@ def enphase():
 				def handle_data(self, data):
 					print("Encountered some data  :", data)
 
-			USER = args.user
-			PASSWORD = args.password
-			SITE_ID = args.site
-			SERIAL_NUMBER = args.serie
+			user = args.user
+			password = args.password
+			#SITE_ID = args.site
+			envoy_serial = args.serie
 
-			LOGIN_URL = "https://entrez.enphaseenergy.com/login"
-			TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
-			payload_login = {'username': USER, 'password': PASSWORD}
-			payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
+			# LOGIN_URL = "https://entrez.enphaseenergy.com/login"
+			# TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
+			# payload_login = {'username': USER, 'password': PASSWORD}
+			# payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 			headers = {'Content-Type': 'application/json'}
 
 			token = ""
 			try:
-				user=USER
-				password=PASSWORD
-				envoy_serial=SERIAL_NUMBER
 				data = {'user[email]': user, 'user[password]': password}
 				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
 				response_data = json.loads(response.text)
 				data = {'session_id': response_data['session_id'], 'serial_num': envoy_serial, 'username':user}
 				response = requests.post('https://entrez.enphaseenergy.com/tokens', json=data)
-				token_raw = response.text
+				token = response.text
 				# r = client.post(LOGIN_URL, data=payload_login)
 				# r = client.post(TOKEN_URL, data=payload_token)
 				# parsed_html = BeautifulSoup(r.text, "lxml")
 				# token = parsed_html.body.find('textarea').text
-				token = token_raw
 			except:
 				limit = limit + 1
 				testjeton = False
