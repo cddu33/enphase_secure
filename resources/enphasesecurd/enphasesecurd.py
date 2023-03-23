@@ -24,6 +24,7 @@ except ImportError:
 	sys.exit(1)
 
 testjeton = False
+renew = 0
 header = ''
 limit = 0
 JEEDOM_COM = ''
@@ -94,19 +95,20 @@ def enphase():
 	global limit
 	global JEEDOM_COM
 	global inventory
+	global renew
 
+	renew = renew + 1
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	#recupération Token auto
 	if args.renew == "auto": 
-		if testjeton != True:
+		if testjeton == False :
 			logging.info("Recuperation token")
 			user = args.user
 			password = args.password
 			envoy_serial = args.serie
 			headers = {'Content-Type': 'application/json'}
 			token = ""
-			testjeton = False
 			try:
 				data = {'user[email]': user, 'user[password]': password}
 				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
@@ -127,8 +129,9 @@ def enphase():
 			token = args.token
 	
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
-	while (testjeton==False & limit < 3 ):
+	while ((testjeton==False & limit < 3)|renew>60 ):
 		try:
+			renew == 0
 			if args.renew == "manu": 
 				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
