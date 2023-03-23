@@ -106,7 +106,7 @@ def enphase():
 			envoy_serial = args.serie
 			headers = {'Content-Type': 'application/json'}
 			token = ""
-		
+			testjeton = False
 			try:
 				data = {'user[email]': user, 'user[password]': password}
 				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
@@ -125,9 +125,10 @@ def enphase():
 	else:
 		if testjeton != True:
 			token = args.token
-
+	logging.info(testjeton)
+	logging.info(limit)
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
-	while (testjeton!=True & limit<3):
+	while (testjeton==False & limit < 3 ):
 		try:
 			if testjeton != True:
 				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
