@@ -128,11 +128,20 @@ def enphase():
 
 			token = ""
 			try:
-				r = client.post(LOGIN_URL, data=payload_login)
-				r = client.post(TOKEN_URL, data=payload_token)
-				parsed_html = BeautifulSoup(r.text, "lxml")
-				token = parsed_html.body.find('textarea').text
-				
+				user=USER
+				password=PASSWORD
+				envoy_serial=SERIAL_NUMBER
+				data = {'user[email]': user, 'user[password]': password}
+				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
+				response_data = json.loads(response.text)
+				data = {'session_id': response_data['session_id'], 'serial_num': envoy_serial, 'username':user}
+				response = requests.post('https://entrez.enphaseenergy.com/tokens', json=data)
+				token_raw = response.text
+				# r = client.post(LOGIN_URL, data=payload_login)
+				# r = client.post(TOKEN_URL, data=payload_token)
+				# parsed_html = BeautifulSoup(r.text, "lxml")
+				# token = parsed_html.body.find('textarea').text
+				token = token_raw
 			except:
 				limit = limit + 1
 				testjeton = False
@@ -163,8 +172,8 @@ def enphase():
 				r = client.get(LOCAL_URL + "inventory.json", headers=header)
 				JEEDOM_COM.send_change_immediate(r.json())
 				inventory = True
-				logging.debug("Attente de 10s")
-				time.sleep(10)
+				logging.debug("Attente de 5s")
+				time.sleep(5)
 	except:
 		limit = limit + 1
 		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
