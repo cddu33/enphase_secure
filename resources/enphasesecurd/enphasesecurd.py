@@ -14,14 +14,8 @@
 # along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 
 import logging, string, sys, os, time, datetime, traceback, re, signal, asyncio, jwt, httpx, json, argparse
-# from optparse import OptionParser
 from os.path import join
-# from html.parser import HTMLParser
 from json.decoder import JSONDecodeError
-# try:
-#     from BeautifulSoup import BeautifulSoup
-# except ImportError:
-#     from bs4 import BeautifulSoup
 
 try:
 	from jeedom.jeedom import *
@@ -50,15 +44,14 @@ def read_socket():
 
 def listen():
 	global limit
-	#jeedom_socket.open()
 	try:
-		while limit < 3:
+		while limit < 2:
 			if not limit == 0:
-				logging.debug("Tentative de connexion:" + str(limit))
+				logging.info("Tentative de connexion:" + str(limit))
 			try:
 				time.sleep(int(args.delais))
 			except:
-				time.sleep(10)
+				time.sleep(60)
 			enphase()
 	except:
 		logging.exception('Erreur de connexion')
@@ -104,29 +97,16 @@ def enphase():
 
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
+	#recupération Token auto
 	if args.renew == "auto": 
 		if testjeton != True:
 			logging.info("Recuperation token")
-			# class MyHTMLParser(HTMLParser):
-			# 	def handle_starttag(self, tag, attrs):
-			# 		print("Encountered a start tag:", tag)
-			# 	def handle_endtag(self, tag):
-			# 		print("Encountered an end tag :", tag)
-			# 	def handle_data(self, data):
-			# 		print("Encountered some data  :", data)
-
 			user = args.user
 			password = args.password
-			#SITE_ID = args.site
 			envoy_serial = args.serie
-
-			# LOGIN_URL = "https://entrez.enphaseenergy.com/login"
-			# TOKEN_URL = "https://entrez.enphaseenergy.com/entrez_tokens"
-			# payload_login = {'username': USER, 'password': PASSWORD}
-			# payload_token = {'Site': SITE_ID, "serialNum": SERIAL_NUMBER}
 			headers = {'Content-Type': 'application/json'}
-
 			token = ""
+		
 			try:
 				data = {'user[email]': user, 'user[password]': password}
 				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
@@ -134,73 +114,67 @@ def enphase():
 				data = {'session_id': response_data['session_id'], 'serial_num': envoy_serial, 'username':user}
 				response = requests.post('https://entrez.enphaseenergy.com/tokens', json=data)
 				token = response.text
-				# r = client.post(LOGIN_URL, data=payload_login)
-				# r = client.post(TOKEN_URL, data=payload_token)
-				# parsed_html = BeautifulSoup(r.text, "lxml")
-				# token = parsed_html.body.find('textarea').text
 				logging.debug(token)
 			except:
-				limit = limit + 1
-				testjeton = False
 				logging.error("Erreur de connexion aux serveurs Enphase")
 				JEEDOM_COM.send_change_immediate('error serveur')
+				time.sleep(5)
+				shutdown()
+
+	#utilisation du token manuel
 	else:
 		if testjeton != True:
 			token = args.token
+
+	# 3 tentative de validation du token si il n'a pas déjà été validé		
+	while (testjeton!=True & limit<3):
+		try:
+			if testjeton != True:
+				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+				header = {"Authorization": "Bearer " + token}
+			logging.info("Test Token")
+			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+			testjeton = True	
+		except:
+			limit = limit + 1
+			testjeton = False
+			logging.info("Erreur de vérification du jeton, attente de 60s pour recommmencer")
+			JEEDOM_COM.send_change_immediate('error check')
+			time.sleep(60)
+
+			#renouvellement du token
+			if limit>=3:
+				logging.info("Renouvellement du token")
+				JEEDOM_COM.send_change_immediate('error check bis')
 	try:
-		if testjeton != True:
-			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
-			header = {"Authorization": "Bearer " + token}
-		logging.info("Test Token")
-		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
-		testjeton = True	
-		#time.sleep(1)
-	except:
-		limit = limit + 1
-		testjeton = False
-		logging.error("Erreur de vérification du jeton, attente de 60s pour recommmencer")
-		JEEDOM_COM.send_change_immediate('error check')
-		time.sleep(60)
-	try:
-		if testjeton == True:
-			#logging.debug(inventory)
-			if inventory == False:
-				logging.debug("Recuperation Inventaire")
-				r = client.get(LOCAL_URL + "inventory.json", headers=header)
-				JEEDOM_COM.send_change_immediate(r.json())
-				inventory = True
-				logging.debug("Attente de 5s")
-				time.sleep(5)
+		#si le token et bon on regarde si l'inventaire est présent
+		if (testjeton == True & inventory == False):
+			logging.debug("Recuperation Inventaire")
+			r = client.get(LOCAL_URL + "inventory.json", headers=header)
+			JEEDOM_COM.send_change_immediate(r.json())
+			inventory = True
+			logging.debug("Attente de 5s")
+			time.sleep(5)
 	except:
 		limit = limit + 1
 		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
 		JEEDOM_COM.send_change_immediate('error inv')
 		testjeton = False
 		time.sleep(60)
-
 	try:
 		if testjeton == True:	
 			logging.info("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			#logging.info(r.json())
+			
 			JEEDOM_COM.send_change_immediate(r.json())
-			#time.sleep(1)
-			# logging.debug("Recuperation mesures live")
-			# r = client.get(LOCAL_URL + "ivp/meters/readings", headers=header)
-			# logging.info(r.json())
-			# JEEDOM_COM.send_change_immediate(r.json())
-			# time.sleep(1)
 			logging.info("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
-			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
-
 			limit = 0
-
 	except:
 		limit = limit + 1
 		testjeton = False
-		time.sleep(1)
+		time.sleep(5)
 
 #Demon
 
@@ -271,7 +245,6 @@ signal.signal(signal.SIGTERM, handler)
 
 try:
 	jeedom_utils.write_pid(str(_pidfile))
-	#jeedom_socket = jeedom_socket(port=_socket_port,address=_socket_host)
 	JEEDOM_COM = jeedom_com(apikey=_apikey, url=_callback, cycle=_cycle)
 	if not JEEDOM_COM.test():
 		logging.error('Network communication issues. Please fixe your Jeedom network configuration.')

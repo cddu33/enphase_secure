@@ -19,11 +19,15 @@ try {
 		die();
 	}
 		elseif ($result == '"error check"') {
-			log::add('enphasesecur', 'error', 'Mauvais token ou renouvellement');
+			log::add('enphasesecur', 'info', 'Erreur contole token, nouvelle tentative dans 60s');
 		die();
 	}
+	elseif ($result == '"error check bis"') {
+		log::add('enphasesecur', 'info', 'Erreur contole token, rtenouvellement token');
+	die();
+}
 		elseif ($result == '"error inv"') {
-			log::add('enphasesecur', 'error', 'Erreur lors de la récupération du matériel');
+			log::add('enphasesecur', 'info', 'Erreur lors de la récupération du matériel');
 		die();
 	}
 		elseif ($result == '"error arret"') {
