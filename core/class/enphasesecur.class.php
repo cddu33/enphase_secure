@@ -59,6 +59,7 @@ class enphasesecur extends eqLogic {
 		return $return;
     }
 
+	// isntallation des dépendances
 	public static function dependancy_install() {
 		log::remove(__CLASS__ . '_update');
 		passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
@@ -68,7 +69,7 @@ class enphasesecur extends eqLogic {
 		log::remove(__CLASS__ . '_update');
 	}
 
-
+	//fonction pour la création des équipement suivant la configuration choisie
 	public static function creationmaj() {
 		foreach (self::byType('enphasesecur', true) as $eqLogic) {
 			if (config::bykey('widget', __CLASS__) == 1){
@@ -185,6 +186,7 @@ class enphasesecur extends eqLogic {
 		}
 	}
 
+	//création des crons pour les onduleurs WH
 	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
         if (!is_object($enphasesecurCron15)) {
@@ -209,7 +211,7 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron1d->save();
         }
 	  }
-
+	//suppression des cron 
 	public function removecron(){
 		$cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
 		if(is_object($cron)) {
@@ -221,19 +223,18 @@ class enphasesecur extends eqLogic {
 	  }
 	}
 
-
-
 	// Fonction exécutée automatiquement avant la sauvegarde (création ou mise à jour) de l'équipement
   	public function preSave() {}
 
 	// Fonction exécutée automatiquement après la sauvegarde (création ou mise à jour) de l'équipement
 	public function postSave() {
+		//récupération des anciennes configuration => si pas de typo renseigné on fait un combiné
 		if ($this->getConfiguration('type') == '' || $this->getConfiguration('type') == null) {
 			$this->setConfiguration('type', 'combine');
 			$this->save();
 		}
+		//création des commandes communes pour équipement combiné ou production
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'prod') {
-
 			//total
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday');
 	  		if (!is_object($enphasesecurCmd)) {
@@ -299,6 +300,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 	  		}
 
+			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
 			{
 				//phase 1
@@ -430,7 +432,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				
-				  //phase3
+				//phase3
 				$enphasesecurCmd = $this->getCmd(null, 'PwattHoursToday3');
 	  			if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
@@ -497,6 +499,7 @@ class enphasesecur extends eqLogic {
 			}
 		}
 
+		//création des commandes communes pour équipement combiné ou conso total
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'total') {
 			//total
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday');
@@ -563,6 +566,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 
+			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase 1
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday1');
@@ -693,6 +697,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
+
 				//phase 3
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursToday3');
 				if (!is_object($enphasesecurCmd)) {
@@ -760,6 +765,7 @@ class enphasesecur extends eqLogic {
 			}
 		}
 
+		//création des commandes communes pour équipement combiné ou net/total conso
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net' || $this->getConfiguration('type') == 'total') {
 			//total
 			$enphasesecurCmd = $this->getCmd(null, 'tension');
@@ -777,7 +783,8 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('V');
 				$enphasesecurCmd->save();
 			}
-			
+
+			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase 1
 				$enphasesecurCmd = $this->getCmd(null, 'tension1');
@@ -829,7 +836,7 @@ class enphasesecur extends eqLogic {
 				}
 			}
 		}
-			
+		//création des commandes communes pour équipement combiné ou conso net	
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net') {
 			//total
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet');
@@ -928,7 +935,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 
-
+			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase1
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet1');
@@ -1027,8 +1034,6 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
-				
-				
 				//phase 2
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet2');
 				if (!is_object($enphasesecurCmd)) {
@@ -1126,7 +1131,6 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
-				
 				//phase 3
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet3');
 				if (!is_object($enphasesecurCmd)) {
@@ -1224,10 +1228,9 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
-
 			}
 		}
-		
+		//création des commandes communes pour équipement combiné ou batterie
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'bat') {
 			$enphasesecurCmd = $this->getCmd(null, 'batnow');
 			if (!is_object($enphasesecurCmd)) {
@@ -1292,8 +1295,6 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 			}
-
-		
 			
 			$enphasesecurCmd = $this->getCmd(null, 'calWH');
 			if (!is_object($enphasesecurCmd)) {
@@ -1321,7 +1322,7 @@ class enphasesecur extends eqLogic {
 	// Fonction exécutée automatiquement après la suppression de l'équipement
   	public function postRemove() {}
 
-	// Fontion pour widget
+	// Fontion pour widget NU pour le moment
 	public function toHtml($_version = 'dashboard') {
 		if ($this->getConfiguration('widgetTemplate') != 1) {
 			return parent::toHtml($_version);
@@ -1378,8 +1379,10 @@ class enphasesecur extends eqLogic {
         $return['launchable'] = 'ok';
 
 		if (config::byKey('ctoken', __CLASS__) == 'auto'){
-        	if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
-            	$return['launchable'] = 'nok';
+        	//if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('site', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
+			if ((config::byKey('user', __CLASS__) == '') || (config::byKey('password', __CLASS__) == '') || (config::byKey('ip', __CLASS__) == '') || (config::byKey('serie', __CLASS__) == '')) {
+	
+				$return['launchable'] = 'nok';
             	$return['launchable_message'] = __('Toutes les informations obligatoires ne sont pas remplies', __FILE__);
 			}
 		}
@@ -1395,9 +1398,10 @@ class enphasesecur extends eqLogic {
 	public static function deamon_start() {
         self::deamon_stop();
 		//self::creationmaj();
-
+		//trouver un port de libre pour la communication daemon
 		self::getFreePort();
 
+		//delais par défaut de 60s pour l'interrogation de la passerelle
 		if (config::byKey('delais', __CLASS__) == ''){
 			config::save('delais','60','enphasesecur');
 		}
@@ -1410,7 +1414,7 @@ class enphasesecur extends eqLogic {
 		if (config::byKey('delais', __CLASS__) == ''){
 			config::save('delais','60','enphasesecur');
 		}
-
+		//création des équipements suivant la configuration
 		enphasesecur::creationmaj();
 		
 		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
@@ -1421,7 +1425,7 @@ class enphasesecur extends eqLogic {
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
 		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
 		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
-		$cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
+		// $cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
 		$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
 		$cmd .= ' --token "' . trim(str_replace('"', '\"', config::byKey('token', __CLASS__))) . '"'; 
 		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 
@@ -1463,11 +1467,6 @@ class enphasesecurCmd extends cmd {
 
 	// Exécution d'une commande
   	public function execute($_options = array()) {
-	  	/*$eqlogic = $this->getEqLogic();
-		try {
-			$eqlogic->refresh();
-		} catch (Exception $exc) {
-			log::add('enphasesecur', 'error', __('Erreur pour ', __FILE__) . $eqLogic->getHumanName() . ' : ' . $exc->getMessage());
-		}*/
+	  	
   	}
 }

@@ -1,7 +1,7 @@
 <?php
 try {
 	require_once dirname(__FILE__) . "/../../../../core/php/core.inc.php";
-	
+	//controle APIKEY
 	if (!jeedom::apiAccess(init('apikey'), 'enphasesecur')) { //remplacez template par l'id de votre plugin
 		echo __('Vous n\'etes pas autorisé à effectuer cette action', __FILE__);
 		die();
@@ -9,10 +9,11 @@ try {
 	$result = file_get_contents("php://input");
 
     	if ($result == '') {
+			//test
         	echo 'OK';
 		log::add('enphasesecur', 'debug', 'Test OK');
         	die();
-	}
+	}//arret du démon pour avec message personnalisé
 		elseif ($result == '"error serveur"') {
 			log::add('enphasesecur', 'error', 'Erreur de connexion, vérifier les log du daemon et vos identifiants');
 		die();
@@ -26,10 +27,10 @@ try {
 		die();
 	}
 		elseif ($result == '"error arret"') {
-			log::add('enphasesecur', 'error', 'Arrêt du démoinn après 3 tentative de connexion à la');
+			log::add('enphasesecur', 'error', 'Arrêt du démon après 3 tentatives de connexion à la passerelle');
 		die();
 	}
-	
+	//décodage du json
 	$enphasesecur_json = json_decode($result, true);
 	
 	//prod passerelle
@@ -89,7 +90,6 @@ try {
 						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production 3 instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattsNow3', $enphasesecur_info);	
-
 					}
 					//total
 					$enphasesecur_info = $enphasesecur_json['production']['1']['whLifetime'];
@@ -107,7 +107,6 @@ try {
 					$enphasesecur_info = $enphasesecur_json['production']['1']['wNow'];
 					log::add('enphasesecur', 'debug', 'Production instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
-					
 				}
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'total') {
 					if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
@@ -127,7 +126,6 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['wNow'];
 						log::add('enphasesecur', 'debug', 'Consommation Totale 1 instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattsNow1', $enphasesecur_info);	
-
 
 						//phase2
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'];
@@ -163,7 +161,6 @@ try {
 						log::add('enphasesecur', 'debug', 'Consommation Totale instantannée: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattsNow3', $enphasesecur_info);	
 					}
-					
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Consommation Totale depuis la mise en service: ' . $enphasesecur_info);
@@ -180,32 +177,29 @@ try {
 					$enphasesecur_info = $enphasesecur_json['consumption']['0']['wNow'];
 					log::add('enphasesecur', 'debug', 'Consommation Totale instantannée: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattsNow', $enphasesecur_info);	
-					
 				}
-
 				if ($eqLogic->getConfiguration('type') != 'conv') {
 					if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
 						//phase1
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 1: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('tension1', $enphasesecur_info);
-						//phase1
+
+						//phase2
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('tension2', $enphasesecur_info);
-						//phase1
+
+						//phase3
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['2']['rmsVoltage'];
 						log::add('enphasesecur', 'debug', 'Tension réseau 3: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('tension3', $enphasesecur_info);
 					}
-					
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['rmsVoltage'];
 					log::add('enphasesecur', 'debug', 'Tension réseau: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('tension', $enphasesecur_info);
-					
 				}
-
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 					if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
 						//phase1
@@ -241,8 +235,6 @@ try {
 							$eqLogic->checkAndUpdateCmd('Import1', ($enphasesecur_info));
 							$eqLogic->checkAndUpdateCmd('Export1', 0);
 						}
-	
-
 					
 						//phase2
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLifetime'];
@@ -277,8 +269,6 @@ try {
 							$eqLogic->checkAndUpdateCmd('Import2', ($enphasesecur_info));
 							$eqLogic->checkAndUpdateCmd('Export2', 0);
 						}
-
-						
 						
 						//phase3
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLifetime'];
@@ -313,11 +303,7 @@ try {
 							$eqLogic->checkAndUpdateCmd('Import3', ($enphasesecur_info));
 							$eqLogic->checkAndUpdateCmd('Export3', 0);
 						}
-
-					
-
 					}
-					
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
@@ -351,12 +337,8 @@ try {
 						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
-
-
-
-					
 				}
-				
+				//batteries
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
 					log::add('enphasesecur', 'debug', 'Nombre de batteries: ' . $enphasesecur_json['storage']['0']['activeCount']);
 					if ($enphasesecur_json['storage']['0']['activeCount'] > 0){
@@ -410,7 +392,7 @@ try {
 			}
 		}
 	}
-	//inventaire
+	//inventaire création des équipements
 	elseif (isset($enphasesecur_json[0]['devices'])) {
 		log::add('enphasesecur', 'info', 'Réception inventaire');
 		foreach ($enphasesecur_json[0]['devices'] as $conv) {
@@ -432,22 +414,7 @@ try {
             log::add('enphasesecur', 'debug', 'Mise à jour des commandes effectuée pour l\'équipement '. $eqLogic->getHumanName());
         }
 	}
-	//export
-	// elseif (isset($enphasesecur_json['1']['actEnergyDlvd'])) {
-	//  	log::add('enphasesecur', 'info', 'Réception mesures net');
-
-	//  	//foreach ($enphasesecur_json as $enphasesecur) {
-	//  		// $eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
-	//  		// if (is_object($eqLogic)) {
-	//  			log::add('enphasesecur', 'debug', 'Export sur le réseau: ' . $enphasesecur_json['1']['actEnergyDlvd']);
-	// 			log::add('enphasesecur', 'debug', 'Net importé: ' . $enphasesecur_json['1']['actEnergyRcvd']);
-	//  			//$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
-	//  			//log::add('enphasesecur', 'debug', 'Live ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
-	//  			//$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
-	//  		//}
-	//  	//}
-	//  }
 }
 catch (Exception $e) {
-	log::add('enphasesecur', 'error', displayException($e)); //remplacez template par l'id de votre plugin
+	log::add('enphasesecur', 'error', displayException($e)); 
 }

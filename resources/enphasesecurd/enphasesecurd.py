@@ -106,7 +106,7 @@ def enphase():
 	LOCAL_URL ="https://" + args.ip + "/" 
 	if args.renew == "auto": 
 		if testjeton != True:
-			logging.debug("Recuperation token")
+			logging.info("Recuperation token")
 			# class MyHTMLParser(HTMLParser):
 			# 	def handle_starttag(self, tag, attrs):
 			# 		print("Encountered a start tag:", tag)
@@ -138,6 +138,7 @@ def enphase():
 				# r = client.post(TOKEN_URL, data=payload_token)
 				# parsed_html = BeautifulSoup(r.text, "lxml")
 				# token = parsed_html.body.find('textarea').text
+				logging.debug(token)
 			except:
 				limit = limit + 1
 				testjeton = False
@@ -150,10 +151,10 @@ def enphase():
 		if testjeton != True:
 			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
-		logging.debug("Test Token")
+		logging.info("Test Token")
 		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
 		testjeton = True	
-		time.sleep(1)
+		#time.sleep(1)
 	except:
 		limit = limit + 1
 		testjeton = False
@@ -179,7 +180,7 @@ def enphase():
 
 	try:
 		if testjeton == True:	
-			logging.debug("Recuperation mesures passerelle")
+			logging.info("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
@@ -189,7 +190,7 @@ def enphase():
 			# logging.info(r.json())
 			# JEEDOM_COM.send_change_immediate(r.json())
 			# time.sleep(1)
-			logging.debug("Recuperation mesures")
+			logging.info("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
 			#logging.info(r.json())
 			JEEDOM_COM.send_change_immediate(r.json())
@@ -225,7 +226,6 @@ parser.add_argument("--socketport", help="Port for Enphase Server", type=str)
 parser.add_argument("--user", help="User for Enphase Server", type=str)
 parser.add_argument("--password", help="Password for Enphase Server", type=str)
 parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
-parser.add_argument("--site", help="Site for Enphase Server", type=str)
 parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
@@ -262,7 +262,6 @@ logging.info('Adresse IP Passerelle : '+str(args.ip))
 if args.renew == "auto":
 	logging.info('User : '+str(args.user))
 	logging.info('Password : '+str(args.password))
-	logging.info('Id Site : '+str(args.site))
 	logging.info('Numero de serie : '+str(args.serie))
 else:
 	logging.info('Token: '+str(args.token))
