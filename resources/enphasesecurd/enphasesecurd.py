@@ -29,6 +29,7 @@ header = ''
 limit = 0
 JEEDOM_COM = ''
 inventory = False
+token = ""
 
 def read_socket():
 	global JEEDOM_SOCKET_MESSAGE
@@ -96,6 +97,7 @@ def enphase():
 	global JEEDOM_COM
 	global inventory
 	global renew
+	global token
 
 	renew = renew + 1
 	client = httpx.Client(verify=False)
@@ -108,7 +110,6 @@ def enphase():
 			password = args.password
 			envoy_serial = args.serie
 			headers = {'Content-Type': 'application/json'}
-			token = ""
 			try:
 				data = {'user[email]': user, 'user[password]': password}
 				response = requests.post('https://enlighten.enphaseenergy.com/login/login.json?',data=data) 
