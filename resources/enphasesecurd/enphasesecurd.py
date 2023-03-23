@@ -165,8 +165,9 @@ def enphase():
 		if testjeton == True:	
 			logging.info("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			time.sleep(1)
+			
 			JEEDOM_COM.send_change_immediate(r.json())
+			time.sleep(1)
 			logging.info("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
