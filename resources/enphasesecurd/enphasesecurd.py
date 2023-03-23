@@ -129,9 +129,8 @@ def enphase():
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
 	while (testjeton==False & limit < 3 ):
 		try:
-			if testjeton == False:
-				#decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
-				header = {"Authorization": "Bearer " + token}
+			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+			header = {"Authorization": "Bearer " + token}
 			logging.info("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
 			testjeton = True	
