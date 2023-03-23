@@ -14,7 +14,7 @@
 # along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
 
 import logging, string, sys, os, time, datetime, traceback, re, signal, asyncio, jwt, httpx, json, argparse
-from optparse import OptionParser
+# from optparse import OptionParser
 from os.path import join
 # from html.parser import HTMLParser
 from json.decoder import JSONDecodeError
