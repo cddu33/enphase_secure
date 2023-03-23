@@ -133,7 +133,7 @@ def enphase():
 	#retest du jeton si utilisé 60 fois
 	if  renew > int(args.delais)*60:
 		testjeton = False
-	logging.info(renew)
+	#logging.info(renew)
 
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
 	while (testjeton==False & limit < 3):
