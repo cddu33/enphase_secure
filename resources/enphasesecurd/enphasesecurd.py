@@ -16,12 +16,12 @@
 import logging, string, sys, os, time, datetime, traceback, re, signal, asyncio, jwt, httpx, json, argparse
 from optparse import OptionParser
 from os.path import join
-from html.parser import HTMLParser
+# from html.parser import HTMLParser
 from json.decoder import JSONDecodeError
-try:
-    from BeautifulSoup import BeautifulSoup
-except ImportError:
-    from bs4 import BeautifulSoup
+# try:
+#     from BeautifulSoup import BeautifulSoup
+# except ImportError:
+#     from bs4 import BeautifulSoup
 
 try:
 	from jeedom.jeedom import *
@@ -107,13 +107,13 @@ def enphase():
 	if args.renew == "auto": 
 		if testjeton != True:
 			logging.debug("Recuperation token")
-			class MyHTMLParser(HTMLParser):
-				def handle_starttag(self, tag, attrs):
-					print("Encountered a start tag:", tag)
-				def handle_endtag(self, tag):
-					print("Encountered an end tag :", tag)
-				def handle_data(self, data):
-					print("Encountered some data  :", data)
+			# class MyHTMLParser(HTMLParser):
+			# 	def handle_starttag(self, tag, attrs):
+			# 		print("Encountered a start tag:", tag)
+			# 	def handle_endtag(self, tag):
+			# 		print("Encountered an end tag :", tag)
+			# 	def handle_data(self, data):
+			# 		print("Encountered some data  :", data)
 
 			user = args.user
 			password = args.password

@@ -6,8 +6,9 @@
 
 # 23/03/2023
 
-Suppression de la donnée estimée Injection MES dans le réseau non fiable
+Utilisation de la méthode officielle pour la génération du token
 
+Suppression de la donnée estimée Injection MES dans le réseau non fiable
 
 # 20/03/2023
 
