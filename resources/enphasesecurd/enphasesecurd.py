@@ -131,7 +131,7 @@ def enphase():
 			token = args.token
 	
 	#retest du jeton si utilisé 60 fois
-	if  renew>=10:
+	if  renew > 10:
 		testjeton == False
 	logging.info(renew)
 
