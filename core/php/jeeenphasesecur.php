@@ -433,19 +433,19 @@ try {
         }
 	}
 	//live
-	elseif (isset($enphasesecur_json['meters']['pv'])) {
-		log::add('enphasesecur', 'info', 'Réception mesures live');
+	// elseif (isset($enphasesecur_json['meters']['pv'])) {
+	// 	log::add('enphasesecur', 'info', 'Réception mesures live');
 
-		//foreach ($enphasesecur_json as $enphasesecur) {
-			// $eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
-			// if (is_object($eqLogic)) {
-				log::add('enphasesecur', 'debug', 'Live grid: ' . $enphasesecur_json['meters']['grid']['agg_p_mw']);
-				//$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
-				//log::add('enphasesecur', 'debug', 'Live ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
-				//$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
-			//}
-		//}
-	}
+	// 	//foreach ($enphasesecur_json as $enphasesecur) {
+	// 		// $eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
+	// 		// if (is_object($eqLogic)) {
+	// 			log::add('enphasesecur', 'debug', 'Live grid: ' . $enphasesecur_json['meters']['grid']['agg_p_mw']);
+	// 			//$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
+	// 			//log::add('enphasesecur', 'debug', 'Live ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
+	// 			//$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
+	// 		//}
+	// 	//}
+	// }
 }
 catch (Exception $e) {
 	log::add('enphasesecur', 'error', displayException($e)); //remplacez template par l'id de votre plugin
