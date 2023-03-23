@@ -99,7 +99,7 @@ def enphase():
 	global renew
 	global token
 
-	renew = renew + 1
+	renew = renew + int(args.delais)
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	#recupération Token auto
@@ -131,14 +131,14 @@ def enphase():
 			token = args.token
 	
 	#retest du jeton si utilisé 60 fois
-	if  renew > 4:
+	if  renew > int(args.delais)*60:
 		testjeton = False
 	logging.info(renew)
 
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
 	while (testjeton==False & limit < 3):
 		try:
-			renew == 0
+			renew = 0
 			if args.renew == "manu": 
 				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
