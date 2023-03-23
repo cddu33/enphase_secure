@@ -433,19 +433,20 @@ try {
         }
 	}
 	//export
-	elseif (isset($enphasesecur_json['1']['actEnergyDlvd'])) {
-	 	log::add('enphasesecur', 'info', 'Réception mesures export');
+	// elseif (isset($enphasesecur_json['1']['actEnergyDlvd'])) {
+	//  	log::add('enphasesecur', 'info', 'Réception mesures net');
 
-	 	//foreach ($enphasesecur_json as $enphasesecur) {
-	 		// $eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
-	 		// if (is_object($eqLogic)) {
-	 			log::add('enphasesecur', 'debug', 'Réception mesures export: ' . $enphasesecur_json['1']['actEnergyDlvd']);
-	 			//$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
-	 			//log::add('enphasesecur', 'debug', 'Live ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
-	 			//$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
-	 		//}
-	 	//}
-	 }
+	//  	//foreach ($enphasesecur_json as $enphasesecur) {
+	//  		// $eqLogic = eqLogic::byLogicalId($enphasesecur['serialNumber'], 'enphasesecur');
+	//  		// if (is_object($eqLogic)) {
+	//  			log::add('enphasesecur', 'debug', 'Export sur le réseau: ' . $enphasesecur_json['1']['actEnergyDlvd']);
+	// 			log::add('enphasesecur', 'debug', 'Net importé: ' . $enphasesecur_json['1']['actEnergyRcvd']);
+	//  			//$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
+	//  			//log::add('enphasesecur', 'debug', 'Live ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
+	//  			//$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
+	//  		//}
+	//  	//}
+	//  }
 }
 catch (Exception $e) {
 	log::add('enphasesecur', 'error', displayException($e)); //remplacez template par l'id de votre plugin
