@@ -125,8 +125,7 @@ def enphase():
 	else:
 		if testjeton != True:
 			token = args.token
-	logging.info(testjeton)
-	logging.info(limit)
+	
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
 	while (testjeton==False & limit < 3 ):
 		try:
@@ -166,7 +165,7 @@ def enphase():
 		if testjeton == True:	
 			logging.info("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
-			
+			time.sleep(1)
 			JEEDOM_COM.send_change_immediate(r.json())
 			logging.info("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
