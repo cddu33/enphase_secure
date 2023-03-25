@@ -1323,32 +1323,32 @@ class enphasesecur extends eqLogic {
   	public function postRemove() {}
 
 	// Fontion pour widget NU pour le moment
-	public function toHtml($_version = 'dashboard') {
-		if ($this->getConfiguration('widgetTemplate') != 1) {
-			return parent::toHtml($_version);
-		 }
-		$replace = $this->preToHtml($_version);
-		if (!is_array($replace)) {
-			return $replace;
-		}
-		$version = jeedom::versionAlias($_version);
+	// public function toHtml($_version = 'dashboard') {
+	// 	if ($this->getConfiguration('widgetTemplate') != 1) {
+	// 		return parent::toHtml($_version);
+	// 	 }
+	// 	$replace = $this->preToHtml($_version);
+	// 	if (!is_array($replace)) {
+	// 		return $replace;
+	// 	}
+	// 	$version = jeedom::versionAlias($_version);
 	
-		foreach (($this->getCmd('info')) as $cmd) {
-			$logical = $cmd->getLogicalId();
-			$collectDate = $cmd->getCollectDate();
+	// 	foreach (($this->getCmd('info')) as $cmd) {
+	// 		$logical = $cmd->getLogicalId();
+	// 		$collectDate = $cmd->getCollectDate();
 		
-			$replace['#' . $logical . '_id#'] = $cmd->getId();
-			$replace['#' . $logical . '#'] = $cmd->execCmd();
-			$replace['#' . $logical . '_unite#'] = $cmd->getUnite();
-			$replace['#' . $logical . '_name#'] = $cmd->getName();
-			$replace['#' . $logical . '_collect#'] = $collectDate;
-		}
-		$replace['#refresh_id#'] = $this->getCmd('action', 'refresh')->getId();
+	// 		$replace['#' . $logical . '_id#'] = $cmd->getId();
+	// 		$replace['#' . $logical . '#'] = $cmd->execCmd();
+	// 		$replace['#' . $logical . '_unite#'] = $cmd->getUnite();
+	// 		$replace['#' . $logical . '_name#'] = $cmd->getName();
+	// 		$replace['#' . $logical . '_collect#'] = $collectDate;
+	// 	}
+	// 	$replace['#refresh_id#'] = $this->getCmd('action', 'refresh')->getId();
 	
-		$html = template_replace($replace, getTemplate('core', $version, 'enphasesecur_dashboard', __CLASS__));
-		cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
-		return $html;
-	}
+	// 	$html = template_replace($replace, getTemplate('core', $version, 'enphasesecur_dashboard', __CLASS__));
+	// 	cache::set('widgetHtml' . $_version . $this->getId(), $html, 0);
+	// 	return $html;
+	// }
 
 	//Fonction pour trouver un port free
 	public static function getFreePort() {
