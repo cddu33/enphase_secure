@@ -6,7 +6,7 @@
 
 
 # 20/03/2023
-Gestion du triphasé avec lmes passerelle metered uniquement:
+Gestion du triphasé avec les passerelles metered uniquement:
 - Consommation
 - Production
 
