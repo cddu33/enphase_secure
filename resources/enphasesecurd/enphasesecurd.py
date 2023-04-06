@@ -159,13 +159,14 @@ def enphase():
 				JEEDOM_COM.send_change_immediate('error check bis')
 	try:
 		#si le token et bon on regarde si l'inventaire est présent
-		if (testjeton == True & inventory == False):
-			logging.debug("Recuperation Inventaire")
-			r = client.get(LOCAL_URL + "inventory.json", headers=header)
-			JEEDOM_COM.send_change_immediate(r.json())
-			inventory = True
-			logging.debug("Attente de 5s")
-			time.sleep(5)
+		if testjeton == True:
+			if inventory == False:
+				logging.debug("Recuperation Inventaire")
+				r = client.get(LOCAL_URL + "inventory.json", headers=header)
+				JEEDOM_COM.send_change_immediate(r.json())
+				inventory = True
+				logging.debug("Attente de 5s")
+				time.sleep(5)
 	except:
 		limit = limit + 1
 		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
