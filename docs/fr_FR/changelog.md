@@ -4,6 +4,16 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 21/04/2023
+Utilisation de la méthode officielle pour la génération du token:
+
+Suppression dans la configuration du numéro de site (NU)
+Simplification de la méthode de récupération du token
+Suppression de la donnée estimée Injection MES dans le réseau non fiable suivant ou est situé le TOR de mesure
+
+Documentation du code
+
+Diverses corrections de la beta
 
 # 20/03/2023
 Gestion du triphasé avec les passerelles metered uniquement:
