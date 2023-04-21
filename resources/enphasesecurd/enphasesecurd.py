@@ -50,6 +50,8 @@ def listen():
 		while limit < 2:
 			if not limit == 0:
 				logging.info("Tentative de connexion:" + str(limit))
+				logging.debug("Attente 40s avant reconnexion")
+				time.sleep(40)
 			try:
 				time.sleep(int(args.delais))
 			except:
