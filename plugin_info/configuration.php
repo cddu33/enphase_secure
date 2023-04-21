@@ -54,14 +54,7 @@ if (!isConnect()) {
         							<input type="password" class="configKey form-control" data-l1key="password" autocomplete="new-password"/>
       							</div>
     						</div>
-							<div class="form-group auto">
-      							<label class="col-md-4 control-label">{{Id de site}}
-        							<sup><i class="fas fa-question-circle tooltips" title="{{ID du site correspondant à votre passerelle}}"></i></sup>
-      							</label>
-      							<div class="col-md-4">
-        							<input type="number" class="configKey form-control" data-l1key="site"/>
-      							</div>
-							</div>
+							
 							<legend><i class="fas fa-wrench"></i> {{Passerelle Enphase}} </legend>
     						<div class="form-group">
       							<label class="col-md-4 control-label">{{Adesse IP local}}
