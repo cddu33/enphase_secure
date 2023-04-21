@@ -8,7 +8,9 @@
 Utilisation de la méthode officielle pour la génération du token:
 
 Suppression dans la configuration du numéro de site (NU)
+
 Simplification de la méthode de récupération du token
+
 Suppression de la donnée estimée Injection MES dans le réseau non fiable suivant ou est situé le TOR de mesure
 
 Documentation du code
