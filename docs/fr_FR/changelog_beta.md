@@ -4,6 +4,10 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 21/04/2023
+
+Gestion des problèmes de déconnexion de la passerelle à 23h: rajout d'un delais pour la reconnexion afin que ça soit transparent pour jeedom
+
 # 06/04/2023
 
 Correction récupération de l'inventaire
