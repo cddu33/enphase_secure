@@ -4,11 +4,15 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 23/04/2023
+
+Gestion des problèmes de déconnexion de la passerelle à 23h: rajout d'un delais de 120s pour la reconnexion afin que ça soit transparent pour jeedom
+
 # 21/04/2023
 Utilisation de la méthode officielle pour la génération du token:
+- Suppression dans la configuration du numéro de site (NU)
+- Simplification de la méthode de récupération du token
 
-Suppression dans la configuration du numéro de site (NU)
-Simplification de la méthode de récupération du token
 Suppression de la donnée estimée Injection MES dans le réseau non fiable suivant ou est situé le TOR de mesure
 
 Documentation du code
