@@ -8,6 +8,8 @@
 
 Gestion des problèmes de déconnexion de la passerelle à 23h: rajout d'un delais de 120s pour la reconnexion afin que ça soit transparent pour jeedom
 
+Correction installation dépendances 
+
 # 06/04/2023
 
 Correction récupération de l'inventaire
