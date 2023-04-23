@@ -26,7 +26,7 @@ sudo apt-get install -y python3-setuptools
 echo 50 > ${PROGRESS_FILE}
 sudo apt-get install -y python3-requests python3-pyudev
 echo 60 > ${PROGRESS_FILE}
-sudo pip3 install pyjwt html5lib asyncio httpx lxml
+sudo pip3 install pyjwt html5lib asyncio httpx lxml html.parser
 echo 70 > ${PROGRESS_FILE}
 sudo pip3 install --ignore-installed pyserial
 echo 80 > ${PROGRESS_FILE}

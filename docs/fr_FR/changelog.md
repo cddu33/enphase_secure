@@ -8,6 +8,8 @@
 
 Gestion des problèmes de déconnexion de la passerelle à 23h: rajout d'un delais de 120s pour la reconnexion afin que ça soit transparent pour jeedom
 
+Correction installation dépendances 
+
 # 21/04/2023
 Utilisation de la méthode officielle pour la génération du token:
 - Suppression dans la configuration du numéro de site (NU)

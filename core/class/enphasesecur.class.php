@@ -42,7 +42,7 @@ class enphasesecur extends eqLogic {
         }
 		else 
 		{
-			$deps = array('bs4', 'PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six');
+			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six');
         	$return['state'] = 'ok';
         	$output = array();
 			foreach($deps as $list) {
