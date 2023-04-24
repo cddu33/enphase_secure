@@ -56,14 +56,16 @@ def listen():
 			try:
 				time.sleep(int(args.delais))
 			except:
-				time.sleep(60)
+				time.sleep(30)
 			enphase()
 	except:
 		logging.exception('Erreur de connexion')
 		logging.error('Erreur de connexion')
+		sleep(5)
 		shutdown()
 	logging.exception('Erreur de connexion')
 	logging.error('Erreur de connexion')
+	sleep(5)
 	shutdown()
 
 # ----------------------------------------------------------------------------
@@ -131,19 +133,21 @@ def enphase():
 	#utilisation du token manuel
 	else:
 		if testjeton == False:
+			logging.debug("Token Manuel, recuperation de jeedom")
 			token = args.token
 	
-	#retest du jeton si utilisé 60 fois
-	if  renew > int(args.delais)*60:
+	#retest du jeton si utilisé 12h
+	if  renew > (43200/int(args.delais)):
+		logging.debug("Token utilisé 12h, on le dévalide")
 		testjeton = False
-	#logging.info(renew)
+	logging.debug("Nombre d'utilisation du token: " + renew)
 
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
 	while (testjeton==False & limit <= 3):
 		try:
 			renew = 0
 			if args.renew == "manu": 
-				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+				token = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
 			header = {"Authorization": "Bearer " + token}
 			logging.info("Test Token")
 			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
@@ -172,10 +176,10 @@ def enphase():
 				time.sleep(5)
 	except:
 		limit = limit + 1
-		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
+		logging.error("Erreur lors de la récupération de l'inventaire, attente de 10s pour recommmencer")
 		JEEDOM_COM.send_change_immediate('error inv')
 		testjeton = False
-		time.sleep(60)
+		time.sleep(10)
 	try:
 		if testjeton == True:	
 			logging.info("Recuperation mesures")
@@ -190,8 +194,9 @@ def enphase():
 			limit = 0
 	except:
 		limit = limit + 1
+		logging.error("Erreur lors de la récupération des mesures attente de 10s pour recommmencer")
 		testjeton = False
-		time.sleep(5)
+		time.sleep(10)
 
 #Demon
 
