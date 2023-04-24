@@ -1,8 +1,12 @@
-# Changelog plugin Enphase Secure V7 version Stable
+# Changelog plugin Enphase Secure V7 version Stable = Beta
 
 >**IMPORTANT**
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+# 24/04/2023
+
+Correction problème connexion passerelle suivant la version
 
 # 23/04/2023
 

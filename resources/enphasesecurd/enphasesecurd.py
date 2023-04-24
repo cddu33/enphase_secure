@@ -47,22 +47,25 @@ def read_socket():
 def listen():
 	global limit
 	try:
-		while limit < 2:
-			if not limit == 0:
+		while limit < 3:
+			if limit >= 1:
 				logging.info("Tentative de connexion:" + str(limit))
+			if  limit >= 2:
 				logging.debug("Attente 120s avant reconnexion")
 				time.sleep(120)
 			try:
 				time.sleep(int(args.delais))
 			except:
-				time.sleep(60)
+				time.sleep(30)
 			enphase()
 	except:
 		logging.exception('Erreur de connexion')
 		logging.error('Erreur de connexion')
+		sleep(5)
 		shutdown()
 	logging.exception('Erreur de connexion')
 	logging.error('Erreur de connexion')
+	sleep(5)
 	shutdown()
 
 # ----------------------------------------------------------------------------
@@ -101,7 +104,7 @@ def enphase():
 	global renew
 	global token
 
-	renew = renew + int(args.delais)
+	renew = renew + 1
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	#recupération Token auto
@@ -130,35 +133,36 @@ def enphase():
 	#utilisation du token manuel
 	else:
 		if testjeton == False:
+			logging.debug("Token Manuel, recuperation de jeedom")
 			token = args.token
 	
-	#retest du jeton si utilisé 60 fois
-	if  renew > int(args.delais)*60:
+	#retest du jeton si utilisé 12h
+	if  renew > (43200/int(args.delais)):
+		logging.debug("Token utilisé 12h, on le dévalide")
 		testjeton = False
-	#logging.info(renew)
-
+	logging.debug("Nombre d'utilisation du token:")
+	logging.debug(renew)
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
-	while (testjeton==False & limit < 3):
-		try:
-			renew = 0
-			if args.renew == "manu": 
-				decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
-			header = {"Authorization": "Bearer " + token}
-			logging.info("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
-			testjeton = True	
-		except:
-			limit = limit + 1
-			testjeton = False
-			logging.info("Erreur de vérification du jeton, attente de 60s pour recommmencer")
-			JEEDOM_COM.send_change_immediate('error check')
-			time.sleep(60)
-
-			#renouvellement du token
-			if limit>=3:
-				logging.info("Renouvellement du token")
-				token = ""
-				JEEDOM_COM.send_change_immediate('error check bis')
+	#while (testjeton==False & limit <= 3):
+	try:
+		renew = 0
+		if args.renew == "manu": 
+			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+		header = {"Authorization": "Bearer " + token}
+		logging.info("Test Token")
+		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+		testjeton = True	
+	except:
+		limit = limit + 1
+		testjeton = False
+		logging.info("Erreur de vérification du jeton, attente de 60s pour recommmencer")
+		JEEDOM_COM.send_change_immediate('error check')
+		time.sleep(60)
+		#renouvellement du token
+		if limit>=3:
+			logging.info("Renouvellement du token")
+			token = ""
+			JEEDOM_COM.send_change_immediate('error check bis')
 	try:
 		#si le token et bon on regarde si l'inventaire est présent
 		if testjeton == True:
@@ -171,14 +175,14 @@ def enphase():
 				time.sleep(5)
 	except:
 		limit = limit + 1
-		logging.error("Erreur lors de la récupération de l'inventaire, attente de 60s pour recommmencer")
+		logging.error("Erreur lors de la récupération de l'inventaire, attente de 10s pour recommmencer")
 		JEEDOM_COM.send_change_immediate('error inv')
 		testjeton = False
-		time.sleep(60)
+		time.sleep(10)
 	try:
 		if testjeton == True:	
 			logging.info("Recuperation mesures")
-			logging.debug("Recuperation mesures passerelle")
+			# logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			
 			JEEDOM_COM.send_change_immediate(r.json())
@@ -189,8 +193,9 @@ def enphase():
 			limit = 0
 	except:
 		limit = limit + 1
+		logging.error("Erreur lors de la récupération des mesures attente de 10s pour recommmencer")
 		testjeton = False
-		time.sleep(5)
+		time.sleep(10)
 
 #Demon
 
