@@ -140,7 +140,7 @@ def enphase():
 	if  renew > (43200/int(args.delais)):
 		logging.debug("Token utilisé 12h, on le dévalide")
 		testjeton = False
-	logging.debug("Nombre d'utilisation du token: " + renew)
+	logging.debug("Nombre d'utilisation du token: " . renew)
 
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
 	while (testjeton==False & limit <= 3):
