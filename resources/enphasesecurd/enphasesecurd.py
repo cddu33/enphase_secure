@@ -143,27 +143,26 @@ def enphase():
 	logging.debug("Nombre d'utilisation du token:")
 	logging.debug(renew)
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
-	while (testjeton==False & limit <= 3):
-		try:
-			renew = 0
-			if args.renew == "manu": 
-				token = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
-			header = {"Authorization": "Bearer " + token}
-			logging.info("Test Token")
-			r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
-			testjeton = True	
-		except:
-			limit = limit + 1
-			testjeton = False
-			logging.info("Erreur de vérification du jeton, attente de 60s pour recommmencer")
-			JEEDOM_COM.send_change_immediate('error check')
-			time.sleep(60)
-
-			#renouvellement du token
-			if limit>=3:
-				logging.info("Renouvellement du token")
-				token = ""
-				JEEDOM_COM.send_change_immediate('error check bis')
+	#while (testjeton==False & limit <= 3):
+	try:
+		renew = 0
+		if args.renew == "manu": 
+			decode = jwt.decode(token, options={"verify_signature": False, "verify_aud": False}, algorithms="ES256")
+		header = {"Authorization": "Bearer " + token}
+		logging.info("Test Token")
+		r = client.get(LOCAL_URL + "auth/check_jwt", headers=header)
+		testjeton = True	
+	except:
+		limit = limit + 1
+		testjeton = False
+		logging.info("Erreur de vérification du jeton, attente de 60s pour recommmencer")
+		JEEDOM_COM.send_change_immediate('error check')
+		time.sleep(60)
+		#renouvellement du token
+		if limit>=3:
+			logging.info("Renouvellement du token")
+			token = ""
+			JEEDOM_COM.send_change_immediate('error check bis')
 	try:
 		#si le token et bon on regarde si l'inventaire est présent
 		if testjeton == True:
