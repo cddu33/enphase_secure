@@ -139,7 +139,7 @@ def enphase():
 	#logging.info(renew)
 
 	# 3 tentative de validation du token si il n'a pas déjà été validé		
-	while (testjeton==False & limit < 3):
+	while (testjeton==False & limit <= 3):
 		try:
 			renew = 0
 			if args.renew == "manu": 
