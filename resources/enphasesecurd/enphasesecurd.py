@@ -47,9 +47,10 @@ def read_socket():
 def listen():
 	global limit
 	try:
-		while limit < 2:
-			if not limit == 0:
+		while limit < 3:
+			if limit >= 1:
 				logging.info("Tentative de connexion:" + str(limit))
+			if  limit >= 2:
 				logging.debug("Attente 120s avant reconnexion")
 				time.sleep(120)
 			try:
@@ -178,7 +179,7 @@ def enphase():
 	try:
 		if testjeton == True:	
 			logging.info("Recuperation mesures")
-			logging.debug("Recuperation mesures passerelle")
+			# logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
 			
 			JEEDOM_COM.send_change_immediate(r.json())
