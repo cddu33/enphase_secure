@@ -104,7 +104,7 @@ def enphase():
 	global renew
 	global token
 
-	renew = renew + int(args.delais)
+	renew = renew + 1
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
 	#recupération Token auto
