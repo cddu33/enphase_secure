@@ -61,11 +61,11 @@ def listen():
 	except:
 		logging.exception('Erreur de connexion')
 		logging.error('Erreur de connexion')
-		sleep(5)
+		time.sleep(5)
 		shutdown()
 	logging.exception('Erreur de connexion')
 	logging.error('Erreur de connexion')
-	sleep(5)
+	time.sleep(5)
 	shutdown()
 
 # ----------------------------------------------------------------------------
