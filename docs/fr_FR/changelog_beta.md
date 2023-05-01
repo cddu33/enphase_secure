@@ -4,6 +4,10 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 01/05/2023
+
+Evite le passage à 0 du compteur Mise En Service
+
 # 24/04/2023
 
 Correction problème connexion passerelle suivant la version
