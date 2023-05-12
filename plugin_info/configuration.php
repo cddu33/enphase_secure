@@ -127,9 +127,7 @@ if (!isConnect()) {
 									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-						
-       
-        							<input type="number" class="configKey form-control" data-l1key="cmdautoconso1">
+        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso1">
 									<span class="input-group-btn">
           <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1()"><i class="fas fa-list-alt"></i></a>
         </span>
@@ -147,7 +145,7 @@ if (!isConnect()) {
 									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 2}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-        							<input type="number" class="configKey form-control" data-l1key="cmdautoconso2">
+        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso2">
 									<span class="input-group-btn">
           <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil2()"><i class="fas fa-list-alt"></i></a>
         </span>
