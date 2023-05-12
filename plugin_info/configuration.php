@@ -120,12 +120,14 @@ if (!isConnect()) {
 								</label>
 								<div class="col-md-4">
         							<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
-      							</div></br>
+      							</div>
+</div>
+								  <div class="form-group">
 								  <label class="col-sm-4 control-label">{{Commande seuil 1}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-        							<input type="number" class="configKey form-control" data-l1key="cmdautoconso1">watt
+        							<input type="number" class="configKey form-control" data-l1key="cmdautoconso1">
       							</div>
 							</div>
 							<div class="form-group">
@@ -133,13 +135,14 @@ if (!isConnect()) {
 									<sup><i class="fas fa-question-circle tooltips" title="{{Définissez la production minimum pour déclencher l'autoconsommation de niveau 2 en watts}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-        							<input type="number" class="configKey form-control" data-l1key="wattsautoconso2">watt
-      							</div></br>
+        							<input type="number" class="configKey form-control" data-l1key="wattsautoconso2">
+      							</div></div>
+								  <div class="form-group">
 								  <label class="col-sm-4 control-label">{{Commande seuil 2}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 2}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-        							<input type="number" class="configKey form-control" data-l1key="cmdautoconso2">watt
+        							<input type="number" class="configKey form-control" data-l1key="cmdautoconso2">
       							</div>
 							</div>
                             </fieldset>
