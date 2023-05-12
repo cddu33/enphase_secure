@@ -131,7 +131,7 @@ if (!isConnect()) {
        
         							<input type="number" class="configKey form-control" data-l1key="cmdautoconso1">
 									<span class="input-group-btn">
-          <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalOff()"><i class="fas fa-list-alt"></i></a>
+          <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1()"><i class="fas fa-list-alt"></i></a>
         </span>
       							</div>
 							</div>
@@ -139,7 +139,7 @@ if (!isConnect()) {
 								<label class="col-sm-4 control-label">{{Production déclenchement seuil 2}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Définissez la production minimum pour déclencher l'autoconsommation de niveau 2 en watts}}"></i></sup>
 								</label>
-								<div class="col-md-4">
+								<div class="col-lg-2">
         							<input type="number" class="configKey form-control" data-l1key="wattsautoconso2">
       							</div></div>
 								  <div class="form-group">
@@ -149,9 +149,20 @@ if (!isConnect()) {
 								<div class="col-md-4">
         							<input type="number" class="configKey form-control" data-l1key="cmdautoconso2">
 									<span class="input-group-btn">
-          <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalOff()"><i class="fas fa-list-alt"></i></a>
+          <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil2()"><i class="fas fa-list-alt"></i></a>
         </span>
       							</div>
 							</div>
                             </fieldset>
                             </form>
+							<script>
+								function modalseuil1() {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+        $('.configKey[data-l1key=cmdautoconso1]').atCaret('insert', result.human);
+    });
+	function modalseuil2() {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+        $('.configKey[data-l1key=cmdautoconso2]').atCaret('insert', result.human);
+    });
+}
+</script>
