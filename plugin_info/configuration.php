@@ -160,6 +160,7 @@ if (!isConnect()) {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1]').atCaret('insert', result.human);
     });
+}
 	function modalseuil2() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso2]').atCaret('insert', result.human);
