@@ -366,7 +366,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
 
-					if (config::bykey('typereseau', 'enphasesecur') == 'mono'){ {
+					if (config::bykey('typereseau', 'enphasesecur') == 'mono'){
 						$etatauto = $eqLogic->getCmd(null, 'autoconso1')->execCmd();
 						$import = $eqLogic->getCmd(null, 'Import')->execCmd();
 						if ($etatauto == true)
@@ -403,6 +403,7 @@ try {
 				}
 			}
 		}
+	
 		else {
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'net' || $eqLogic->getConfiguration('type') == 'total' || $eqLogic->getConfiguration('type') == 'bat') {
