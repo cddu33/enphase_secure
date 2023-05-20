@@ -142,7 +142,7 @@ if (!isConnect()) {
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1on">
       		</div>
 		</div>
-		<div class="form-group mono autoconso">
+		<div class="form-group mono">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 			</label>
@@ -153,7 +153,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri autoconso">
+		<div class="form-group tri">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase1}}"></i></sup>
 			</label>
@@ -164,7 +164,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri autoconso">
+		<div class="form-group tri">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase2}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase2}}"></i></sup>
 			</label>
@@ -175,7 +175,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri autoconso">
+		<div class="form-group tri">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase3}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase3}}"></i></sup>
 			</label>
@@ -195,7 +195,7 @@ if (!isConnect()) {
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1off">
       		</div>
 		</div>
-		<div class="form-group mono autoconso">
+		<div class="form-group mono">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1}}"></i></sup>
 			</label>
@@ -206,7 +206,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri autoconso">
+		<div class="form-group tri">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase1}}"></i></sup>
 			</label>
@@ -217,7 +217,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri autoconso">
+		<div class="form-group tri">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase2}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase2}}"></i></sup>
 			</label>
@@ -228,7 +228,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri autoconso">
+		<div class="form-group tri">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase3}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase3}}"></i></sup>
 			</label>
