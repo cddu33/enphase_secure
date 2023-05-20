@@ -108,13 +108,13 @@ if (!isConnect()) {
                 {{Le changement de mode supprimera les équipements}}
 			</div>
 		</div>
-
+		
 		<div class="form-group">
-			<label class="col-sm-4 control-label">{{Raccordement Electrique}}
+			<label class="col-md-4 control-label">{{Raccordement Electrique}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez le type de raccordement de vos panneaux solaires}}"></i></sup>
 			</label>
-			<div class="col-sm-4">
-				<select id="sel_reseau" class="configKey form-control" data-l1key="typereseau">
+			<div class="col-md-4">
+				<select id="sel_reseau" onchange="renew();" class="configKey form-control" data-l1key="typereseau">
                     <option value="mono">{{Mono-phasé}}</option>
                     <option value="tri">{{Tri-phase}}</option>
                 </select>
