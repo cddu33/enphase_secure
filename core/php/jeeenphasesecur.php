@@ -373,6 +373,7 @@ try {
 						{
 							if ($export < config::bykey('wattsautoconso1off', 'enphasesecur')) 
 							{
+								log::add('enphasesecur', 'debug', 'Arret autoconso seuil 1');
 								$eqLogic->checkAndUpdateCmd('autoconso1', 0);
 							}
 						}
@@ -380,6 +381,23 @@ try {
 							if ($export > config::bykey('wattsautoconso1on', 'enphasesecur')) 
 							{
 								$eqLogic->checkAndUpdateCmd('autoconso1', 1);
+								log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 1');
+							}
+						}
+						$etatauto = $eqLogic->getCmd(null, 'autoconso2')->execCmd();
+						if ($etatauto == true)
+						{
+							if ($export < config::bykey('wattsautoconso2off', 'enphasesecur')) 
+							{
+								log::add('enphasesecur', 'debug', 'Arret autoconso seuil 2');
+								$eqLogic->checkAndUpdateCmd('autoconso2', 0);
+							}
+						}
+						else {
+							if ($export > config::bykey('wattsautoconso2on', 'enphasesecur')) 
+							{
+								$eqLogic->checkAndUpdateCmd('autoconso2', 1);
+								log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 2');
 							}
 						}
 					}
