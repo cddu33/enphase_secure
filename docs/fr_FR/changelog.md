@@ -1,4 +1,4 @@
-# Changelog plugin Enphase Secure V7 version Stable = Beta
+# Changelog plugin Enphase Secure V7 version Stable
 
 >**IMPORTANT**
 >
