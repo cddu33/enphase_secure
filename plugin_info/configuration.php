@@ -126,7 +126,7 @@ if (!isConnect()) {
 
 		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 1}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
 			<div class="col-md-4">
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
@@ -146,7 +146,7 @@ if (!isConnect()) {
 
 		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Surplus arrêt seuil 1}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de production pour arréter l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
 			<div class="col-md-4">
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
@@ -154,7 +154,7 @@ if (!isConnect()) {
 		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arrété la consommation au niveau 1}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1}}"></i></sup>
 			</label>
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off">
@@ -175,7 +175,7 @@ if (!isConnect()) {
 }
 	function modalseuil1off() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso1ff]').atCaret('insert', result.human);
+        $('.configKey[data-l1key=cmdautoconso1off]').atCaret('insert', result.human);
     });
 }
 
