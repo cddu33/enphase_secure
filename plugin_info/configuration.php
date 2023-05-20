@@ -160,7 +160,8 @@ if (!isConnect()) {
 			<div class="col-lg-2">
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso2">
       		</div>
-		
+		</div>
+		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Commande seuil 2 ON}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 2}}"></i></sup>
 			</label>
@@ -170,7 +171,8 @@ if (!isConnect()) {
           			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil2()"><i class="fas fa-list-alt"></i></a>
         		</span>
       		</div>
-		
+		</div>
+		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Commande seuil 2OFF}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 2}}"></i></sup>
 			</label>
@@ -185,7 +187,7 @@ if (!isConnect()) {
 </form>
 <script>
 	function modalseuil1on() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on]').atCaret('insert', result.human);
     });
 }
