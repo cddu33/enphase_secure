@@ -230,7 +230,7 @@ if (!isConnect()) {
       		</div>
 		</div>
 		</br></br>
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 2}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de surplus de production minimum pour déclencher l'autoconsommation de niveau 2 en watts}}"></i></sup>
 			</label>
@@ -334,7 +334,7 @@ if (!isConnect()) {
           			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil2off3()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
-		</div>
+		</div> -->
 
 	
     </fieldset>
@@ -350,16 +350,16 @@ function modalseuil1off() {
         $('.configKey[data-l1key=cmdautoconso1off]').atCaret('insert', result.human);
     });
 }
-function modalseuil2on() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2on]').atCaret('insert', result.human);
-    });
-}
-function modalseuil2off() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2off]').atCaret('insert', result.human);
-    });
-}
+// function modalseuil2on() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2on]').atCaret('insert', result.human);
+//     });
+// }
+// function modalseuil2off() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2off]').atCaret('insert', result.human);
+//     });
+// }
 function modalseuil1on1() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on1]').atCaret('insert', result.human);
@@ -391,34 +391,34 @@ function modalseuil1on3() {
         $('.configKey[data-l1key=cmdautoconso1off3]').atCaret('insert', result.human);
     });
 }
-function modalseuil2on1() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2on1]').atCaret('insert', result.human);
-    });
-}
-	function modalseuil2off1() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2off1]').atCaret('insert', result.human);
-    });
-}
-function modalseuil2on2() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2on2]').atCaret('insert', result.human);
-    });
-}
-	function modalseuil2off2() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2off2]').atCaret('insert', result.human);
-    });
-}
-function modalseuil2on3() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2on3]').atCaret('insert', result.human);
-    });
-}
-	function modalseuil2off3() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2off3]').atCaret('insert', result.human);
-    });
-}
+// function modalseuil2on1() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2on1]').atCaret('insert', result.human);
+//     });
+// }
+// 	function modalseuil2off1() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2off1]').atCaret('insert', result.human);
+//     });
+// }
+// function modalseuil2on2() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2on2]').atCaret('insert', result.human);
+//     });
+// }
+// 	function modalseuil2off2() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2off2]').atCaret('insert', result.human);
+//     });
+// }
+// function modalseuil2on3() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2on3]').atCaret('insert', result.human);
+//     });
+// }
+// 	function modalseuil2off3() {
+//     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+//         $('.configKey[data-l1key=cmdautoconso2off3]').atCaret('insert', result.human);
+//     });
+// }
 </script>

@@ -1029,17 +1029,17 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
 				}
-				$enphasesecurCmd = $this->getCmd(null, 'autoconso21');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Autoconso 2 phase1 ', __FILE__));
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('autoconso21');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('binary');
-					$enphasesecurCmd->save();
-				}
+				// $enphasesecurCmd = $this->getCmd(null, 'autoconso21');
+				// if (!is_object($enphasesecurCmd)) {
+				// 	$enphasesecurCmd = new enphasesecurCmd();
+				// 	$enphasesecurCmd->setName(__('Autoconso 2 phase1 ', __FILE__));
+				// 	$enphasesecurCmd->setIsHistorized('1');
+				// 	$enphasesecurCmd->setEqLogic_id($this->getId());
+				// 	$enphasesecurCmd->setLogicalId('autoconso21');
+				// 	$enphasesecurCmd->setType('info');
+				// 	$enphasesecurCmd->setSubType('binary');
+				// 	$enphasesecurCmd->save();
+				// }
 
 				$enphasesecurCmd = $this->getCmd(null, 'Import1');
 				if (!is_object($enphasesecurCmd)) {
@@ -1150,17 +1150,17 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
 				}
-				$enphasesecurCmd = $this->getCmd(null, 'autoconso22');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Autoconso 2 phase2 ', __FILE__));
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('autoconso22');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('binary');
-					$enphasesecurCmd->save();
-				}
+				// $enphasesecurCmd = $this->getCmd(null, 'autoconso22');
+				// if (!is_object($enphasesecurCmd)) {
+				// 	$enphasesecurCmd = new enphasesecurCmd();
+				// 	$enphasesecurCmd->setName(__('Autoconso 2 phase2 ', __FILE__));
+				// 	$enphasesecurCmd->setIsHistorized('1');
+				// 	$enphasesecurCmd->setEqLogic_id($this->getId());
+				// 	$enphasesecurCmd->setLogicalId('autoconso22');
+				// 	$enphasesecurCmd->setType('info');
+				// 	$enphasesecurCmd->setSubType('binary');
+				// 	$enphasesecurCmd->save();
+				// }
 
 
 				$enphasesecurCmd = $this->getCmd(null, 'Import2');
@@ -1271,17 +1271,17 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
 				}
-				$enphasesecurCmd = $this->getCmd(null, 'autoconso23');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Autoconso 2 phase3 ', __FILE__));
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('autoconso23');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('binary');
-					$enphasesecurCmd->save();
-				}
+				// $enphasesecurCmd = $this->getCmd(null, 'autoconso23');
+				// if (!is_object($enphasesecurCmd)) {
+				// 	$enphasesecurCmd = new enphasesecurCmd();
+				// 	$enphasesecurCmd->setName(__('Autoconso 2 phase3 ', __FILE__));
+				// 	$enphasesecurCmd->setIsHistorized('1');
+				// 	$enphasesecurCmd->setEqLogic_id($this->getId());
+				// 	$enphasesecurCmd->setLogicalId('autoconso23');
+				// 	$enphasesecurCmd->setType('info');
+				// 	$enphasesecurCmd->setSubType('binary');
+				// 	$enphasesecurCmd->save();
+				// }
 
 
 				$enphasesecurCmd = $this->getCmd(null, 'Import3');
@@ -1312,17 +1312,17 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
 				}
-				$enphasesecurCmd = $this->getCmd(null, 'autoconso2');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Autoconso 2', __FILE__));
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('autoconso2');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('binary');
-					$enphasesecurCmd->save();
-				}
+				// $enphasesecurCmd = $this->getCmd(null, 'autoconso2');
+				// if (!is_object($enphasesecurCmd)) {
+				// 	$enphasesecurCmd = new enphasesecurCmd();
+				// 	$enphasesecurCmd->setName(__('Autoconso 2', __FILE__));
+				// 	$enphasesecurCmd->setIsHistorized('1');
+				// 	$enphasesecurCmd->setEqLogic_id($this->getId());
+				// 	$enphasesecurCmd->setLogicalId('autoconso2');
+				// 	$enphasesecurCmd->setType('info');
+				// 	$enphasesecurCmd->setSubType('binary');
+				// 	$enphasesecurCmd->save();
+				// }
 			}
 		}
 		//création des commandes communes pour équipement combiné ou batterie
