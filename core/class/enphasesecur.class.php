@@ -1018,6 +1018,29 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso11');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 1 phase1 ', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso11');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso21');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 2 phase1 ', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso21');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+
 				$enphasesecurCmd = $this->getCmd(null, 'Import1');
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
@@ -1033,6 +1056,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
+
 
 				//phase 2
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet2');
@@ -1114,6 +1138,30 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
+
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso12');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 1 phase2 ', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso11');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso22');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 2 phase2 ', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso22');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+
 
 				$enphasesecurCmd = $this->getCmd(null, 'Import2');
 				if (!is_object($enphasesecurCmd)) {
@@ -1212,6 +1260,29 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso13');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 1 phase3 ', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso13');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso23');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 2 phase3 ', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso23');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+
 
 				$enphasesecurCmd = $this->getCmd(null, 'Import3');
 				if (!is_object($enphasesecurCmd)) {
@@ -1226,6 +1297,30 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('W');
+					$enphasesecurCmd->save();
+				}
+			}
+			else {
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso1');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 1', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso1');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
+					$enphasesecurCmd->save();
+				}
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso2');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Autoconso 2', __FILE__));
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('autoconso2');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
 				}
 			}
