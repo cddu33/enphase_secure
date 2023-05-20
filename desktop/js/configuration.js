@@ -5,19 +5,16 @@
       $('.auto').hide();
     }
     else {
-        $('.auto').show();
+      $('.auto').show();
       $('.manu').hide();
     }
-  }
-
-  function renew1() {
 
     if ($('#sel_reseau').val()=='tri') {
       $('.tri').show();
       $('.mono').hide();
     }
     else {
-        $('.mono').show();
+      $('.mono').show();
       $('.tri').hide();
     }
   }

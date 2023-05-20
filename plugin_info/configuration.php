@@ -114,7 +114,7 @@ if (!isConnect()) {
 				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez le type de raccordement de vos panneaux solaires}}"></i></sup>
 			</label>
 			<div class="col-md-4">
-				<select id="sel_reseau" onchange="renew1();" class="configKey form-control" data-l1key="typereseau">
+				<select id="sel_reseau" onchange="renew();" class="configKey form-control" data-l1key="typereseau">
                     <option value="mono">{{Mono-phasé}}</option>
                     <option value="tri">{{Tri-phase}}</option>
                 </select>
