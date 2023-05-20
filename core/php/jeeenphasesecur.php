@@ -378,7 +378,7 @@ try {
 						}
 						else {
 							if ($import > config::bykey('wattsautoconso1on', 'enphasesecur') {
-								$eqLogic->checkAndUpdateCmd('autoconso1', 1;
+								$eqLogic->checkAndUpdateCmd('autoconso1', 1);
 							} )
 						}
 					}
