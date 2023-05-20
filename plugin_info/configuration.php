@@ -123,7 +123,17 @@ if (!isConnect()) {
 
 
 		<legend><i class="fas fa-wrench"></i> {{Auto Consommation}} </legend>
-
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Mode de fonctionnement}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez le type de raccordement de vos panneaux solaires}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<select id="sel_autoconso" onchange="renew();" class="configKey form-control" data-l1key="autoconso">
+                    <option value="oui">{{Automatique}}</option>
+                    <option value="non">{{Arrêt}}</option>
+                </select>
+			</div>
+		</div>
 		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>

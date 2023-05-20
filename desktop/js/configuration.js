@@ -17,4 +17,10 @@
       $('.mono').show();
       $('.tri').hide();
     }
+    if ($('#sel_autoconso').val()=='oui') {
+      $('.autoconso').show();
+    }
+    else {
+      $('.autoconso').hide();
+    }
   }
