@@ -115,7 +115,7 @@ if (!isConnect()) {
 
 							<legend><i class="fas fa-wrench"></i> {{Auto Consommation}} </legend>
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Production déclenchement seuil 1}}
+								<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 1}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Définissez la production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
 								</label>
 								<div class="col-md-4">
@@ -123,29 +123,50 @@ if (!isConnect()) {
       							</div>
 </div>
 								  <div class="form-group">
-								  <label class="col-sm-4 control-label">{{Commande seuil 1}}
+								  <label class="col-sm-4 control-label">{{Commande seuil ON 1}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso1">
+        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on">
 									<span class="input-group-btn">
           <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1()"><i class="fas fa-list-alt"></i></a>
         </span>
       							</div>
 							</div>
+							
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Production déclenchement seuil 2}}
+								  <label class="col-sm-4 control-label">{{Commande seuil OFF 1}}
+									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
+								</label>
+								<div class="col-md-4">
+        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off">
+									<span class="input-group-btn">
+          <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1()"><i class="fas fa-list-alt"></i></a>
+        </span>
+							<div class="form-group">
+								<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 2}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Définissez la production minimum pour déclencher l'autoconsommation de niveau 2 en watts}}"></i></sup>
 								</label>
 								<div class="col-lg-2">
         							<input type="number" class="configKey form-control" data-l1key="wattsautoconso2">
       							</div></div>
 								  <div class="form-group">
-								  <label class="col-sm-4 control-label">{{Commande seuil 2}}
+								  <label class="col-sm-4 control-label">{{Commande seuil ON 2}}
 									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 2}}"></i></sup>
 								</label>
 								<div class="col-md-4">
-        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso2">
+        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso2on">
+									<span class="input-group-btn">
+          <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil2()"><i class="fas fa-list-alt"></i></a>
+        </span>
+      							</div>
+							</div>
+							<div class="form-group">
+								  <label class="col-sm-4 control-label">{{Commande seuil OFF 2}}
+									<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 2}}"></i></sup>
+								</label>
+								<div class="col-md-4">
+        							<input type="text" class="configKey form-control" data-l1key="cmdautoconso2off">
 									<span class="input-group-btn">
           <a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil2()"><i class="fas fa-list-alt"></i></a>
         </span>
@@ -154,14 +175,24 @@ if (!isConnect()) {
                             </fieldset>
                             </form>
 							<script>
-								function modalseuil1() {
-    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso1]').atCaret('insert', result.human);
+								function modalseuil1on() {
+    jeedom.cmd.getSelectModalo{cmd: {type: 'action', subType: 'other'}}, function (result) {
+        $('.configKey[data-l1key=cmdautoconso1on]').atCaret('insert', result.human);
     });
 }
-	function modalseuil2() {
+	function modalseuil2on() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2]').atCaret('insert', result.human);
+        $('.configKey[data-l1key=cmdautoconso2on]').atCaret('insert', result.human);
+    });
+}
+function modalseuil1off() {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+        $('.configKey[data-l1key=cmdautoconso1ff]').atCaret('insert', result.human);
+    });
+}
+	function modalseuil2ff() {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
+        $('.configKey[data-l1key=cmdautoconso2ff]').atCaret('insert', result.human);
     });
 }
 </script>

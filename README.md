@@ -36,6 +36,8 @@ Le plugin permet de récupérer les données:
     * La production cumulée sur la journée
 
 
+Possibilité de régler 2 seuils pour déclencher des commandes suivant le surplus solaire
+
 L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
