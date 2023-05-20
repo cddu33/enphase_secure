@@ -329,6 +329,7 @@ try {
 							$eqLogic->checkAndUpdateCmd('Export3', 0);
 						}
 					}
+					
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 					if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
@@ -363,6 +364,23 @@ try {
 					else {
 						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
 						$eqLogic->checkAndUpdateCmd('Export', 0);
+						
+					}
+
+					if (config::bykey('typereseau', 'enphasesecur') == 'mono'){ {
+						$etatauto = $eqLogic->getCmd(null, 'autoconso1')->execCmd();
+						$import = $eqLogic->getCmd(null, 'Import')->execCmd();
+						if ($etatauto == true)
+						{
+							if ($import < config::bykey('wattsautoconso1off', 'enphasesecur') {
+								$eqLogic->checkAndUpdateCmd('autoconso1', 0);
+							} )
+						}
+						else {
+							if ($import > config::bykey('wattsautoconso1on', 'enphasesecur') {
+								$eqLogic->checkAndUpdateCmd('autoconso1', 1;
+							} )
+						}
 					}
 				}
 				//batteries

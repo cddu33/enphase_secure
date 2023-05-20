@@ -129,7 +129,7 @@ if (!isConnect()) {
 				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
 			<div class="col-md-4">
-        		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
+        		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1on">
       		</div>
 		</div>
 		<div class="form-group mono">
@@ -182,7 +182,7 @@ if (!isConnect()) {
 				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de production pour arréter l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
 			<div class="col-md-4">
-        		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
+        		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1off">
       		</div>
 		</div>
 		<div class="form-group mono">
