@@ -37,7 +37,7 @@ if (!isConnect()) {
                 </select>
       		</div>
     	</div>
-        <legend><i class="fas fa-wrench auto"></i> {{Connexion Serveur Enphase}}</legend>
+        <legend class="auto"><i class="fas fa-wrench auto"></i> {{Connexion Serveur Enphase}}</legend>
 		<div class="form-group auto">
       		<label class="col-md-4 control-label">{{Nom d'utilisateur Enphase}}
         		<sup><i class="fas fa-question-circle tooltips" title="{{Nom d'utilisateur que vous utilisez pour vous sur le site Enphase web}}"></i></sup>
@@ -132,12 +132,45 @@ if (!isConnect()) {
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
       		</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group mono">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 			</label>
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
+       			</span>
+      		</div>
+		</div>
+		<div class="form-group tri">
+			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase1}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase1}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on1">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
+       			</span>
+      		</div>
+		</div>
+		<div class="form-group tri">
+			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase2}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase2}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on2">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
+       			</span>
+      		</div>
+		</div>
+		<div class="form-group tri">
+			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase3}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase3}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on3">
 				<span class="input-group-btn">
           			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
        			</span>
@@ -152,12 +185,45 @@ if (!isConnect()) {
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
       		</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group mono">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1}}"></i></sup>
 			</label>
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+       			</span>
+      		</div>
+		</div>
+		<div class="form-group tri">
+			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase1}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase1}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off1">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+       			</span>
+      		</div>
+		</div>
+		<div class="form-group tri">
+			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase2}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase2}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off2">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+       			</span>
+      		</div>
+		</div>
+		<div class="form-group tri">
+			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase3}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase3}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off3">
 				<span class="input-group-btn">
           			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
        			</span>
