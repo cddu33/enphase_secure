@@ -150,7 +150,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on1">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on1()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -161,7 +161,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on2">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on2()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -172,7 +172,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on3">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1on3()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -192,7 +192,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off1()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -372,12 +372,12 @@ function modalseuil1on1() {
 }
 function modalseuil1on2() {
     jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2on2]').atCaret('insert', result.human);
+        $('.configKey[data-l1key=cmdautoconso1on2]').atCaret('insert', result.human);
     });
 }
 	function modalseuil1off2() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
-        $('.configKey[data-l1key=cmdautoconso2off2]').atCaret('insert', result.human);
+        $('.configKey[data-l1key=cmdautoconso1off2]').atCaret('insert', result.human);
     });
 
 }
