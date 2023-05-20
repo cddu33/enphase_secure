@@ -1,13 +1,27 @@
 ﻿function renew() {
-    //$('.cf_z2m').hide();
-    //$('.cf_mqtt').hide();
-    //$('.cf_mqttcli').hide();
+
     if ($('#sel_token').val()=='manu') {
       $('.manu').show();
       $('.auto').hide();
     }
     else {
-        $('.auto').show();
+      $('.auto').show();
       $('.manu').hide();
+    }
+    if ($('#sel_autoconso').val()=='oui') {
+      $('.autoconso').show();
+      if ($('#sel_reseau').val()=='tri') {
+        $('.tri').show();
+        $('.mono').hide();
+      }
+      else {
+        $('.mono').show();
+        $('.tri').hide();
+      }
+    }
+    else {
+      $('.tri').hide();
+      $('.mono').hide();
+      $('.autoconso').hide();
     }
   }

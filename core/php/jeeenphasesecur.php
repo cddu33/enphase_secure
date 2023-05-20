@@ -329,6 +329,7 @@ try {
 							$eqLogic->checkAndUpdateCmd('Export3', 0);
 						}
 					}
+					
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 					if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
@@ -364,6 +365,116 @@ try {
 						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
+					if (config::bykey('autoconso', 'enphasesecur') == 'oui')
+					{
+						if (config::bykey('typereseau', 'enphasesecur') == 'mono'){
+							$etatauto = $eqLogic->getCmd(null, 'autoconso1')->execCmd();
+							$export = $eqLogic->getCmd(null, 'Export')->execCmd();
+							if ($etatauto == true)
+							{
+								if ($export < config::bykey('wattsautoconso1off', 'enphasesecur')) 
+								{
+									log::add('enphasesecur', 'debug', 'Arret autoconso seuil 1');
+									$eqLogic->checkAndUpdateCmd('autoconso1', 0);
+									$cmdOff1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1off', 'enphasesecur', '')));
+									if (is_object($cmdOff1)) {
+										$cmdOff1->execute();
+									}
+								}
+							}
+							else {
+								if ($export > config::bykey('wattsautoconso1on', 'enphasesecur')) 
+								{
+									$eqLogic->checkAndUpdateCmd('autoconso1', 1);
+									log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 1');
+									$cmdOn1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1on', 'enphasesecur', '')));
+									if (is_object($cmdOn1)) {
+										$cmdOn1->execute();
+									}
+								}
+							}
+						}
+						else {
+							//phase1
+							$etatauto = $eqLogic->getCmd(null, 'autoconso11')->execCmd();
+							$export = $eqLogic->getCmd(null, 'Export')->execCmd();
+							if ($etatauto == true)
+							{
+								if ($export < config::bykey('wattsautoconso1off1', 'enphasesecur')) 
+								{
+									log::add('enphasesecur', 'debug', 'Arret autoconso seuil 1 phase 1');
+									$eqLogic->checkAndUpdateCmd('autoconso11', 0);
+									$cmdOff1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1off1', 'enphasesecur', '')));
+									if (is_object($cmdOff1)) {
+										$cmdOff1->execute();
+									}
+								}
+							}
+							else {
+								if ($export > config::bykey('wattsautoconso1on1', 'enphasesecur')) 
+								{
+									$eqLogic->checkAndUpdateCmd('autoconso11', 1);
+									log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 1 phase 1');
+									$cmdOn1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1on1', 'enphasesecur', '')));
+									if (is_object($cmdOn1)) {
+										$cmdOn1->execute();
+									}
+								}
+							}
+							//phase2
+							$etatauto = $eqLogic->getCmd(null, 'autoconso12')->execCmd();
+							$export = $eqLogic->getCmd(null, 'Export')->execCmd();
+							if ($etatauto == true)
+							{
+								if ($export < config::bykey('wattsautoconso1off2', 'enphasesecur')) 
+								{
+									log::add('enphasesecur', 'debug', 'Arret autoconso seuil 1 phase 2');
+									$eqLogic->checkAndUpdateCmd('autoconso12', 0);
+									$cmdOff1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1off2', 'enphasesecur', '')));
+									if (is_object($cmdOff1)) {
+										$cmdOff1->execute();
+									}
+								}
+							}
+							else {
+								if ($export > config::bykey('wattsautoconso1on2', 'enphasesecur')) 
+								{
+									$eqLogic->checkAndUpdateCmd('autoconso12', 1);
+									log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 1 phase 2');
+									$cmdOn1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1on1', 'enphasesecur', '')));
+									if (is_object($cmdOn1)) {
+										$cmdOn1->execute();
+									}
+								}
+							}
+							//phase3
+							$etatauto = $eqLogic->getCmd(null, 'autoconso13')->execCmd();
+							$export = $eqLogic->getCmd(null, 'Export')->execCmd();
+							if ($etatauto == true)
+							{
+								if ($export < config::bykey('wattsautoconso1off3', 'enphasesecur')) 
+								{
+									log::add('enphasesecur', 'debug', 'Arret autoconso seuil 1 phase 3');
+									$eqLogic->checkAndUpdateCmd('autoconso13', 0);
+									$cmdOff1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1off3', 'enphasesecur', '')));
+									if (is_object($cmdOff1)) {
+										$cmdOff1->execute();
+									}
+								}
+							}
+							else {
+								if ($export > config::bykey('wattsautoconso1on3', 'enphasesecur')) 
+								{
+									$eqLogic->checkAndUpdateCmd('autoconso13', 1);
+									log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 1 phase 3');
+									$cmdOn1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1on3', 'enphasesecur', '')));
+									if (is_object($cmdOn1)) {
+										$cmdOn1->execute();
+									}
+								}
+							}			
+						}
+					}
 				}
 				//batteries
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
@@ -384,6 +495,7 @@ try {
 				}
 			}
 		}
+	
 		else {
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'net' || $eqLogic->getConfiguration('type') == 'total' || $eqLogic->getConfiguration('type') == 'bat') {
