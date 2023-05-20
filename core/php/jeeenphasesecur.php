@@ -364,7 +364,6 @@ try {
 					else {
 						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
 						$eqLogic->checkAndUpdateCmd('Export', 0);
-						
 					}
 
 					if (config::bykey('typereseau', 'enphasesecur') == 'mono'){ {
@@ -372,14 +371,16 @@ try {
 						$import = $eqLogic->getCmd(null, 'Import')->execCmd();
 						if ($etatauto == true)
 						{
-							if ($import < config::bykey('wattsautoconso1off', 'enphasesecur') {
+							if ($import < config::bykey('wattsautoconso1off', 'enphasesecur')) 
+							{
 								$eqLogic->checkAndUpdateCmd('autoconso1', 0);
-							} )
+							}
 						}
 						else {
-							if ($import > config::bykey('wattsautoconso1on', 'enphasesecur') {
+							if ($import > config::bykey('wattsautoconso1on', 'enphasesecur')) 
+							{
 								$eqLogic->checkAndUpdateCmd('autoconso1', 1);
-							} )
+							}
 						}
 					}
 				}
