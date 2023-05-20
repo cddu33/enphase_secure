@@ -134,7 +134,7 @@ if (!isConnect()) {
                 </select>
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group autoconso">
 			<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
@@ -142,7 +142,7 @@ if (!isConnect()) {
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1on">
       		</div>
 		</div>
-		<div class="form-group mono">
+		<div class="form-group mono autoconso">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 			</label>
@@ -153,7 +153,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri">
+		<div class="form-group tri autoconso">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase1}}"></i></sup>
 			</label>
@@ -164,7 +164,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri">
+		<div class="form-group tri autoconso">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase2}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase2}}"></i></sup>
 			</label>
@@ -175,7 +175,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri">
+		<div class="form-group tri autoconso">
 			<label class="col-sm-4 control-label">{{Commande déclenchement seuil 1 phase3}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1 phase3}}"></i></sup>
 			</label>
@@ -187,7 +187,7 @@ if (!isConnect()) {
       		</div>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group autoconso">
 			<label class="col-sm-4 control-label">{{Surplus arrêt seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le seuil de production pour arréter l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
@@ -195,7 +195,7 @@ if (!isConnect()) {
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1off">
       		</div>
 		</div>
-		<div class="form-group mono">
+		<div class="form-group mono autoconso">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1}}"></i></sup>
 			</label>
@@ -206,7 +206,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri">
+		<div class="form-group tri autoconso">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase1}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase1}}"></i></sup>
 			</label>
@@ -217,7 +217,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri">
+		<div class="form-group tri autoconso">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase2}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase2}}"></i></sup>
 			</label>
@@ -228,7 +228,7 @@ if (!isConnect()) {
        			</span>
       		</div>
 		</div>
-		<div class="form-group tri">
+		<div class="form-group tri autoconso">
 			<label class="col-sm-4 control-label">{{Commande arrêt seuil 1 phase3}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher pour arréter l'autoconsomamtion de niveau 1 phase3}}"></i></sup>
 			</label>
