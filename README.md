@@ -36,7 +36,7 @@ Le plugin permet de récupérer les données:
     * La production cumulée sur la journée
 
 
-Pour maximiser l'autoconsomamtion, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
+Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
 
 L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
 
