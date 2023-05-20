@@ -185,7 +185,7 @@ if (!isConnect()) {
 </form>
 <script>
 	function modalseuil1on() {
-    jeedom.cmd.getSelectModalo{cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on]').atCaret('insert', result.human);
     });
 }
