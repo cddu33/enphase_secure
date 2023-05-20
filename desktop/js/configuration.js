@@ -12,7 +12,7 @@
 
   function renew1() {
 
-    if ($('#sel_token').val()=='tri') {
+    if ($('#sel_reseau').val()=='tri') {
       $('.tri').show();
       $('.mono').hide();
     }
