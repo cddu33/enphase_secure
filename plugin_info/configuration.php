@@ -192,7 +192,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off1()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -203,7 +203,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off1">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off1()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -214,7 +214,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off2">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off2()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
@@ -225,7 +225,7 @@ if (!isConnect()) {
 			<div class="col-md-4">
         		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1off3">
 				<span class="input-group-btn">
-          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off()"><i class="fas fa-list-alt"></i></a>
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1off3()"><i class="fas fa-list-alt"></i></a>
        			</span>
       		</div>
 		</div>
