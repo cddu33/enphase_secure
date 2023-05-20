@@ -375,6 +375,10 @@ try {
 							{
 								log::add('enphasesecur', 'debug', 'Arret autoconso seuil 1');
 								$eqLogic->checkAndUpdateCmd('autoconso1', 0);
+								$cmdOff1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1off', 'enphasesecur', '')));
+								if (is_object($cmdOff1)) {
+									$cmdOff1->execute();
+								}
 							}
 						}
 						else {
@@ -382,6 +386,10 @@ try {
 							{
 								$eqLogic->checkAndUpdateCmd('autoconso1', 1);
 								log::add('enphasesecur', 'debug', 'Demarrage autoconso seuil 1');
+								$cmdOn1 = cmd::byId(str_replace('#','',config::byKey('cmdautoconso1on', 'enphasesecur', '')));
+								if (is_object($cmdOn1)) {
+									$cmdOn1->execute();
+								}
 							}
 						}
 
