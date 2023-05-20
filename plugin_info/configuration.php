@@ -126,12 +126,23 @@ if (!isConnect()) {
 
 		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Surplus déclenchement seuil 1}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez la production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Définissez le surplus de production minimum pour déclencher l'autoconsommation de niveau 1 en watts}}"></i></sup>
 			</label>
 			<div class="col-md-4">
         		<input type="number" class="configKey form-control" data-l1key="wattsautoconso1">
+      		</div></br>
+			  <label class="col-sm-4 control-label">{{Commande seuil 1 ON}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+        		<input type="text" class="configKey form-control" data-l1key="cmdautoconso1on">
+				<span class="input-group-btn">
+          			<a class="btn btn-default cursor" title="Rechercher une commande" onclick="modalseuil1()"><i class="fas fa-list-alt"></i></a>
+       			</span>
       		</div>
+		</div>
 		
+		<div class="form-group">
 			<label class="col-sm-4 control-label">{{Commande seuil 1 ON}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Commande à déclencher au niveau 1}}"></i></sup>
 			</label>
