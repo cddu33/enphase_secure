@@ -340,49 +340,49 @@ if (!isConnect()) {
     </fieldset>
 </form>
 <script>
-	function modalseuil1on() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+function modalseuil1on() {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on]').atCaret('insert', result.human);
     });
 }
-	function modalseuil1off() {
+function modalseuil1off() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1off]').atCaret('insert', result.human);
     });
 }
 function modalseuil2on() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso2on]').atCaret('insert', result.human);
     });
 }
-	function modalseuil2off() {
+function modalseuil2off() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso2off]').atCaret('insert', result.human);
     });
 }
 function modalseuil1on1() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on1]').atCaret('insert', result.human);
     });
 }
-	function modalseuil1off1() {
+function modalseuil1off1() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1off1]').atCaret('insert', result.human);
     });
 }
 function modalseuil1on2() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on2]').atCaret('insert', result.human);
     });
 }
-	function modalseuil1off2() {
+function modalseuil1off2() {
     jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1off2]').atCaret('insert', result.human);
     });
 
 }
 function modalseuil1on3() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso1on3]').atCaret('insert', result.human);
     });
 }
@@ -392,7 +392,7 @@ function modalseuil1on3() {
     });
 }
 function modalseuil2on1() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso2on1]').atCaret('insert', result.human);
     });
 }
@@ -402,7 +402,7 @@ function modalseuil2on1() {
     });
 }
 function modalseuil2on2() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso2on2]').atCaret('insert', result.human);
     });
 }
@@ -412,7 +412,7 @@ function modalseuil2on2() {
     });
 }
 function modalseuil2on3() {
-    jeedom.cmd.getSelectModalo({cmd: {type: 'action', subType: 'other'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'action', subType: 'other'}}, function (result) {
         $('.configKey[data-l1key=cmdautoconso2on3]').atCaret('insert', result.human);
     });
 }
