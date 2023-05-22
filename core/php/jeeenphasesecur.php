@@ -415,7 +415,7 @@ try {
 							
 						$oldcumulexport = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
 						//if ($oldcumulexport == "" || $oldcumulexport == null || $oldcumulexport == " ") {$oldcumulexport = 0;}
-						log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport);
+						log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('h'));
 						$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 						log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis);
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
