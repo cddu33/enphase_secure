@@ -405,9 +405,10 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
+					$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet', 'enphasesecur');
 					$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);
 
-					$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet', 'enphasesecur');
+					
 						
 					$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 					log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
