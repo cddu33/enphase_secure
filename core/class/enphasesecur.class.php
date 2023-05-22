@@ -183,6 +183,10 @@ class enphasesecur extends eqLogic {
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				$eqLogic->checkAndUpdateCmd('calWH', 0);
 			}
+			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
+				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
+				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
+			}
 		}
 	}
 
@@ -194,7 +198,6 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron15->setClass('enphasesecur');
             $enphasesecurCron15->setFunction('enphasesecurCron15');
             $enphasesecurCron15->setEnable(1);
-            //$enphasesecurCron15->setSchedule('*/1 * * * *');
 			$enphasesecurCron15->setSchedule('*/15 * * * *');
             $enphasesecurCron15->setTimeout('1');
             $enphasesecurCron15->save();
@@ -205,8 +208,7 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron1d->setClass('enphasesecur');
             $enphasesecurCron1d->setFunction('enphasesecurCron1d');
             $enphasesecurCron1d->setEnable(1);
-           	$enphasesecurCron1d->setSchedule('1 0 * * *');
-		   	//$enphasesecurCron1d->setSchedule('*/5 * * * *');
+           	$enphasesecurCron1d->setSchedule('0 0 * * *');
             $enphasesecurCron1d->setTimeout('1');
             $enphasesecurCron1d->save();
         }
@@ -1533,8 +1535,9 @@ class enphasesecur extends eqLogic {
         			$enphasesecurCmd->setUnite('Wh');
         			$enphasesecurCmd->save();
 			}
-			 self::creacron();
-			
+
+			self::removecron();
+			self::creacron();
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -1648,7 +1651,6 @@ class enphasesecur extends eqLogic {
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
 		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
 		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
-		// $cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
 		$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
 		$cmd .= ' --token "' . trim(str_replace('"', '\"', config::byKey('token', __CLASS__))) . '"'; 
 		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 
