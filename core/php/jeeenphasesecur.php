@@ -415,13 +415,13 @@ try {
 							
 						$oldcumulexport = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
 						//if ($oldcumulexport == "" || $oldcumulexport == null || $oldcumulexport == " ") {$oldcumulexport = 0;}
-						log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('h'));
+						log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
 						$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 						log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis);
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
 					}
 					else {
-						if (date('h') > 1) {
+						if (date('G') > 1) {
 							$oldcumulimport = config::bykey('cumulimport', 'enphasesecur');
 							if ($oldcumulimport == "" || $oldcumulimport == null || $oldcumulimport == " ") {$oldcumulimport = 0;}
 							$enphasesecur_infobis = $oldcumulimport - $testexportimport;
