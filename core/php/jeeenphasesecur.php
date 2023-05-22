@@ -235,23 +235,29 @@ try {
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whToday']-$enphasesecur_json['production']['1']['lines']['0']['whToday'];
 						}
 						
+						log::add('enphasesecur', 'debug', 'Consommation Net du jour 1: ' . $enphasesecur_info);
+						$oldCwattHoursTodayNet = $eqLogic->getCmd(null, 'CwattHoursTodayNet1')->execCmd();
+						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet1', $enphasesecur_info);	
 						
-						$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet1', 'enphasesecur');
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
-
+						//log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 						if ($testexportimport > 0) {
-							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+								
+							$oldcumulexport = $eqLogic->getCmd(null, 'cumulexport1')->execCmd();
+							//log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
+							$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul export jour phase 1: ' . $enphasesecur_infobis);
 							$eqLogic->checkAndUpdateCmd('cumulexport1', $enphasesecur_infobis);
 						}
 						else {
-							if (date('h') > 1) {
-								$enphasesecur_infobis = $enphasesecur_info - $testexportimport;
+							if (date('G') > 1) {
+								$oldcumulimport = $eqLogic->getCmd(null, 'cumulimport1')->execCmd();
+								$enphasesecur_infobis = $oldcumulimport - $testexportimport;
 								log::add('enphasesecur', 'debug', 'Cumul import jour phase 1: ' . $enphasesecur_infobis);
 								$eqLogic->checkAndUpdateCmd('cumulimport1', $enphasesecur_infobis);
 							}
 							else {
-								log::add('enphasesecur', 'debug', 'Blocage Cumul import jour phase 1');
+								log::add('enphasesecur', 'debug', 'Blocage Cumul import jour phase 2');
 							}
 						}
 
@@ -291,18 +297,24 @@ try {
 							//merci Bison
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whToday']-$enphasesecur_json['production']['1']['lines']['1']['whToday'];
 						}
-
-						$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet2', 'enphasesecur');
+						log::add('enphasesecur', 'debug', 'Consommation Net du jour 2: ' . $enphasesecur_info);
+						$oldCwattHoursTodayNet = $eqLogic->getCmd(null, 'CwattHoursTodayNet2')->execCmd();
+						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet2', $enphasesecur_info);	
+						
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
-
+						//log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 						if ($testexportimport > 0) {
-							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+								
+							$oldcumulexport = $eqLogic->getCmd(null, 'cumulexport2')->execCmd();
+							//log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
+							$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul export jour phase 2: ' . $enphasesecur_infobis);
 							$eqLogic->checkAndUpdateCmd('cumulexport2', $enphasesecur_infobis);
 						}
 						else {
-							if (date('h') > 1) {
-								$enphasesecur_infobis = $enphasesecur_info - $testexportimport;
+							if (date('G') > 1) {
+								$oldcumulimport = $eqLogic->getCmd(null, 'cumulimport2')->execCmd();
+								$enphasesecur_infobis = $oldcumulimport - $testexportimport;
 								log::add('enphasesecur', 'debug', 'Cumul import jour phase 2: ' . $enphasesecur_infobis);
 								$eqLogic->checkAndUpdateCmd('cumulimport2', $enphasesecur_infobis);
 							}
@@ -311,8 +323,8 @@ try {
 							}
 						}
 
-						log::add('enphasesecur', 'debug', 'Consommation Net du jour 2: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet2', $enphasesecur_info);	
+
+						
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
@@ -348,17 +360,24 @@ try {
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['2']['whToday']-$enphasesecur_json['production']['1']['lines']['2']['whToday'];
 						}
 
-						$oldCwattHoursTodayNet = $eqLogic->getCmd(null, 'Export')->execCmd(); config::bykey('CwattHoursTodayNet3', 'enphasesecur');
+						log::add('enphasesecur', 'debug', 'Consommation Net du jour 3: ' . $enphasesecur_info);
+						$oldCwattHoursTodayNet = $eqLogic->getCmd(null, 'CwattHoursTodayNet3')->execCmd();
+						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet3', $enphasesecur_info);	
+						
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
-
+						//log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 						if ($testexportimport > 0) {
-							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+								
+							$oldcumulexport = $eqLogic->getCmd(null, 'cumulexport3')->execCmd();
+							//log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
+							$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul export jour phase 3: ' . $enphasesecur_infobis);
 							$eqLogic->checkAndUpdateCmd('cumulexport3', $enphasesecur_infobis);
 						}
 						else {
-							if (date('h') > 1) {
-								$enphasesecur_infobis = $enphasesecur_info - $testexportimport;
+							if (date('G') > 1) {
+								$oldcumulimport = $eqLogic->getCmd(null, 'cumulimport3')->execCmd();
+								$enphasesecur_infobis = $oldcumulimport - $testexportimport;
 								log::add('enphasesecur', 'debug', 'Cumul import jour phase 3: ' . $enphasesecur_infobis);
 								$eqLogic->checkAndUpdateCmd('cumulimport3', $enphasesecur_infobis);
 							}
@@ -366,9 +385,6 @@ try {
 								log::add('enphasesecur', 'debug', 'Blocage Cumul import jour phase 3');
 							}
 						}
-
-						log::add('enphasesecur', 'debug', 'Consommation Net du jour 3: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet3', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
@@ -405,26 +421,22 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
-					$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet', 'enphasesecur');
+					$oldCwattHoursTodayNet = $eqLogic->getCmd(null, 'CwattHoursTodayNet')->execCmd();
 					$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);
-
-					
 						
 					$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
-					log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
+					//log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 					if ($testexportimport > 0) {
 							
 						$oldcumulexport = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
-						//if ($oldcumulexport == "" || $oldcumulexport == null || $oldcumulexport == " ") {$oldcumulexport = 0;}
-						log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
+						//log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
 						$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 						log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis);
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
 					}
 					else {
 						if (date('G') > 1) {
-							$oldcumulimport = config::bykey('cumulimport', 'enphasesecur');
-							if ($oldcumulimport == "" || $oldcumulimport == null || $oldcumulimport == " ") {$oldcumulimport = 0;}
+							$oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
 							$enphasesecur_infobis = $oldcumulimport - $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul import jour: ' . $enphasesecur_infobis);
 							$eqLogic->checkAndUpdateCmd('cumulimport', $enphasesecur_infobis);
