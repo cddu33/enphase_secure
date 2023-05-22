@@ -404,13 +404,13 @@ try {
 						//merci Bison
 						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 					}
-
 						$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet', 'enphasesecur');
+
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 						log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 						if ($testexportimport > 0) {
 							$oldcumulexport = config::bykey('cumulexport', 'enphasesecur');
-							$enphasesecur_infobis = oldcumulexport + $testexportimport;
+							$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis);
 							$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
 						}
