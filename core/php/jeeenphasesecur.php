@@ -578,6 +578,16 @@ try {
 							}			
 						}
 					}
+					else {
+						if (config::bykey('typereseau', 'enphasesecur') == 'mono'){
+							$eqLogic->checkAndUpdateCmd('autoconso1', 1);
+						}
+						else {
+						$eqLogic->checkAndUpdateCmd('autoconso13', 1);
+						$eqLogic->checkAndUpdateCmd('autoconso13', 1);
+						$eqLogic->checkAndUpdateCmd('autoconso13', 1);
+					}
+					}
 				}
 				//batteries
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'bat') {
