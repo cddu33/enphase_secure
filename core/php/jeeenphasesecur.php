@@ -407,7 +407,7 @@ try {
 
 					$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet', 'enphasesecur');
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
-
+						log::add('enphasesecur', 'debug', 'TEST: ' . $testexportimport);
 						if ($testexportimport > 0) {
 							$enphasesecur_info = $enphasesecur_info + $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_info);
