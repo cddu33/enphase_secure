@@ -16,6 +16,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
+    * Cumul Journalier Export réseau
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
@@ -26,6 +27,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
+    * Cumul journalier Import réseau
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée

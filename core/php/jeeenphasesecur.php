@@ -41,6 +41,7 @@ try {
 	if (isset($enphasesecur_json['production']['0']['wNow'])) {
 		log::add('enphasesecur', 'debug', 'Réception mesures passerelle');
 		if (isset($enphasesecur_json['production']['1']['whLifetime'])) {
+			
 			foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 				if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'prod') {
 					if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
@@ -233,7 +234,28 @@ try {
 							//merci Bison
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['whToday']-$enphasesecur_json['production']['1']['lines']['0']['whToday'];
 						}
-						log::add('enphasesecur', 'debug', 'Consommation Net du jour 1: ' . $enphasesecur_info);
+						
+						
+						$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet1', 'enphasesecur');
+						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info
+
+						if ($testexportimport > 0) {
+							$enphasesecur_info = $enphasesecur_info + $testexportimport;
+							log::add('enphasesecur', 'debug', 'Cumul export jour phase 1: ' . $enphasesecur_info);
+							$eqLogic->checkAndUpdateCmd('cumulexport1', $enphasesecur_info);
+						}
+						else {
+							if (date('h') > 1) {
+								$enphasesecur_infobis = $enphasesecur_info - $testexportimport;
+								log::add('enphasesecur', 'debug', 'Cumul import jour phase 1: ' . $enphasesecur_infobis);
+								$eqLogic->checkAndUpdateCmd('cumulimport1', $enphasesecur_infobis);
+							}
+							else {
+								log::add('enphasesecur', 'debug', 'Blocage Cumul import jour phase 1');
+							}
+						}
+
+						log::add('enphasesecur', 'debug', 'Consommation Net jour 1: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet1', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['whLastSevenDays'];
