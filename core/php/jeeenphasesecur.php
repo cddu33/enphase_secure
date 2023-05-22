@@ -580,13 +580,13 @@ try {
 					}
 					else {
 						if (config::bykey('typereseau', 'enphasesecur') == 'mono'){
-							$eqLogic->checkAndUpdateCmd('autoconso1', 1);
+							$eqLogic->checkAndUpdateCmd('autoconso1', 0);
 						}
 						else {
-						$eqLogic->checkAndUpdateCmd('autoconso13', 1);
-						$eqLogic->checkAndUpdateCmd('autoconso13', 1);
-						$eqLogic->checkAndUpdateCmd('autoconso13', 1);
-					}
+							$eqLogic->checkAndUpdateCmd('autoconso13', 0);
+							$eqLogic->checkAndUpdateCmd('autoconso13', 0);
+							$eqLogic->checkAndUpdateCmd('autoconso13', 0);
+						}
 					}
 				}
 				//batteries
