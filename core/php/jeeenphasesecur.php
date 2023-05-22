@@ -240,9 +240,9 @@ try {
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 
 						if ($testexportimport > 0) {
-							$enphasesecur_info = $enphasesecur_info + $testexportimport;
-							log::add('enphasesecur', 'debug', 'Cumul export jour phase 1: ' . $enphasesecur_info);
-							$eqLogic->checkAndUpdateCmd('cumulexport1', $enphasesecur_info);
+							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+							log::add('enphasesecur', 'debug', 'Cumul export jour phase 1: ' . $enphasesecur_infobis);
+							$eqLogic->checkAndUpdateCmd('cumulexport1', $enphasesecur_infobis);
 						}
 						else {
 							if (date('h') > 1) {
@@ -296,9 +296,9 @@ try {
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 
 						if ($testexportimport > 0) {
-							$enphasesecur_info = $enphasesecur_info + $testexportimport;
-							log::add('enphasesecur', 'debug', 'Cumul export jour phase 2: ' . $enphasesecur_info);
-							$eqLogic->checkAndUpdateCmd('cumulexport2', $enphasesecur_info);
+							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+							log::add('enphasesecur', 'debug', 'Cumul export jour phase 2: ' . $enphasesecur_infobis);
+							$eqLogic->checkAndUpdateCmd('cumulexport2', $enphasesecur_infobis);
 						}
 						else {
 							if (date('h') > 1) {
@@ -352,9 +352,9 @@ try {
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 
 						if ($testexportimport > 0) {
-							$enphasesecur_info = $enphasesecur_info + $testexportimport;
-							log::add('enphasesecur', 'debug', 'Cumul export jour phase 3: ' . $enphasesecur_info);
-							$eqLogic->checkAndUpdateCmd('cumulexport3', $enphasesecur_info);
+							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+							log::add('enphasesecur', 'debug', 'Cumul export jour phase 3: ' . $enphasesecur_infobis);
+							$eqLogic->checkAndUpdateCmd('cumulexport3', $enphasesecur_infobis);
 						}
 						else {
 							if (date('h') > 1) {
@@ -409,9 +409,9 @@ try {
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 						log::add('enphasesecur', 'debug', 'TEST: ' . $testexportimport);
 						if ($testexportimport > 0) {
-							$enphasesecur_info = $enphasesecur_info + $testexportimport;
-							log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_info);
-							$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_info);
+							$enphasesecur_infobis = $enphasesecur_info + $testexportimport;
+							log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis);
+							$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
 						}
 						else {
 							if (date('h') > 1) {
