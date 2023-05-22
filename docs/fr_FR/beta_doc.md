@@ -35,7 +35,7 @@ Le plugin permet de récupérer les données:
 * les onduleurs
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
-    * La production cumulée sur la journée
+    * La production cumulée sur la journée (estimation)
 
 
 Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
