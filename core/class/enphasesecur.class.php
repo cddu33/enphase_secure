@@ -167,6 +167,7 @@ class enphasesecur extends eqLogic {
 
 	public function enphasesecurCron15(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			//ajout valeur au wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				$ancienprod = $eqLogic->getCmd(null, 'calWH')->execCmd();
 				$puissance = $eqLogic->getCmd(null, 'Watt')->execCmd();
@@ -180,9 +181,11 @@ class enphasesecur extends eqLogic {
 
 	public function enphasesecurCron1d(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			//init wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				$eqLogic->checkAndUpdateCmd('calWH', 0);
 			}
+			//init cumul import et export à minuit
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
@@ -190,7 +193,7 @@ class enphasesecur extends eqLogic {
 		}
 	}
 
-	//création des crons pour les onduleurs WH
+	//création des crons pour les onduleurs WH et init cumul export import
 	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
         if (!is_object($enphasesecurCron15)) {
