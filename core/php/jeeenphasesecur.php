@@ -405,7 +405,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 					}
 						$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet', 'enphasesecur');
-
+						if ($oldCwattHoursTodayNet == "") {$oldCwattHoursTodayNet = 0;}
 						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 						log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 						if ($testexportimport > 0) {
