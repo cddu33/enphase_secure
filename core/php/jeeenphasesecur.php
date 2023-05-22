@@ -237,7 +237,7 @@ try {
 						
 						
 						$oldCwattHoursTodayNet = config::bykey('CwattHoursTodayNet1', 'enphasesecur');
-						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info
+						$testexportimport = $oldCwattHoursTodayNet - $enphasesecur_info;
 
 						if ($testexportimport > 0) {
 							$enphasesecur_info = $enphasesecur_info + $testexportimport;
