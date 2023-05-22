@@ -410,6 +410,7 @@ try {
 						log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
 						if ($testexportimport > 0) {
 							$oldcumulexport = config::bykey('cumulexport', 'enphasesecur');
+							log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport);
 							$enphasesecur_infobis = $oldcumulexport + $testexportimport;
 							log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis);
 							$eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
