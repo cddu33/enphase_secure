@@ -7,7 +7,7 @@
 # 25/05/2023
 Rajout de 2 données calculées:
 - Import Journalier réseau
-- Export Journalier réseau
+- Export Journalier réseau (estimation)
 
 Merci @gus69 et @Neoseb38 pour leurs recherches
 
