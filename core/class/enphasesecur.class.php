@@ -167,6 +167,7 @@ class enphasesecur extends eqLogic {
 
 	public function enphasesecurCron15(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			//ajout valeur au wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				$ancienprod = $eqLogic->getCmd(null, 'calWH')->execCmd();
 				$puissance = $eqLogic->getCmd(null, 'Watt')->execCmd();
@@ -180,13 +181,19 @@ class enphasesecur extends eqLogic {
 
 	public function enphasesecurCron1d(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			//init wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				$eqLogic->checkAndUpdateCmd('calWH', 0);
+			}
+			//init cumul import et export à minuit
+			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
+				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
+				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
 			}
 		}
 	}
 
-	//création des crons pour les onduleurs WH
+	//création des crons pour les onduleurs WH et init cumul export import
 	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
         if (!is_object($enphasesecurCron15)) {
@@ -194,7 +201,6 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron15->setClass('enphasesecur');
             $enphasesecurCron15->setFunction('enphasesecurCron15');
             $enphasesecurCron15->setEnable(1);
-            //$enphasesecurCron15->setSchedule('*/1 * * * *');
 			$enphasesecurCron15->setSchedule('*/15 * * * *');
             $enphasesecurCron15->setTimeout('1');
             $enphasesecurCron15->save();
@@ -205,8 +211,7 @@ class enphasesecur extends eqLogic {
             $enphasesecurCron1d->setClass('enphasesecur');
             $enphasesecurCron1d->setFunction('enphasesecurCron1d');
             $enphasesecurCron1d->setEnable(1);
-           	$enphasesecurCron1d->setSchedule('1 0 * * *');
-		   	//$enphasesecurCron1d->setSchedule('*/5 * * * *');
+           	$enphasesecurCron1d->setSchedule('0 0 * * *');
             $enphasesecurCron1d->setTimeout('1');
             $enphasesecurCron1d->save();
         }
@@ -935,6 +940,38 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 
+			$enphasesecurCmd = $this->getCmd(null, 'cumulimport');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Import Jour Réseau', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '2');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('cumulimport');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
+			}
+
+			$enphasesecurCmd = $this->getCmd(null, 'cumulexport');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Export Jour Réseau', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				$enphasesecurCmd->setConfiguration('historizeRound', '2');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('cumulexport');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->save();
+			}
+
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase1
@@ -1054,6 +1091,38 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('W');
+					$enphasesecurCmd->save();
+				}
+
+				$enphasesecurCmd = $this->getCmd(null, 'cumulimport1');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Import Jour Réseau 1', __FILE__));
+					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setConfiguration('historizeRound', '2');
+					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('cumulimport1');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('numeric');
+					$enphasesecurCmd->setUnite('Wh');
+					$enphasesecurCmd->save();
+				}
+
+				$enphasesecurCmd = $this->getCmd(null, 'cumulexport1');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Export Jour Réseau 1', __FILE__));
+					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setConfiguration('historizeRound', '2');
+					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('cumulexport1');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('numeric');
+					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
 				}
 
@@ -1179,6 +1248,38 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 
+				$enphasesecurCmd = $this->getCmd(null, 'cumulimport2');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Import Jour Réseau 2', __FILE__));
+					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setConfiguration('historizeRound', '2');
+					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('cumulimport2');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('numeric');
+					$enphasesecurCmd->setUnite('Wh');
+					$enphasesecurCmd->save();
+				}
+	
+				$enphasesecurCmd = $this->getCmd(null, 'cumulexport2');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Export Jour Réseau 2', __FILE__));
+					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setConfiguration('historizeRound', '2');
+					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('cumulexport2');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('numeric');
+					$enphasesecurCmd->setUnite('Wh');
+					$enphasesecurCmd->save();
+				}
+
 				//phase 3
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursTodayNet3');
 				if (!is_object($enphasesecurCmd)) {
@@ -1299,6 +1400,38 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
 				}
+
+				$enphasesecurCmd = $this->getCmd(null, 'cumulimport3');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Import Jour Réseau 3', __FILE__));
+					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setConfiguration('historizeRound', '2');
+					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('cumulimport3');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('numeric');
+					$enphasesecurCmd->setUnite('Wh');
+					$enphasesecurCmd->save();
+				}
+	
+				$enphasesecurCmd = $this->getCmd(null, 'cumulexport3');
+				if (!is_object($enphasesecurCmd)) {
+					$enphasesecurCmd = new enphasesecurCmd();
+					$enphasesecurCmd->setName(__('Export Jour Réseau 3', __FILE__));
+					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+					$enphasesecurCmd->setIsHistorized('1');
+					$enphasesecurCmd->setConfiguration('historizeRound', '2');
+					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+					$enphasesecurCmd->setEqLogic_id($this->getId());
+					$enphasesecurCmd->setLogicalId('cumulexport3');
+					$enphasesecurCmd->setType('info');
+					$enphasesecurCmd->setSubType('numeric');
+					$enphasesecurCmd->setUnite('Wh');
+					$enphasesecurCmd->save();
+				}
 			}
 			else {
 				$enphasesecurCmd = $this->getCmd(null, 'autoconso1');
@@ -1405,8 +1538,9 @@ class enphasesecur extends eqLogic {
         			$enphasesecurCmd->setUnite('Wh');
         			$enphasesecurCmd->save();
 			}
-			 self::creacron();
-			
+
+			self::removecron();
+			self::creacron();
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
@@ -1520,7 +1654,6 @@ class enphasesecur extends eqLogic {
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
 		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
 		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
-		// $cmd .= ' --site "' . trim(str_replace('"', '\"', config::byKey('site', __CLASS__))) . '"'; 
 		$cmd .= ' --serie "' . trim(str_replace('"', '\"', config::byKey('serie', __CLASS__))) . '"'; 
 		$cmd .= ' --token "' . trim(str_replace('"', '\"', config::byKey('token', __CLASS__))) . '"'; 
 		$cmd .= ' --ip "' . trim(str_replace('"', '\"', config::byKey('ip', __CLASS__))) . '"'; 

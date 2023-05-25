@@ -4,6 +4,14 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 25/05/2023
+Rajout de 2 données calculées:
+- Import Journalier réseau
+- Export Journalier réseau
+
+Merci @gus69 et @Neoseb38 pour leurs recherches
+
+
 # 20/05/2023
 
 Rajout du mode autoconsommation dans la page de config

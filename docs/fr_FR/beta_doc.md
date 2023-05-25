@@ -16,6 +16,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
+    * Cumul Journalier Export réseau
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
@@ -26,6 +27,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
+    * Cumul journalier Import réseau
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée
@@ -33,7 +35,7 @@ Le plugin permet de récupérer les données:
 * les onduleurs
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
-    * La production cumulée sur la journée
+    * La production cumulée sur la journée (estimation)
 
 
 Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
