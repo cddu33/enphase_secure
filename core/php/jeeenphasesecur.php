@@ -228,7 +228,9 @@ try {
 						if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
 							log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 1: ' . $enphasesecur_info);
 							$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet1');
-
+							if ($oldCwattHoursLifetimeNet == null || $oldCwattHoursLifetimeNet =='' || $oldCwattHoursLifetimeNet == 0) {
+								$oldCwattHoursLifetimeNet == $eqLogic->getCmd(null, 'CwattHoursLifetimeNet1')->execCmd();
+							}
 						$eqLogic->setConfiguration('oldCwattHoursLifetimeNet1', $enphasesecur_info);
 						$eqLogic->save();
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet1', $enphasesecur_info);	
@@ -249,6 +251,9 @@ try {
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net du jour 1: ' . $enphasesecur_info);
 						$oldCwattHoursTodayNet = $eqLogic->getConfiguration('oldCwattHoursTodayNet1');
+						if ($oldCwattHoursTodayNet == null || $oldCwattHoursTodayNet =='' || $oldCwattHoursTodayNet == 0) {
+							$oldCwattHoursTodayNet == $eqLogic->getCmd(null, 'CwattHoursTodayNet1')->execCmd();
+						}
 						$eqLogic->setConfiguration('oldCwattHoursTodayNet1', $enphasesecur_info);
 						$eqLogic->save();
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet1', $enphasesecur_info);	
@@ -290,8 +295,11 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLifetime'];
 						if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
 							log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 2: ' . $enphasesecur_info);
-							$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet2');
 
+							$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet2');
+							if ($oldCwattHoursLifetimeNet == null || $oldCwattHoursLifetimeNet =='' || $oldCwattHoursLifetimeNet == 0) {
+								$oldCwattHoursLifetimeNet == $eqLogic->getCmd(null, 'CwattHoursLifetimeNet2')->execCmd();
+							}
 						$eqLogic->setConfiguration('oldCwattHoursLifetimeNet2', $enphasesecur_info);
 						$eqLogic->save();
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet2', $enphasesecur_info);	
@@ -312,8 +320,11 @@ try {
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net du jour 2: ' . $enphasesecur_info);
 						$oldCwattHoursTodayNet = $eqLogic->getConfiguration('oldCwattHoursTodayNet2');
-					$eqLogic->setConfiguration('oldCwattHoursTodayNet2', $enphasesecur_info);
-					$eqLogic->save();
+						if ($oldCwattHoursTodayNet == null || $oldCwattHoursTodayNet =='' || $oldCwattHoursTodayNet == 0) {
+							$oldCwattHoursTodayNet == $eqLogic->getCmd(null, 'CwattHoursTodayNet2')->execCmd();
+						}
+						$eqLogic->setConfiguration('oldCwattHoursTodayNet2', $enphasesecur_info);
+						$eqLogic->save();
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet2', $enphasesecur_info);	
 						
 						$testexport = $oldCwattHoursTodayNet - $enphasesecur_info;
@@ -354,6 +365,9 @@ try {
 						if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
 							log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 3: ' . $enphasesecur_info);
 							$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet3');
+							if ($oldCwattHoursLifetimeNet == null || $oldCwattHoursLifetimeNet =='' || $oldCwattHoursLifetimeNet == 0) {
+								$oldCwattHoursLifetimeNet == $eqLogic->getCmd(null, 'CwattHoursLifetimeNet3')->execCmd();
+							}
 
 						$eqLogic->setConfiguration('oldCwattHoursLifetimeNet3', $enphasesecur_info);
 						$eqLogic->save();
@@ -376,6 +390,9 @@ try {
 
 						log::add('enphasesecur', 'debug', 'Consommation Net du jour 3: ' . $enphasesecur_info);
 						$oldCwattHoursTodayNet = $eqLogic->getConfiguration('oldCwattHoursTodayNet3');
+						if ($oldCwattHoursTodayNet == null || $oldCwattHoursTodayNet =='' || $oldCwattHoursTodayNet == 0) {
+							$oldCwattHoursTodayNet == $eqLogic->getCmd(null, 'CwattHoursTodayNet3')->execCmd();
+						}
 						$eqLogic->setConfiguration('oldCwattHoursTodayNet3', $enphasesecur_info);
 						$eqLogic->save();
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet3', $enphasesecur_info);	
@@ -420,6 +437,9 @@ try {
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 						
                       	$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet');
+						  if ($oldCwattHoursLifetimeNet == null || $oldCwattHoursLifetimeNet =='' || $oldCwattHoursLifetimeNet == 0) {
+							$oldCwattHoursLifetimeNet == $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
+						}
 
 						$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $enphasesecur_info);
 						$eqLogic->save();
@@ -442,6 +462,9 @@ try {
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
 					$oldCwattHoursTodayNet = $eqLogic->getConfiguration('oldCwattHoursTodayNet');
+					if ($oldCwattHoursTodayNet == null || $oldCwattHoursTodayNet =='' || $oldCwattHoursTodayNet == 0) {
+						$oldCwattHoursTodayNet == $eqLogic->getCmd(null, 'CwattHoursTodayNet')->execCmd();
+					}
 					$eqLogic->setConfiguration('oldCwattHoursTodayNet', $enphasesecur_info);
 					$eqLogic->save();
 					$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);
