@@ -946,7 +946,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setName(__('Import Jour Réseau', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
-				$enphasesecurCmd->setConfiguration('historizeRound', '0');
+				//$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				$enphasesecurCmd->setEqLogic_id($this->getId());
 				$enphasesecurCmd->setLogicalId('cumulimport');
@@ -962,7 +962,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setName(__('Export Jour Réseau', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
-				$enphasesecurCmd->setConfiguration('historizeRound', '0');
+				//$enphasesecurCmd->setConfiguration('historizeRound', '0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				$enphasesecurCmd->setEqLogic_id($this->getId());
 				$enphasesecurCmd->setLogicalId('cumulexport');
