@@ -447,7 +447,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
 						//log::add('enphasesecur', 'debug', 'test valeur enregistré: ' . $oldCwattHoursLifetimeNet . 'Valeur dans jeedom: ' . $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd() );
                       	$testimport = $enphasesecur_info - $oldCwattHoursLifetimeNet;
-                      	if ($testimport >= 0) {
+                      	if ($testimport > 0) {
                           $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
                           $enphasesecur_infobis = $oldcumulimport + $testimport;
 					
@@ -469,11 +469,16 @@ try {
 					$eqLogic->setConfiguration('oldCwattHoursTodayNet', $enphasesecur_info);
 					$eqLogic->save();
 					$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);
+					if ($oldCwattHoursTodayNet <0) {$oldCwattHoursTodayNet = $oldCwattHoursTodayNet*(-1);}
+                  	if ($enphasesecur_info <0) {$enphasesecur_info = $enphasesecur_info*(-1);}
 					
-					$testexport = $oldCwattHoursTodayNet - $enphasesecur_info;
-					//log::add('enphasesecur', 'debug', 'Balance: ' . $testexportimport);
-                 // log::add('enphasesecur', 'info', 'Export: ' . $testexport);
-					if ($testexport >= 0 && $enphasesecur_info >= 0) {
+                  $testexport = $enphasesecur_info - $oldCwattHoursTodayNet;
+                  
+               
+					//log::add('enphasesecur', 'info', 'Balance: ' . $testexport);
+                 // log::add('enphasesecur', 'info', 'old: ' . $oldCwattHoursTodayNet);
+                 // log::add('enphasesecur', 'info', 'Export: ' . $enphasesecur_info);
+					if ($testexport > 0) {
 						if (date('G') > 1) {
                           $oldcumulexport = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
                           //log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
