@@ -1214,7 +1214,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setName(__('Autoconso 1 phase2 ', __FILE__));
 					$enphasesecurCmd->setIsHistorized('1');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('autoconso11');
+					$enphasesecurCmd->setLogicalId('autoconso12');
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
