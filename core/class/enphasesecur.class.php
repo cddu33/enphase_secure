@@ -1444,6 +1444,12 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
 				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
+				}
 	
 				$enphasesecurCmd = $this->getCmd(null, 'cumulexport2');
 				if (!is_object($enphasesecurCmd)) {
@@ -1477,6 +1483,12 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('Wh'); 
 					$enphasesecurCmd->save();
 				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
+				}
 	
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDaysNet3');
 				if (!is_object($enphasesecurCmd)) {
@@ -1492,6 +1504,12 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
+				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
 				}
 			
 				$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetimeNet3');
@@ -1525,6 +1543,12 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
+				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
 				}
 				
 				$enphasesecurCmd = $this->getCmd(null, 'Export3');
@@ -1619,6 +1643,12 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
+				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
 				}
 			}
 			else {
