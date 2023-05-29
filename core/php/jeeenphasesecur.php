@@ -446,7 +446,7 @@ try {
 						$eqLogic->save();
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
 						log::add('enphasesecur', 'info', 'test valeur enregistré: ' . $oldCwattHoursLifetimeNet . 'Valeur dans jeedom: ' . $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd() );
-                      	$testimport = $enphasese-cur_info - $oldCwattHoursLifetimeNet;
+                      	$testimport = $enphasesecur_info - $oldCwattHoursLifetimeNet;
                       	if ($testimport > 0) {
                           $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
                           $enphasesecur_infobis = $oldcumulimport + $testimport;
