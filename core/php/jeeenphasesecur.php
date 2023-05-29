@@ -462,7 +462,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption'][0]['whToday']-$enphasesecur_json['production'][1]['whToday'];
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
-					$oldCwattHoursTodayNet =  $eqLogic->getCmd(null, 'cumulexport')->execCmd();
+					$oldCwattHoursTodayNet = $eqLogic->getConfiguration('oldCwattHoursTodayNet');
 					if ($oldCwattHoursTodayNet == null || $oldCwattHoursTodayNet =='' || $oldCwattHoursTodayNet == 0) {
 						$oldCwattHoursTodayNet == $eqLogic->getCmd(null, 'CwattHoursTodayNet')->execCmd();
 					}
