@@ -257,7 +257,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 	  		}
 			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -279,7 +279,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 	  		}
 			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -301,7 +301,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 	  		}
 			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
@@ -323,7 +323,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 	  		}
 			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -349,7 +349,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -371,7 +371,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -393,7 +393,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -415,7 +415,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -437,7 +437,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -459,7 +459,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -481,7 +481,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -503,7 +503,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -526,7 +526,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 	  			}
 				  else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -536,7 +536,7 @@ class enphasesecur extends eqLogic {
 	  			if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Prod Semaine 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');life
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
 					$enphasesecurCmd->setGeneric_type('POWER');
@@ -548,7 +548,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 	  			}
 				  else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -570,7 +570,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 	  			}
 				  else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -592,7 +592,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -619,7 +619,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -641,7 +641,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -663,7 +663,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
@@ -685,7 +685,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -710,7 +710,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -732,7 +732,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -754,7 +754,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -776,7 +776,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -799,7 +799,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -821,7 +821,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -843,7 +843,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -865,7 +865,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -888,7 +888,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -910,7 +910,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -932,7 +932,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -954,7 +954,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1053,7 +1053,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1075,7 +1075,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1097,7 +1097,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
@@ -1119,7 +1119,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1141,7 +1141,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1163,7 +1163,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1185,7 +1185,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1207,7 +1207,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -1232,7 +1232,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1254,7 +1254,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1276,7 +1276,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -1298,7 +1298,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1320,7 +1320,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1365,7 +1365,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1388,7 +1388,7 @@ class enphasesecur extends eqLogic {
 				}
 
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1410,7 +1410,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1434,7 +1434,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1456,7 +1456,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1478,7 +1478,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -1500,7 +1500,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1522,7 +1522,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1568,7 +1568,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1590,7 +1590,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1612,7 +1612,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1635,7 +1635,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1657,7 +1657,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1679,7 +1679,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
@@ -1702,7 +1702,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1724,7 +1724,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1770,7 +1770,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1792,7 +1792,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1814,7 +1814,7 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
@@ -1863,7 +1863,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -2091,3 +2091,4 @@ class enphasesecurCmd extends cmd {
 	  	
   	}
 }
+ 
