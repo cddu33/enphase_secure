@@ -691,6 +691,7 @@ class enphasesecur extends eqLogic {
 				}
 			}
 
+			
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
 				//phase 1
