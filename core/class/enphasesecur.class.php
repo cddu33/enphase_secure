@@ -671,7 +671,7 @@ class enphasesecur extends eqLogic {
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Total MES 1', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -683,8 +683,8 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '');
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -760,7 +760,7 @@ class enphasesecur extends eqLogic {
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Total MES 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -772,8 +772,8 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '');
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -851,7 +851,7 @@ class enphasesecur extends eqLogic {
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Total MES 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -863,8 +863,8 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '');
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1022,7 +1022,7 @@ class enphasesecur extends eqLogic {
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Net MES', __FILE__));
-				$enphasesecurCmd->setConfiguration('historizeRound', '');
+				$enphasesecurCmd->setConfiguration('historizeRound', '3');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1034,8 +1034,8 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -1196,7 +1196,7 @@ class enphasesecur extends eqLogic {
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Net MES 1 ', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1208,8 +1208,8 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '');
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1386,7 +1386,7 @@ class enphasesecur extends eqLogic {
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Net MES 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1398,8 +1398,8 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '');
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1582,7 +1582,7 @@ class enphasesecur extends eqLogic {
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Net MES 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1594,8 +1594,8 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '');
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
 				}
