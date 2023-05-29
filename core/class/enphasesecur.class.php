@@ -256,12 +256,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 	  		}
-			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			  
 	  		
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursSevenDays');
 	  		if (!is_object($enphasesecurCmd)) {
@@ -278,12 +273,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 	  		}
-			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			  
 
 			$enphasesecurCmd = $this->getCmd(null, 'PwattHoursLifetime');
 	  		if (!is_object($enphasesecurCmd)) {
@@ -300,12 +290,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 	  		}
-			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
-					$enphasesecurCmd->save();
-				}
-			}
+			  
 
 			$enphasesecurCmd = $this->getCmd(null, 'PwattsNow');
 	  		if (!is_object($enphasesecurCmd)) {
@@ -322,12 +307,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 	  		}
-			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			  
 
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
@@ -558,12 +538,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
 			if (!is_object($enphasesecurCmd)) {
@@ -580,12 +555,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
 			if (!is_object($enphasesecurCmd)) {
@@ -602,12 +572,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
 			if (!is_object($enphasesecurCmd)) {
@@ -624,12 +589,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 
 			//si triphasé
@@ -933,12 +893,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh'); 
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
   
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDaysNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -955,12 +910,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 		
 			$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetimeNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -977,12 +927,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '');
-					$enphasesecurCmd->save();
-				}
-			}
+			
   
 			$enphasesecurCmd = $this->getCmd(null, 'CwattsNowNet');
 			if (!is_object($enphasesecurCmd)) {
@@ -999,12 +944,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 			
 			$enphasesecurCmd = $this->getCmd(null, 'Export');
 			if (!is_object($enphasesecurCmd)) {
@@ -1021,12 +961,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 			$enphasesecurCmd = $this->getCmd(null, 'Import');
 			if (!is_object($enphasesecurCmd)) {
@@ -1043,12 +978,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 			$enphasesecurCmd = $this->getCmd(null, 'cumulimport');
 			if (!is_object($enphasesecurCmd)) {
@@ -1065,12 +995,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 			$enphasesecurCmd = $this->getCmd(null, 'cumulexport');
 			if (!is_object($enphasesecurCmd)) {
@@ -1087,12 +1012,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
@@ -1582,7 +1502,7 @@ class enphasesecur extends eqLogic {
 				
 			}
 			else {
-				$enphasesecurCmd = $this->getCmd(null, 'autoconso1');
+				$enphasesecurCmd = $this->getCmd(null, 'autoconso1');else
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Autoconso 1', __FILE__));
@@ -1623,12 +1543,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('W');
 				$enphasesecurCmd->save();
 			}
-			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->save();
-				}
-			}
+			
 
 			$enphasesecurCmd = $this->getCmd(null, 'batperc');
 			if (!is_object($enphasesecurCmd)) {
