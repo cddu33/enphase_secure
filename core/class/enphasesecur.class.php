@@ -523,7 +523,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -546,7 +546,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '3');
 					$enphasesecurCmd->save();
 				}
@@ -568,7 +568,7 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
 					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
