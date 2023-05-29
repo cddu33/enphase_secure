@@ -522,6 +522,13 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
+			else {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->save();
+				}
+			}
+			
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursSevenDays');
 			if (!is_object($enphasesecurCmd)) {
@@ -538,12 +545,18 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
+			else {
+				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->save();
+				}
+			}
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattHoursLifetime');
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Total MES', __FILE__));
-				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setConfiguration('historizeRound', '');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -553,6 +566,12 @@ class enphasesecur extends eqLogic {
 				$enphasesecurCmd->setSubType('numeric');
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
+			}
+			else {
+				if ($enphasesecurCmd->getConfiguration('historizeRound') =! '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->save();
+				}
 			}
 
 	  		$enphasesecurCmd = $this->getCmd(null, 'CwattsNow');
