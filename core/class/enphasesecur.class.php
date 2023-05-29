@@ -1683,6 +1683,12 @@ class enphasesecur extends eqLogic {
 				 	$enphasesecurCmd->setUnite('W');
 				 	$enphasesecurCmd->save();
 				 }
+				 else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
+				}
 
 				 $enphasesecurCmd = $this->getCmd(null, 'cumulimport3');
 				 if (!is_object($enphasesecurCmd)) {
@@ -1699,6 +1705,12 @@ class enphasesecur extends eqLogic {
 				 	$enphasesecurCmd->setUnite('Wh');
 				 	$enphasesecurCmd->save();
 				 }
+				 else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
+				}
 	
 				$enphasesecurCmd = $this->getCmd(null, 'cumulexport3');
 				if (!is_object($enphasesecurCmd)) {
