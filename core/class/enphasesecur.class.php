@@ -1444,12 +1444,6 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
 				}
-				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
-						$enphasesecurCmd->save();
-					}
-				}
 	
 				$enphasesecurCmd = $this->getCmd(null, 'cumulexport2');
 				if (!is_object($enphasesecurCmd)) {
@@ -1465,12 +1459,6 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
-				}
-				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
-						$enphasesecurCmd->save();
-					}
 				}
 
 				//phase 3
@@ -1565,50 +1553,50 @@ class enphasesecur extends eqLogic {
 					$enphasesecurCmd->setSubType('binary');
 					$enphasesecurCmd->save();
 				}
-				// $enphasesecurCmd = $this->getCmd(null, 'autoconso23');
+				// // $enphasesecurCmd = $this->getCmd(null, 'autoconso23');
+				// // if (!is_object($enphasesecurCmd)) {
+				// // 	$enphasesecurCmd = new enphasesecurCmd();
+				// // 	$enphasesecurCmd->setName(__('Autoconso 2 phase3 ', __FILE__));
+				// // 	$enphasesecurCmd->setIsHistorized('1');
+				// // 	$enphasesecurCmd->setEqLogic_id($this->getId());
+				// // 	$enphasesecurCmd->setLogicalId('autoconso23');
+				// // 	$enphasesecurCmd->setType('info');
+				// // 	$enphasesecurCmd->setSubType('binary');
+				// // 	$enphasesecurCmd->save();
+				// // }
+
+
+				// $enphasesecurCmd = $this->getCmd(null, 'Import3');
 				// if (!is_object($enphasesecurCmd)) {
 				// 	$enphasesecurCmd = new enphasesecurCmd();
-				// 	$enphasesecurCmd->setName(__('Autoconso 2 phase3 ', __FILE__));
+				// 	$enphasesecurCmd->setName(__('Import Réseau 3', __FILE__));
+				// 	$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				// 	$enphasesecurCmd->setIsHistorized('1');
+				// 	$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				// 	$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				// 	$enphasesecurCmd->setEqLogic_id($this->getId());
-				// 	$enphasesecurCmd->setLogicalId('autoconso23');
+				// 	$enphasesecurCmd->setLogicalId('Import3');
 				// 	$enphasesecurCmd->setType('info');
-				// 	$enphasesecurCmd->setSubType('binary');
+				// 	$enphasesecurCmd->setSubType('numeric');
+				// 	$enphasesecurCmd->setUnite('W');
 				// 	$enphasesecurCmd->save();
 				// }
 
-
-				$enphasesecurCmd = $this->getCmd(null, 'Import3');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Import Réseau 3', __FILE__));
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('Import3');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('W');
-					$enphasesecurCmd->save();
-				}
-
-				$enphasesecurCmd = $this->getCmd(null, 'cumulimport3');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Import Jour Réseau 3', __FILE__));
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
-					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('cumulimport3');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->save();
-				}
+				// $enphasesecurCmd = $this->getCmd(null, 'cumulimport3');
+				// if (!is_object($enphasesecurCmd)) {
+				// 	$enphasesecurCmd = new enphasesecurCmd();
+				// 	$enphasesecurCmd->setName(__('Import Jour Réseau 3', __FILE__));
+				// 	$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				// 	$enphasesecurCmd->setIsHistorized('1');
+				// 	$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				// 	$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				// 	$enphasesecurCmd->setEqLogic_id($this->getId());
+				// 	$enphasesecurCmd->setLogicalId('cumulimport3');
+				// 	$enphasesecurCmd->setType('info');
+				// 	$enphasesecurCmd->setSubType('numeric');
+				// 	$enphasesecurCmd->setUnite('Wh');
+				// 	$enphasesecurCmd->save();
+				// }
 	
 				$enphasesecurCmd = $this->getCmd(null, 'cumulexport3');
 				if (!is_object($enphasesecurCmd)) {
