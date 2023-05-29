@@ -1599,7 +1599,7 @@ class enphasesecur extends eqLogic {
 						$enphasesecurCmd->save();
 					}
 				}
-				
+				 
 				
 	
 				$enphasesecurCmd = $this->getCmd(null, 'CwattsNowNet3');
