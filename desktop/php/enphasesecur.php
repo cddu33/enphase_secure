@@ -39,7 +39,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				echo '<br>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
 				echo '<span class="hiddenAsCard displayTableRight hidden">';
-				echo ($eqLogic->getIsVisible() == 1) ? '<i class="fas fa-eye" title="{{Paserelles visibles}}"></i>' : '<i class="fas fa-eye-slash" title="{{Passerelels non visibles}}"></i>';
+				echo ($eqLogic->getIsVisible() == 1) ? '<i class="fas fa-eye" title="{{Paserelles visibles}}"></i>' : '<i class="fas fa-eye-slash" title="{{Passerelles non visibles}}"></i>';
 				echo '</span>';
 				echo '</div>';
 			}
