@@ -449,6 +449,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
                       	
 						$testimport = $enphasesecur_info - $oldCwattHoursLifetimeNet;
+                      log::add('enphasesecur', 'info', 'Ancien index import: ' . $oldCwattHoursLifetimeNet . ' , Nouveau: ' . $enphasesecur_info);
                       	if ($testimport > 0) {
                           $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
                           $enphasesecur_infobis = $oldcumulimport + $testimport;
