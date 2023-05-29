@@ -451,7 +451,7 @@ try {
                           $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
                           $enphasesecur_infobis = $oldcumulimport + $testimport;
 					
-                          log::add('enphasesecur', 'debug', 'Cumul import jour: ' . $enphasesecur_infobis . ' , deltas: ' . $testimport);
+                          log::add('enphasesecur', 'info', 'Cumul import jour: ' . $enphasesecur_infobis . ' , deltas: ' . $testimport);
                           $eqLogic->checkAndUpdateCmd('cumulimport', $enphasesecur_infobis);
                         }
 					}
@@ -477,14 +477,14 @@ try {
 					//log::add('enphasesecur', 'info', 'Balance: ' . $testexport);
                  // log::add('enphasesecur', 'info', 'old: ' . $oldCwattHoursTodayNet);
                  // log::add('enphasesecur', 'info', 'Export: ' . $enphasesecur_info);
-					if ($testexport > 0) {
-						if (date('G') > 1) {
+					if ($testexport > 0 && date('G') > 1) {
+					
                           $oldcumulexport = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
                           //log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
                           $enphasesecur_infobis = $oldcumulexport + $testexport;
-                          log::add('enphasesecur', 'debug', 'Cumul export jour: ' . $enphasesecur_infobis . ' , deltas: ' . $testexport);
+                          log::add('enphasesecur', 'info', 'Cumul export jour: ' . $enphasesecur_infobis . ' , deltas: ' . $testexport);
                           $eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
-						}
+						
 					}
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
@@ -623,8 +623,8 @@ try {
 						}
 						else {
 							$eqLogic->checkAndUpdateCmd('autoconso13', 0);
-							$eqLogic->checkAndUpdateCmd('autoconso13', 0);
-							$eqLogic->checkAndUpdateCmd('autoconso13', 0);
+							$eqLogic->checkAndUpdateCmd('autoconso12', 0);
+							$eqLogic->checkAndUpdateCmd('autoconso11', 0);
 						}
 					}
 				}
