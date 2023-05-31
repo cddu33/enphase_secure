@@ -189,6 +189,9 @@ class enphasesecur extends eqLogic {
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
+                                                        $oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
+                                             $eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $oldCwattHoursLifetimeNet);
+$eqLogic->save();
 			}
 		}
 	}
