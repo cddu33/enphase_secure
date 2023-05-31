@@ -189,6 +189,12 @@ class enphasesecur extends eqLogic {
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
+$eqLogic->checkAndUpdateCmd('cumulimport1', 0);
+				$eqLogic->checkAndUpdateCmd('cumulexport1', 0);
+$eqLogic->checkAndUpdateCmd('cumulimport2', 0);
+				$eqLogic->checkAndUpdateCmd('cumulexport2', 0);
+$eqLogic->checkAndUpdateCmd('cumulimport3', 0);
+				$eqLogic->checkAndUpdateCmd('cumulexport3', 0);
 			}
 		}
 	}
