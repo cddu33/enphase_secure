@@ -446,7 +446,7 @@ try {
 
 						//$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $enphasesecur_info);
 						//$eqLogic->save();
-$oldCwattHoursLifetimeNet = getConfiguration('oldCwattHoursLifetimeNet');
+$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet');
                        //log::add('enphasesecur', 'info', 'Index import stocké: ' . $oldCwattHoursLifetimeNet . ' , Index import appelé jeedom: ' . $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd());
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
                       	
