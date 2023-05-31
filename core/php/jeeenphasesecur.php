@@ -439,23 +439,24 @@ try {
 					if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 						
-                      	$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
+                      	//$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
 						  //if ($oldCwattHoursLifetimeNet == null || $oldCwattHoursLifetimeNet =='' || $oldCwattHoursLifetimeNet == 0) {
 							//$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
 						//}
 
 						//$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $enphasesecur_info);
 						//$eqLogic->save();
+$oldCwattHoursLifetimeNet = getConfiguration('oldCwattHoursLifetimeNet');
                        //log::add('enphasesecur', 'info', 'Index import stocké: ' . $oldCwattHoursLifetimeNet . ' , Index import appelé jeedom: ' . $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd());
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
                       	
 						$testimport = $enphasesecur_info - $oldCwattHoursLifetimeNet;
                      
                       	if ($testimport > 0) {
-                          $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
-                          $enphasesecur_infobis = $oldcumulimport + $testimport;
+                         // $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
+                          $enphasesecur_infobis = $testimport;
 					
-                          log::add('enphasesecur', 'info', 'Cumul import jour: ' . $enphasesecur_infobis . ' , deltas: ' . $testimport);
+                          log::add('enphasesecur', 'info', 'Cumul import jour: ' . $testimport);
                           $eqLogic->checkAndUpdateCmd('cumulimport', $enphasesecur_infobis);
                         }
 					}
