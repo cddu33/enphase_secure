@@ -189,6 +189,10 @@ class enphasesecur extends eqLogic {
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
+        $oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
+$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $oldCwattHoursLifetimeNet);
+$eqLogic->save();
+
 $eqLogic->checkAndUpdateCmd('cumulimport1', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport1', 0);
 $eqLogic->checkAndUpdateCmd('cumulimport2', 0);
@@ -283,7 +287,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 	  		if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Prod MES', __FILE__));
-				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setConfiguration('historizeRound', '');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('POWER');
@@ -295,8 +299,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->save();
 	  		}
 			  else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -357,7 +361,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Prod MES 1 ', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('POWER');
@@ -369,8 +373,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -427,7 +431,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Prod MES 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('POWER');
@@ -439,8 +443,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -498,7 +502,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 	  			if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Prod MES 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('POWER');
@@ -510,8 +514,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 	  			}
 				  else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -530,6 +534,12 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('W');
 					$enphasesecurCmd->save();
+				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+						$enphasesecurCmd->save();
+					}
 				}
 			}
 		}
@@ -586,7 +596,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			if (!is_object($enphasesecurCmd)) {
 		  		$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Total MES', __FILE__));
-				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setConfiguration('historizeRound', '');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -598,8 +608,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -677,7 +687,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Total MES 1', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -689,8 +699,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -766,7 +776,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Total MES 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -778,8 +788,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -857,7 +867,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Total MES 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -869,8 +879,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -986,7 +996,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->setName(__('Conso Net Jour', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
-				$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
+				$enphasesecurCmd->setConfiguration('historizeRound', ''); 
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				$enphasesecurCmd->setEqLogic_id($this->getId());
 				$enphasesecurCmd->setLogicalId('CwattHoursTodayNet');
@@ -996,8 +1006,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -1028,7 +1038,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Conso Net MES', __FILE__));
-				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setConfiguration('historizeRound', '');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('0');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1040,8 +1050,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -1119,7 +1129,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->setName(__('Import Jour Réseau', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
-				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setConfiguration('historizeRound', '');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				$enphasesecurCmd->setEqLogic_id($this->getId());
 				$enphasesecurCmd->setLogicalId('cumulimport');
@@ -1129,8 +1139,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->save();
 			}
 			else {
-				if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -1141,7 +1151,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->setName(__('Export Jour Réseau', __FILE__));
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				$enphasesecurCmd->setIsHistorized('1');
-				$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				$enphasesecurCmd->setConfiguration('historizeRound', '');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				$enphasesecurCmd->setEqLogic_id($this->getId());
 				$enphasesecurCmd->setLogicalId('cumulexport');
@@ -1150,6 +1160,13 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->setUnite('Wh');
 				$enphasesecurCmd->save();
 			}
+			else {
+				if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
+					$enphasesecurCmd->save();
+				}
+			}
+			
 
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') {
@@ -1160,7 +1177,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Conso Net Jour 1 ', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('CwattHoursTodayNet1');
@@ -1170,8 +1187,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1202,7 +1219,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Net MES 1 ', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1214,8 +1231,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1310,7 +1327,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Import Jour Réseau 1', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('cumulimport1');
@@ -1319,6 +1336,12 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
 				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
+						$enphasesecurCmd->save();
+					}
+				}
 
 				$enphasesecurCmd = $this->getCmd(null, 'cumulexport1');
 				if (!is_object($enphasesecurCmd)) {
@@ -1326,7 +1349,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Export Jour Réseau 1', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('cumulexport1');
@@ -1336,8 +1359,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1350,7 +1373,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Conso Net Jour 2', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('CwattHoursTodayNet2');
@@ -1360,8 +1383,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1392,7 +1415,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Net MES 2', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1404,8 +1427,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1507,7 +1530,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Import Jour Réseau 2', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('cumulimport2');
@@ -1517,8 +1540,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1529,7 +1552,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Export Jour Réseau 2', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('cumulexport2');
@@ -1537,6 +1560,12 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
 					$enphasesecurCmd->save();
+				}
+				else {
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
+						$enphasesecurCmd->save();
+					}
 				}
 
 				//phase 3
@@ -1546,7 +1575,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Conso Net Jour 3', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3'); 
+					$enphasesecurCmd->setConfiguration('historizeRound', ''); 
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('CwattHoursTodayNet3');
@@ -1556,8 +1585,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1588,7 +1617,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				if (!is_object($enphasesecurCmd)) {
 					$enphasesecurCmd = new enphasesecurCmd();
 					$enphasesecurCmd->setName(__('Conso Net MES 3', __FILE__));
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('0');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -1600,8 +1629,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1702,7 +1731,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				 	$enphasesecurCmd->setName(__('Import Jour Réseau 3', __FILE__));
 				 	$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 				 	$enphasesecurCmd->setIsHistorized('1');
-				 	$enphasesecurCmd->setConfiguration('historizeRound', '3');
+				 	$enphasesecurCmd->setConfiguration('historizeRound', '');
 				 	$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 				 	$enphasesecurCmd->setEqLogic_id($this->getId());
 				 	$enphasesecurCmd->setLogicalId('cumulimport3');
@@ -1712,8 +1741,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				 	$enphasesecurCmd->save();
 				 }
 				 else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
@@ -1724,7 +1753,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setName(__('Export Jour Réseau 3', __FILE__));
 					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
 					$enphasesecurCmd->setIsHistorized('1');
-					$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					$enphasesecurCmd->setConfiguration('historizeRound', '');
 					$enphasesecurCmd->setGeneric_type('CONSUMPTION');
 					$enphasesecurCmd->setEqLogic_id($this->getId());
 					$enphasesecurCmd->setLogicalId('cumulexport3');
@@ -1734,8 +1763,8 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 				else {
-					if ($enphasesecurCmd->getConfiguration('historizeRound')<3 || $enphasesecurCmd->getConfiguration('historizeRound') != '') {
-						$enphasesecurCmd->setConfiguration('historizeRound', '3');
+					if ($enphasesecurCmd->getConfiguration('historizeRound') != '') {
+						$enphasesecurCmd->setConfiguration('historizeRound', '');
 						$enphasesecurCmd->save();
 					}
 				}
