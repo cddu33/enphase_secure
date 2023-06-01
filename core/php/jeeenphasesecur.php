@@ -333,10 +333,10 @@ try {
 
 						if ($testexport > 0 && date('G') > 1) {
 						
-							  $oldcumulexport = $eqLogic->getCmd(null, 'cumulexport3')->execCmd();
+							  $oldcumulexport = $eqLogic->getCmd(null, 'cumulexport2')->execCmd();
 							  //log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
 							  $enphasesecur_infobis = $oldcumulexport + $testexport;
-							  log::add('enphasesecur', 'info', 'Cumul export jour 3: ' . $enphasesecur_infobis . ' , deltas: ' . $testexport);
+							  log::add('enphasesecur', 'info', 'Cumul export jour 2: ' . $enphasesecur_infobis . ' , deltas: ' . $testexport);
 							  $eqLogic->checkAndUpdateCmd('cumulexport2', $enphasesecur_infobis);
 							
 						}
