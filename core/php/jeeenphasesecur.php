@@ -438,27 +438,14 @@ try {
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 					if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
 						
-                      	//$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
-						  //if ($oldCwattHoursLifetimeNet == null || $oldCwattHoursLifetimeNet =='' || $oldCwattHoursLifetimeNet == 0) {
-							//$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
-						//}
-
-						//$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $enphasesecur_info);
-						//$eqLogic->save();
-$oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet');
-                       //log::add('enphasesecur', 'info', 'Index import stocké: ' . $oldCwattHoursLifetimeNet . ' , Index import appelé jeedom: ' . $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd());
-						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);	
-                      	
-						$testimport = $enphasesecur_info - $oldCwattHoursLifetimeNet;
-                     
-                      	if ($testimport > 0) {
-                         // $oldcumulimport = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
-                          $enphasesecur_infobis = $testimport;
+						$enphatemp = -($eqLogic->getCmd(null, 'CwattHoursLifetime')->execCmd() - $enphasesecur_info - $eqLogic->getCmd(null, 'PwattHoursLifetime')->execCmd())
+						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					
-                          log::add('enphasesecur', 'info', 'Cumul import jour: ' . $testimport);
-                          $eqLogic->checkAndUpdateCmd('cumulimport', $enphasesecur_infobis);
-                        }
+						$enphaexp = max($eqLogic->getCmd(null, 'calculjour')-min($eqLogic->getCmd(null, 'calculjour'), today), 0);
+						$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
+
 					}
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
@@ -468,24 +455,8 @@ $oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet
 					}
 					log::add('enphasesecur', 'debug', 'Consommation Net du jour: ' . $enphasesecur_info);
 					$oldCwattHoursTodayNet = $eqLogic->getCmd(null, 'CwattHoursTodayNet')->execCmd();
-					// if ($oldCwattHoursTodayNet == null || $oldCwattHoursTodayNet =='' || $oldCwattHoursTodayNet == 0) {
-					// 	$oldCwattHoursTodayNet == $eqLogic->getCmd(null, 'CwattHoursTodayNet')->execCmd();
-					// }
-					// $eqLogic->setConfiguration('oldCwattHoursTodayNet', $enphasesecur_info);
-					// $eqLogic->save();
+					
 					$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet', $enphasesecur_info);
-					
-					
-                  	$testexport = $oldCwattHoursTodayNet - $enphasesecur_info;
-
-					if ($testexport > 0 && date('G') > 1) {
-					
-                          $oldcumulexport = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
-                          //log::add('enphasesecur', 'debug', '$oldcumulexport: ' . $oldcumulexport . 'test date ' . date('G'));
-                          $enphasesecur_infobis = $oldcumulexport + $testexport;
-                          log::add('enphasesecur', 'info', 'Cumul export jour: ' . $enphasesecur_infobis . ' , deltas: ' . $testexport);
-                          $eqLogic->checkAndUpdateCmd('cumulexport', $enphasesecur_infobis);
-					}
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLastSevenDays'];
 					if ($enphasesecur_info == 0){
@@ -507,6 +478,7 @@ $oldCwattHoursLifetimeNet = $eqLogic->getConfiguration('oldCwattHoursLifetimeNet
 						$eqLogic->checkAndUpdateCmd('Import', ($enphasesecur_info));
 						$eqLogic->checkAndUpdateCmd('Export', 0);
 					}
+					
 					if (config::bykey('autoconso', 'enphasesecur') == 'oui')
 					{
 						if (config::bykey('typereseau', 'enphasesecur') == 'mono'){
