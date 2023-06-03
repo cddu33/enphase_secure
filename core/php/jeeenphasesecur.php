@@ -184,7 +184,6 @@ try {
 					}
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'];
-					
 					log::add('enphasesecur', 'debug', 'Consommation Totale depuis la mise en service: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
@@ -262,9 +261,7 @@ try {
 						//phase2
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 2: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet2', $enphasesecur_info);	
-                     
-						
+						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet2', $enphasesecur_info);							
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whToday'];
 						if ($enphasesecur_info == 0){
@@ -272,10 +269,7 @@ try {
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['whToday']-$enphasesecur_json['production']['1']['lines']['1']['whToday'];
 						}
 						log::add('enphasesecur', 'debug', 'Consommation Net du jour 2: ' . $enphasesecur_info);
-						
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet2', $enphasesecur_info);	
-						
-					
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
@@ -309,10 +303,7 @@ try {
 						}
 
 						log::add('enphasesecur', 'debug', 'Consommation Net du jour 3: ' . $enphasesecur_info);
-						
 						$eqLogic->checkAndUpdateCmd('CwattHoursTodayNet3', $enphasesecur_info);	
-						
-						
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLastSevenDays'];
 						if ($enphasesecur_info == 0){
@@ -341,24 +332,16 @@ try {
 					
 					log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
-
 					$enphatemp = -($enphasesecur_json['consumption']['0']['whLifetime'] - $enphasesecur_info - $enphasesecur_json['production']['1']['whLifetime']);
-
 					$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
-					
 					$enphaexp = jeedom::evaluateExpression(max($eqLogic->getCmd(null, 'calculjour')->getId()-min($eqLogic->getCmd(null, 'calculjour')->getId(),today),0));
-						
 					$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
-
 					log::add('enphasesecur', 'debug', 'Cumul Export: ' . $enphaexp);
 
 					$enphaimp = -($enphasesecur_json['production'][1]['whToday'] - $enphasesecur_json['consumption']['0']['whToday'] - $enphaexp);
-
 					$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
-
 					log::add('enphasesecur', 'debug', 'Cumul Import: ' . $enphaimp);
 					
-
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
 					if ($enphasesecur_info == 0){
 						//merci Bison
