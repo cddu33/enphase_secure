@@ -435,13 +435,13 @@ try {
 						
 					$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
 
-					log::add('enphasesecur', 'info', 'Cumul Export: ' . $enphaexp);
+					log::add('enphasesecur', 'debug', 'Cumul Export: ' . $enphaexp);
 
 					$enphaimp = -($enphasesecur_json['production'][1]['whToday'] - $enphasesecur_json['consumption']['0']['whToday'] - $enphaexp);
 
 					$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
 
-					log::add('enphasesecur', 'info', 'Cumul Export: ' . $enphaimp);
+					log::add('enphasesecur', 'debug', 'Cumul Import: ' . $enphaimp);
 					
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
