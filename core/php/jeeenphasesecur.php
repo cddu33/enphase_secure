@@ -442,17 +442,21 @@ try {
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
 
-						$enpha1 = $enphasesecur_json['consumption']['0']['whLifetime'];
-						$enpha3 = $enphasesecur_json['production']['1']['whLifetime'];
-						$enphatemp = -($enpha1 - $enphasesecur_info - $enpha3);
-
-						log::add('enphasesecur', 'info',$enpha1 . ' ' . $enphasesecur_info . ' ' . $enpha3);
+						$enphatemp = -($enphasesecur_json['consumption']['0']['whLifetime'] - $enphasesecur_info - $enphasesecur_json['production']['1']['whLifetime']);
 
 						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					
 						$enphaexp = jeedom::evaluateExpression(max($eqLogic->getCmd(null, 'calculjour')->getId()-min($eqLogic->getCmd(null, 'calculjour')->getId(),today),0));
 						
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
+
+						log::add('enphasesecur', 'info', 'Cumul Export: ' . $enphaexp);
+
+						$enphaimp = -($enphasesecur_json['production'][1]['whToday'] - $enphasesecur_json['consumption']['0']['whToday'] - $enphaexp);
+
+						$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
+
+						log::add('enphasesecur', 'info', 'Cumul Import: ' . $enphaimp);
 					}
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
