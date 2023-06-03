@@ -1766,6 +1766,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
+				}
 				
 				$enphasesecurCmd = $this->getCmd(null, 'Export3');
 				if (!is_object($enphasesecurCmd)) {
@@ -1787,6 +1788,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 						$enphasesecurCmd->setConfiguration('historizeRound', '3');
 						$enphasesecurCmd->save();
 					}
+				}
 
 				$enphasesecurCmd = $this->getCmd(null, 'autoconso13');
 				if (!is_object($enphasesecurCmd)) {
