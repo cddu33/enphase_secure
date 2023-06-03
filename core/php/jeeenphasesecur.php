@@ -450,7 +450,8 @@ try {
 
 						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					
-						$enphaexp = jeedom::evaluateExpression(max($eqLogic->getCmd(null, 'calculjour')-min($eqLogic->getCmd(null, 'calculjour'), today), 0));
+						$enphaexp = jeedom::evaluateExpression(max($eqLogic->getCmd(null, 'calculjour')->getId()-min($eqLogic->getCmd(null, 'calculjour')->getId(),today),0));
+						
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
 					}
 
