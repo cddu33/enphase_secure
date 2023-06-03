@@ -1221,23 +1221,23 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->save();
 				}
 
-				$enphasesecurCmd = $this->getCmd(null, 'calculjour');
-				if (!is_object($enphasesecurCmd)) {
-					$enphasesecurCmd = new enphasesecurCmd();
-					$enphasesecurCmd->setName(__('Calcul Jour', __FILE__));
-					$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
-					$enphasesecurCmd->setIsHistorized('1');
-					//$enphasesecurCmd->setConfiguration('historizeRound', '');
-					//$enphasesecurCmd->setGeneric_type('CONSUMPTION');
-					$enphasesecurCmd->setEqLogic_id($this->getId());
-					$enphasesecurCmd->setLogicalId('calculjour');
-					$enphasesecurCmd->setType('info');
-					$enphasesecurCmd->setSubType('numeric');
-					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->setIsVisible(false);
-					$enphasesecurCmd->save();
-				}
+			$enphasesecurCmd = $this->getCmd(null, 'calculjour');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Calcul Jour', __FILE__));
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setIsHistorized('1');
+				//$enphasesecurCmd->setConfiguration('historizeRound', '');
+				//$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setLogicalId('calculjour');
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('Wh');
+				$enphasesecurCmd->setIsVisible(false);
+				$enphasesecurCmd->save();
 			}
+		
 			
 
 			//si triphasé

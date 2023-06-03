@@ -445,7 +445,6 @@ try {
 					
 						$enphaexp = max($eqLogic->getCmd(null, 'calculjour')-min($eqLogic->getCmd(null, 'calculjour'), today), 0);
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
-
 					}
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whToday'];
