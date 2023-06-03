@@ -107,6 +107,7 @@ try {
 					if ($enphasesecur_info != 0 && $enphasesecur_info != null) {
 						log::add('enphasesecur', 'debug', 'Production depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PwattHoursLifetime', $enphasesecur_info);	
+						$enpha3 = $enphasesecur_info;
 					}
 
 					$enphasesecur_info = $enphasesecur_json['production']['1']['whToday'];
@@ -183,6 +184,7 @@ try {
 					}
 					//total
 					$enphasesecur_info = $enphasesecur_json['consumption']['0']['whLifetime'];
+					$enpha1 = $enphasesecur_info;
 					log::add('enphasesecur', 'debug', 'Consommation Totale depuis la mise en service: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattHoursLifetime', $enphasesecur_info);	
 
@@ -441,7 +443,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
 
 						//$enpha1 = $eqLogic->getCmd(null, 'CwattHoursLifetime')->execCmd();
-						$enpha3 = $eqLogic->getCmd(null, 'PwattHoursLifetime')->execCmd();
+						//$enpha3 = $eqLogic->getCmd(null, 'PwattHoursLifetime')->execCmd();
 						$enphatemp = -($enpha1 - $enphasesecur_info - $enpha3);
 						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					
