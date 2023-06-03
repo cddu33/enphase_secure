@@ -437,7 +437,7 @@ try {
 
 					log::add('enphasesecur', 'info', 'Cumul Export: ' . $enphaexp);
 
-					$enphaimp = -($enphasesecur_json['production'][1]['whToday'] - $enphasesecur_json['consumption']['0']['whToday'] - $enphaexp)
+					$enphaimp = -($enphasesecur_json['production'][1]['whToday'] - $enphasesecur_json['consumption']['0']['whToday'] - $enphaexp);
 
 					$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
 
