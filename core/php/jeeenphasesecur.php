@@ -77,7 +77,7 @@ try {
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Production 2 totale de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays2', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production 2 instantannée: ' . $enphasesecur_info);
@@ -96,7 +96,7 @@ try {
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['whLastSevenDays'];
 						log::add('enphasesecur', 'debug', 'Production 3 totale de la semaine: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('PwattHoursSevenDays3', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['wNow'];
 						log::add('enphasesecur', 'debug', 'Production 3 instantannée: ' . $enphasesecur_info);
