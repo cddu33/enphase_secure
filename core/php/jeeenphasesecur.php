@@ -445,6 +445,10 @@ try {
 						//$enpha1 = $eqLogic->getCmd(null, 'CwattHoursLifetime')->execCmd();
 						//$enpha3 = $eqLogic->getCmd(null, 'PwattHoursLifetime')->execCmd();
 						$enphatemp = -($enpha1 - $enphasesecur_info - $enpha3);
+
+						log::add('enphasesecur', 'info',$enpha1 . ' ' . $enphasesecur_info . ' ' . $enpha3);
+
+
 						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					
 						$enphaexp = jeedom::evaluateExpression(max($eqLogic->getCmd(null, 'calculjour')-min($eqLogic->getCmd(null, 'calculjour'), today), 0));
