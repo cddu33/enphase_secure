@@ -447,7 +447,7 @@ try {
 						$enphatemp = -($enpha1 - $enphasesecur_info - $enpha3);
 						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					
-						$enphaexp = max($eqLogic->getCmd(null, 'calculjour')-min($eqLogic->getCmd(null, 'calculjour'), today), 0);
+						$enphaexp = jeedom::evaluateExpression(max($eqLogic->getCmd(null, 'calculjour')-min($eqLogic->getCmd(null, 'calculjour'), today), 0));
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
 					}
 
