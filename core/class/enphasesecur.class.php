@@ -96,7 +96,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'combine');
-				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsVisible('1');
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
 			}
@@ -109,7 +109,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setName('Enphase Production');
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
-				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsVisible('1');
 				$eqLogic->setIsEnable(1);
 				$eqLogic->setConfiguration('type', 'prod');
 				$eqLogic->save();
@@ -122,7 +122,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'net');
-				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsVisible('1');
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
 			}
@@ -134,7 +134,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'total');
-				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsVisible('1');
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
 			}
@@ -146,7 +146,7 @@ class enphasesecur extends eqLogic {
 				$eqLogic->setCategory('energy', 1);
 				$eqLogic->setEqType_name('enphasesecur');
 				$eqLogic->setConfiguration('type', 'bat');
-				$eqLogic->setIsVisible(1);
+				$eqLogic->setIsVisible('1');
 				$eqLogic->setIsEnable(1);
 				$eqLogic->save();
 			}
@@ -1246,7 +1246,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->setType('info');
 				$enphasesecurCmd->setSubType('numeric');
 				$enphasesecurCmd->setUnite('Wh');
-				$enphasesecurCmd->setIsVisible(false);
+				$enphasesecurCmd->setIsVisible('0');
 				$enphasesecurCmd->save();
 			}
 		
@@ -1468,7 +1468,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->setIsVisible(false);
+					$enphasesecurCmd->setIsVisible('0');
 					$enphasesecurCmd->save();
 				}
 
@@ -1688,7 +1688,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->setIsVisible(false);
+					$enphasesecurCmd->setIsVisible('0');
 					$enphasesecurCmd->save();
 				}
 
@@ -1905,7 +1905,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					$enphasesecurCmd->setType('info');
 					$enphasesecurCmd->setSubType('numeric');
 					$enphasesecurCmd->setUnite('Wh');
-					$enphasesecurCmd->setIsVisible(false);
+					$enphasesecurCmd->setIsVisible('0');
 					$enphasesecurCmd->save();
 				}
 			}
@@ -1980,7 +1980,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
-				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsVisible('1');
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('maxWatt');
 				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
@@ -1995,7 +1995,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Puissance', __FILE__));
-				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsVisible('1');
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('Watt');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
@@ -2010,7 +2010,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			if (!is_object($enphasesecurCmd)) {
 				$enphasesecurCmd = new enphasesecurCmd();
 				$enphasesecurCmd->setName(__('Production journalière', __FILE__));
-				$enphasesecurCmd->setIsVisible(true);
+				$enphasesecurCmd->setIsVisible('1');
 				$enphasesecurCmd->setIsHistorized(true);
 				$enphasesecurCmd->setLogicalId('calWH');
 				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
