@@ -77,7 +77,6 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
    * Utilisateur Enphase
    * Mot de passe Enphase
    * Adresse IP locale de la passerelle
-   * ID du site (dispponible sur l'application)
    * Numéro de série de la passerelle (disponnible sur l'application)
 * Mode Token Manuel:
    * Adresse IP locale de la passerelle
