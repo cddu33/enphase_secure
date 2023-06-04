@@ -4,7 +4,7 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# 03/06/2023
+# 04/06/2023
 Changement de formule import/export cumul
 Correction tri
 
