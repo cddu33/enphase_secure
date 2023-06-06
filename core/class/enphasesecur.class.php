@@ -239,14 +239,16 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				}
 			}
 		}
+		$cumul0 = $cumul0/$cumulb0;
+		$cumul0 = $cumul0-$cumul0*0.10;
 		$cumul1 = $cumul1/$cumulb1;
-		$cumul1 = $cumul1-$cumul1*0.20;
+		$cumul1 = $cumul1-$cumul1*0.10;
 		$cumul2 = $cumul2/$cumulb2;
-		$cumul2 = $cumul2-$cumul2*0.20;
+		$cumul2 = $cumul2-$cumul2*0.10;
 		$cumul3 = $cumul3/$cumulb3;
-		$cumul3 = $cumul3-$cumul3*0.20;
+		$cumul3 = $cumul3-$cumul3*0.10;
 		$cumul4 = $cumul4/$cumulb4;
-		$cumul4 = $cumul4-$cumul4*0.20;
+		$cumul4 = $cumul4-$cumul4*0.10;
 
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'conv') {
@@ -278,7 +280,10 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			}
 		}
 		if ($rapport == "Problème de production sur le/les panneaux: ") {
-			$rapport = "Pas d'anomalie de production détecté";
+			$rapport = "Pas d'anomalie de production détecté, seuil ligne 0: ". $cumul0 . ", seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
+		}
+		else {
+			$rapport = $rapport . ".  Seuil ligne 0: ". $cumul0 . ", seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
 		}
 		log::add('enphasesecur', 'info', $rapport);
 		message::add('Enphase Secure', $rapport);
