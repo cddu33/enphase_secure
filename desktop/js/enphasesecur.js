@@ -25,7 +25,7 @@ $("#table_cmd").sortable({
 })
 
 function printEqLogic(_eqLogic) {
-  if (isset(_eqLogic.configuration) && isset(_eqLogic.configuration.type) && _eqLogic.configuration.type == 'conv') {
+  if (isset(_eqLogic.configuration.type) && _eqLogic.configuration.type == 'conv') {
       $('#eqlogic-type').load('index.php?v=d&plugin=enphasesecur&modal=groupement', function () {
           $('body').setValues(_eqLogic, '.eqLogicAttr');
       });
