@@ -218,7 +218,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'conv') {
-				switch ($eqLogic->getConfiguration('type')) {
+				switch ($eqLogic->getConfiguration('groupe')) {
 					case '1':
 						$cumul1 = $cumul1 + $eqLogic->getCmd(null, 'calWH')->execCmd();
 						$cumulb1 = $cumulb1 + 1;
@@ -257,7 +257,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		$cumul4 = $cumul4-$cumul4*0.10;
 
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getConfiguration('type') == 'conv') {
+			if ($eqLogic->getConfiguration('type') == 'groupe') {
 				switch ($eqLogic->getConfiguration('type')) {
 					case '1':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1) {
