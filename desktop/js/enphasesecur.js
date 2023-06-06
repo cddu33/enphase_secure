@@ -32,9 +32,6 @@ function printEqLogic(_eqLogic) {
   }
 }
 
-
-
-
 /* Fonction permettant l'affichage des commandes dans l'équipement */
 function addCmdToTable(_cmd) {
   if (!isset(_cmd)) {
