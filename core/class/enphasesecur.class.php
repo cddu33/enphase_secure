@@ -281,7 +281,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			$rapport = "Pas d'anomalie";
 		}
 		log::add('enphasesecur', 'info', $rapport);
-		message::setMessage($rapport);
+		message::add('info', $rapport);
 		//setMessage();
 	}
 
