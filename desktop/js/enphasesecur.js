@@ -24,6 +24,19 @@ $("#table_cmd").sortable({
   forcePlaceholderSize: true
 })
 
+function printEqLogic(_eqLogic) {
+  if (isset(_eqLogic.configuration.type) && _eqLogic.configuration.type == 'conv') {
+      $('#eqlogic-type').load('index.php?v=d&plugin=enphasesecur&modal=groupement', function () {
+          $('body').setValues(_eqLogic, '.eqLogicAttr');
+      });
+  }
+  else {
+    $('#eqlogic-type').load('index.php?v=d&plugin=enphasesecur&modal=no', function () {
+      $('body').setValues(_eqLogic, '.eqLogicAttr');
+  });
+  }
+}
+
 /* Fonction permettant l'affichage des commandes dans l'équipement */
 function addCmdToTable(_cmd) {
   if (!isset(_cmd)) {
@@ -53,7 +66,7 @@ function addCmdToTable(_cmd) {
   tr += '<td>'
   tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isVisible" checked/>{{Afficher}}</label> '
   tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="isHistorized" checked/>{{Historiser}}</label> '
-  tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label> '
+  // tr += '<label class="checkbox-inline"><input type="checkbox" class="cmdAttr" data-l1key="display" data-l2key="invertBinary"/>{{Inverser}}</label> '
   tr += '<div style="margin-top:7px;">'
   tr += '<input class="tooltips cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="minValue" placeholder="{{Min}}" title="{{Min}}" style="width:30%;max-width:80px;display:inline-block;margin-right:2px;">'
   tr += '<input class="tooltips cmdAttr form-control input-sm" data-l1key="configuration" data-l2key="maxValue" placeholder="{{Max}}" title="{{Max}}" style="width:30%;max-width:80px;display:inline-block;margin-right:2px;">'

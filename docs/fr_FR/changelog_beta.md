@@ -4,6 +4,11 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 06/06/2023
+Rajout de la possibilité de faire des groupes de panneaux
+
+Envoie une alerte par jour à 22h pour controler la production des panneaux. Pour les essais en beta une alerte est envoyée même si il n'y a pas d'anomalie de production.
+
 # 04/06/2023
 Changement de formule import/export cumul
 Correction tri

@@ -203,6 +203,104 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		}
 	}
 
+	public function enphasesecurCron1drapport(){
+		$cumul0 =0;
+		$cumul0b =0;
+		$cumul1 =0;
+		$cumul1b =0;
+		$cumul2 =0;
+		$cumul2b =0;
+		$cumul3 =0;
+		$cumul3b =0;
+		$cumul4 =0;
+		$cumul4b =0;
+		$rapport = "Problème de production sur le/les panneaux: ";
+
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				switch ($eqLogic->getConfiguration('groupement')) {
+					case '1':
+						$cumul1 = $cumul1 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumulb1 = $cumulb1 + 1;
+						break;
+						
+					case '2':
+						$cumul2 = $cumul2 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul2b = $cumul3b +1;
+						break;
+						
+					case '3':
+						$cumul3 = $cumul3 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul3b = $cumul3b + 1;
+						break;
+						
+					case '4':
+						$cumul4 = $cumul4 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul4b = $cumul4b +1;
+						break;
+					default:
+						$cumul0 = $cumul0 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumulb0 = $cumulb0 + 1;
+						break;
+				}
+			}
+		}
+		$cumul0 = $cumul0/$cumulb0;
+		$cumul0 = $cumul0-$cumul0*0.10;
+		$cumul1 = $cumul1/$cumulb1;
+		$cumul1 = $cumul1-$cumul1*0.10;
+		$cumul2 = $cumul2/$cumulb2;
+		$cumul2 = $cumul2-$cumul2*0.10;
+		$cumul3 = $cumul3/$cumulb3;
+		$cumul3 = $cumul3-$cumul3*0.10;
+		$cumul4 = $cumul4/$cumulb4;
+		$cumul4 = $cumul4-$cumul4*0.10;
+
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				switch ($eqLogic->getConfiguration('groupement')) {
+					case '1':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+						
+					case '2':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul2) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+						
+					case '3':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul3) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+						
+					case '4':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul4) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+					default:
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul0) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+				}
+			}
+		}
+		if ($rapport == "Problème de production sur le/les panneaux: ") {
+			$rapport = "Pas d'anomalie de production détectée, seuil ligne 0: ". $cumul0 . ", seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
+		}
+		else {
+			$rapport = $rapport . ".  Seuil ligne 0: ". $cumul0 . ", seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
+		}
+		log::add('enphasesecur', 'info', $rapport);
+		message::add('Enphase Secure', $rapport);
+	}
+
+
 	//création des crons pour les onduleurs WH et init cumul export import
 	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
@@ -225,6 +323,17 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
             $enphasesecurCron1d->setTimeout('1');
             $enphasesecurCron1d->save();
         }
+
+		$enphasesecurCron1drapport = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1drapport');
+        if (!is_object($enphasesecurCron1drapport)) {
+            $enphasesecurCron1d = new cron();
+            $enphasesecurCron1d->setClass('enphasesecur');
+            $enphasesecurCron1d->setFunction('enphasesecurCron1drapport');
+            $enphasesecurCron1d->setEnable(1);
+           	$enphasesecurCron1d->setSchedule('0 22 * * *');
+            $enphasesecurCron1d->setTimeout('2');
+            $enphasesecurCron1d->save();
+        }
 	  }
 	//suppression des cron 
 	public function removecron(){
@@ -233,6 +342,10 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		  $cron->remove();
 		}
 	  $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+	  if(is_object($cron)) {
+		  $cron->remove();
+	  }
+	  $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1drapport');
 	  if(is_object($cron)) {
 		  $cron->remove();
 	  }
