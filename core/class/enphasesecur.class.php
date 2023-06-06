@@ -308,13 +308,13 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
         }
 
 		$enphasesecurCron1drapport = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1drapport');
-        if (!is_object($enphasesecurCron1d)) {
+        if (!is_object($enphasesecurCron1drapport)) {
             $enphasesecurCron1d = new cron();
             $enphasesecurCron1d->setClass('enphasesecur');
             $enphasesecurCron1d->setFunction('enphasesecurCron1drapport');
             $enphasesecurCron1d->setEnable(1);
            	$enphasesecurCron1d->setSchedule('0 22 * * *');
-            $enphasesecurCron1d->setTimeout('1');
+            $enphasesecurCron1d->setTimeout('2');
             $enphasesecurCron1d->save();
         }
 	  }
