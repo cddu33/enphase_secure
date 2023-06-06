@@ -203,6 +203,87 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		}
 	}
 
+	public function enphasesecurCron1drapport(){
+		$cumul1 =0;
+		$cumul1b =0;
+		$cumul2 =0;
+		$cumul2b =0;
+		$cumul3 =0;
+		$cumul3b =0;
+		$cumul4 =0;
+		$cumul4b =0;
+		$rapport = "Problème de production sur le/les panneaux: ";
+
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				switch ($eqLogic->getConfiguration('type')) {
+					case '1':
+						$cumul1+=$eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumulb1+=1;
+						break;
+						
+					case '2':
+						$cumul2+=$eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul2b+=1;
+						break;
+						
+					case '3':
+						$cumul3+=$eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul3b+=1;
+						break;
+						
+					case '4':
+						$cumul4+=$eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul4b+=1;
+						break;
+				}
+			}
+		}
+		$cumul1 = $cumul1/$cumulb1;
+		$cumul1 = $cumul1-$cumul1*0.20;
+		$cumul2 = $cumul2/$cumulb2;
+		$cumul2 = $cumul2-$cumul2*0.20;
+		$cumul3 = $cumul3/$cumulb3;
+		$cumul3 = $cumul3-$cumul3*0.20;
+		$cumul4 = $cumul4/$cumulb4;
+		$cumul4 = $cumul4-$cumul4*0.20;
+
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'conv') {
+				switch ($eqLogic->getConfiguration('type')) {
+					case '1':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+						
+					case '2':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul2) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+						
+					case '3':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul3) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+						
+					case '4':
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul4) {
+							$rapport = $rapport . ' ' . $eqLogic->getName();
+						}
+						break;
+				}
+			}
+		}
+		if ($rapport == "Problème de production sur le/les panneaux: ") {
+			$rapport = "Pas d'anomalie";
+		}
+setMessage($rapport);
+	}
+}
+
 	//création des crons pour les onduleurs WH et init cumul export import
 	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
@@ -222,6 +303,17 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
             $enphasesecurCron1d->setFunction('enphasesecurCron1d');
             $enphasesecurCron1d->setEnable(1);
            	$enphasesecurCron1d->setSchedule('0 0 * * *');
+            $enphasesecurCron1d->setTimeout('1');
+            $enphasesecurCron1d->save();
+        }
+
+		$enphasesecurCron1drapport = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+        if (!is_object($enphasesecurCron1d)) {
+            $enphasesecurCron1d = new cron();
+            $enphasesecurCron1d->setClass('enphasesecur');
+            $enphasesecurCron1d->setFunction('enphasesecurCron1drapport');
+            $enphasesecurCron1d->setEnable(1);
+           	$enphasesecurCron1d->setSchedule('0 22 * * *');
             $enphasesecurCron1d->setTimeout('1');
             $enphasesecurCron1d->save();
         }
