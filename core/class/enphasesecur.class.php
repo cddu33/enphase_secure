@@ -281,6 +281,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			$rapport = "Pas d'anomalie";
 		}
 		log::add('enphasesecur', 'info', $rapport);
+		message::setMessage($rapport);
 		//setMessage();
 	}
 
@@ -326,6 +327,10 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		  $cron->remove();
 		}
 	  $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+	  if(is_object($cron)) {
+		  $cron->remove();
+	  }
+	  $cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1drapport');
 	  if(is_object($cron)) {
 		  $cron->remove();
 	  }
