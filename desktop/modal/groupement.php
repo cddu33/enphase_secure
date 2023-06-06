@@ -23,7 +23,7 @@ if (!isConnect('admin')) {
 
 <div class="form-group">
     <label class="col-sm-4 control-label">{{Groupement}}</label>
-    <div class="col-sm-6">';
+    <div class="col-sm-6">
 		<select id="sel_object" class="eqLogicAttr form-control" data-l1key="groupement">
 			<option value="0">{{Aucun}}</option>
 			<option value="1">{{1}}</option>
@@ -33,4 +33,3 @@ if (!isConnect('admin')) {
 		</select>
 	</div>
 </div>
-		
