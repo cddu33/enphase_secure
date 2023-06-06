@@ -1,8 +1,37 @@
-# Changelog plugin Enphase Secure V7 version Beta = Stable
+# Changelog plugin Enphase Secure V7 version Beta
 
 >**IMPORTANT**
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+# 04/06/2023
+Changement de formule import/export cumul
+Correction tri
+
+
+# 31/05/2023
+reset cumul import export tri
+
+
+# 27/05/2023
+Corrections import/export avec les arrondis
+
+
+# 25/05/2023
+Rajout de 2 données calculées:
+- Import Journalier réseau
+- Export Journalier réseau (estimation)
+
+Merci @gus69 et @Neoseb38 pour leurs recherches
+
+
+# 20/05/2023
+
+Rajout du mode autoconsommation dans la page de config
+
+# 01/05/2023
+
+Evite le passage à 0 du compteur Mise En Service
 
 # 24/04/2023
 

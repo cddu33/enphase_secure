@@ -16,6 +16,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
+    * Cumul Journalier Export réseau
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
@@ -26,6 +27,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
+    * Cumul journalier Import réseau
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée
@@ -35,6 +37,8 @@ Le plugin permet de récupérer les données:
     * Le puissance délivrée max par onduleur
     * La production cumulée sur la journée
 
+
+Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
 
 L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
 
@@ -86,6 +90,13 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 * Racordement de l'installation:
    * Mode Monophasé
    * Mode triphasé
+
+* Autoconsommation:
+   * Mode de fonctionnement: active ou non l'autoconsommation
+   * Surplus déclenchement seuil 1: valeur en Watt au dessus de laquelle on déclenche l'autoconsommation
+   * Commande déclenchement seuil 1: commande déclenchée au dessus du seuil 1
+   * Surplus arrêt seuil 1 : valeur en Watt en dessous de laquelle on déclenche la commande d'arrêt de l'autoconsommation
+   * Commande arrêt seuil 1: commande déclenchée lors de l'arrêt de l'autoconsommation
 
 Le plugin ajoutera les équipements dont il a besoin.
 
