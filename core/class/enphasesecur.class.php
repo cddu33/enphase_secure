@@ -278,11 +278,10 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			}
 		}
 		if ($rapport == "Problème de production sur le/les panneaux: ") {
-			$rapport = "Pas d'anomalie";
+			$rapport = "Pas d'anomalie de production détecté";
 		}
 		log::add('enphasesecur', 'info', $rapport);
-		message::add('info', $rapport);
-		//setMessage();
+		message::add('Enphase Secure', $rapport);
 	}
 
 
