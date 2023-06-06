@@ -218,23 +218,23 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				switch ($eqLogic->getConfiguration('type')) {
 					case '1':
-						$cumul1+=$eqLogic->getCmd(null, 'calWH')->execCmd();
-						$cumulb1+=1;
+						$cumul1 = $cumul1 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumulb1 = $cumulb1 + 1;
 						break;
 						
 					case '2':
-						$cumul2+=$eqLogic->getCmd(null, 'calWH')->execCmd();
-						$cumul2b+=1;
+						$cumul2 = $cumul2 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul2b = $cumul3b +1;
 						break;
 						
 					case '3':
-						$cumul3+=$eqLogic->getCmd(null, 'calWH')->execCmd();
-						$cumul3b+=1;
+						$cumul3 = $cumul3 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul3b = $cumul3b + 1;
 						break;
 						
 					case '4':
-						$cumul4+=$eqLogic->getCmd(null, 'calWH')->execCmd();
-						$cumul4b+=1;
+						$cumul4 = $cumul4 + $eqLogic->getCmd(null, 'calWH')->execCmd();
+						$cumul4b = $cumul4b +1;
 						break;
 				}
 			}
@@ -280,7 +280,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		if ($rapport == "Problème de production sur le/les panneaux: ") {
 			$rapport = "Pas d'anomalie";
 		}
-setMessage($rapport);
+		setMessage($rapport);
 	}
 }
 
@@ -307,7 +307,7 @@ setMessage($rapport);
             $enphasesecurCron1d->save();
         }
 
-		$enphasesecurCron1drapport = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1d');
+		$enphasesecurCron1drapport = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron1drapport');
         if (!is_object($enphasesecurCron1d)) {
             $enphasesecurCron1d = new cron();
             $enphasesecurCron1d->setClass('enphasesecur');
