@@ -282,7 +282,7 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		}
 		setMessage($rapport);
 	}
-}
+
 
 	//création des crons pour les onduleurs WH et init cumul export import
 	public function creacron(){
