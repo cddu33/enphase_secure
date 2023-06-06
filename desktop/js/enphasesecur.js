@@ -30,6 +30,11 @@ function printEqLogic(_eqLogic) {
           $('body').setValues(_eqLogic, '.eqLogicAttr');
       });
   }
+  else {
+    $('#eqlogic-type').load('index.php?v=d&plugin=enphasesecur&modal=no', function () {
+      $('body').setValues(_eqLogic, '.eqLogicAttr');
+  });
+  }
 }
 
 /* Fonction permettant l'affichage des commandes dans l'équipement */
