@@ -4,6 +4,14 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 09/06/2023
+Correction formule import export
+
+Rajout de la possibilité de faire des groupes de panneaux
+
+Envoie une alerte par jour à 22h pour controler la production des panneaux si anomalie
+
+
 # 06/06/2023
 Rajout de 2 données calculées:
 - Import Journalier réseau (estimation)
