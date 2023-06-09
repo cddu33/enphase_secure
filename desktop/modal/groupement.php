@@ -21,5 +21,17 @@ if (!isConnect('admin')) {
 }
 ?>
 
-Exemple de modale
-
+<div class="form-group">
+    <label class="col-sm-4 control-label">{{Groupement}}
+    <sup><i class="fas fa-question-circle tooltips" title="{{Permet de faire des groupements de panneaux suivant les expositions ou modèles pour la surveillance de production}}"></i></sup>
+    </label>
+    <div class="col-sm-6">
+		<select id="sel_object" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="groupement">
+			<option selected value="0">{{Aucun}}</option>
+			<option value="1">{{1}}</option>
+			<option value="2">{{2}}</option>
+			<option value="3">{{3}}</option>
+			<option value="4">{{4}}</option>
+		</select>
+	</div>
+</div>

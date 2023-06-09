@@ -26,6 +26,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			</div>
 		</div>
 		<legend><i class="fas fa-table"></i> {{Mes équipements Enphase}}</legend>
+		
 		<?php
 		if (count($eqLogics) == 0) {
 			echo '<br><div class="text-center" style="font-size:1.2em;font-weight:bold;">{{Aucunne équipement trouvé, allez dans les paramètre du plugin pour renseigner les paramètres de connexion}}</div>';
@@ -76,7 +77,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 						<div class="col-lg-6">
 							<legend><i class="fas fa-wrench"></i> {{Paramètres généraux}}</legend>
 							<div class="form-group">
-								<label class="col-sm-4 control-label">{{Nom de la passerelle}}</label>
+								<label class="col-sm-4 control-label">{{Nom de l'équipement}}</label>
 								<div class="col-sm-6">
 									<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display:none;">
 									<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="{{Nom de l'équipement}}">
@@ -127,8 +128,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									<textarea class="form-control eqLogicAttr autogrow" data-l1key="comment"></textarea>
 								</div>
 							</div>
-
-							
+							<div id="eqlogic-type"></div>
+											
     					</div>
 					</fieldset>
 				</form>
