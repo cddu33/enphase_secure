@@ -292,12 +292,14 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		}
 		if ($rapport == "Problème de production sur le/les panneaux: ") {
 			$rapport = "Pas d'anomalie de production détectée, seuil ligne 0: ". $cumul0 . ", seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
+			log::add('enphasesecur', 'info', $rapport);
 		}
 		else {
 			$rapport = $rapport . ".  Seuil ligne 0: ". $cumul0 . ", seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
+			log::add('enphasesecur', 'error', $rapport);
 		}
-		log::add('enphasesecur', 'info', $rapport);
-		message::add('Enphase Secure', $rapport);
+		
+		//message::add('Enphase Secure', $rapport);
 	}
 
 
