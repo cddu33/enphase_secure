@@ -228,8 +228,8 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 1: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet1', $enphasesecur_info);	
-
-						$enphatemp = -($enphasesecur_json['consumption']['0']['lines']['0']['whLifetime'] - $enphasesecur_info - $enphasesecur_json['production']['1']['lines']['0']['whLifetime']);
+						
+						$enphatemp = $enphasesecur_json['production']['1']['lines']['0']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['lines']['0']['whLifetime'];						
 						$eqLogic->checkAndUpdateCmd('calculjour1', $enphatemp);
 						$enphaexp = max($eqLogic->getCmd(null, 'calculjour1')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour1')->getId(),today),0);
 
@@ -274,7 +274,7 @@ try {
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service 2: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet2', $enphasesecur_info);	
 						
-						$enphatemp = -($enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'] - $enphasesecur_info - $enphasesecur_json['production']['1']['lines']['1']['whLifetime']);
+						$enphatemp = $enphasesecur_json['production']['1']['lines']['1']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'];						
 						$eqLogic->checkAndUpdateCmd('calculjour2', $enphatemp);
 						$enphaexp = max($eqLogic->getCmd(null, 'calculjour2')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour2')->getId(),today),0);
 
@@ -318,7 +318,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whLifetime'];
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet3', $enphasesecur_info);	
 
-						$enphatemp = -($enphasesecur_json['consumption']['0']['lines']['2']['whLifetime'] - $enphasesecur_info - $enphasesecur_json['production']['1']['lines']['2']['whLifetime']);
+						$enphatemp = $enphasesecur_json['production']['1']['lines']['2']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['lines']['2']['whLifetime'];						
 						$eqLogic->checkAndUpdateCmd('calculjour3', $enphatemp);
 						$enphaexp = max($eqLogic->getCmd(null, 'calculjour3')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour3')->getId(),today),0);
 
@@ -365,7 +365,7 @@ try {
 					log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
 					
-					$enphatemp = -($enphasesecur_json['consumption']['0']['whLifetime'] - $enphasesecur_info - $enphasesecur_json['production']['1']['whLifetime']);
+					$enphatemp = $enphasesecur_json['production']['1']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['whLifetime'];
 					$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
 					$enphaexp = max($eqLogic->getCmd(null, 'calculjour')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour')->getId(),today),0);
 

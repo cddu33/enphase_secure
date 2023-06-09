@@ -36,11 +36,14 @@ Le plugin permet de récupérer les données:
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
     * La production cumulée sur la journée (estimation)
+    * Le groupe d'appartenance (orientation ou puissance du panneau) pour la surveillance de production
 
 
 Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
 
 L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
+
+La production des panneaux est surveillé une fois par jour. La formule de calcul est: l'addition des panneaux d'un groupe diviser par le nombre de panneau . Ce calcul est min oré de 10/100. Si la production journalière d'un panneau est inférieur à ce calcul, il est listé dans un rapport journalier dans le centre de message.
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 
