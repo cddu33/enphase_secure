@@ -6,6 +6,7 @@
 
 # 16/06/2023
 Formule import export stabilisée
+Suppression obligation arrondis et historique
 
 # 09/06/2023
 Correction formule import export
