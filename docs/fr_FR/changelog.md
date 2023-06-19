@@ -4,6 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 19/06/2023
+Pas de surveillance de la production de chaque panneau si aucun groupement n'est mis sur l'équipement
+
 # 16/06/2023
 Formule import export stabilisée
 Suppression obligation arrondis et historique
