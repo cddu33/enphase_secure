@@ -248,10 +248,18 @@ class enphasesecur extends eqLogic {
 		}
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'groupe') {
-				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe1);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe2);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe3);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe4);}
+				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { 
+					$eqLogic->checkAndUpdateCmd('calWH', $prodgroupe1);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { 
+					$eqLogic->checkAndUpdateCmd('calWH', $prodgroupe2);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { 
+					$eqLogic->checkAndUpdateCmd('calWH', $prodgroupe3);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { 
+					$eqLogic->checkAndUpdateCmd('calWH', $prodgroupe4);
+				}
 			}
 		}
 	}
