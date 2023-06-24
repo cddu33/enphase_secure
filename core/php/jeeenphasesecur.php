@@ -594,10 +594,10 @@ try {
 				else if ($eqLogic->getConfiguration('groupement') == '4') {$enphasesecur_temp_4 += $enphasesecur['lastReportWatts'];}
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
 				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
-				if ($eqLogic->getConfiguration('groupement') == '1') {$enphasesecur_temp_max1 += $enphasesecur['lastReportWatts'];}
-				elseif ($eqLogic->getConfiguration('groupement') == '2') {$enphasesecur_temp_max2 += $enphasesecur['lastReportWatts'];}
-				elseif ($eqLogic->getConfiguration('groupement') == '3') {$enphasesecur_temp_max3 += $enphasesecur['lastReportWatts'];}
-				elseif ($eqLogic->getConfiguration('groupement') == '4') {$enphasesecur_temp_max4 += $enphasesecur['lastReportWatts'];}
+				if ($eqLogic->getConfiguration('groupement') == '1') {$enphasesecur_temp_max1 += $enphasesecur['maxReportWatts'];}
+				elseif ($eqLogic->getConfiguration('groupement') == '2') {$enphasesecur_temp_max2 += $enphasesecur['maxReportWatts'];}
+				elseif ($eqLogic->getConfiguration('groupement') == '3') {$enphasesecur_temp_max3 += $enphasesecur['maxReportWatts'];}
+				elseif ($eqLogic->getConfiguration('groupement') == '4') {$enphasesecur_temp_max4 += $enphasesecur['maxReportWatts'];}
 			}
 		}
 		foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
