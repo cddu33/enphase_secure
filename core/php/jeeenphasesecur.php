@@ -588,46 +588,48 @@ try {
 			if (is_object($eqLogic)) {
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance: ' . $enphasesecur['lastReportWatts']);
 				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur['lastReportWatts']);
-				if ($eqLogic->getConfiguration('groupe') == 'G1') {$enphasesecur_temp_1 += $enphasesecur['lastReportWatts'];}
-				else if ($eqLogic->getConfiguration('groupe') == 'G2') {$enphasesecur_temp_2 += $enphasesecur['lastReportWatts'];}
-				else if ($eqLogic->getConfiguration('groupe') == 'G3') {$enphasesecur_temp_3 += $enphasesecur['lastReportWatts'];}
-				else if ($eqLogic->getConfiguration('groupe') == 'G4') {$enphasesecur_temp_4 += $enphasesecur['lastReportWatts'];}
+				if ($eqLogic->getConfiguration('groupement') == '1') {$enphasesecur_temp_1 += $enphasesecur['lastReportWatts'];}
+				else if ($eqLogic->getConfiguration('groupement') == '2') {$enphasesecur_temp_2 += $enphasesecur['lastReportWatts'];}
+				else if ($eqLogic->getConfiguration('groupement') == '3') {$enphasesecur_temp_3 += $enphasesecur['lastReportWatts'];}
+				else if ($eqLogic->getConfiguration('groupement') == '4') {$enphasesecur_temp_4 += $enphasesecur['lastReportWatts'];}
 				log::add('enphasesecur', 'debug', 'Convertisseurs ' . $enphasesecur['serialNumber'] . ' Puissance max: ' . $enphasesecur['maxReportWatts']);
 				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur['maxReportWatts']);
-				if ($eqLogic->getConfiguration('groupe') == 'G1') {$enphasesecur_temp_max1 += $enphasesecur['lastReportWatts'];}
-				elseif ($eqLogic->getConfiguration('groupe') == 'G2') {$enphasesecur_temp_max2 += $enphasesecur['lastReportWatts'];}
-				elseif ($eqLogic->getConfiguration('groupe') == 'G3') {$enphasesecur_temp_max3 += $enphasesecur['lastReportWatts'];}
-				elseif ($eqLogic->getConfiguration('groupe') == 'G4') {$enphasesecur_temp_max4 += $enphasesecur['lastReportWatts'];}
+				if ($eqLogic->getConfiguration('groupement') == '1') {$enphasesecur_temp_max1 += $enphasesecur['lastReportWatts'];}
+				elseif ($eqLogic->getConfiguration('groupement') == '2') {$enphasesecur_temp_max2 += $enphasesecur['lastReportWatts'];}
+				elseif ($eqLogic->getConfiguration('groupement') == '3') {$enphasesecur_temp_max3 += $enphasesecur['lastReportWatts'];}
+				elseif ($eqLogic->getConfiguration('groupement') == '4') {$enphasesecur_temp_max4 += $enphasesecur['lastReportWatts'];}
 			}
 		}
 		foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getConfiguration('groupe') == 'G1' && config::bykey('G1', __CLASS__) == true) {
-				log::add('enphasesecur', 'debug', 'Groupe 1, Puissance max: ' . $enphasesecur_temp_max1);
-				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max1);
-				log::add('enphasesecur', 'debug', 'Groupe 1, Puissance: ' . $enphasesecur_temp_1);
-				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_1);
+			if ($eqLogic->getConfiguration('type') == 'groupe') {
+			
+			  if ($eqLogic->getLogicalId() == 'enphasesecur_G1') {
+				  log::add('enphasesecur', 'debug', 'Groupe 1, Puissance max: ' . $enphasesecur_temp_max1);
+				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max1);
+				  log::add('enphasesecur', 'debug', 'Groupe 1, Puissance: ' . $enphasesecur_temp_1);
+				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_1);
+			  }
+			  if ($eqLogic->getLogicalId() == 'enphasesecur_G2') {
+				  log::add('enphasesecur', 'debug', 'Groupe 2, Puissance max: ' . $enphasesecur_temp_max2);
+				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max2);
+				  log::add('enphasesecur', 'debug', 'Groupe 2, Puissance: ' . $enphasesecur_temp_2);
+				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_2);
+			  }
+			  if ($eqLogic->getLogicalId() == 'enphasesecur_G3') {
+				  log::add('enphasesecur', 'debug', 'Groupe 3, Puissance max: ' . $enphasesecur_temp_max3);
+				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max3);
+				  log::add('enphasesecur', 'debug', 'Groupe 3, Puissance: ' . $enphasesecur_temp_3);
+				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_3);
+			  }
+			  if ($eqLogic->getLogicalId() == 'enphasesecur_G3') {
+				  log::add('enphasesecur', 'debug', 'Groupe 4, Puissance max: ' . $enphasesecur_temp_max4);
+				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max4);
+				  log::add('enphasesecur', 'debug', 'Groupe 4, Puissance: ' . $enphasesecur_temp_4);
+				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_4);
+			  }
 			}
-			if ($eqLogic->getConfiguration('groupe') == 'G2' && config::bykey('G2', __CLASS__) == true) {
-				log::add('enphasesecur', 'debug', 'Groupe 2, Puissance max: ' . $enphasesecur_temp_max2);
-				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max2);
-				log::add('enphasesecur', 'debug', 'Groupe 2, Puissance: ' . $enphasesecur_temp_2);
-				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_2);
-			}
-			if ($eqLogic->getConfiguration('groupe') == 'G3' && config::bykey('G3', __CLASS__) == true) {
-				log::add('enphasesecur', 'debug', 'Groupe 3, Puissance max: ' . $enphasesecur_temp_max3);
-				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max3);
-				log::add('enphasesecur', 'debug', 'Groupe 3, Puissance: ' . $enphasesecur_temp_3);
-				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_3);
-			}
-			if ($eqLogic->getConfiguration('groupe') == 'G4' && config::bykey('G4', __CLASS__) == true) {
-				log::add('enphasesecur', 'debug', 'Groupe 4, Puissance max: ' . $enphasesecur_temp_max4);
-				$eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max4);
-				log::add('enphasesecur', 'debug', 'Groupe 4, Puissance: ' . $enphasesecur_temp_4);
-				$eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_4);
-			}
-
-		}
-	}
+		  }
+	  }
 	//inventaire création des équipements
 	elseif (isset($enphasesecur_json[0]['devices'])) {
 		log::add('enphasesecur', 'debug', 'Réception inventaire');
