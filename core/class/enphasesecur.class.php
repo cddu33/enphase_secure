@@ -266,15 +266,14 @@ class enphasesecur extends eqLogic {
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
-        $oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
-$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $oldCwattHoursLifetimeNet);
-$eqLogic->save();
-
-$eqLogic->checkAndUpdateCmd('cumulimport1', 0);
+				$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
+				$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $oldCwattHoursLifetimeNet);
+				$eqLogic->save();
+				$eqLogic->checkAndUpdateCmd('cumulimport1', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport1', 0);
-$eqLogic->checkAndUpdateCmd('cumulimport2', 0);
+				$eqLogic->checkAndUpdateCmd('cumulimport2', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport2', 0);
-$eqLogic->checkAndUpdateCmd('cumulimport3', 0);
+				$eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport3', 0);
 			}
 		}
@@ -329,6 +328,10 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 		$cumul3 = $cumul3-$cumul3*0.10;
 		$cumul4 = $cumul4/$cumulb4;
 		$cumul4 = $cumul4-$cumul4*0.10;
+		$g1 = false;
+		$g2 = false;
+		$g3 = false;
+		$g4 = false;
 
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'conv') {
@@ -336,24 +339,28 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 					case '1':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
+							$g1 = true;
 						}
 						break;
 						
 					case '2':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul2) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
+							$g2 = true;
 						}
 						break;
 						
 					case '3':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul3) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
+							$g3 = true;
 						}
 						break;
 						
 					case '4':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul4) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
+							$g4 = true;
 						}
 						break;
 					default:
@@ -371,7 +378,15 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 			log::add('enphasesecur', 'error', $rapport);
 		}
 		
-		//message::add('Enphase Secure', $rapport);
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
+			if ($eqLogic->getConfiguration('type') == 'groupe') {
+				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { $eqLogic->checkAndUpdateCmd('alarme', $G1);}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { $eqLogic->checkAndUpdateCmd('alarme', $G2);}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { $eqLogic->checkAndUpdateCmd('alarme', $G3);}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { $eqLogic->checkAndUpdateCmd('alarme', $G4);}
+			}
+
+		}
 	}
 
 
