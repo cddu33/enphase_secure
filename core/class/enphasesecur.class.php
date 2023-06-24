@@ -245,6 +245,8 @@ class enphasesecur extends eqLogic {
 					elseif ($eqLogic->getConfiguration('groupement') == '4') {$prodgroupe4 += $prod;}
 				}
 			}
+		}
+		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'groupe') {
 				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe1);}
 				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe2);}
