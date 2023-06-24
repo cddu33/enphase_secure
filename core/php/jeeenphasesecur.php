@@ -609,19 +609,19 @@ try {
 				  log::add('enphasesecur', 'debug', 'Groupe 1, Puissance: ' . $enphasesecur_temp_1);
 				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_1);
 			  }
-			  if ($eqLogic->getLogicalId() == 'enphasesecur_G2') {
+			  elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') {
 				  log::add('enphasesecur', 'debug', 'Groupe 2, Puissance max: ' . $enphasesecur_temp_max2);
 				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max2);
 				  log::add('enphasesecur', 'debug', 'Groupe 2, Puissance: ' . $enphasesecur_temp_2);
 				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_2);
 			  }
-			  if ($eqLogic->getLogicalId() == 'enphasesecur_G3') {
+			  elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') {
 				  log::add('enphasesecur', 'debug', 'Groupe 3, Puissance max: ' . $enphasesecur_temp_max3);
 				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max3);
 				  log::add('enphasesecur', 'debug', 'Groupe 3, Puissance: ' . $enphasesecur_temp_3);
 				  $eqLogic->checkAndUpdateCmd('Watt', $enphasesecur_temp_3);
 			  }
-			  if ($eqLogic->getLogicalId() == 'enphasesecur_G3') {
+			  elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') {
 				  log::add('enphasesecur', 'debug', 'Groupe 4, Puissance max: ' . $enphasesecur_temp_max4);
 				  $eqLogic->checkAndUpdateCmd('maxWatt', $enphasesecur_temp_max4);
 				  log::add('enphasesecur', 'debug', 'Groupe 4, Puissance: ' . $enphasesecur_temp_4);

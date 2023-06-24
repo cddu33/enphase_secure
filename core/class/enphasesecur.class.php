@@ -227,6 +227,10 @@ class enphasesecur extends eqLogic {
   	public function postUpdate() {}
 
 	public function enphasesecurCron15(){
+		$prodgroupe1 = 0;
+		$prodgroupe2 = 0;
+		$prodgroupe3 = 0;
+		$prodgroupe4 = 0;
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			//ajout valeur au wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
@@ -235,7 +239,17 @@ class enphasesecur extends eqLogic {
 				if ($puissance!=0) {
 					$prod = $ancienprod + ($puissance*0.25);
 					$eqLogic->checkAndUpdateCmd('calWH', $prod);
+					if ($eqLogic->getConfiguration('groupement') == '1') {$prodgroupe1 += $prod;}
+					elseif ($eqLogic->getConfiguration('groupement') == '2') {$prodgroupe2 += $prod;}
+					elseif ($eqLogic->getConfiguration('groupement') == '3') {$prodgroupe3 += $prod;}
+					elseif ($eqLogic->getConfiguration('groupement') == '4') {$prodgroupe4 += $prod;}
 				}
+			}
+			if ($eqLogic->getConfiguration('type') == 'groupe') {
+				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe1);}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe2);}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe3);}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { $eqLogic->checkAndUpdateCmd('calWH', $prodgroupe4);}
 			}
 		}
 	}
