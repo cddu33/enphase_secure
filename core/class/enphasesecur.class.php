@@ -86,6 +86,67 @@ class enphasesecur extends eqLogic {
 			}
 		}
 
+		if (config::byKey('G1', __CLASS__) == true) {
+			if (!is_object(eqLogic::byLogicalId('enphasesecur_G1', 'enphasesecur'))) {
+				log::add('enphasesecur', 'debug', 'Création équipement groupe 1');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_G1');
+				$eqLogic->setName('Groupe 1');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'groupe');
+				$eqLogic->setIsVisible('1');
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
+			}
+		}
+		if (config::byKey('G2', __CLASS__) == true) {
+			if (!is_object(eqLogic::byLogicalId('enphasesecur_G2', 'enphasesecur'))) {
+				log::add('enphasesecur', 'debug', 'Création équipement groupe 2');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_G2');
+				$eqLogic->setName('Groupe 2');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'groupe');
+				$eqLogic->setIsVisible('1');
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
+			}
+		}
+		if (config::byKey('G3', __CLASS__) == true) {
+			if (!is_object(eqLogic::byLogicalId('enphasesecur_G3', 'enphasesecur'))) {
+				log::add('enphasesecur', 'debug', 'Création équipement groupe 3');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_G3');
+				$eqLogic->setName('Groupe 3');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'groupe');
+				$eqLogic->setIsVisible('1');
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
+			}
+		}
+
+		if (config::byKey('G4', __CLASS__) == true) {
+			if (!is_object(eqLogic::byLogicalId('enphasesecur_G4', 'enphasesecur'))) {
+				log::add('enphasesecur', 'debug', 'Création équipement groupe 4');
+				$eqLogic = new self();
+				$eqLogic->setLogicalId('enphasesecur_G4');
+				$eqLogic->setName('Groupe 4');
+				$eqLogic->setCategory('energy', 1);
+				$eqLogic->setEqType_name('enphasesecur');
+				$eqLogic->setConfiguration('type', 'groupe');
+				$eqLogic->setIsVisible('1');
+				$eqLogic->setIsEnable(1);
+				$eqLogic->save();
+			}
+		}
+
+
+
+
 		if (config::bykey('widget', __CLASS__) == 1){
 
 			if (!is_object(eqLogic::byLogicalId('enphasesecur_combine', 'enphasesecur'))) {
@@ -1812,6 +1873,68 @@ $eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$enphasesecurCmd->save();
 			}
 		}
+		
+		if ($this->getConfiguration('type') == 'groupe') {
+			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance Max', __FILE__));
+				$enphasesecurCmd->setIsVisible('1');
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('maxWatt');
+				$enphasesecurCmd->setTemplate('dashboard', 'core::badge');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
+			}
+
+			$enphasesecurCmd = $this->getCmd(null, 'Watt');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Puissance', __FILE__));
+				$enphasesecurCmd->setIsVisible('1');
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('Watt');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+				$enphasesecurCmd->setEqLogic_id($this->getId());
+				$enphasesecurCmd->setType('info');
+				$enphasesecurCmd->setSubType('numeric');
+				$enphasesecurCmd->setUnite('W');
+				$enphasesecurCmd->save();
+			}
+			
+			$enphasesecurCmd = $this->getCmd(null, 'calWH');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Production journalière', __FILE__));
+				$enphasesecurCmd->setIsVisible('1');
+				$enphasesecurCmd->setIsHistorized(true);
+				$enphasesecurCmd->setLogicalId('calWH');
+				$enphasesecurCmd->setGeneric_type('CONSUMPTION');
+        		$enphasesecurCmd->setEqLogic_id($this->getId());
+        		$enphasesecurCmd->setType('info');
+        		$enphasesecurCmd->setSubType('numeric');
+        		$enphasesecurCmd->setUnite('Wh');
+        		$enphasesecurCmd->save();
+			}
+			$enphasesecurCmd = $this->getCmd(null, 'alarme');
+			if (!is_object($enphasesecurCmd)) {
+				$enphasesecurCmd = new enphasesecurCmd();
+				$enphasesecurCmd->setName(__('Alarme Groupe', __FILE__));
+				$enphasesecurCmd->setIsVisible('1');
+				$enphasesecurCmd->setLogicalId('alarme');
+        		$enphasesecurCmd->setEqLogic_id($this->getId());
+        		$enphasesecurCmd->setType('info');
+        		$enphasesecurCmd->setSubType('binary');
+				$enphasesecurCmd->setTemplate('dashboard', 'core::alert');
+				$enphasesecurCmd->setTemplate('mobile', 'core::alert');
+        		$enphasesecurCmd->save();
+			}
+		}
+
+
 		
 		if ($this->getConfiguration('type') == 'conv') {
 			$enphasesecurCmd = $this->getCmd(null, 'maxWatt');
