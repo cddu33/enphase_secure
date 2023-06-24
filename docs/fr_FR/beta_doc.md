@@ -37,6 +37,11 @@ Le plugin permet de récupérer les données:
     * Le puissance délivrée max par onduleur
     * La production cumulée sur la journée (estimation)
     * Le groupe d'appartenance (orientation ou puissance du panneau) pour la surveillance de production
+* Groupe d'onduleurs (si configuré)
+    * La puissance délivrée dans le groupe
+    * Le puissance délivrée max dans le groupe
+    * La production cumulée sur la journée (estimation) dans le groupe
+    * La surveillance de production
 
 
 Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
@@ -92,6 +97,12 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 * Racordement de l'installation:
    * Mode Monophasé
    * Mode triphasé
+
+* Equipement par Groupement:
+Si coché, créé un équipement par groupement pour centraliser les informations
+
+Les groupements sont à renseigner dans chaque équipement onduleur
+>Attention, pensez à relancer le démon si vous changez ce paramètre.
 
 * Autoconsommation:
    * Mode de fonctionnement: active ou non l'autoconsommation
