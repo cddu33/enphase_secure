@@ -121,6 +121,20 @@ if (!isConnect()) {
 			</div>
 		</div>
 
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Equipement par Groupement}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les groupements qui génèrent un équipement de synthèse}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G1" >{{Groupe 1}}</label>
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G2" >{{Groupe 2}}</label>
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G3" >{{Groupe 3}}</label>
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G4" >{{Groupe 4}}</label>
+
+
+			</div>
+		</div>
+
 
 		<legend><i class="fas fa-wrench"></i> {{Auto Consommation}} </legend>
 		<div class="form-group">

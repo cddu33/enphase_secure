@@ -4,6 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 24/06/2023
+Possibilité de créé un équipement par groupement avec prod jour, alarme, puissance max et puissance
+
 # 19/06/2023
 Pas de surveillance de la production de chaque panneau si aucun groupement n'est mis sur l'équipement
 
