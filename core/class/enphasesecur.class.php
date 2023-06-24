@@ -328,10 +328,10 @@ class enphasesecur extends eqLogic {
 		$cumul3 = $cumul3-$cumul3*0.10;
 		$cumul4 = $cumul4/$cumulb4;
 		$cumul4 = $cumul4-$cumul4*0.10;
-		$g1 = false;
-		$g2 = false;
-		$g3 = false;
-		$g4 = false;
+		$g1 = true;
+		$g2 = true;
+		$g3 = true;
+		$g4 = true;
 
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'conv') {
@@ -339,28 +339,28 @@ class enphasesecur extends eqLogic {
 					case '1':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
-							$g1 = true;
+							$g1 = false;
 						}
 						break;
 						
 					case '2':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul2) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
-							$g2 = true;
+							$g2 = false;
 						}
 						break;
 						
 					case '3':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul3) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
-							$g3 = true;
+							$g3 = false;
 						}
 						break;
 						
 					case '4':
 						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul4) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
-							$g4 = true;
+							$g4 = false;
 						}
 						break;
 					default:
