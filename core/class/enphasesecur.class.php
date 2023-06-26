@@ -405,7 +405,7 @@ class enphasesecur extends eqLogic {
 	  		
 			CreaCmd ('PwattHoursLifetime', 'Prod MES', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'Wh', '1');
 
-			CreaCmd ('PwattsNow', 'Prod Inst', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W' '1');
+			CreaCmd ('PwattsNow', 'Prod Inst', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
 
 			
 
@@ -430,11 +430,11 @@ class enphasesecur extends eqLogic {
 
 				CreaCmd ('PwattHoursLifetime3', 'Prod MES 3', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'Wh', '1');
 
-				CreaCmd ('PwattsNow1', 'Prod Inst 1', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W' '1');
+				CreaCmd ('PwattsNow1', 'Prod Inst 1', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
 
-				CreaCmd ('PwattsNow2', 'Prod Inst 2', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W' '1');
+				CreaCmd ('PwattsNow2', 'Prod Inst 2', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
 
-				CreaCmd ('PwattsNow3', 'Prod Inst 3', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W' '1');
+				CreaCmd ('PwattsNow3', 'Prod Inst 3', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
 			}
 		}
 
@@ -448,7 +448,7 @@ class enphasesecur extends eqLogic {
 
 			CreaCmd ('CwattHoursLifetime', 'Conso Total MES', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
-			CreaCmd ('CwattsNow', 'Conso Total Inst', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+			CreaCmd ('CwattsNow', 'Conso Total Inst', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
@@ -471,11 +471,11 @@ class enphasesecur extends eqLogic {
 
 				CreaCmd ('CwattHoursLifetime3', 'Conso Total MES3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
-				CreaCmd ('CwattsNow1', 'Conso Total Inst1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('CwattsNow1', 'Conso Total Inst1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('CwattsNow2', 'Conso Total Inst2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('CwattsNow2', 'Conso Total Inst2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('CwattsNow3', 'Conso Total Inst3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('CwattsNow3', 'Conso Total Inst3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 			}
 		}
 
@@ -488,11 +488,11 @@ class enphasesecur extends eqLogic {
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
 			{
 				//si triphasé
-				CreaCmd ('tension1', 'Tension 1', 'core::badge', '1', '0', 'VOLTAGE','info', 'numeric', 'V' '1');
+				CreaCmd ('tension1', 'Tension 1', 'core::badge', '1', '0', 'VOLTAGE','info', 'numeric', 'V', '1');
 
-				CreaCmd ('tension2', 'Tension 2', 'core::badge', '1', '0', 'VOLTAGE','info', 'numeric', 'V' '1');
+				CreaCmd ('tension2', 'Tension 2', 'core::badge', '1', '0', 'VOLTAGE','info', 'numeric', 'V', '1');
 
-				CreaCmd ('tension3', 'Tension 3', 'core::badge', '1', '0', 'VOLTAGE','info', 'numeric', 'V' '1');
+				CreaCmd ('tension3', 'Tension 3', 'core::badge', '1', '0', 'VOLTAGE','info', 'numeric', 'V', '1');
 
 			}
 		}
@@ -505,11 +505,11 @@ class enphasesecur extends eqLogic {
   
 			CreaCmd ('CwattHoursLifetimeNet', 'Conso Net MES', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 			
-			CreaCmd ('CwattsNowNet', 'Conso Net Inst', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+			CreaCmd ('CwattsNowNet', 'Conso Net Inst', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-			CreaCmd ('Export', 'Export Réseau', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+			CreaCmd ('Export', 'Export Réseau', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-			CreaCmd ('Import', 'Impor Réseau', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+			CreaCmd ('Import', 'Impor Réseau', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
 			CreaCmd ('cumulexport', 'Export Jour Réseau', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
@@ -538,23 +538,23 @@ class enphasesecur extends eqLogic {
 
 				CreaCmd ('CwattHoursLifetimeNet3', 'Conso Net MES3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 				
-				CreaCmd ('CwattsNowNet1', 'Conso Net Inst1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('CwattsNowNet1', 'Conso Net Inst1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('CwattsNowNet2', 'Conso Net Inst2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('CwattsNowNet2', 'Conso Net Inst2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('CwattsNowNet3', 'Conso Net Inst3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('CwattsNowNet3', 'Conso Net Inst3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('Export1', 'Export Réseau1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('Export1', 'Export Réseau1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('Export2', 'Export Réseau2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('Export2', 'Export Réseau2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('Export3', 'Export Réseau3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('Export3', 'Export Réseau3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('Import1', 'Impor Réseau1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('Import1', 'Impor Réseau1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('Import2', 'Impor Réseau2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('Import2', 'Impor Réseau2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
-				CreaCmd ('Import3', 'Impor Réseau3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W' '1');
+				CreaCmd ('Import3', 'Impor Réseau3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
 				CreaCmd ('cumulexport1', 'Export Jour Réseau1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
