@@ -132,21 +132,21 @@ class enphasesecur extends eqLogic
 			}
 		}
 
-		if (config::byKey('G1', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G2', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G2', 'Groupe 2', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G3', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G4', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G4', 'Groupe 4', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G1', __CLASS__) == true) { CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G2', __CLASS__) == true) { CreaEquip('enphasesecur_G2', 'Groupe 2', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G3', __CLASS__) == true) { CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G4', __CLASS__) == true) { CreaEquip('enphasesecur_G4', 'Groupe 4', 'type', 'groupe', '1', 1);}
 
-		if (config::bykey('widget', __CLASS__) == 1) { $this->CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
+		if (config::bykey('widget', __CLASS__) == 1) { CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
 		else 
 		{ 
-			$this->CreaEquip('enphasesecur_prod', 'Enphase Production', 'type', 'prod', '1', 1);
+			CreaEquip('enphasesecur_prod', 'Enphase Production', 'type', 'prod', '1', 1);
 
-			$this->CreaEquip('enphasesecur_conso_net', 'Enphase Consommation Net', 'type', 'net', '1', 1);
+			CreaEquip('enphasesecur_conso_net', 'Enphase Consommation Net', 'type', 'net', '1', 1);
 
-			$this->CreaEquip('enphasesecur_conso_total', 'Enphase Consommation Total', 'type', 'total', '1', 1);
+			CreaEquip('enphasesecur_conso_total', 'Enphase Consommation Total', 'type', 'total', '1', 1);
 
-			$this->CreaEquip('enphasesecur_bat', 'Enphase Stockage', 'type', 'bat', '1', 1);
+			CreaEquip('enphasesecur_bat', 'Enphase Stockage', 'type', 'bat', '1', 1);
 		}
 	}
 	// Fonction exécutée automatiquement avant la création de l'équipement
