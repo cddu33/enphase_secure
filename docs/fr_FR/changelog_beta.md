@@ -4,6 +4,11 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 26/06/2023
+Simplification du code pour la création des commandes
+
+@Piug Correction sur la création des équipements des groupes 
+
 # 24/06/2023
 Possibilité de créé un équipement par groupement avec prod jour, alarme, puissance max et puissance
 
