@@ -29,7 +29,13 @@ try {
   */
     ajax::init();
 
-
+    $action =  init('action');
+    switch($action) {
+      case 'PostSaveConfiguration':
+        enphasesecur::creationmaj();
+        ajax::success();
+        break;
+    }
 
     throw new Exception(__('Aucune méthode correspondante à', __FILE__) . ' : ' . init('action'));
     /*     * *********Catch exeption*************** */

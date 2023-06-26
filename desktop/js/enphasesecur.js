@@ -98,3 +98,27 @@ function addCmdToTable(_cmd) {
     }
   })
 }
+
+/** Post save configuration function */
+function enphasesecur_postSaveConfiguration() {
+  $.ajax({
+    type: "POST",
+    url: 'plugins/enphasesecur/core/ajax/enphasesecur.ajax.php',
+    data: {
+        action: "PostSaveConfiguration",
+    },
+    dataType: 'json',
+    error: function (request, status, error) {
+      handleAjaxError(request, status, error, $('#div_alert'));
+      $('#div_alert').showAlert({message: '{{Erreur de sauvegarde.}}', level: 'error'});
+    },
+    success: function (data) {
+      if (data.state == 'ok') {
+        $('#div_alert').showAlert({message: '{{Configuration mise à jour!}}', level: 'success'});
+        return;
+      }else{
+        $('#div_alert').showAlert({message: '{{Erreur Mise à jour configuration}}', level: 'error'});
+      }
+    }
+  })
+}
