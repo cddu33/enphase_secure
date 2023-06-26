@@ -78,15 +78,15 @@ class enphasesecur extends eqLogic {
 		{
 			$enphasesecurCmd = new enphasesecurCmd();
 			$enphasesecurCmd->setName(__($enphasename, __FILE__));
-			$enphasesecurCmd->setTemplate('dashboard', $enphasedash);
-			$enphasesecurCmd->setIsHistorized($enphasehisto);
-			$enphasesecurCmd->setConfiguration('historizeRound', $enphasehistor);
-			$enphasesecurCmd->setGeneric_type($enphasegtype); 
+			if (!empty($enphasedash)) {$enphasesecurCmd->setTemplate('dashboard', $enphasedash);}
+			if (!empty($enphasehisto)) {$enphasesecurCmd->setIsHistorized($enphasehisto);}
+			if (!empty($enphasehistor)) {$enphasesecurCmd->setConfiguration('historizeRound', $enphasehistor);}
+			if (!empty($enphasegtype)) {$enphasesecurCmd->setGeneric_type($enphasegtype); }
 			$enphasesecurCmd->setEqLogic_id($this->getId());
 			$enphasesecurCmd->setLogicalId($enphaselogic);
-			$enphasesecurCmd->setType($enphasetype);
-			$enphasesecurCmd->setSubType($enphasesubtype);
-			$enphasesecurCmd->setUnite($enphaseunite);
+			if (!empty($enphasetype)) {$enphasesecurCmd->setType($enphasetype);}
+			if (!empty($enphasesubtype)) {$enphasesecurCmd->setSubType($enphasesubtype);}
+			if (!empty($enphaseunite)) {$enphasesecurCmd->setUnite($enphaseunite);}
 			$enphasesecurCmd->setIsVisible($enphasevisible);
 			$enphasesecurCmd->save();
 	  	}
