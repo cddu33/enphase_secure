@@ -18,7 +18,8 @@
 /* * ***************************Includes********************************* */
 require_once __DIR__  . '/../../../../core/php/core.inc.php';
 
-class enphasesecur extends eqLogic {
+class enphasesecur extends eqLogic 
+{
 	/*     * *************************Attributs****************************** */
 
 	public function decrypt() {
@@ -72,46 +73,6 @@ class enphasesecur extends eqLogic {
 	}
 
 	
-
-	//fonction pour la création des équipement suivant la configuration choisie
-	public static function creationmaj() {
-		foreach (self::byType('enphasesecur', true) as $eqLogic) 
-		{
-			if (config::bykey('widget', __CLASS__) == 1)
-			{
-				if ($eqLogic->getConfiguration('type') == 'net' || $eqLogic->getConfiguration('type') == 'total' || $eqLogic->getConfiguration('type') == 'bat' || $eqLogic->getConfiguration('type') == 'prod') 
-				{
-					log::add('enphasesecur', 'info', 'Suppression équipement suite à changement de mode vers combiné');
-					$eqLogic->remove();
-				}
-			}
-			else 
-			{
-				if ($eqLogic->getConfiguration('type') == 'combine') 
-				{
-					log::add('enphasesecur', 'info', 'Suppression équipement suite à changement de mode vers divisé');
-					$eqLogic->remove();
-				}
-			}
-		}
-
-		if (config::byKey('G1', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G2', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G2', 'Groupe 2', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G3', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G4', __CLASS__) == true) { $this->CreaEquip('enphasesecur_G4', 'Groupe 4', 'type', 'groupe', '1', 1);}
-
-		if (config::bykey('widget', __CLASS__) == 1) { $this->CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
-		else 
-		{ 
-			$this->CreaEquip('enphasesecur_prod', 'Enphase Production', 'type', 'prod', '1', 1);
-
-			$this->CreaEquip('enphasesecur_conso_net', 'Enphase Consommation Net', 'type', 'net', '1', 1);
-
-			$this->CreaEquip('enphasesecur_conso_total', 'Enphase Consommation Total', 'type', 'total', '1', 1);
-
-			$this->CreaEquip('enphasesecur_bat', 'Enphase Stockage', 'type', 'bat', '1', 1);
-		}
-	}
 	// Fonction exécutée automatiquement avant la création de l'équipement
 	public function preInsert() {}
 
