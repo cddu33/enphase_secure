@@ -245,8 +245,8 @@ try {
 					$eqLogic->checkAndUpdateCmd('PwattsNow', $enphasesecur_info);	
 
 					$enphasesecur_info = $enphasesecur_json['production']['1']['apprntPwr'];
-					log::add('enphasesecur', 'debug', 'Production Puissance Apparente 2: ' . $enphasesecur_info);
-					$eqLogic->checkAndUpdateCmd('PapprntPwr2', $enphasesecur_info);	
+					log::add('enphasesecur', 'debug', 'Production Puissance Apparente: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('PapprntPwr', $enphasesecur_info);	
 
 					$enphasesecur_info = $enphasesecur_json['production']['1']['pwrFactor'];
 					log::add('enphasesecur', 'debug', 'Production Facteur de puissance: ' . $enphasesecur_info);
@@ -841,8 +841,8 @@ try {
 						$eqLogic->checkAndUpdateCmd('CvarhLeadLifetimeNet', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLeadToday'];
-						log::add('enphasesecur', 'debug', 'CvarhLeadTodayNet3 ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CvarhLeadTodayNet3', $enphasesecur_info);	
+						log::add('enphasesecur', 'debug', 'CvarhLeadTodayNet ' . $enphasesecur_info);
+						$eqLogic->checkAndUpdateCmd('CvarhLeadTodayNet', $enphasesecur_info);	
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
