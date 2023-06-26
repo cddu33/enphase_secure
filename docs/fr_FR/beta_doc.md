@@ -17,17 +17,44 @@ Le plugin permet de récupérer les données:
     * Semaine
     * Mise en service
     * Cumul Journalier Export réseau
+    * Puissance Réactive
+    * Puissance Apaprente
+    * Facteur de puissance
+    * Courant
+    * vahLifetime
+    * vahToday
+    * varhLagLifetime
+    * varhLeadLifetime
+    * varhLeadToday
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
+    * Puissance Réactive
+    * Puissance Apaprente
+    * Facteur de puissance
+    * Courant
+    * vahLifetime
+    * vahToday
+    * varhLagLifetime
+    * varhLeadLifetime
+    * varhLeadToday
 * de consommation net mono ou tri (importée du réseau):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
     * Cumul journalier Import réseau
+    * Puissance Réactive
+    * Puissance Apaprente
+    * Facteur de puissance
+    * Courant
+    * vahLifetime
+    * vahToday
+    * varhLagLifetime
+    * varhLeadLifetime
+    * varhLeadToday
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée

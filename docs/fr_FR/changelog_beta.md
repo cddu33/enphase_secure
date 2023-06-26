@@ -9,6 +9,19 @@ Simplification du code pour la création des commandes
 
 @Piug Correction sur la création des équipements des groupes 
 
+Rajouts des informations suivantes pour la production et la consommation:
+- Puissance Réactive
+- Puissance Apaprente
+- Facteur de puissance
+- Courant
+- vahLifetime
+- vahToday
+- varhLagLifetime
+- varhLeadLifetime
+- varhLeadToday
+
+Certaines commandes n'ont pas de nom car je ne sais pas à quoi ça correspond
+
 # 24/06/2023
 Possibilité de créé un équipement par groupement avec prod jour, alarme, puissance max et puissance
 
