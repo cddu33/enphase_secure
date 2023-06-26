@@ -132,21 +132,21 @@ class enphasesecur extends eqLogic
 			}
 		}
 
-		if (config::byKey('G1', __CLASS__) == true) { CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G2', __CLASS__) == true) { CreaEquip('enphasesecur_G2', 'Groupe 2', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G3', __CLASS__) == true) { CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
-		if (config::byKey('G4', __CLASS__) == true) { CreaEquip('enphasesecur_G4', 'Groupe 4', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G1', __CLASS__) == true) { self::CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G2', __CLASS__) == true) { self::CreaEquip('enphasesecur_G2', 'Groupe 2', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G3', __CLASS__) == true) { self::CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
+		if (config::byKey('G4', __CLASS__) == true) { self::CreaEquip('enphasesecur_G4', 'Groupe 4', 'type', 'groupe', '1', 1);}
 
-		if (config::bykey('widget', __CLASS__) == 1) { CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
+		if (config::bykey('widget', __CLASS__) == 1) { $this->CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
 		else 
 		{ 
-			CreaEquip('enphasesecur_prod', 'Enphase Production', 'type', 'prod', '1', 1);
+			self::CreaEquip('enphasesecur_prod', 'Enphase Production', 'type', 'prod', '1', 1);
 
-			CreaEquip('enphasesecur_conso_net', 'Enphase Consommation Net', 'type', 'net', '1', 1);
+			self::CreaEquip('enphasesecur_conso_net', 'Enphase Consommation Net', 'type', 'net', '1', 1);
 
-			CreaEquip('enphasesecur_conso_total', 'Enphase Consommation Total', 'type', 'total', '1', 1);
+			self::CreaEquip('enphasesecur_conso_total', 'Enphase Consommation Total', 'type', 'total', '1', 1);
 
-			CreaEquip('enphasesecur_bat', 'Enphase Stockage', 'type', 'bat', '1', 1);
+			self::CreaEquip('enphasesecur_bat', 'Enphase Stockage', 'type', 'bat', '1', 1);
 		}
 	}
 	// Fonction exécutée automatiquement avant la création de l'équipement
@@ -333,7 +333,6 @@ class enphasesecur extends eqLogic
 		}
 	}
 
-
 	//création des crons pour les onduleurs WH et init cumul export import
 	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
@@ -409,8 +408,6 @@ class enphasesecur extends eqLogic
 			$this->CreaCmd('PwattHoursLifetime', 'Prod MES', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'Wh', '1');
 
 			$this->CreaCmd('PwattsNow', 'Prod Inst', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
-
-			
 
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
