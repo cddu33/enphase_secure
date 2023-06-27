@@ -425,7 +425,7 @@ class enphasesecur extends eqLogic
 
 			$this->CreaCmd('PvarhLagToday', 'Prod Puissance Réactive Inductive Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
 
-			$this->CreaCmd('PvarhLeadLifetime', 'Prod Puissance Réactive Capacitive MES', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');R
+			$this->CreaCmd('PvarhLeadLifetime', 'Prod Puissance Réactive Capacitive MES', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
 
 			$this->CreaCmd('PvarhLeadToday', 'Prod Puissance Réactive Capacitive Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
 
