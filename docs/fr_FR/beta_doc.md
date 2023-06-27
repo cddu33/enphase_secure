@@ -21,11 +21,12 @@ Le plugin permet de récupérer les données:
     * Puissance Apaprente
     * Facteur de puissance
     * Courant
-    * vahLifetime
-    * vahToday
-    * varhLagLifetime
-    * varhLeadLifetime
-    * varhLeadToday
+    * Puissance Récative inductive jour
+    * Puissance Récative inductive Mes
+    * Puissance Récative capacitive jour
+    * Puissance Récative capacitive Mes
+    * Puissance Apparente jour
+    * Puissance Apparente Mes
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
@@ -35,11 +36,12 @@ Le plugin permet de récupérer les données:
     * Puissance Apaprente
     * Facteur de puissance
     * Courant
-    * vahLifetime
-    * vahToday
-    * varhLagLifetime
-    * varhLeadLifetime
-    * varhLeadToday
+    * Puissance Récative inductive jour
+    * Puissance Récative inductive Mes
+    * Puissance Récative capacitive jour
+    * Puissance Récative capacitive Mes
+    * Puissance Apparente jour
+    * Puissance Apparente Mes
 * de consommation net mono ou tri (importée du réseau):
     * Instantanné
     * Jour
@@ -50,11 +52,12 @@ Le plugin permet de récupérer les données:
     * Puissance Apaprente
     * Facteur de puissance
     * Courant
-    * vahLifetime
-    * vahToday
-    * varhLagLifetime
-    * varhLeadLifetime
-    * varhLeadToday
+    * Puissance Récative inductive jour
+    * Puissance Récative inductive Mes
+    * Puissance Récative capacitive jour
+    * Puissance Récative capacitive Mes
+    * Puissance Apparente jour
+    * Puissance Apparente Mes
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée

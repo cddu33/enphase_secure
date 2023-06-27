@@ -17,11 +17,12 @@ Rajouts des informations suivantes pour la production et la consommation:
 - Puissance Apaprente
 - Facteur de puissance
 - Courant
-- vahLifetime
-- vahToday
-- varhLagLifetime
-- varhLeadLifetime
-- varhLeadToday
+- Puissance Récative inductive jour
+- Puissance Récative inductive Mes
+- Puissance Récative capacitive jour
+- Puissance Récative capacitive Mes
+- Puissance Apparente jour
+- Puissance Apparente Mes
 
 Certaines commandes n'ont pas de nom car je ne sais pas à quoi ça correspond
 
