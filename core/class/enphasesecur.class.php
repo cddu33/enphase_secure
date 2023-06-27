@@ -137,7 +137,7 @@ class enphasesecur extends eqLogic
 		if (config::byKey('G3', __CLASS__) == true) { self::CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
 		if (config::byKey('G4', __CLASS__) == true) { self::CreaEquip('enphasesecur_G4', 'Groupe 4', 'type', 'groupe', '1', 1);}
 
-		if (config::bykey('widget', __CLASS__) == 1) { $this->CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
+		if (config::bykey('widget', __CLASS__) == 1) { self::CreaEquip('enphasesecur_combine', 'Passerelle Enphase', 'type', 'combine', '1', 1);}
 		else 
 		{ 
 			self::CreaEquip('enphasesecur_prod', 'Enphase Production', 'type', 'prod', '1', 1);
@@ -492,29 +492,29 @@ class enphasesecur extends eqLogic
 
 				$this->CreaCmd('PvahToday3', 'PvahToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('PvarhLagLifetime1', 'varhLagLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLagLifetime1', 'PvarhLagLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagLifetime2', 'varhLagLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLagLifetime2', 'PvarhLagLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagLifetime3', 'varhLagLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLagLifetime3', 'PvarhLagLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagToday1', 'varhLagToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLagToday1', 'PvarhLagToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagToday2', 'varhLagToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLagToday2', 'PvarhLagToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagToday3', 'varhLagToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLagToday3', 'PvarhLagToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLeadLifetime1', 'varhLeadLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLeadLifetime1', 'PvarhLeadLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLeadLifetime2', 'varhLeadLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLeadLifetime2', 'PvarhLeadLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLeadLifetime3', 'varhLeadLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLeadLifetime3', 'PvarhLeadLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLeadToday1', 'varhLeadToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLeadToday1', 'PvarhLeadToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLeadToday2', 'varhLeadToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLeadToday2', 'PvarhLeadToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLeadToday3', 'varhLeadToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('PvarhLeadToday3', 'PvarhLeadToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 			}
 		}
 
@@ -542,13 +542,13 @@ class enphasesecur extends eqLogic
 
 			$this->CreaCmd('CvahToday', 'vahToday', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-			$this->CreaCmd('CvarhLagLifetime', 'varhLagLifetime', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+			$this->CreaCmd('CvarhLagLifetime', 'CvarhLagLifetime', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-			$this->CreaCmd('CvarhLagToday', 'varhLagToday', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+			$this->CreaCmd('CvarhLagToday', 'CvarhLagToday', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-			$this->CreaCmd('CvarhLeadLifetime', 'varhLeadLifetime', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+			$this->CreaCmd('CvarhLeadLifetime', 'CvarhLeadLifetime', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-			$this->CreaCmd('CvarhLeadToday', 'varhLeadToday', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+			$this->CreaCmd('CvarhLeadToday', 'CvarhLeadToday', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
@@ -601,41 +601,41 @@ class enphasesecur extends eqLogic
 
 				$this->CreaCmd('CrmsCurrent3', 'Conso Courant Total3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
 
-				$this->CreaCmd('CvahLifetime1', 'vahLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				$this->CreaCmd('CvahLifetime1', 'CvahLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('CvahLifetime2', 'vahLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				$this->CreaCmd('CvahLifetime2', 'CvahLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('CvahLifetime3', 'vahLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				$this->CreaCmd('CvahLifetime3', 'CvahLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('CvahToday1', 'vahToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				$this->CreaCmd('CvahToday1', 'CvahToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('CvahToday2', 'vahToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				$this->CreaCmd('CvahToday2', 'CvahToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('CvahToday3', 'vahToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				$this->CreaCmd('CvahToday3', 'CvahToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('CvarhLagLifetime1', 'varhLagLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLagLifetime1', 'CvarhLagLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLagLifetime2', 'varhLagLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLagLifetime2', 'CvarhLagLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLagLifetime3', 'varhLagLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLagLifetime3', 'CvarhLagLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLagToday1', 'varhLagToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLagToday1', 'CvarhLagToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLagToday2', 'varhLagToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLagToday2', 'CvarhLagToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLagToday3', 'varhLagToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLagToday3', 'CvarhLagToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLeadLifetime1', 'varhLeadLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLeadLifetime1', 'CvarhLeadLifetime1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLeadLifetime2', 'varhLeadLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLeadLifetime2', 'CvarhLeadLifetime2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLeadLifetime3', 'varhLeadLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLeadLifetime3', 'CvarhLeadLifetime3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLeadToday1', 'varhLeadToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLeadToday1', 'CvarhLeadToday1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLeadToday2', 'varhLeadToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLeadToday2', 'CvarhLeadToday2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('CvarhLeadToday3', 'varhLeadToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				$this->CreaCmd('CvarhLeadToday3', 'CvarhLeadToday3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
 			}
 		}
