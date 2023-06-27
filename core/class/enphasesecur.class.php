@@ -408,27 +408,39 @@ class enphasesecur extends eqLogic
 			$this->CreaCmd('PwattHoursLifetime', 'Prod MES', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'Wh', '1');
 
 			$this->CreaCmd('PwattsNow', 'Prod Inst', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
+			if (config::byKey('PF', __CLASS__) == true)
+			{
+				$this->CreaCmd('PpwrFactor', 'Prod Facteur de puissance', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
+			}
+			if (config::byKey('PR', __CLASS__) == true)
+			{
+				$this->CreaCmd('PreactPwr', 'Prod Puissance Réactive', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
+			}
+			if (config::byKey('PC', __CLASS__) == true)
+			{
+				$this->CreaCmd('PrmsCurrent', 'Prod Courant', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
+			}
+			if (config::byKey('PA', __CLASS__) == true)
+			{
+				$this->CreaCmd('PvahLifetime', 'Prod Puissance apparentes MES', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				
+				$this->CreaCmd('PvahToday', 'Prod Puissance apparentes Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+			}
+			if (config::byKey('PAH', __CLASS__) == true)
+			{
+				$this->CreaCmd('PapprntPwr', 'Prod Puissance Apparente', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
 
-			$this->CreaCmd('PapprntPwr', 'Prod Puissance Apparente', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
+			}
+			if (config::byKey('PRH', __CLASS__) == true)
+			{
+				$this->CreaCmd('PvarhLagLifetime', 'Prod Puissance Réactive Inductive Mes', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
 
-			$this->CreaCmd('PpwrFactor', 'Prod Facteur de puissance', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
+				$this->CreaCmd('PvarhLagToday', 'Prod Puissance Réactive Inductive Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
 
-			$this->CreaCmd('PreactPwr', 'Prod Puissance Réactive', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
+				$this->CreaCmd('PvarhLeadLifetime', 'Prod Puissance Réactive Capacitive MES', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
 
-			$this->CreaCmd('PrmsCurrent', 'Prod Courant', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
-
-			$this->CreaCmd('PvahLifetime', 'Prod Puissance apparentes MES', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
-
-			$this->CreaCmd('PvahToday', 'Prod Puissance apparentes Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
-
-			$this->CreaCmd('PvarhLagLifetime', 'Prod Puissance Réactive Inductive Mes', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
-
-			$this->CreaCmd('PvarhLagToday', 'Prod Puissance Réactive Inductive Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
-
-			$this->CreaCmd('PvarhLeadLifetime', 'Prod Puissance Réactive Capacitive MES', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
-
-			$this->CreaCmd('PvarhLeadToday', 'Prod Puissance Réactive Capacitive Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
-
+				$this->CreaCmd('PvarhLeadToday', 'Prod Puissance Réactive Capacitive Jour', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Varh', '1');
+			}
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
 			{
@@ -455,66 +467,81 @@ class enphasesecur extends eqLogic
 				$this->CreaCmd('PwattsNow2', 'Prod Inst 2', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
 
 				$this->CreaCmd('PwattsNow3', 'Prod Inst 3', 'core::badge', '1', '3', 'POWER','info', 'numeric', 'W', '1');
+				
+				if (config::byKey('PA', __CLASS__) == true)
+				{
+					$this->CreaCmd('PapprntPwr1', 'Prod Puissance Apparente1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
 
-				$this->CreaCmd('PapprntPwr1', 'Prod Puissance Apparente1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
+					$this->CreaCmd('PapprntPwr2', 'Prod Puissance Apparente2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
 
-				$this->CreaCmd('PapprntPwr2', 'Prod Puissance Apparente2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
+					$this->CreaCmd('PapprntPwr3', 'Prod Puissance Apparente3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
+				}
+				if (config::byKey('PAH', __CLASS__) == true)
+				{
+					$this->CreaCmd('PvahLifetime1', 'Prod Puissance apparentes MES1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('PapprntPwr3', 'Prod Puissance Apparente3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Va', '1');
+					$this->CreaCmd('PvahLifetime2', 'Prod Puissance apparentes MES2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('PpwrFactor1', 'Prod Facteur de puissance 1', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
+					$this->CreaCmd('PvahLifetime3', 'Prod Puissance apparentes MES3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('PpwrFactor2', 'Prod Facteur de puissance 2', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
+					$this->CreaCmd('PvahToday1', 'Prod Puissance apparentes Jour1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('PpwrFactor3', 'Prod Facteur de puissance 3', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
+					$this->CreaCmd('PvahToday2', 'Prod Puissance apparentes Jour2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
 
-				$this->CreaCmd('PreactPwr1', 'Prod Puissance Réactive1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvahToday3', 'Prod Puissance apparentes Jour3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+				}
+				if (config::byKey('PF', __CLASS__) == true)
+				{
+				
+					$this->CreaCmd('PpwrFactor1', 'Prod Facteur de puissance 1', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
 
-				$this->CreaCmd('PreactPwr2', 'Prod Puissance Réactive2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PpwrFactor2', 'Prod Facteur de puissance 2', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
 
-				$this->CreaCmd('PreactPwr3', 'Prod Puissance Réactive3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PpwrFactor3', 'Prod Facteur de puissance 3', 'core::badge', '0', '0', 'CONSUMPTION','info', 'numeric', '', '1');
+				}
+				if (config::byKey('PR', __CLASS__) == true)
+				{
+					$this->CreaCmd('PreactPwr1', 'Prod Puissance Réactive1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PrmsCurrent1', 'Prod Courant 1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
+					$this->CreaCmd('PreactPwr2', 'Prod Puissance Réactive2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PrmsCurrent2', 'Prod Courant 2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
+					$this->CreaCmd('PreactPwr3', 'Prod Puissance Réactive3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+				}
+				if (config::byKey('PC', __CLASS__) == true)
+				{
+					$this->CreaCmd('PrmsCurrent1', 'Prod Courant 1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
 
-				$this->CreaCmd('PrmsCurrent3', 'Prod Courant 3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
+					$this->CreaCmd('PrmsCurrent2', 'Prod Courant 2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
 
-				$this->CreaCmd('PvahLifetime1', 'Prod Puissance apparentes MES1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+					$this->CreaCmd('PrmsCurrent3', 'Prod Courant 3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'A', '1');
+				}
+				if (config::byKey('PRH', __CLASS__) == true)
+				{
+					$this->CreaCmd('PvarhLagLifetime1', 'Prod Puissance Réactive Inductive Mes1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvahLifetime2', 'Prod Puissance apparentes MES2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+					$this->CreaCmd('PvarhLagLifetime2', 'Prod Puissance Réactive Inductive Mes2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvahLifetime3', 'Prod Puissance apparentes MES3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+					$this->CreaCmd('PvarhLagLifetime3', 'Prod Puissance Réactive Inductive Mes3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvahToday1', 'Prod Puissance apparentes Jour1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+					$this->CreaCmd('PvarhLagToday1', 'Prod Puissance Réactive Inductive Jour1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvahToday2', 'Prod Puissance apparentes Jour2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+					$this->CreaCmd('PvarhLagToday2', 'Prod Puissance Réactive Inductive Jour2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvahToday3', 'Prod Puissance apparentes Jour3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Vah', '1');
+					$this->CreaCmd('PvarhLagToday3', 'Prod Puissance Réactive Inductive Jour3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagLifetime1', 'Prod Puissance Réactive Inductive Mes1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvarhLeadLifetime1', 'Prod Puissance Réactive Capacitive MES1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagLifetime2', 'Prod Puissance Réactive Inductive Mes2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvarhLeadLifetime2', 'Prod Puissance Réactive Capacitive MESe2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagLifetime3', 'Prod Puissance Réactive Inductive Mes3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvarhLeadLifetime3', 'Prod Puissance Réactive Capacitive MES3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagToday1', 'Prod Puissance Réactive Inductive Jour1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvarhLeadToday1', 'Prod Puissance Réactive Capacitive Jour1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagToday2', 'Prod Puissance Réactive Inductive Jour2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvarhLeadToday2', 'Prod Puissance Réactive Capacitive Jour2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
 
-				$this->CreaCmd('PvarhLagToday3', 'Prod Puissance Réactive Inductive Jour3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
-
-				$this->CreaCmd('PvarhLeadLifetime1', 'Prod Puissance Réactive Capacitive MES1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
-
-				$this->CreaCmd('PvarhLeadLifetime2', 'Prod Puissance Réactive Capacitive MESe2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
-
-				$this->CreaCmd('PvarhLeadLifetime3', 'Prod Puissance Réactive Capacitive MES3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
-
-				$this->CreaCmd('PvarhLeadToday1', 'Prod Puissance Réactive Capacitive Jour1', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
-
-				$this->CreaCmd('PvarhLeadToday2', 'Prod Puissance Réactive Capacitive Jour2', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
-
-				$this->CreaCmd('PvarhLeadToday3', 'Prod Puissance Réactive Capacitive Jour3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+					$this->CreaCmd('PvarhLeadToday3', 'Prod Puissance Réactive Capacitive Jour3', 'core::badge', '0', '3', 'CONSUMPTION','info', 'numeric', 'Var', '1');
+			
+				}	
 			}
 		}
 

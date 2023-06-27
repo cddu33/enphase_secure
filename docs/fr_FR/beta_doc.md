@@ -134,6 +134,9 @@ Si coché, créé un équipement par groupement pour centraliser les information
 Les groupements sont à renseigner dans chaque équipement onduleur
 >Attention, pensez à relancer le démon si vous changez ce paramètre.
 
+* Commandes par équipements:
+Cocher les commandes que vous voulez que le plugin rajoute
+
 * Autoconsommation:
    * Mode de fonctionnement: active ou non l'autoconsommation
    * Surplus déclenchement seuil 1: valeur en Watt au dessus de laquelle on déclenche l'autoconsommation

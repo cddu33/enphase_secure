@@ -5,7 +5,9 @@
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
 # 27/06/2023
-Correcion Tri
+Corretion Tri
+
+Possibilité de choisir les commandes créées
 
 # 26/06/2023
 Simplification du code pour la création des commandes

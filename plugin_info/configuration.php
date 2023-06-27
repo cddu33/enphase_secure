@@ -135,6 +135,44 @@ if (!isConnect()) {
 			</div>
 		</div>
 
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Commandes Production}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de production qui seront créer}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PR" >{{Puissance Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PA" >{{Puissance Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PRH" >{{Puissance Réactive /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PAH" >{{Puissance Apparente /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PC" >{{Courant}}</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Commandes Consommation Net}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de production qui seront créer}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRN" >{{Puissance Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CAT" >{{Puissance Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRNH" >{{Puissance Réactive /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CATH" >{{Puissance Apparente /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CCN" >{{Courant}}</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Commandes Consommation Totale}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de production qui seront créer}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRT" >{{Puissance Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CAT" >{{Puissance Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRTH" >{{Puissance Réactive /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CATH" >{{Puissance Apparente /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CC" >{{Courant}}</label>
+			</div>
+		</div>
+
 
 		<legend><i class="fas fa-wrench"></i> {{Auto Consommation}} </legend>
 		<div class="form-group">
