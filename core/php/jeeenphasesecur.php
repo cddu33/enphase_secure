@@ -562,7 +562,7 @@ try {
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['rmsCurrent'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Courant 1: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CrmsCurrentNet1', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('rmsCurrentNet1', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['PvahLifetime'];
 						log::add('enphasesecur', 'debug', 'CvahLifetimeNet1 ' . $enphasesecur_info);
@@ -647,7 +647,7 @@ try {
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['rmsCurrent'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Courant 2: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CrmsCurrentNet2', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('rmsCurrentNet2', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['PvahLifetime'];
 						log::add('enphasesecur', 'debug', 'CvahLifetimeNet2 ' . $enphasesecur_info);
@@ -732,7 +732,7 @@ try {
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['rmsCurrent'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Courant 3: ' . $enphasesecur_info);
-						$eqLogic->checkAndUpdateCmd('CrmsCurrentNet3', $enphasesecur_info);	
+						$eqLogic->checkAndUpdateCmd('rmsCurrentNet3', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['PvahLifetime'];
 						log::add('enphasesecur', 'debug', 'CvahLifetimeNet3 ' . $enphasesecur_info);
