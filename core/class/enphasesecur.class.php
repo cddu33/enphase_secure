@@ -122,7 +122,7 @@ class enphasesecur extends eqLogic
 					$eqLogic->remove();
 				}
 			}
-			else 
+			else if (config::bykey('widget', __CLASS__) == 3)
 			{
 				if ($eqLogic->getConfiguration('type') == 'combine') 
 				{
@@ -130,7 +130,8 @@ class enphasesecur extends eqLogic
 					$eqLogic->remove();
 				}
 			}
-			$eqLogic->save();
+			else {$eqLogic->save();}
+			
 		}
 
 		if (config::byKey('G1', __CLASS__) == true) { self::CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
