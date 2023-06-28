@@ -130,6 +130,7 @@ class enphasesecur extends eqLogic
 					$eqLogic->remove();
 				}
 			}
+			$eqLogic->save();
 		}
 
 		if (config::byKey('G1', __CLASS__) == true) { self::CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
