@@ -871,30 +871,42 @@ try {
 					}
 					
 					//total
+					if (config::byKey('CAN', enphasesecur) == true)
+					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['apprntPwr'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Puissance Apparente : ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CapprntPwrNet', $enphasesecur_info);	
-
+					}
+					if (config::byKey('CFN', enphasesecur) == true)
+					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['pwrFactor'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Facteur de puissance : ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CpwrFactorNet', $enphasesecur_info);	
-
+					}
+					if (config::byKey('CRN', enphasesecur) == true)
+					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['reactPwr'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Puissance Réactive : ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CreactPwrNet', $enphasesecur_info);	
-
+					}
+					if (config::byKey('CCN', enphasesecur) == true)
+					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['rmsCurrent'];
 						log::add('enphasesecur', 'debug', 'Consommation Net Courant : ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CrmsCurrentNet', $enphasesecur_info);	
-
-						$enphasesecur_info = $enphasesecur_json['consumption']['1']['PvahLifetime'];
+					}
+					if (config::byKey('CANH', enphasesecur) == true)
+					{
+						$enphasesecur_info = $enphasesecur_json['consumption']['1']['vahLifetime'];
 						log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Mes ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvahLifetimeNet', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['vahToday'];
 						log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvahTodayNet', $enphasesecur_info);	
-
+					}
+					if (config::byKey('CRNH', enphasesecur) == true)
+					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLagLifetime'];
 						log::add('enphasesecur', 'debug', 'Conso Puissance Net Réactive Inductive MES ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLagLifetimeNet', $enphasesecur_info);	
@@ -910,6 +922,7 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLeadToday'];
 						log::add('enphasesecur', 'debug', 'Conso Puissance Net Réactive Capacitive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLeadTodayNet', $enphasesecur_info);	
+					}
 
 					$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 					log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
