@@ -182,7 +182,7 @@ if (!isConnect()) {
 				<sup><i class="fas fa-question-circle tooltips" title="{{Créé ou non les équipements onduleur}}"></i></sup>
 			</label>
 			<div class="col-md-4">
-				<select id="sel_reseau" onchange="renew();" class="configKey form-control" data-l1key="onduleur">
+				<select id="sel_onduleur" class="configKey form-control" data-l1key="onduleur">
                     <option value="oui">{{Oui}}</option>
                     <option value="non">{{Non}}</option>
                 </select>

@@ -121,6 +121,7 @@ class enphasesecur extends eqLogic
 					log::add('enphasesecur', 'info', 'Suppression équipement suite à changement de mode vers combiné');
 					$eqLogic->remove();
 				}
+				else {$eqLogic->save();}
 			}
 			else if (config::bykey('widget', __CLASS__) == 3)
 			{
@@ -129,16 +130,18 @@ class enphasesecur extends eqLogic
 					log::add('enphasesecur', 'info', 'Suppression équipement suite à changement de mode vers divisé');
 					$eqLogic->remove();
 				}
+				else {$eqLogic->save();}
 			}
-			else if(config::bykey('onduleur', 'enphasesecur') == 'non')
-			{
-				if ($eqLogic->getConfiguration('type') == 'conv') 
+			if ($eqLogic->getConfiguration('type') == 'conv') 
+				{
+
+				if(config::bykey('onduleur', 'enphasesecur') == 'non')
 				{
 					log::add('enphasesecur', 'info', 'Suppression équipement onduleur');
 					$eqLogic->remove();
 				}
+				else {$eqLogic->save();}
 			}
-			else {$eqLogic->save();}
 			
 		}
 
