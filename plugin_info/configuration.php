@@ -120,7 +120,7 @@ if (!isConnect()) {
                 </select>
 			</div>
 		</div>
-
+		</br>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{Equipement par Groupement}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les groupements qui génèrent un équipement de synthèse}}"></i></sup>
@@ -150,7 +150,7 @@ if (!isConnect()) {
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{Commandes Consommation Net}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de production qui seront créer}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de consommation net qui seront créer}}"></i></sup>
 			</label>
 			<div class="col-md-4">
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRN" >{{Puissance Réactive}}</label>
@@ -164,7 +164,7 @@ if (!isConnect()) {
 		
 		<div class="form-group">
 			<label class="col-md-4 control-label">{{Commandes Consommation Totale}}
-				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de production qui seront créer}}"></i></sup>
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de consommation totale qui seront créer}}"></i></sup>
 			</label>
 			<div class="col-md-4">
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRT" >{{Puissance Réactive}}</label>
@@ -174,6 +174,18 @@ if (!isConnect()) {
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CCT" >{{Courant}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CFT" >{{Facteur de Puissance}}</label>
 				
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Equipement Onduleur}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Créé ou non les équipements onduleur}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<select id="sel_reseau" onchange="renew();" class="configKey form-control" data-l1key="onduleur">
+                    <option value="oui">{{Oui}}</option>
+                    <option value="non">{{Non}}</option>
+                </select>
 			</div>
 		</div>
 

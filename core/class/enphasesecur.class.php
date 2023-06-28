@@ -130,6 +130,14 @@ class enphasesecur extends eqLogic
 					$eqLogic->remove();
 				}
 			}
+			else if(config::bykey('onduleur', 'enphasesecur') == 'non')
+			{
+				if ($eqLogic->getConfiguration('type') == 'conv') 
+				{
+					log::add('enphasesecur', 'info', 'Suppression équipement onduleur');
+					$eqLogic->remove();
+				}
+			}
 			else {$eqLogic->save();}
 			
 		}

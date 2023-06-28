@@ -1135,7 +1135,7 @@ try {
 		}
 	}
 	//prod convertisseurs
-	elseif (isset($enphasesecur_json['0']['serialNumber'])) {
+	elseif (isset($enphasesecur_json['0']['serialNumber']) && config::bykey('onduleur', 'enphasesecur') != 'non') {
 		log::add('enphasesecur', 'debug', 'Réception mesures des convertisseurs');
 		$enphasesecur_temp_max1 = 0;
 		$enphasesecur_temp_max2 = 0;
@@ -1194,7 +1194,7 @@ try {
 		  }
 	  }
 	//inventaire création des équipements
-	elseif (isset($enphasesecur_json[0]['devices'])) {
+	elseif (isset($enphasesecur_json[0]['devices']) && config::bykey('onduleur', 'enphasesecur') != 'non') {
 		log::add('enphasesecur', 'debug', 'Réception inventaire');
 		foreach ($enphasesecur_json[0]['devices'] as $conv) {
 			$newconv = eqLogic::byLogicalId($conv['serial_num'], 'enphasesecur', );
