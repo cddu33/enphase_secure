@@ -4,6 +4,10 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 07/07/2023
+Renommage Commande
+
+
 # 27/06/2023
 Corretion Tri
 
@@ -16,15 +20,15 @@ Simplification du code pour la création des commandes
 
 Rajouts des informations suivantes pour la production et la consommation:
 - Puissance Réactive
-- Puissance Apaprente
+- Puissance Apparente
 - Facteur de puissance
 - Courant
-- Puissance Récative inductive jour
-- Puissance Récative inductive Mes
-- Puissance Récative capacitive jour
-- Puissance Récative capacitive Mes
-- Puissance Apparente jour
-- Puissance Apparente Mes
+- Energie Réactive inductive jour
+- Energie Réactive inductive Mes
+- Energie Réactive capacitive jour
+- Energie Réactive capacitive Mes
+- Energie Apparente jour
+- Energie Apparente Mes
 
 Certaines commandes n'ont pas de nom car je ne sais pas à quoi ça correspond
 

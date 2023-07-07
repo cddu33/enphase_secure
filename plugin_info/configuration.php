@@ -142,8 +142,8 @@ if (!isConnect()) {
 			<div class="col-md-4">
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PR" >{{Puissance Réactive}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PA" >{{Puissance Apparente}}</label>
-				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PRH" >{{Puissance Réactive /h}}</label>
-				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PAH" >{{Puissance Apparente /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PRH" >{{Energie Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PAH" >{{Energie Apparente}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PC" >{{Courant}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PF" >{{Facteur de Puissance}}</label>
 			</div>
@@ -155,8 +155,8 @@ if (!isConnect()) {
 			<div class="col-md-4">
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRN" >{{Puissance Réactive}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CAN" >{{Puissance Apparente}}</label>
-				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRNH" >{{Puissance Réactive /h}}</label>
-				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CANH" >{{Puissance Apparente /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRNH" >{{Energie Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CANH" >{{Energie Apparente}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CCN" >{{Courant}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CFN" >{{Facteur de Puissance}}</label>
 			</div>
@@ -169,8 +169,8 @@ if (!isConnect()) {
 			<div class="col-md-4">
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRT" >{{Puissance Réactive}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CAT" >{{Puissance Apparente}}</label>
-				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRTH" >{{Puissance Réactive /h}}</label>
-				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CATH" >{{Puissance Apparente /h}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRTH" >{{Energie Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CATH" >{{Energie Apparente}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CCT" >{{Courant}}</label>
 				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CFT" >{{Facteur de Puissance}}</label>
 				

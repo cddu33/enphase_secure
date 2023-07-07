@@ -16,48 +16,48 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
-    * Cumul Journalier Export réseau
+    * Cumul Journalier Export réseau (non fonctionnel avec le dernier firmware, bug enphase)
     * Puissance Réactive
     * Puissance Apaprente
     * Facteur de puissance
     * Courant
-    * Puissance Récative inductive jour
-    * Puissance Récative inductive Mes
-    * Puissance Récative capacitive jour
-    * Puissance Récative capacitive Mes
-    * Puissance Apparente jour
-    * Puissance Apparente Mes
+    * Energie Réactive inductive jour
+    * Energie Réactive inductive Mes
+    * Energie Réactive capacitive jour
+    * Energie Réactive capacitive Mes
+    * Energie Apparente jour
+    * Energie Apparente Mes
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
     * Puissance Réactive
-    * Puissance Apaprente
+    * Puissance Apparente
     * Facteur de puissance
     * Courant
-    * Puissance Récative inductive jour
-    * Puissance Récative inductive Mes
-    * Puissance Récative capacitive jour
-    * Puissance Récative capacitive Mes
-    * Puissance Apparente jour
-    * Puissance Apparente Mes
+    * Energie Réactive inductive jour
+    * Energie Réactive inductive Mes
+    * Energie Réactive capacitive jour
+    * Energie Réactive capacitive Mes
+    * Energie Apparente jour
+    * Energie Apparente Mes
 * de consommation net mono ou tri (importée du réseau):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-    * Cumul journalier Import réseau
+    * Cumul journalier Import réseau (non fonctionnel avec le dernier firmware, bug enphase)
     * Puissance Réactive
     * Puissance Apaprente
     * Facteur de puissance
     * Courant
-    * Puissance Récative inductive jour
-    * Puissance Récative inductive Mes
-    * Puissance Récative capacitive jour
-    * Puissance Récative capacitive Mes
-    * Puissance Apparente jour
-    * Puissance Apparente Mes
+    * Energie Réactive inductive jour
+    * Energie Réactive inductive Mes
+    * Energie Réactive capacitive jour
+    * Energie Réactive capacitive Mes
+    * Energie Apparente jour
+    * Energie Apparente Mes
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
     * La puissance délivrée
@@ -78,7 +78,7 @@ Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un 
 
 L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
 
-La production des panneaux est surveillé une fois par jour. La formule de calcul est: l'addition des panneaux d'un groupe diviser par le nombre de panneau . Ce calcul est min oré de 10/100. Si la production journalière d'un panneau est inférieur à ce calcul, il est listé dans un rapport journalier dans le centre de message.
+La production des panneaux est surveillé une fois par jour. La formule de calcul est: l'addition des panneaux d'un groupe diviser par le nombre de panneau . Ce calcul est minoré de 10/100. Si la production journalière d'un panneau est inférieur à ce calcul, il est listé dans un rapport journalier dans le centre de message.
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 

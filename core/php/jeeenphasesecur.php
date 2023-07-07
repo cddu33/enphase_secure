@@ -124,77 +124,77 @@ try {
 						if (config::byKey('PAH', enphasesecur) == true)
 						{
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance apparentes MES1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie apparentes MES1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvahLifetime1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance apparentes Jour1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie apparentes Jour1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvahToday1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance apparentes MES2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie apparentes MES2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvahLifetime2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance apparentes Jour2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie apparentes Jour2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvahToday2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance apparentes MES3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie apparentes MES3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvahLifetime3', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance apparentes Jour3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie apparentes Jour3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvahToday3', $enphasesecur_info);	
 						}
 						if (config::byKey('PRH', enphasesecur) == true)
 						{
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['varhLagLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Mes1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Mes1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLagLifetime1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['varhLagToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Jour1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Jour1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLagToday1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['varhLeadLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive MES1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive MES1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLeadLifetime1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['0']['varhLeadToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive Jour1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive Jour1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLeadToday1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['varhLagLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Mes2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Mes2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLagLifetime2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['varhLagToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Jour2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Jour2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLagToday2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['varhLeadLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive MES2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive MES2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLeadLifetime2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['1']['varhLeadToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive Jour2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive Jour2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLeadToday2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['varhLagLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Mes3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Mes3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLagLifetime3', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['varhLagToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Jour3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Jour3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLagToday3', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['varhLeadLifetime'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive MES3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive MES3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLeadLifetime3', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['production']['1']['lines']['2']['varhLeadToday'];
-							log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive Jour3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive Jour3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('PvarhLeadToday3', $enphasesecur_info);	
 
 						}
@@ -261,7 +261,7 @@ try {
 					if (config::byKey('PA', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['production']['1']['apprntPwr'];
-						log::add('enphasesecur', 'debug', 'Production Puissance Apparente: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Production Energie Apparente: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PapprntPwr', $enphasesecur_info);
 					}	
 					if (config::byKey('PF', enphasesecur) == true)
@@ -285,29 +285,29 @@ try {
 					if (config::byKey('PAH', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['production']['1']['vahLifetime'];
-						log::add('enphasesecur', 'debug', 'Prod Puissance apparentes MES ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Prod Energie apparentes MES ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PvahLifetime', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['vahToday'];
-						log::add('enphasesecur', 'debug', 'Prod Puissance apparentes Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Prod Energie apparentes Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PvahToday', $enphasesecur_info);
 					}	
 					if (config::byKey('PRH', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['production']['1']['varhLagLifetime'];
-						log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Mes ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Mes ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PvarhLagLifetime', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['varhLagToday'];
-						log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Inductive Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Prod Energie Réactive Inductive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PvarhLagToday', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['varhLeadLifetime'];
-						log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive MES ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive MES ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PvarhLeadLifetime', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['production']['1']['varhLeadToday'];
-						log::add('enphasesecur', 'debug', 'Prod Puissance Réactive Capacitive Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Prod Energie Réactive Capacitive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('PvarhLeadToday', $enphasesecur_info);	
 					}
 
@@ -394,27 +394,27 @@ try {
 						if (config::byKey('CATH', enphasesecur) == true)
 						{
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Mes1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Mes1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahLifetime1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['0']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Jour1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Jour1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahToday1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Mes2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Mes2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahLifetime2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['1']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Jour2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Jour2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahToday2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['2']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Mes3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Mes3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahLifetime3', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['0']['lines']['2']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Jour3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Jour3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahToday3', $enphasesecur_info);
 						}
 						if (config::byKey('CRTH', enphasesecur) == true)
@@ -551,29 +551,29 @@ try {
 					if (config::byKey('CATH', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['vahLifetime'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Mes ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Mes ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvahLifetime', $enphasesecur_info);	
 					
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['vahToday'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Total apparentes Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Total apparentes Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvahToday', $enphasesecur_info);
 					}	
 					if (config::byKey('CRTH', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['varhLagLifetime'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Total Réactive Inductive Mes ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Total Réactive Inductive Mes ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLagLifetime', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['varhLagToday'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Total Réactive Inductive Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Total Réactive Inductive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLagToday', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['varhLeadLifetime'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Net Réactive Capacitive MES ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net Réactive Capacitive MES ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLeadLifetime', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['0']['varhLeadToday'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Total Réactive Capacitive Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Total Réactive Capacitive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLeadToday', $enphasesecur_info);	
 					}
 				}
@@ -662,27 +662,27 @@ try {
 						if (config::byKey('CANH', enphasesecur) == true)
 						{
 							$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Mes1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Mes1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahLifetimeNet1', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['0']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Jour1 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Jour1 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahTodayNet1', $enphasesecur_info);
 							
 							$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Mes2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Mes2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahLifetimeNet2', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['1']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Jour2 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Jour2 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahTodayNet2', $enphasesecur_info);
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['vahLifetime'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Mes3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Mes3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahLifetimeNet3', $enphasesecur_info);	
 
 							$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['vahToday'];
-							log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Jour3 ' . $enphasesecur_info);
+							log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Jour3 ' . $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('CvahTodayNet3', $enphasesecur_info);	
 						}
 						if (config::byKey('CRNH', enphasesecur) == true)
@@ -898,29 +898,29 @@ try {
 					if (config::byKey('CANH', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['vahLifetime'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Mes ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Mes ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvahLifetimeNet', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['vahToday'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Net apparentes Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net apparentes Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvahTodayNet', $enphasesecur_info);	
 					}
 					if (config::byKey('CRNH', enphasesecur) == true)
 					{
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLagLifetime'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Net Réactive Inductive MES ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net Réactive Inductive MES ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLagLifetimeNet', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLagToday'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Net Réactive Inductive Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net Réactive Inductive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLagTodayNet', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLeadLifetime'];
-						log::add('enphasesecur', 'debug', 'CvarhLeadLifetimeNet ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net Réactive Inductive MES  ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLeadLifetimeNet', $enphasesecur_info);	
 
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['varhLeadToday'];
-						log::add('enphasesecur', 'debug', 'Conso Puissance Net Réactive Capacitive Jour ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Conso Energie Net Réactive Capacitive Jour ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CvarhLeadTodayNet', $enphasesecur_info);	
 					}
 
