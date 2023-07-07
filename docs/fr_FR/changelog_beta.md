@@ -4,6 +4,37 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 07/07/2023
+Renommage Commande
+
+
+# 27/06/2023
+Corretion Tri
+
+Possibilité de choisir les commandes créées
+
+# 26/06/2023
+Simplification du code pour la création des commandes
+
+@Piug Correction sur la création des équipements des groupes 
+
+Rajouts des informations suivantes pour la production et la consommation:
+- Puissance Réactive
+- Puissance Apparente
+- Facteur de puissance
+- Courant
+- Energie Réactive inductive jour
+- Energie Réactive inductive Mes
+- Energie Réactive capacitive jour
+- Energie Réactive capacitive Mes
+- Energie Apparente jour
+- Energie Apparente Mes
+
+Certaines commandes n'ont pas de nom car je ne sais pas à quoi ça correspond
+
+# 24/06/2023
+Possibilité de créé un équipement par groupement avec prod jour, alarme, puissance max et puissance
+
 # 19/06/2023
 Pas de surveillance de la production de chaque panneau si aucun groupement n'est mis sur l'équipement
 

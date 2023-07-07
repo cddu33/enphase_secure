@@ -120,6 +120,74 @@ if (!isConnect()) {
                 </select>
 			</div>
 		</div>
+		</br>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Equipement par Groupement}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les groupements qui génèrent un équipement de synthèse}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G1" >{{Groupe 1}}</label>
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G2" >{{Groupe 2}}</label>
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G3" >{{Groupe 3}}</label>
+			<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="G4" >{{Groupe 4}}</label>
+
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Commandes Production}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de production qui seront créer}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PR" >{{Puissance Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PA" >{{Puissance Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PRH" >{{Energie Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PAH" >{{Energie Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PC" >{{Courant}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="PF" >{{Facteur de Puissance}}</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Commandes Consommation Net}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de consommation net qui seront créer}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRN" >{{Puissance Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CAN" >{{Puissance Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRNH" >{{Energie Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CANH" >{{Energie Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CCN" >{{Courant}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CFN" >{{Facteur de Puissance}}</label>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Commandes Consommation Totale}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choississez les commandes de consommation totale qui seront créer}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRT" >{{Puissance Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CAT" >{{Puissance Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CRTH" >{{Energie Réactive}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CATH" >{{Energie Apparente}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CCT" >{{Courant}}</label>
+				<label class="checkbox-inline"><input type="checkbox" class="configKey form-control" data-l1key="CFT" >{{Facteur de Puissance}}</label>
+				
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Equipement Onduleur}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Créé ou non les équipements onduleur}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<select id="sel_onduleur" class="configKey form-control" data-l1key="onduleur">
+                    <option value="oui">{{Oui}}</option>
+                    <option value="non">{{Non}}</option>
+                </select>
+			</div>
+		</div>
 
 
 		<legend><i class="fas fa-wrench"></i> {{Auto Consommation}} </legend>
