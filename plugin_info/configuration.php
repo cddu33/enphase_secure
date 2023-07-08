@@ -195,8 +195,8 @@ if (!isConnect()) {
 			</label>
 			<div class="col-md-4">
 				<select id="sel_importexport" class="configKey form-control" data-l1key="importexport">
-                    <option value="MES">{{Fimrware < à D7.6.175}}</option>
-                    <option value="Jour">{{Fimrware >= à D7.6.175}}</option>
+                    <option value="MES">{{Firmware < à D7.6.175}}</option>
+                    <option value="Jour">{{Firmware >= à D7.6.175}}</option>
                 </select>
 			</div>
 		</div>
