@@ -931,7 +931,7 @@ try {
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
 
-						if (($enphatemp-$enphasesecur_info) < 0) 
+						if (($enphatemp-$enphasesecur_info) > 0) 
 						{
 							$enphaexp = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
 							$enphaexp = abs($enphaexp + $enphatemp - $enphasesecur_info);
