@@ -934,13 +934,13 @@ try {
 						if (($enphatemp-$enphasesecur_info) < 0) 
 						{
 							$enphaexp = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
-							$enphaexp = $enphaexp + $enphatemp - $enphasesecur_info;
+							$enphaexp = abs($enphaexp + $enphatemp - $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
 							log::add('enphasesecur', 'debug', 'Cumul Export: ' . $enphaexp);
 						}
 						else {
 							$enphaimp = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
-							$enphaimp = $enphaimp + $enphatemp - $enphasesecur_info;
+							$enphaimp = abs($enphaimp + $enphatemp - $enphasesecur_info);
 							$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
 							log::add('enphasesecur', 'debug', 'Cumul Import: ' . $enphaimp);
 						}	
