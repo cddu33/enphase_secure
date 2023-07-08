@@ -924,7 +924,7 @@ try {
 						$eqLogic->checkAndUpdateCmd('CvarhLeadTodayNet', $enphasesecur_info);	
 					}
 				
-					if (config:byKey('importexport', enphasesecur) == "Jour") 
+					if (config::byKey('importexport', enphasesecur) == "Jour") 
 					{
 						$enphatemp = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
