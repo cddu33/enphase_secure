@@ -195,8 +195,8 @@ if (!isConnect()) {
 			</label>
 			<div class="col-md-4">
 				<select id="sel_importexport" class="configKey form-control" data-l1key="importexport">
-                    <option value="MES">{{Fonctionne avec fimrware inférieur à D7.6.175}}</option>
-                    <option value="Jour">{{Fonctionne avec tous les firmwares}}</option>
+                    <option value="MES">{{Fimrware < à D7.6.175}}</option>
+                    <option value="Jour">{{Fimrware >= à D7.6.175}}</option>
                 </select>
 			</div>
 		</div>
