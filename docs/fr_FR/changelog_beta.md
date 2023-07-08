@@ -4,6 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 08/07/2023
+Choix depuis la configuration du plugin du calcul pour l'import/export cumulé
+
 # 07/07/2023
 Renommage Commande
 
