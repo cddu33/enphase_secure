@@ -189,6 +189,18 @@ if (!isConnect()) {
 			</div>
 		</div>
 
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Calcul Import/Export Cumulé}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Choisir la façon de calculer le cumul}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<select id="sel_importexport" class="configKey form-control" data-l1key="importexport">
+                    <option value="MES">{{Firmware < à D7.6.175}}</option>
+                    <option value="Jour">{{Firmware >= à D7.6.175}}</option>
+                </select>
+			</div>
+		</div>
+
 
 		<legend><i class="fas fa-wrench"></i> {{Auto Consommation}} </legend>
 		<div class="form-group">
