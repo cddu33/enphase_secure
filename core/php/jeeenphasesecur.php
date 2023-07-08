@@ -930,8 +930,9 @@ try {
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['whLifetime'];
 						log::add('enphasesecur', 'debug', 'Consommation Net depuis la mise en service: ' . $enphasesecur_info);
 						$eqLogic->checkAndUpdateCmd('CwattHoursLifetimeNet', $enphasesecur_info);
+						log::add('enphasesecur', 'info', $enphasesecur_info-$enphatemp);
 
-						if (($enphatemp-$enphasesecur_info) > 0) 
+						if (($enphasesecur_info-$enphatemp) > 0) 
 						{
 							$enphaexp = $eqLogic->getCmd(null, 'cumulexport')->execCmd();
 							$enphaexp = abs($enphaexp + $enphatemp - $enphasesecur_info);
