@@ -1021,9 +1021,11 @@ class enphasesecur extends eqLogic
 		}
 		//création des équipements suivant la configuration
 		enphasesecur::creationmaj();
-		
-		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
-		$cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon
+
+		// $path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
+		$path = realpath(dirname(__FILE__) . '/../../resources/'); // répertoire du démon
+		// $cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon
+		$cmd = $path .'/venv/bin/python3 ' . $path . '/enphasesecurd.py'; // nom du démon
 		$cmd .= ' --renew "' . trim(str_replace('"', '\"', config::byKey('ctoken', __CLASS__))) . '"'; 
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
 		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut
