@@ -771,7 +771,7 @@ try {
 
 							$enphatemp = $enphasesecur_json['production']['1']['lines']['0']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['lines']['0']['whLifetime'];						
 							$eqLogic->checkAndUpdateCmd('calculjour1', $enphatemp);
-							$enphaexp = max($eqLogic->getCmd(null, 'calculjour1')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour1')->getId(),today),0);
+							$enphaexp = max($eqLogic->getCmd(null, 'calculjour1')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour1')->getId(),'today'),0);
 
 							$eqLogic->checkAndUpdateCmd('cumulexport1', $enphaexp);
 							log::add('enphasesecur', 'debug', 'Cumul Export1: ' . $enphaexp);
@@ -843,7 +843,7 @@ try {
 
 							$enphatemp = $enphasesecur_json['production']['1']['lines']['1']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['lines']['1']['whLifetime'];						
 							$eqLogic->checkAndUpdateCmd('calculjour2', $enphatemp);
-							$enphaexp = max($eqLogic->getCmd(null, 'calculjour2')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour2')->getId(),today),0);
+							$enphaexp = max($eqLogic->getCmd(null, 'calculjour2')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour2')->getId(),'today'),0);
 
 							$eqLogic->checkAndUpdateCmd('cumulexport2', $enphaexp);
 							log::add('enphasesecur', 'debug', 'Cumul Export2: ' . $enphaexp);
@@ -914,7 +914,7 @@ try {
 
 							$enphatemp = $enphasesecur_json['production']['1']['lines']['2']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['lines']['2']['whLifetime'];						
 							$eqLogic->checkAndUpdateCmd('calculjour1', $enphatemp);
-							$enphaexp = max($eqLogic->getCmd(null, 'calculjour3')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour3')->getId(),today),0);
+							$enphaexp = max($eqLogic->getCmd(null, 'calculjour3')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour3')->getId(),'today'),0);
 
 							$eqLogic->checkAndUpdateCmd('cumulexport3', $enphaexp);
 							log::add('enphasesecur', 'debug', 'Cumul Export3: ' . $enphaexp);
@@ -1037,7 +1037,7 @@ try {
 
 						$enphatemp = $enphasesecur_json['production']['1']['whLifetime'] + $enphasesecur_info - $enphasesecur_json['consumption']['0']['whLifetime'];
 						$eqLogic->checkAndUpdateCmd('calculjour', $enphatemp);
-						$enphaexp = max($eqLogic->getCmd(null, 'calculjour')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour')->getId(),today),0);
+						$enphaexp = max($eqLogic->getCmd(null, 'calculjour')->execCmd()-scenarioExpression::min($eqLogic->getCmd(null, 'calculjour')->getId(),'today'),0);
 
 						$eqLogic->checkAndUpdateCmd('cumulexport', $enphaexp);
 						log::add('enphasesecur', 'debug', 'Cumul Export: ' . $enphaexp);
