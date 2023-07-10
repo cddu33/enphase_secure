@@ -22,7 +22,7 @@ sudo pip3 uninstall -y serial
 echo 30 > ${PROGRESS_FILE}
 sudo apt remove -y python3-serial
 echo 35 > ${PROGRESS_FILE}
-sudo apt-get install libxml2-dev libxslt-dev
+sudo apt-get install -y libxml2-dev libxslt-dev
 echo 45 > ${PROGRESS_FILE}
 sudo apt-get install -y python3-setuptools
 echo 50 > ${PROGRESS_FILE}
@@ -34,7 +34,7 @@ sudo pip3 install html5lib
 echo 64 > ${PROGRESS_FILE}
 sudo pip3 install asyncio
 echo 66 > ${PROGRESS_FILE}
-sudo pip3 install httpx
+sudo pip3 install httpx -U
 echo 68 > ${PROGRESS_FILE}
 sudo pip3 install lxml
 echo 72 > ${PROGRESS_FILE}
