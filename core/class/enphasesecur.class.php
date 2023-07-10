@@ -60,6 +60,7 @@ class enphasesecur extends eqLogic
 		return $return;
     }
 
+	
 	// isntallation des dépendances
 	public static function dependancy_install() 
 	{
