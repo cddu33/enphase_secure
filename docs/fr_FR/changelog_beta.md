@@ -4,6 +4,11 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 10/07/2023
+Rajout de la partie triphasé sur la nouvelle méthode de calcul cumul
+
+Correction dépendances Pyjwt <=> pyjwt
+
 # 08/07/2023
 Choix depuis la configuration du plugin du calcul pour l'import/export cumulé
 
