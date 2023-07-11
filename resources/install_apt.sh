@@ -34,7 +34,7 @@ ${BASEDIR}/venv/bin/pip3 install lxml
 echo 75 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install html.parser
 echo 85 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install six
+${BASEDIR}/venv/bin/pip3 install six requests
 rm ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépendances OK  *"
