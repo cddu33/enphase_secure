@@ -22,7 +22,7 @@ sudo apt-get -y install python3-venv python3-dev
 echo 30 > ${PROGRESS_FILE}
 python3 -m venv ${BASEDIR}/venv
 echo 40 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install pyjwt
+${BASEDIR}/venv/bin/pip3 install pyjwt serial
 echo 45 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install html5lib
 echo 50 > ${PROGRESS_FILE}
