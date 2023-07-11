@@ -18,7 +18,7 @@ from os.path import join
 from json.decoder import JSONDecodeError
 
 try:
-	from enphasesecurd.jeedom.jeedom import *
+	from jeedom.jeedom import *
 except ImportError:
 	print("Error: importing module jeedom.jeedom")
 	sys.exit(1)
