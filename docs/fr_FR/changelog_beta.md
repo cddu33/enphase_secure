@@ -7,7 +7,7 @@
 # 11/07/2023
 Correction import
 
-Passage sur Venv pour les dépandances (réinstallation automatique normalement)
+Passage sur Venv pour les dépendances (réinstallation automatique normalement)
 
 # 10/07/2023
 Rajout de la partie triphasé sur la nouvelle méthode de calcul cumul
