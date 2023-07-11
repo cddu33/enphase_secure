@@ -24,7 +24,7 @@ python3 -m venv ${BASEDIR}/venv
 echo 40 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install pyjwt serial
 echo 45 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install html5lib
+${BASEDIR}/venv/bin/pip3 install html5lib pyudev
 echo 50 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install asyncio
 echo 55 > ${PROGRESS_FILE}
