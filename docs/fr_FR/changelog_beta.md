@@ -4,6 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 11/07/2023
+Correction import
+
 # 10/07/2023
 Rajout de la partie triphasé sur la nouvelle méthode de calcul cumul
 
