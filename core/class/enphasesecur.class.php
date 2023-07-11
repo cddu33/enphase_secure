@@ -46,16 +46,21 @@ class enphasesecur extends eqLogic
 			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six');
         	$return['state'] = 'ok';
         	$output = array();
-			foreach($deps as $list) {
-				$cmd = "sudo pip3 list | grep -i ";
-				$cmd .= $list;
-				unset($output);
-				exec($cmd, $output, $return_var);
-				if ($return_var || $output[0] == "") {
-					$return['state'] = 'nok';
-					break;
+			$venv = realpath(__DIR__ .'/../../resources/') .'/venv/bin/pip3';
+			if(@file_exists($venv)) 
+			{
+				foreach($deps as $list) {
+					$cmd = $venv . " pip3 list | grep -i ";
+					$cmd .= $list;
+					unset($output);
+					exec($cmd, $output, $return_var);
+					if ($return_var || $output[0] == "") {
+						$return['state'] = 'nok';
+						break;
+					}
 				}
 			}
+			else { $return['state'] = 'nok';}
 		}
 		return $return;
     }
