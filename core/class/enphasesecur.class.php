@@ -50,7 +50,7 @@ class enphasesecur extends eqLogic
 			if(@file_exists($venv)) 
 			{
 				foreach($deps as $list) {
-					$cmd = $venv . " pip3 list | grep -i ";
+					$cmd = "$venv list | grep -i ";
 					$cmd .= $list;
 					unset($output);
 					exec($cmd, $output, $return_var);
