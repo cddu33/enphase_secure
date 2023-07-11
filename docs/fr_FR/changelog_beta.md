@@ -7,7 +7,7 @@
 # 10/07/2023
 Rajout de la partie triphasé sur la nouvelle méthode de calcul cumul
 
-Correction dépendances Pyjwt <=> pyjwt
+Correction dépendances
 
 Correction import pour nouveau firmware
 
