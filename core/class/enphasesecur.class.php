@@ -43,19 +43,24 @@ class enphasesecur extends eqLogic
         }
 		else 
 		{
-			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six');
+			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six', 'requests', 'serial', 'pyudev');
         	$return['state'] = 'ok';
         	$output = array();
-			foreach($deps as $list) {
-				$cmd = "sudo pip3 list | grep -i ";
-				$cmd .= $list;
-				unset($output);
-				exec($cmd, $output, $return_var);
-				if ($return_var || $output[0] == "") {
-					$return['state'] = 'nok';
-					break;
+			$venv = realpath(__DIR__ .'/../../resources/') .'/venv/bin/pip3';
+			if(@file_exists($venv)) 
+			{
+				foreach($deps as $list) {
+					$cmd = "$venv list | grep -i ";
+					$cmd .= $list;
+					unset($output);
+					exec($cmd, $output, $return_var);
+					if ($return_var || $output[0] == "") {
+						$return['state'] = 'nok';
+						break;
+					}
 				}
 			}
+			else { $return['state'] = 'nok';}
 		}
 		return $return;
     }
@@ -1021,9 +1026,12 @@ class enphasesecur extends eqLogic
 		}
 		//création des équipements suivant la configuration
 		enphasesecur::creationmaj();
-		
-		$path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
-		$cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon
+
+		// $path = realpath(dirname(__FILE__) . '/../../resources/enphasesecurd'); // répertoire du démon
+		$path = realpath(dirname(__FILE__) . '/../../resources/'); // répertoire du démon
+		// $cmd = 'python3 ' . $path . '/enphasesecurd.py'; // nom du démon
+		$cmd = $path .'/venv/bin/python3 ' . $path . '/enphasesecurd/enphasesecurd.py'; // nom du démon
+		$cmd1 = $path .'/venv/bin/python3 ' . $path . '/enphasesecurd/jeedom/jeedom.py'; // nom du démon
 		$cmd .= ' --renew "' . trim(str_replace('"', '\"', config::byKey('ctoken', __CLASS__))) . '"'; 
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
 		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut
@@ -1039,7 +1047,9 @@ class enphasesecur extends eqLogic
 		log::add(__CLASS__, 'info', $cmd);
         log::add(__CLASS__, 'info', 'Lancement démon');
         $result = exec($cmd . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
-        $i = 0;
+		$result1 = exec($cmd1 . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
+
+		$i = 0;
         while ($i < 20) {
             $deamon_info = self::deamon_info();
             if ($deamon_info['state'] == 'ok') {
