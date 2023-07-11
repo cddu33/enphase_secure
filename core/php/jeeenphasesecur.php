@@ -759,7 +759,7 @@ try {
 							else {
 								// $enphaimp = $eqLogic->getCmd(null, 'cumulimport1')->execCmd();
 								// $enphaimp = abs($enphaimp + $enphatemp - $enphasesecur_info);
-								$enphaimp = -($enphasesecur_json['production']['1']['lines']['0']['whToday'] - $enphasesecur_json['consumption']['0']['lines']['0']['whToday']);
+								$enphaimp = -($enphasesecur_json['production']['1']['lines']['0']['whToday'] - $enphasesecur_json['consumption']['0']['lines']['0']['whToday'] - $enphaexp);
 								$eqLogic->checkAndUpdateCmd('cumulimport1', $enphaimp);
 								log::add('enphasesecur', 'debug', 'Cumul Import1: ' . $enphaimp);
 							}	
@@ -830,8 +830,7 @@ try {
 							else {
 								// $enphaimp = $eqLogic->getCmd(null, 'cumulimport2')->execCmd();
 								// $enphaimp = abs($enphaimp + $enphatemp - $enphasesecur_info);
-								$enphaimp = -($enphasesecur_json['production']['1']['lines']['1']['whToday'] - $enphasesecur_json['consumption']['0']['lines']['1']['whToday']);
-
+								$enphaimp = -($enphasesecur_json['production']['1']['lines']['1']['whToday'] - $enphasesecur_json['consumption']['0']['lines']['1']['whToday'] - $enphaexp);
 								$eqLogic->checkAndUpdateCmd('cumulimport2', $enphaimp);
 								log::add('enphasesecur', 'debug', 'Cumul Import2: ' . $enphaimp);
 							}	
@@ -901,8 +900,7 @@ try {
 							else {
 								// $enphaimp = $eqLogic->getCmd(null, 'cumulimport3')->execCmd();
 								// $enphaimp = abs($enphaimp + $enphatemp - $enphasesecur_info);
-								$enphaimp = -($enphasesecur_json['production']['1']['lines']['2']['whToday'] - $enphasesecur_json['consumption']['0']['lines']['2']['whToday']);
-
+								$enphaimp = -($enphasesecur_json['production']['1']['lines']['2']['whToday'] - $enphasesecur_json['consumption']['0']['lines']['2']['whToday'] - $enphaexp);
 								$eqLogic->checkAndUpdateCmd('cumulimport3', $enphaimp);
 								log::add('enphasesecur', 'debug', 'Cumul Import3: ' . $enphaimp);
 							}	
@@ -1025,9 +1023,9 @@ try {
 						else {
 							// $enphaimp = $eqLogic->getCmd(null, 'cumulimport')->execCmd();
 							// $enphaimp = abs($enphaimp + $enphatemp - $enphasesecur_info);
-							$enphaimp = -($enphasesecur_json['production']['1']['whToday'] - $enphasesecur_json['consumption']['0']['whToday']);
-							$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
-							log::add('enphasesecur', 'debug', 'Cumul Import: ' . $enphaimp);
+						$enphaimp = -($enphasesecur_json['production']['1']['whToday'] - $enphasesecur_json['consumption']['0']['whToday'] - $enphaexp);
+						$eqLogic->checkAndUpdateCmd('cumulimport', $enphaimp);
+						log::add('enphasesecur', 'debug', 'Cumul Import: ' . $enphaimp);
 						}	
 					}
 					else {
