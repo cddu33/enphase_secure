@@ -43,7 +43,7 @@ class enphasesecur extends eqLogic
         }
 		else 
 		{
-			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html.parser', 'six', 'requests', 'serial', 'pyudev');
+			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html-parser', 'six', 'requests', 'serial', 'pyudev');
         	$return['state'] = 'ok';
         	$output = array();
 			$venv = realpath(__DIR__ .'/../../resources/') .'/venv/bin/pip3';
