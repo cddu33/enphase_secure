@@ -32,7 +32,7 @@ ${BASEDIR}/venv/bin/pip3 install httpx
 echo 65 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install lxml
 echo 75 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install html.parser
+${BASEDIR}/venv/bin/pip3 install html-parser
 echo 85 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install six requests
 rm ${PROGRESS_FILE}
