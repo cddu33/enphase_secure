@@ -1,5 +1,7 @@
 # Plugin Enphase Secure V7 Beta pour Jeedom
 
+# Depuis le firmware D.7.6.165, certaines information remontent localement erronée
+
 > Vérifiez bien que votre passerelle Enphase est en Firmware V7
 > 
 > Pour cela:
@@ -16,7 +18,7 @@ Le plugin permet de récupérer les données:
     * Jour
     * Semaine
     * Mise en service
-    * Cumul Journalier Export réseau (non fonctionnel avec le dernier firmware, bug enphase)
+    * Cumul Journalier Export réseau
     * Puissance Réactive
     * Puissance Apaprente
     * Facteur de puissance
@@ -129,13 +131,16 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
    * Mode triphasé
 
 * Equipement par Groupement:
-Si coché, créé un équipement par groupement pour centraliser les informations
+Si coché, cré un équipement par groupement pour centraliser les informations
+
+* Type de Firmware de la passerelle:
+Adapte le plugin au firmware de la passerelle. vous le retrouver sur l'application Enlighten, Onglet Menu, Système, Périphérique, Passerelle
 
 Les groupements sont à renseigner dans chaque équipement onduleur
 >Attention, pensez à relancer le démon si vous changez ce paramètre.
 
 * Commandes par équipements:
-Cocher les commandes que vous voulez que le plugin rajoute
+Cocher les commandes ( sur la page configuration du plugin) que vous voulez que le plugin rajoute
 
 * Autoconsommation:
    * Mode de fonctionnement: active ou non l'autoconsommation
