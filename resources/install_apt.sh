@@ -22,7 +22,7 @@ sudo apt-get -y install python3-venv python3-dev
 echo 30 > ${PROGRESS_FILE}
 python3 -m venv ${BASEDIR}/venv
 echo 40 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install "cython<3.0.0" && pip install --no-build-isolation pyyaml
+${BASEDIR}/venv/bin/pip3 install "cython<3.0.0" && ${BASEDIR}/venv/bin/pip3 install --no-build-isolation pyyaml
 echo 50 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install pyjwt serial
 echo 55 > ${PROGRESS_FILE}
