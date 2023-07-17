@@ -22,18 +22,20 @@ sudo apt-get -y install python3-venv python3-dev
 echo 30 > ${PROGRESS_FILE}
 python3 -m venv ${BASEDIR}/venv
 echo 40 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install pyjwt serial
-echo 45 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install html5lib pyudev
+${BASEDIR}/venv/bin/pip3 install "cython<3.0.0" && ${BASEDIR}/venv/bin/pip3 install --no-build-isolation pyyaml
 echo 50 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install asyncio
+${BASEDIR}/venv/bin/pip3 install pyjwt serial
 echo 55 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install httpx
+${BASEDIR}/venv/bin/pip3 install html5lib pyudev
 echo 65 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install lxml
+${BASEDIR}/venv/bin/pip3 install asyncio
+echo 70 > ${PROGRESS_FILE}
+${BASEDIR}/venv/bin/pip3 install httpx
 echo 75 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install html-parser
+${BASEDIR}/venv/bin/pip3 install lxml
 echo 85 > ${PROGRESS_FILE}
+${BASEDIR}/venv/bin/pip3 install html-parser
+echo 95 > ${PROGRESS_FILE}
 ${BASEDIR}/venv/bin/pip3 install six requests
 rm ${PROGRESS_FILE}
 echo "**********************************"
