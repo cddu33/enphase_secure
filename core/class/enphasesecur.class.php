@@ -806,7 +806,16 @@ class enphasesecur extends eqLogic
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
 			{
 
-				
+				$this->CreaCmd('indexcumulimport1', 'Cumul Import MES 1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulimportanc1', 'Cumul Import MES N-1 1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+
+				$this->CreaCmd('indexcumulexport2', 'Cumul Export MES 2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulexportanc2', 'Cumul Export MES N-1' 2, 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			
+				$this->CreaCmd('indexcumulexport3', 'Cumul Export MES 3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulexportanc3', 'Cumul Export MES N-1 3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			
+
 				$this->CreaCmd('CwattHoursTodayNet1', 'Conso Net Jour1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
 				$this->CreaCmd('CwattHoursTodayNet2', 'Conso Net Jour2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
