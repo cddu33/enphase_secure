@@ -229,9 +229,10 @@ class enphasesecur extends eqLogic
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
-				$oldCwattHoursLifetimeNet = $eqLogic->getCmd(null, 'CwattHoursLifetimeNet')->execCmd();
-				$eqLogic->setConfiguration('oldCwattHoursLifetimeNet', $oldCwattHoursLifetimeNet);
-				$eqLogic->save();
+				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulimportanc', $oldimport);
+				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulexportanc', $oldexport);
 				$eqLogic->checkAndUpdateCmd('cumulimport1', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport1', 0);
 				$eqLogic->checkAndUpdateCmd('cumulimport2', 0);
@@ -730,6 +731,14 @@ class enphasesecur extends eqLogic
 		//création des commandes communes pour équipement combiné ou conso net	
 		if ($this->getConfiguration('type') == 'combine' || $this->getConfiguration('type') == 'net') 
 		{
+			$this->CreaCmd('indexcumulimport', 'Cumul Import MES', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			$this->CreaCmd('indexcumulimportanc', 'Cumul Import MES N-1', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+
+			$this->CreaCmd('indexcumulexport', 'Cumul Export MES', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			$this->CreaCmd('indexcumulexportanc', 'Cumul Export MES N-1', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			
+
+
 			$this->CreaCmd('CwattHoursTodayNet', 'Conso Net Jour', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
 			$this->CreaCmd('CwattHoursSevenDaysNet', 'Conso Net Semaine', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');

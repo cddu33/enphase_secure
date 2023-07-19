@@ -103,6 +103,7 @@ def enphase():
 	global inventory
 	global renew
 	global token
+	global inverter
 
 	renew = renew + 1
 	client = httpx.Client(verify=False)
@@ -186,8 +187,14 @@ def enphase():
 			
 			JEEDOM_COM.send_change_immediate(r.json())
 			time.sleep(1)
-			logging.debug("Recuperation mesures onduleurs")
+			# logging.debug("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
+			if r != inverter:
+				logging.debug("Recuperation mesures onduleurs")
+				JEEDOM_COM.send_change_immediate(r.json())
+				inverter = r
+			logging.debug("Recuperation index")
+			r = client.get(LOCAL_URL + "ivp/meters/readings", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
 			limit = 0
 	except:
