@@ -188,12 +188,12 @@ def enphase():
 			time.sleep(1)
 			# logging.debug("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
-			# if inverter == null:
-			# 	inverter = 0
-			# if not r == inverter:
-			logging.debug("Recuperation mesures onduleurs")
-			JEEDOM_COM.send_change_immediate(r.json())
-			inverter = r
+			if inverter == null:
+				inverter = 0
+			if not r == inverter:
+				logging.debug("Recuperation mesures onduleurs")
+				JEEDOM_COM.send_change_immediate(r.json())
+				inverter = r
 			logging.debug("Recuperation index")
 			r = client.get(LOCAL_URL + "ivp/meters/readings", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
