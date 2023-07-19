@@ -104,7 +104,6 @@ def enphase():
 	global renew
 	global token
 	global inverter
-	inverter = 0
 	renew = renew + 1
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
