@@ -1342,7 +1342,7 @@ try {
 
 				}
 				else {
-					$enphasesecur_info = $enphasesecur_json[1]['actEnergyRcvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['actEnergyDlvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Import: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulimport', $enphasesecur_info);	
 					
@@ -1356,7 +1356,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('cumulimport', $tempimport);
 					log::add('enphasesecur', 'debug', 'Cumul Import: ' . $tempimport);
 					
-					$enphasesecur_info = $enphasesecur_json[1]['actEnergyDlvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['actEnergyRcvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Export: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulexport', $enphasesecur_info);	
 
