@@ -104,7 +104,7 @@ def enphase():
 	global renew
 	global token
 	global inverter
-
+	inverter = 0
 	renew = renew + 1
 	client = httpx.Client(verify=False)
 	LOCAL_URL ="https://" + args.ip + "/" 
@@ -189,7 +189,7 @@ def enphase():
 			time.sleep(1)
 			# logging.debug("Recuperation mesures onduleurs")
 			r = client.get(LOCAL_URL + "api/v1/production/inverters", headers=header)
-			if r != inverter:
+			if not r == inverter:
 				logging.debug("Recuperation mesures onduleurs")
 				JEEDOM_COM.send_change_immediate(r.json())
 				inverter = r
