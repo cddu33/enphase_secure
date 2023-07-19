@@ -931,6 +931,7 @@ try {
 						// 	$eqLogic->checkAndUpdateCmd('cumulimport3', $enphaimp);
 						// 	log::add('enphasesecur', 'debug', 'Cumul Import3: ' . $enphaimp);
 						// }
+						
 						$enphasesecur_info = $enphasesecur_json['consumption']['1']['lines']['2']['whToday'];
 						if ($enphasesecur_info == 0){
 							//merci Bison

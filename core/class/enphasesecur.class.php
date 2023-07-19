@@ -226,31 +226,15 @@ class enphasesecur extends eqLogic
 				$eqLogic->checkAndUpdateCmd('calWH', 0);
 			}
 			//init cumul import et export à minuit
-			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
+			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') 
+			{
 				$eqLogic->checkAndUpdateCmd('cumulimport', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport', 0);
 				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport')->execCmd();
 				$eqLogic->checkAndUpdateCmd('indexcumulimportanc', $oldimport);
 				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport')->execCmd();
 				$eqLogic->checkAndUpdateCmd('indexcumulexportanc', $oldexport);
-				$eqLogic->checkAndUpdateCmd('cumulimport1', 0);
-				$eqLogic->checkAndUpdateCmd('cumulexport1', 0);
-				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport1')->execCmd();
-				$eqLogic->checkAndUpdateCmd('indexcumulimportanc1', $oldimport);
-				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport1')->execCmd();
-				$eqLogic->checkAndUpdateCmd('indexcumulexportanc1', $oldexport);
-				$eqLogic->checkAndUpdateCmd('cumulimport2', 0);
-				$eqLogic->checkAndUpdateCmd('cumulexport2', 0);
-				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport2')->execCmd();
-				$eqLogic->checkAndUpdateCmd('indexcumulimportanc2', $oldimport);
-				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport2')->execCmd();
-				$eqLogic->checkAndUpdateCmd('indexcumulexportanc2', $oldexport);
-				$eqLogic->checkAndUpdateCmd('cumulimport3', 0);
-				$eqLogic->checkAndUpdateCmd('cumulexport3', 0);
-				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport3')->execCmd();
-				$eqLogic->checkAndUpdateCmd('indexcumulimportanc3', $oldimport);
-				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport3')->execCmd();
-				$eqLogic->checkAndUpdateCmd('indexcumulexportanc3', $oldexport);
+				
 			}
 		}
 	}
