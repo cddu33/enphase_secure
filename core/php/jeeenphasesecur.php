@@ -1351,7 +1351,7 @@ try {
 					
 					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulexportanc')->execCmd();
 					$tempimport = $tempimport1 - enphasesecur_info;
-					if ($tempimport1 =< 0 || $tempimport1 == '') {
+					if ($tempimport1 <= 0 || $tempimport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulimportanc', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1: ' . $enphasesecur_info);
 					}
@@ -1360,7 +1360,7 @@ try {
 					
 					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc')->execCmd();
 					$tempexport = $tempexport1 - enphasesecur_info;
-					if ($tempexport1 =< 0 || $tempexport1 == '') {
+					if ($tempexport1 <= 0 || $tempexport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulexportanc', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1: ' . $enphasesecur_info);
 					}
