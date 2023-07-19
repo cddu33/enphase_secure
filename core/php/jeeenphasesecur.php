@@ -1337,8 +1337,90 @@ try {
 		foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
 				if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
-					
 
+					//phase1
+					$enphasesecur_info = $enphasesecur_json[1][0]['actEnergyDlvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Import 1: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulimport1', $enphasesecur_info);	
+					
+					
+					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc1')->execCmd();
+					$tempimport = $tempimport1 - $enphasesecur_info;
+					if ($tempimport1 <= 0 || $tempimport1 == '') {
+						$eqLogic->checkAndUpdateCmd('indexcumulimportanc1', $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1 1: ' . $enphasesecur_info);
+					}
+					$eqLogic->checkAndUpdateCmd('cumulimport1', $tempimport);
+					log::add('enphasesecur', 'debug', 'Cumul Import 1: ' . $tempimport);
+					
+					$enphasesecur_info = $enphasesecur_json[1][0]['actEnergyRcvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Export 1: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulexport1', $enphasesecur_info);	
+
+					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc1')->execCmd();
+					$tempexport = $tempexport1 - $enphasesecur_info;
+					if ($tempexport1 <= 0 || $tempexport1 == '') {
+						$eqLogic->checkAndUpdateCmd('indexcumulexportanc1', $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1 1: ' . $enphasesecur_info);
+					}
+					$eqLogic->checkAndUpdateCmd('cumulexport1', $tempexport);
+					log::add('enphasesecur', 'debug', 'Cumul Export 1: ' . $tempexport);
+
+					//phase2
+					$enphasesecur_info = $enphasesecur_json[1][1]['actEnergyDlvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Import 2: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulimport2', $enphasesecur_info);	
+					
+					
+					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc2')->execCmd();
+					$tempimport = $tempimport1 - $enphasesecur_info;
+					if ($tempimport1 <= 0 || $tempimport1 == '') {
+						$eqLogic->checkAndUpdateCmd('indexcumulimportanc2', $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1 2: ' . $enphasesecur_info);
+					}
+					$eqLogic->checkAndUpdateCmd('cumulimport2', $tempimport);
+					log::add('enphasesecur', 'debug', 'Cumul Import 2: ' . $tempimport);
+					
+					$enphasesecur_info = $enphasesecur_json[1][1]['actEnergyRcvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Export 2: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulexport2', $enphasesecur_info);	
+
+					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc2')->execCmd();
+					$tempexport = $tempexport1 - $enphasesecur_info;
+					if ($tempexport1 <= 0 || $tempexport1 == '') {
+						$eqLogic->checkAndUpdateCmd('indexcumulexportanc2', $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1 2: ' . $enphasesecur_info);
+					}
+					$eqLogic->checkAndUpdateCmd('cumulexport2', $tempexport);
+					log::add('enphasesecur', 'debug', 'Cumul Export 2: ' . $tempexport);
+
+					//phase3
+					$enphasesecur_info = $enphasesecur_json[1][2]['actEnergyDlvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Import 3: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulimport3', $enphasesecur_info);	
+					
+					
+					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc3')->execCmd();
+					$tempimport = $tempimport1 - $enphasesecur_info;
+					if ($tempimport1 <= 0 || $tempimport1 == '') {
+						$eqLogic->checkAndUpdateCmd('indexcumulimportanc3', $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1 3: ' . $enphasesecur_info);
+					}
+					$eqLogic->checkAndUpdateCmd('cumulimport3', $tempimport);
+					log::add('enphasesecur', 'debug', 'Cumul Import 3: ' . $tempimport);
+					
+					$enphasesecur_info = $enphasesecur_json[1][2]['actEnergyRcvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Export 3: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulexport3', $enphasesecur_info);	
+
+					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc3')->execCmd();
+					$tempexport = $tempexport1 - $enphasesecur_info;
+					if ($tempexport1 <= 0 || $tempexport1 == '') {
+						$eqLogic->checkAndUpdateCmd('indexcumulexportanc3', $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1 3: ' . $enphasesecur_info);
+					}
+					$eqLogic->checkAndUpdateCmd('cumulexport3', $tempexport);
+					log::add('enphasesecur', 'debug', 'Cumul Export 3: ' . $tempexport);
 
 				}
 				else {

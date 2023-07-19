@@ -235,10 +235,22 @@ class enphasesecur extends eqLogic
 				$eqLogic->checkAndUpdateCmd('indexcumulexportanc', $oldexport);
 				$eqLogic->checkAndUpdateCmd('cumulimport1', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport1', 0);
+				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport1')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulimportanc1', $oldimport);
+				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport1')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulexportanc1', $oldexport);
 				$eqLogic->checkAndUpdateCmd('cumulimport2', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport2', 0);
+				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport2')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulimportanc2', $oldimport);
+				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport2')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulexportanc2', $oldexport);
 				$eqLogic->checkAndUpdateCmd('cumulimport3', 0);
 				$eqLogic->checkAndUpdateCmd('cumulexport3', 0);
+				$oldimport = $eqLogic->getCmd(null, 'indexcumulimport3')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulimportanc3', $oldimport);
+				$oldexport = $eqLogic->getCmd(null, 'indexcumulexport3')->execCmd();
+				$eqLogic->checkAndUpdateCmd('indexcumulexportanc3', $oldexport);
 			}
 		}
 	}
@@ -755,7 +767,7 @@ class enphasesecur extends eqLogic
 
 			$this->CreaCmd('cumulimport', 'Import Jour Réseau', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
-			$this->CreaCmd('calculjour', 'Calcul Jour, ne pas toucher', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			// $this->CreaCmd('calculjour', 'Calcul Jour, ne pas toucher', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 			
 			if (config::byKey('CAN', __CLASS__) == true)
 			{
@@ -792,6 +804,17 @@ class enphasesecur extends eqLogic
 			//si triphasé
 			if (config::bykey('typereseau', __CLASS__) == 'tri') 
 			{
+
+				$this->CreaCmd('indexcumulimport1', 'Cumul Import MES 1', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulimportanc1', 'Cumul Import MES N-1 1', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+
+				$this->CreaCmd('indexcumulexport2', 'Cumul Export MES 2', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulexportanc2', 'Cumul Export MES N-1' 2, 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			
+				$this->CreaCmd('indexcumulexport3', 'Cumul Export MES 3', 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulexportanc3', 'Cumul Export MES N-1' 3, 'core::badge', '1', '1', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+			
+
 				$this->CreaCmd('CwattHoursTodayNet1', 'Conso Net Jour1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
 				$this->CreaCmd('CwattHoursTodayNet2', 'Conso Net Jour2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
@@ -840,11 +863,11 @@ class enphasesecur extends eqLogic
 
 				$this->CreaCmd('cumulimport3', 'Import Jour Réseau3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
-				$this->CreaCmd('calculjour1', 'Calcul Jour, ne pas toucher1', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				// $this->CreaCmd('calculjour1', 'Calcul Jour, ne pas toucher1', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 
-				$this->CreaCmd('calculjour2', 'Calcul Jour, ne pas toucher2', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				// $this->CreaCmd('calculjour2', 'Calcul Jour, ne pas toucher2', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 
-				$this->CreaCmd('calculjour3', 'Calcul Jour, ne pas toucher3', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				// $this->CreaCmd('calculjour3', 'Calcul Jour, ne pas toucher3', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 
 				$this->CreaCmd('autoconso11', 'Autoconso 1 phase 1', '', '1', '', '','info', 'binary', '', '1');
 
