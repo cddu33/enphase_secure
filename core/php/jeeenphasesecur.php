@@ -1345,24 +1345,26 @@ try {
 					$enphasesecur_info = $enphasesecur_json[1]['actEnergyRcvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Import: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulimport', $enphasesecur_info);	
-					$enphasesecur_info = $enphasesecur_json[1]['actEnergyDlvd'];
-					log::add('enphasesecur', 'debug', 'Index Cumul Export: ' . $enphasesecur_info);
-					$eqLogic->checkAndUpdateCmd('indexcumulexport', $enphasesecur_info);	
 					
-					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulexportanc')->execCmd();
+					
+					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc')->execCmd();
 					$tempimport = $tempimport1 - $enphasesecur_info;
 					if ($tempimport1 <= 0 || $tempimport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulimportanc', $enphasesecur_info);
-						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1: ' . $enphasesecur_info);
 					}
 					$eqLogic->checkAndUpdateCmd('cumulimport', $tempimport);
-					log::add('enphasesecur', 'debug', 'Cumul Export: ' . $tempimport);
+					log::add('enphasesecur', 'debug', 'Cumul Import: ' . $tempimport);
 					
+					$enphasesecur_info = $enphasesecur_json[1]['actEnergyDlvd'];
+					log::add('enphasesecur', 'debug', 'Index Cumul Export: ' . $enphasesecur_info);
+					$eqLogic->checkAndUpdateCmd('indexcumulexport', $enphasesecur_info);	
+
 					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc')->execCmd();
 					$tempexport = $tempexport1 - $enphasesecur_info;
 					if ($tempexport1 <= 0 || $tempexport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulexportanc', $enphasesecur_info);
-						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1: ' . $enphasesecur_info);
+						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1: ' . $enphasesecur_info);
 					}
 					$eqLogic->checkAndUpdateCmd('cumulexport', $tempexport);
 					log::add('enphasesecur', 'debug', 'Cumul Export: ' . $tempexport);
