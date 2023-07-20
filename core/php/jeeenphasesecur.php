@@ -1346,7 +1346,7 @@ try {
 					
 					
 					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc1')->execCmd();
-					$tempimport = $tempimport1 - $enphasesecur_info;
+					$tempimport = abs($tempimport1 - $enphasesecur_info);
 					if ($tempimport1 <= 0 || $tempimport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulimportanc1', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1 1: ' . $enphasesecur_info);
@@ -1359,7 +1359,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('indexcumulexport1', $enphasesecur_info);	
 
 					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc1')->execCmd();
-					$tempexport = $tempexport1 - $enphasesecur_info;
+					$tempexport = abs($tempexport1 - $enphasesecur_info);
 					if ($tempexport1 <= 0 || $tempexport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulexportanc1', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1 1: ' . $enphasesecur_info);
@@ -1374,7 +1374,7 @@ try {
 					
 					
 					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc2')->execCmd();
-					$tempimport = $tempimport1 - $enphasesecur_info;
+					$tempimport = abs($tempimport1 - $enphasesecur_info);
 					if ($tempimport1 <= 0 || $tempimport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulimportanc2', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1 2: ' . $enphasesecur_info);
@@ -1387,7 +1387,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('indexcumulexport2', $enphasesecur_info);	
 
 					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc2')->execCmd();
-					$tempexport = $tempexport1 - $enphasesecur_info;
+					$tempexport = abs($tempexport1 - $enphasesecur_info);
 					if ($tempexport1 <= 0 || $tempexport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulexportanc2', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1 2: ' . $enphasesecur_info);
@@ -1402,7 +1402,7 @@ try {
 					
 					
 					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc3')->execCmd();
-					$tempimport = $tempimport1 - $enphasesecur_info;
+					$tempimport = abs($tempimport1 - $enphasesecur_info);
 					if ($tempimport1 <= 0 || $tempimport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulimportanc3', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1 3: ' . $enphasesecur_info);
@@ -1415,7 +1415,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('indexcumulexport3', $enphasesecur_info);	
 
 					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc3')->execCmd();
-					$tempexport = $tempexport1 - $enphasesecur_info;
+					$tempexport = abs($tempexport1 - $enphasesecur_info);
 					if ($tempexport1 <= 0 || $tempexport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulexportanc3', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1 3: ' . $enphasesecur_info);
@@ -1431,7 +1431,7 @@ try {
 					
 					
 					$tempimport1 = $eqLogic->getCmd(null, 'indexcumulimportanc')->execCmd();
-					$tempimport = $tempimport1 - $enphasesecur_info;
+					$tempimport = abs($tempimport1 - $enphasesecur_info);
 					if ($tempimport1 <= 0 || $tempimport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulimportanc', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Import N-1: ' . $enphasesecur_info);
@@ -1444,7 +1444,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('indexcumulexport', $enphasesecur_info);	
 
 					$tempexport1 = $eqLogic->getCmd(null, 'indexcumulexportanc')->execCmd();
-					$tempexport = $tempexport1 - $enphasesecur_info;
+					$tempexport = abs($tempexport1 - $enphasesecur_info);
 					if ($tempexport1 <= 0 || $tempexport1 == '') {
 						$eqLogic->checkAndUpdateCmd('indexcumulexportanc', $enphasesecur_info);
 						log::add('enphasesecur', 'debug', 'Index Cumul Export N-1: ' . $enphasesecur_info);
@@ -1455,7 +1455,6 @@ try {
 				}
 			}
 		}
-
 	}
 }
 catch (Exception $e) {
