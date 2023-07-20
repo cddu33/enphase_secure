@@ -133,9 +133,6 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 * Equipement par Groupement:
 Si coché, cré un équipement par groupement pour centraliser les informations
 
-* Type de Firmware de la passerelle:
-Adapte le plugin au firmware de la passerelle. vous le retrouver sur l'application Enlighten, Onglet Menu, Système, Périphérique, Passerelle
-
 Les groupements sont à renseigner dans chaque équipement onduleur
 >Attention, pensez à relancer le démon si vous changez ce paramètre.
 
