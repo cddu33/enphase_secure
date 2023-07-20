@@ -4,10 +4,13 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
-# 17/07/2023
+# 20/07/2023
 Nouveaux Index pour les Cumuls
 
 Nouvelles données pour les Cumuls
+
+>Le zéro est réalisé sur les cumuls à minuit donc les données de cumul ne seront bonne que le lendemain. La durée entre 2 rafraichissements n'a pas d'influence sur les valeurs
+> Merci @Ziz
 
 # 17/07/2023
 Correction dépendance python 3.7
