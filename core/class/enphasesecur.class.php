@@ -811,6 +811,15 @@ class enphasesecur extends eqLogic
 				$this->CreaCmd('indexcumulimport1', 'Cumul Import MES 1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 				$this->CreaCmd('indexcumulimportanc1', 'Cumul Import MES N-1 1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 
+				$this->CreaCmd('indexcumulimport2', 'Cumul Import MES 2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulimportanc2', 'Cumul Import MES N-1 2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+
+				$this->CreaCmd('indexcumulimport3', 'Cumul Import MES 3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulimportanc3', 'Cumul Import MES N-1 3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+
+				$this->CreaCmd('indexcumulexport1', 'Cumul Export MES 1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+				$this->CreaCmd('indexcumulexportanc1', 'Cumul Export MES N-1 1', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
+
 				$this->CreaCmd('indexcumulexport2', 'Cumul Export MES 2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 				$this->CreaCmd('indexcumulexportanc2', 'Cumul Export MES N-1 2', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
 			
