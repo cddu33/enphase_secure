@@ -1340,7 +1340,7 @@ try {
 				if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
 
 					//phase1
-					$enphasesecur_info = $enphasesecur_json[1][0]['actEnergyDlvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['channels'][0]['actEnergyDlvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Import 1: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulimport1', $enphasesecur_info);	
 					
@@ -1354,7 +1354,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('cumulimport1', $tempimport);
 					log::add('enphasesecur', 'debug', 'Cumul Import 1: ' . $tempimport);
 					
-					$enphasesecur_info = $enphasesecur_json[1][0]['actEnergyRcvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['channels'][0]['actEnergyRcvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Export 1: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulexport1', $enphasesecur_info);	
 
@@ -1382,7 +1382,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('cumulimport2', $tempimport);
 					log::add('enphasesecur', 'debug', 'Cumul Import 2: ' . $tempimport);
 					
-					$enphasesecur_info = $enphasesecur_json[1][1]['actEnergyRcvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['channels'][1]['actEnergyRcvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Export 2: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulexport2', $enphasesecur_info);	
 
@@ -1396,7 +1396,7 @@ try {
 					log::add('enphasesecur', 'debug', 'Cumul Export 2: ' . $tempexport);
 
 					//phase3
-					$enphasesecur_info = $enphasesecur_json[1][2]['actEnergyDlvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['channels'][2]['actEnergyDlvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Import 3: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulimport3', $enphasesecur_info);	
 					
@@ -1410,7 +1410,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('cumulimport3', $tempimport);
 					log::add('enphasesecur', 'debug', 'Cumul Import 3: ' . $tempimport);
 					
-					$enphasesecur_info = $enphasesecur_json[1][2]['actEnergyRcvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['channels'][2]['actEnergyRcvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Export 3: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulexport3', $enphasesecur_info);	
 
