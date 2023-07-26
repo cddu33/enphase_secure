@@ -1336,7 +1336,8 @@ try {
 	elseif (isset($enphasesecur_json[0]['actEnergyDlvd'])) {
 		log::add('enphasesecur', 'debug', 'Réception mesures index');
 		foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
-			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') {
+			if ($eqLogic->getConfiguration('type') == 'combine' || $eqLogic->getConfiguration('type') == 'net') 
+			{
 				if (config::bykey('typereseau', 'enphasesecur') == 'tri'){
 
 					//phase1
@@ -1368,7 +1369,7 @@ try {
 					log::add('enphasesecur', 'debug', 'Cumul Export 1: ' . $tempexport);
 
 					//phase2
-					$enphasesecur_info = $enphasesecur_json[1][1]['actEnergyDlvd'];
+					$enphasesecur_info = $enphasesecur_json[1]['channels'][1]['actEnergyDlvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Import 2: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulimport2', $enphasesecur_info);	
 					
@@ -1424,7 +1425,7 @@ try {
 					log::add('enphasesecur', 'debug', 'Cumul Export 3: ' . $tempexport);
 
 				}
-				else {
+				
 					$enphasesecur_info = $enphasesecur_json[1]['actEnergyDlvd'];
 					log::add('enphasesecur', 'debug', 'Index Cumul Import: ' . $enphasesecur_info);
 					$eqLogic->checkAndUpdateCmd('indexcumulimport', $enphasesecur_info);	
@@ -1452,7 +1453,7 @@ try {
 					$eqLogic->checkAndUpdateCmd('cumulexport', $tempexport);
 					log::add('enphasesecur', 'debug', 'Cumul Export: ' . $tempexport);
 
-				}
+				
 			}
 		}
 	}
