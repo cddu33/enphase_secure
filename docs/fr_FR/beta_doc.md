@@ -1,7 +1,5 @@
 # Plugin Enphase Secure V7 Beta pour Jeedom
 
-# Depuis le firmware D.7.6.175, certaines informations remontent localement erronées
-
 > Vérifiez bien que votre passerelle Enphase est en Firmware V7
 > 
 > Pour cela:
