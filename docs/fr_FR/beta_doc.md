@@ -1,7 +1,5 @@
 # Plugin Enphase Secure V7 Beta pour Jeedom
 
-# Depuis le firmware D.7.6.175, certaines informations remontent localement erronées
-
 > Vérifiez bien que votre passerelle Enphase est en Firmware V7
 > 
 > Pour cela:
@@ -132,9 +130,6 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 
 * Equipement par Groupement:
 Si coché, cré un équipement par groupement pour centraliser les informations
-
-* Type de Firmware de la passerelle:
-Adapte le plugin au firmware de la passerelle. vous le retrouver sur l'application Enlighten, Onglet Menu, Système, Périphérique, Passerelle
 
 Les groupements sont à renseigner dans chaque équipement onduleur
 >Attention, pensez à relancer le démon si vous changez ce paramètre.

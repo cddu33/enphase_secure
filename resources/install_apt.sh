@@ -10,33 +10,55 @@ echo "*  Installation des dépendances  *"
 echo "**********************************"
 BASEDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-sudo apt remove -y python3-serial
 echo 5 > ${PROGRESS_FILE}
-sudo apt-get install -y libxml2-dev libxslt-dev
+sudo apt-get clean
+sudo apt-get update
+
 echo 10 > ${PROGRESS_FILE}
-sudo apt-get clean && sudo apt-get update
-echo 15 > ${PROGRESS_FILE}
-sudo apt-get install -y python3
+sudo apt remove -y python3-serial
+
 echo 20 > ${PROGRESS_FILE}
-sudo apt-get -y install python3-venv python3-dev
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libxml2-dev libxslt-dev
+
+
 echo 30 > ${PROGRESS_FILE}
-python3 -m venv ${BASEDIR}/venv
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3
+
 echo 40 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install "cython<3.0.0" && ${BASEDIR}/venv/bin/pip3 install --no-build-isolation pyyaml
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv python3-pip python3-dev
+
 echo 50 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install pyjwt serial
-echo 55 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install html5lib pyudev
-echo 65 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install asyncio
+sudo -u www-data python3 -m venv $BASEDIR/venv
+
+echo 60 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir "cython<3.0.0"
+
 echo 70 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install httpx
-echo 75 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install lxml
-echo 85 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install html-parser
-echo 95 > ${PROGRESS_FILE}
-${BASEDIR}/venv/bin/pip3 install six requests
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-isolation pyyaml
+
+
+echo 80 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyjwt
+echo 82 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir serial
+echo 84 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html5lib
+echo 86 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyudev
+echo 88 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir asyncio
+echo 90 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir httpx
+echo 92 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir lxml
+echo 94 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html-parser
+echo 96 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir six
+echo 98 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir requests
+echo 100 > ${PROGRESS_FILE}
+
 rm ${PROGRESS_FILE}
 echo "**********************************"
 echo "*  Installation des dépendances OK  *"
