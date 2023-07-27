@@ -29,5 +29,12 @@ try sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv python3-
 step 50 "Create a python3 Virtual Environment"
 try sudo -u www-data python3 -m venv $BASEDIR/venv
 
+step 60 "Install Cython in venv"
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir cython<3.0.0
+
+step 70 "Install Pyyaml in venv"
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-isolation pyyaml
+
+
 step 70 "Install required python3 libraries in venv"
 try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir -r $BASEDIR/requirements.txt

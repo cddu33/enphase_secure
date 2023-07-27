@@ -1,5 +1,3 @@
-cython<3.0.0
---no-build-isolation pyyaml
 pyjwt 
 serial
 html5lib 
