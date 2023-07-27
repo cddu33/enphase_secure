@@ -7,9 +7,10 @@ PLUGIN=$(basename "$(realpath $BASEDIR/..)")
 LANG_DEP=en
 . ${BASEDIR}/dependance.lib
 ##################################################################
+
 pre
 step 0 "Synchronize the package index"
-try apt-get clean
+try sudo apt-get clean
 try sudo apt-get update
 
 step 10 "Remove Python3 serial"
@@ -29,5 +30,4 @@ step 50 "Create a python3 Virtual Environment"
 try sudo -u www-data python3 -m venv $BASEDIR/venv
 
 step 70 "Install required python3 libraries in venv"
-try sudo -u www-data $BASEDIR/jmqttd/venv/bin/pip3 install --no-cache-dir -r $BASEDIR/requirements.txt
-
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir -r $BASEDIR/requirements.txt
