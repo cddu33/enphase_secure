@@ -46,24 +46,24 @@ class enphasesecur extends eqLogic
 		$return['state'] = self::CLIENT_OK;
 
 		if (file_exists($depProgressFile)) {
-			self::logger('debug', sprintf(__("Dépendances en cours d'installation... (%s%%)", __FILE__), trim(file_get_contents($depProgressFile))));
+			self::add('debug', sprintf(__("Dépendances en cours d'installation... (%s%%)", __FILE__), trim(file_get_contents($depProgressFile))));
 			$return['state'] = self::CLIENT_NOK;
 			return $return;
 		}
 
 		if (!file_exists(__DIR__ . '/../../resources/venv/bin/pip3') || !file_exists(__DIR__ . '/../../resources/venv/bin/python3')) {
-			self::logger('debug', __("Relancez les dépendances, le venv Python n'a pas encore été créé", __FILE__));
+			self::add('debug', __("Relancez les dépendances, le venv Python n'a pas encore été créé", __FILE__));
 			$return['state'] = self::CLIENT_NOK;
 		} else {
 			exec(__DIR__ . '/../../resources/venv/bin/pip3 freeze --no-cache-dir -r '.__DIR__ . '/../../resources/requirements.txt 2>&1 >/dev/null', $output);
 			if (count($output) > 0) {
-				self::logger('error', __('Relancez les dépendances, au moins une bibliothèque Python requise est manquante dans le venv :', __FILE__).' <br/>'.implode('<br/>', $output));
+				self::add('error', __('Relancez les dépendances, au moins une bibliothèque Python requise est manquante dans le venv :', __FILE__).' <br/>'.implode('<br/>', $output));
 				$return['state'] = self::CLIENT_NOK;
 			}
 		}
 
 		if ($return['state'] == self::CLIENT_OK)
-			self::logger('debug', sprintf(__('Dépendances installées.', __FILE__)));
+			self::add('debug', sprintf(__('Dépendances installées.', __FILE__)));
 		return $return;
 	}
 
@@ -73,7 +73,7 @@ class enphasesecur extends eqLogic
 		$depLogFile = __CLASS__ . '_dep';
 		$depProgressFile = jeedom::getTmpFolder(__CLASS__) . '/dependancy';
 
-		self::logger('info', sprintf(__('Installation des dépendances, voir log dédié (%s)', __FILE__), $depLogFile));
+		self::add('info', sprintf(__('Installation des dépendances, voir log dédié (%s)', __FILE__), $depLogFile));
 
 		$update = update::byLogicalId(__CLASS__);
 		shell_exec(
