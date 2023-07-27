@@ -22,10 +22,6 @@ class enphasesecur extends eqLogic
 {
 	/*     * *************************Attributs****************************** */
 
-	const CLIENT_OK                     = 'ok';
-	const CLIENT_POK                    = 'pok';
-	const CLIENT_NOK                     = 'nok';
-
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
@@ -39,61 +35,42 @@ class enphasesecur extends eqLogic
 	}
 
 	public static function dependancy_info() {
-		$depLogFile = __CLASS__ . '_dep';
-		$depProgressFile = jeedom::getTmpFolder(__CLASS__) . '/dependancy';
-
 		$return = array();
-		$return['log'] = log::getPathToLog($depLogFile);
-		$return['progress_file'] = $depProgressFile;
-		$return['state'] = self::CLIENT_OK;
-
-		if (file_exists($depProgressFile)) {
-			log::add('enphasesecur', 'debug', sprintf(__("Dépendances en cours d'installation... (%s%%)", __FILE__), trim(file_get_contents($depProgressFile))));
-			$return['state'] = self::CLIENT_NOK;
-			return $return;
-		}
-
-		if (!file_exists(__DIR__ . '/../../resources/venv/bin/pip3') || !file_exists(__DIR__ . '/../../resources/venv/bin/python3')) {
-			log::add('enphasesecur', 'debug', __("Relancez les dépendances, le venv Python n'a pas encore été créé", __FILE__));
-			$return['state'] = self::CLIENT_NOK;
-		} else {
-			exec(__DIR__ . '/../../resources/venv/bin/pip3 freeze --no-cache-dir -r '.__DIR__ . '/../../resources/requirements.txt 2>&1 >/dev/null', $output);
-			if (count($output) > 0) {
-				log::add('enphasesecur', 'error', __('Relancez les dépendances, au moins une bibliothèque Python requise est manquante dans le venv :', __FILE__).' <br/>'.implode('<br/>', $output));
-				$return['state'] = self::CLIENT_NOK;
+        $return['log'] = log::getPathToLog(__CLASS__ . '_update');
+        $return['progress_file'] = jeedom::getTmpFolder(__CLASS__) . '/dependency';
+        if (file_exists(jeedom::getTmpFolder(__CLASS__) . '/dependency')) {
+			$return['state'] = 'in_progress';
+        }
+		else 
+		{
+			$deps = array('PyJWT', 'asyncio', 'httpx', 'lxml', 'html5lib', 'html-parser', 'six', 'requests', 'serial', 'pyudev');
+        	$return['state'] = 'ok';
+        	$output = array();
+			$venv = realpath(__DIR__ .'/../../resources/') .'/venv/bin/pip3';
+			if(@file_exists($venv)) 
+			{
+				foreach($deps as $list) {
+					$cmd = "$venv list | grep -i ";
+					$cmd .= $list;
+					unset($output);
+					exec($cmd, $output, $return_var);
+					if ($return_var || $output[0] == "") {
+						$return['state'] = 'nok';
+						break;
+					}
+				}
 			}
+			else { $return['state'] = 'nok';}
 		}
-
-		if ($return['state'] == self::CLIENT_OK)
-			log::add('enphasesecur', 'debug', sprintf(__('Dépendances installées.', __FILE__)));
 		return $return;
-	}
+    }
 
 	
 	// isntallation des dépendances
-	public static function dependancy_install() {
-		$depLogFile = __CLASS__ . '_dep';
-		$depProgressFile = jeedom::getTmpFolder(__CLASS__) . '/dependancy';
-
-		log::add('enphasesecur', 'info', sprintf(__('Installation des dépendances, voir log dédié (%s)', __FILE__), $depLogFile));
-
-		$update = update::byLogicalId(__CLASS__);
-		shell_exec(
-			'echo "\n\n================================================================================\n'.
-			'== Jeedom '.jeedom::version().' '.jeedom::getHardwareName().
-			' in $(lsb_release -d -s | xargs echo -n) on $(arch | xargs echo -n)/'.
-			'$(dpkg --print-architecture | xargs echo -n)/$(getconf LONG_BIT | xargs echo -n)bits\n'.
-			'== $(python3 -VV | xargs echo -n)\n'.
-			'== '.__CLASS__.' v'.config::byKey('version', __CLASS__, 'unknown', true).
-			' ('.$update->getLocalVersion().') branch:'.$update->getConfiguration()['version'].
-			' previously:v'.config::byKey('previousVersion', __CLASS__, 'unknown', true).
-			'" >> '.log::getPathToLog($depLogFile)
-		);
-
-		return array(
-			'script' => __DIR__ . '/../../resources/install_#stype#.sh ' . $depProgressFile,
-			'log' => log::getPathToLog($depLogFile)
-		);
+	public static function dependancy_install() 
+	{
+		log::remove(__CLASS__ . '_update');
+		passthru('/bin/bash ' . dirname(__FILE__) . '/../../resources/install_apt.sh ' . jeedom::getTmpFolder(__CLASS__) . '/dependency > ' . log::getPathToLog(__CLASS__ . '_update') . ' 2>&1 &');
 	}
 
 	public static function dependancy_install_update() 

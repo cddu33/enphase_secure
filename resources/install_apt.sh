@@ -37,4 +37,13 @@ try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-is
 
 
 step 80 "Install required python3 libraries in venv"
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir -r $BASEDIR/requirements.txt
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyjwt
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir serial
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html5lib
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyudev
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir asyncio
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir httpx
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir lxml
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html-parser
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir six
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir requests
