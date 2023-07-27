@@ -22,6 +22,8 @@ class enphasesecur extends eqLogic
 {
 	/*     * *************************Attributs****************************** */
 
+	const CLIENT_OK                     = 'ok';
+
 	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
