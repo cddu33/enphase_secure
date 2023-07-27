@@ -1,49 +1,65 @@
 #!/bin/bash
-######################### INCLUSION LIB ##########################
+PROGRESS_FILE=/tmp/dependancy_enphasesecur_in_progress
+if [ ! -z $1 ]; then
+    PROGRESS_FILE=$1
+fi
+touch ${PROGRESS_FILE}
+echo 0 > ${PROGRESS_FILE}
+echo "**********************************"
+echo "*  Installation des dépendances  *"
+echo "**********************************"
 BASEDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-#wget https://raw.githubusercontent.com/NebzHB/dependance.lib/master/dependance.lib -O $BASEDIR/dependance.lib &>/dev/null
-PROGRESS_FILENAME=dependancy
-PLUGIN=$(basename "$(realpath $BASEDIR/..)")
-LANG_DEP=en
-. ${BASEDIR}/dependance.lib
-##################################################################
 
-pre
-step 0 "Synchronize the package index"
-try sudo apt-get clean
-try sudo apt-get update
+echo 5 > ${PROGRESS_FILE}
+sudo apt-get clean
+sudo apt-get update
 
-step 10 "Remove Python3 serial"
-try sudo apt remove -y python3-serial
+echo 10 > ${PROGRESS_FILE}
+sudo apt remove -y python3-serial
 
-step 20 "Instal libxml2 et xslt"
-try sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libxml2-dev libxslt-dev
+echo 20 > ${PROGRESS_FILE}
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y libxml2-dev libxslt-dev
 
 
-step 30 "Instal python3"
-try sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3
+echo 30 > ${PROGRESS_FILE}
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3
 
-step 40 "Instal python3 venv et pip"
-try sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv python3-pip python3-dev
+echo 40 > ${PROGRESS_FILE}
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3-venv python3-pip python3-dev
 
-step 50 "Create a python3 Virtual Environment"
-try sudo -u www-data python3 -m venv $BASEDIR/venv
+echo 50 > ${PROGRESS_FILE}
+sudo -u www-data python3 -m venv $BASEDIR/venv
 
-step 60 "Install Cython in venv"
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir "cython<3.0.0"
+echo 60 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir "cython<3.0.0"
 
-step 70 "Install Pyyaml in venv"
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-isolation pyyaml
+echo 70 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-isolation pyyaml
 
 
-step 80 "Install required python3 libraries in venv"
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyjwt
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir serial
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html5lib
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyudev
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir asyncio
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir httpx
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir lxml
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html-parser
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir six
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir requests
+echo 80 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyjwt
+echo 82 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir serial
+echo 84 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html5lib
+echo 86 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir pyudev
+echo 88 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir asyncio
+echo 90 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir httpx
+echo 92 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir lxml
+echo 94 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html-parser
+echo 96 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir six
+echo 98 > ${PROGRESS_FILE}
+sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir requests
+echo 100 > ${PROGRESS_FILE}
+
+rm ${PROGRESS_FILE}
+echo "**********************************"
+echo "*  Installation des dépendances OK  *"
+echo "**********************************"
