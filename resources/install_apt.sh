@@ -30,11 +30,11 @@ step 50 "Create a python3 Virtual Environment"
 try sudo -u www-data python3 -m venv $BASEDIR/venv
 
 step 60 "Install Cython in venv"
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir cython<3.0.0
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir -r cython<3.0.0
 
 step 70 "Install Pyyaml in venv"
-try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-isolation pyyaml
+try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir --no-build-isolation -r pyyaml
 
 
-step 70 "Install required python3 libraries in venv"
+step 80 "Install required python3 libraries in venv"
 try sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir -r $BASEDIR/requirements.txt
