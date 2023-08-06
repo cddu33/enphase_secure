@@ -403,8 +403,7 @@ class enphasesecur extends eqLogic
         }
 	  }
 	//suppression des cron 
-	public function removecron()
-	{
+	public function removecron(){
 		$cron = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
 		if(is_object($cron)) {
 		  $cron->remove();
@@ -996,8 +995,7 @@ class enphasesecur extends eqLogic
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
-  	public function preRemove() 
-	{
+  	public function preRemove() {
 		self::deamon_stop();
 	}
 
@@ -1078,7 +1076,7 @@ class enphasesecur extends eqLogic
 		$cmd1 = $path .'/venv/bin/python3 ' . $path . '/enphasesecurd/jeedom/jeedom.py'; // nom du démon
 		$cmd .= ' --renew "' . trim(str_replace('"', '\"', config::byKey('ctoken', __CLASS__))) . '"'; 
 		$cmd .= ' --loglevel ' . log::convertLogLevel(log::getLogLevel(__CLASS__));
-		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__); // port par défaut
+		$cmd .= ' --socketport ' . config::byKey('socketport', __CLASS__,'55000',true); // port par défaut
 		$cmd .= ' --callback ' . network::getNetworkAccess('internal', 'proto:127.0.0.1:port:comp') . '/plugins/enphasesecur/core/php/jeeenphasesecur.php'; // chemin de la callback url à modifier (voir ci-dessous)
 		$cmd .= ' --user "' . trim(str_replace('"', '\"', config::byKey('user', __CLASS__))) . '"'; 
 		$cmd .= ' --password "' . trim(str_replace('"', '\"', config::byKey('password', __CLASS__))) . '"'; 
@@ -1102,7 +1100,7 @@ class enphasesecur extends eqLogic
             sleep(1);
             $i++;
         }
-        if ($i >= 30) {
+        if ($i >= 20) {
             log::add(__CLASS__, 'error', __('Impossible de lancer le démon, vérifiez le log', __FILE__), 'unableStartDeamon');
             return false;
         }
