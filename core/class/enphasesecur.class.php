@@ -280,7 +280,7 @@ class enphasesecur extends eqLogic
 						
 					case '2':
 						$cumul2 = $cumul2 + $eqLogic->getCmd(null, 'calWH')->execCmd();
-						$cumul2b = $cumul3b +1;
+						$cumul2b = $cumul2b + 1;
 						break;
 						
 					case '3':
