@@ -3,6 +3,12 @@
 >**IMPORTANT**
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+# 09/09/2023
+Test nouvelle page pour les batteries 3t iq
+
+Informations récupérées: ENC_agg_avail_energy (energie restante) et  Enc_max_available_capacity (capacité maximum)
+
 # 09/09/2023
 correction cumul groupe 2
 

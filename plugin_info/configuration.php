@@ -189,6 +189,18 @@ if (!isConnect()) {
 			</div>
 		</div>
 
+		<div class="form-group">
+			<label class="col-md-4 control-label">{{Equipement Batteries 3T IQ}}
+				<sup><i class="fas fa-question-circle tooltips" title="{{Créé ou non l'équipements pour les nouvelles batteries}}"></i></sup>
+			</label>
+			<div class="col-md-4">
+				<select id="sel_batt" class="configKey form-control" data-l1key="batt">
+                    <option value="oui">{{Oui}}</option>
+                    <option value="non">{{Non}}</option>
+                </select>
+			</div>
+		</div>
+
 		<!-- <div class="form-group">
 			<label class="col-md-4 control-label">{{Calcul Import/Export Cumulé}}
 				<sup><i class="fas fa-question-circle tooltips" title="{{Choisir la façon de calculer le cumul}}"></i></sup>

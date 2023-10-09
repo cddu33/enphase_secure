@@ -205,6 +205,12 @@ def enphase():
 			logging.debug("Recuperation index")
 			r = client.get(LOCAL_URL + "ivp/meters/readings", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
+			
+			if args.batt:
+				logging.debug("Recuperation Batteries 3T")
+				r = client.get(LOCAL_URL + "ivp/ensemble/secctrl", headers=header)
+				JEEDOM_COM.send_change_immediate(r.json())
+
 			limit = 0
 	except:
 		limit = limit + 1
@@ -222,6 +228,7 @@ _pidfile = '/tmp/demond.pid'
 _apikey = ''
 _callback = ''
 _cycle = 0.5
+_3t = False
 
 parser = argparse.ArgumentParser(
     description='Daemon for Enphase Secure')
@@ -239,6 +246,7 @@ parser.add_argument("--serie", help="Serie for Enphase Server", type=str)
 parser.add_argument("--token", help="Token Enphase Server", type=str)
 parser.add_argument("--ip", help="Adresse IP passrelle", type=str)
 parser.add_argument("--delais", help="Delais actualisation", type=str)
+parser.add_argument("--batt", help="3t battery", type=str)
 args = parser.parse_args()
 
 if args.device:
@@ -255,6 +263,8 @@ if args.cycle:
     _cycle = float(args.cycle)
 if args.socketport:
 	_socket_port = int(args.socketport)
+if args.batt:
+	_batt = bool(args.batt)
 
 jeedom_utils.set_log_level(_log_level)
 
@@ -268,6 +278,7 @@ logging.debug('Apikey : '+str(_apikey))
 logging.debug('Device : '+str(_device))
 logging.debug('Callback : '+str(_callback))
 logging.debug('Delais actualisation : '+str(args.delais))
+logging.debug('Batterie? : '+str(args.batt))
 logging.info('Adresse IP Passerelle : '+str(args.ip))
 if args.renew == "auto":
 	logging.debug('User : '+str(args.user))
