@@ -206,7 +206,7 @@ def enphase():
 			r = client.get(LOCAL_URL + "ivp/meters/readings", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
 			
-			if args.batt:
+			if args.batt == "oui":
 				logging.debug("Recuperation Batteries 3T")
 				r = client.get(LOCAL_URL + "ivp/ensemble/secctrl", headers=header)
 				JEEDOM_COM.send_change_immediate(r.json())
@@ -228,7 +228,7 @@ _pidfile = '/tmp/demond.pid'
 _apikey = ''
 _callback = ''
 _cycle = 0.5
-_3t = False
+_3t = "non"
 
 parser = argparse.ArgumentParser(
     description='Daemon for Enphase Secure')
@@ -264,7 +264,7 @@ if args.cycle:
 if args.socketport:
 	_socket_port = int(args.socketport)
 if args.batt:
-	_batt = bool(args.batt)
+	_batt = args.batt
 
 jeedom_utils.set_log_level(_log_level)
 

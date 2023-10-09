@@ -1061,6 +1061,11 @@ class enphasesecur extends eqLogic
 		if (config::byKey('delais', __CLASS__) == ''){
 			config::save('delais','60','enphasesecur');
 		}
+
+		//batterie hs par defaut
+		if (config::byKey('batt', __CLASS__) == ''){
+			config::save('batt','non','enphasesecur');
+		}
 		
        $deamon_info = self::deamon_info();
         if ($deamon_info['launchable'] != 'ok') {
