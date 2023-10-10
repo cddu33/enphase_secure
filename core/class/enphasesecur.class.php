@@ -352,19 +352,27 @@ class enphasesecur extends eqLogic
 			$rapport = "Pas d'anomalie de production détectée, seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
 			log::add('enphasesecur', 'info', $rapport);
 		}
-		else {
-			$rapport = $rapport . ". seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
-			log::add('enphasesecur', 'error', $rapport);
-		}
 		
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'groupe') {
-				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { $eqLogic->checkAndUpdateCmd('alarme', $g1);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { $eqLogic->checkAndUpdateCmd('alarme', $g2);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { $eqLogic->checkAndUpdateCmd('alarme', $g3);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { $eqLogic->checkAndUpdateCmd('alarme', $g4);}
-			}
+				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g1);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 1: ". $cumul1);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g2);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 2: ". $cumul2);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g3);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 3: ". $cumul3);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g4);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 4: ". $cumul4);
+				}
 
+			}
 		}
 	}
 
