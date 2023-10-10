@@ -180,11 +180,6 @@ def enphase():
 		time.sleep(10)
 	try:
 		if testjeton == True:	
-			if args.batt == "oui":
-				logging.debug("Recuperation Batteries 3T")
-				r = client.get(LOCAL_URL + "ivp/ensemble/status", headers=header)
-				JEEDOM_COM.send_change_immediate(r.json())
-				
 			logging.info("Recuperation mesures")
 			# logging.debug("Recuperation mesures passerelle")
 			r = client.get(LOCAL_URL + "production.json?details=1", headers=header)
@@ -211,7 +206,10 @@ def enphase():
 			r = client.get(LOCAL_URL + "ivp/meters/readings", headers=header)
 			JEEDOM_COM.send_change_immediate(r.json())
 			
-			
+			if args.batt == "oui":
+				logging.debug("Recuperation Batteries 3T")
+				r = client.get(LOCAL_URL + "ivp/ensemble/status", headers=header)
+				JEEDOM_COM.send_change_immediate(r.json())
 
 			limit = 0
 	except:
