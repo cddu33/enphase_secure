@@ -208,7 +208,7 @@ def enphase():
 			
 			if args.batt == "oui":
 				logging.debug("Recuperation Batteries 3T")
-				r = client.get(LOCAL_URL + "ivp/ensemble/secctrl", headers=header)
+				r = client.get(LOCAL_URL + "ivp/ensemble/status", headers=header)
 				JEEDOM_COM.send_change_immediate(r.json())
 
 			limit = 0

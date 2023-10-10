@@ -41,16 +41,16 @@ try {
 	$enphasesecur_json = json_decode($result, true);
 	
 	//prod batteries
-	if (isset($enphasesecur_json['shutdown'])) {
+	if (isset($enphasesecur_json['secctrl']['shutdown'])) {
 		log::add('enphasesecur', 'debug', 'Réception mesures batteries');
 		foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'batt') {
 
-				$enphasesecur_info = $enphasesecur_json['Enc_max_available_capacity'];
+				$enphasesecur_info = $enphasesecur_json['secctrl']['Enc_max_available_capacity'];
 				log::add('enphasesecur', 'debug', 'Capacité maximum batterie: ' . $enphasesecur_info);
 				$eqLogic->checkAndUpdateCmd('Enc_max_available_capacity', $enphasesecur_info);	
 
-				$enphasesecur_info = $enphasesecur_json['ENC_agg_avail_energy'];
+				$enphasesecur_info = $enphasesecur_json['secctrl']['ENC_agg_avail_energy'];
 				log::add('enphasesecur', 'debug', 'Energie Restante batterie: ' . $enphasesecur_info);
 				$eqLogic->checkAndUpdateCmd('ENC_agg_avail_energy', $enphasesecur_info);	
 
