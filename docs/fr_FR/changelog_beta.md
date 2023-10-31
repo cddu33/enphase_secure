@@ -4,6 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 31/10/2023
+Test nouvelle page pour les batteries 3t iq
+
 # 10/10/2023
 Amélioration message probleme prod dans un groupe
 
