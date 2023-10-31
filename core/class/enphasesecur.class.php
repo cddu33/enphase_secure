@@ -1004,6 +1004,8 @@ class enphasesecur extends eqLogic
 			$this->CreaCmd('Enc_max_available_capacity', 'Capacité maximum disponnible', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
 			$this->CreaCmd('ENC_agg_avail_energy', 'Energie Restante', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
+
+$this->CreaCmd('ENC_pourcent', 'Pourcentage restante', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', '%', '1');
 		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
