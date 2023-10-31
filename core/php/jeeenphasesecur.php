@@ -46,13 +46,19 @@ try {
 		foreach (enphasesecur::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'batt') {
 
-				$enphasesecur_info = $enphasesecur_json['secctrl']['Enc_max_available_capacity'];
-				log::add('enphasesecur', 'debug', 'Capacité maximum batterie: ' . $enphasesecur_info);
-				$eqLogic->checkAndUpdateCmd('Enc_max_available_capacity', $enphasesecur_info);	
+				$enphasesecur_info_max = $enphasesecur_json['secctrl']['Enc_max_available_capacity'];
+				log::add('enphasesecur', 'debug', 'Capacité maximum batterie: ' . $enphasesecur_info_max);
+				$eqLogic->checkAndUpdateCmd('Enc_max_available_capacity', $enphasesecur_info_max);	
 
-				$enphasesecur_info = $enphasesecur_json['secctrl']['ENC_agg_avail_energy'];
-				log::add('enphasesecur', 'debug', 'Energie Restante batterie: ' . $enphasesecur_info);
-				$eqLogic->checkAndUpdateCmd('ENC_agg_avail_energy', $enphasesecur_info);	
+				$enphasesecur_info_rest = $enphasesecur_json['secctrl']['ENC_agg_avail_energy'];
+				log::add('enphasesecur', 'debug', 'Energie Restante batterie: ' . $enphasesecur_info_rest);
+				$eqLogic->checkAndUpdateCmd('ENC_agg_avail_energy', $enphasesecur_info_rest);	
+
+
+		$enphasesecur_info_perc = ( $enphasesecur_info_rest * 100)/$enphasesecur_info_max;
+
+				log::add('enphasesecur', 'debug', 'Pourcentage Restant batterie: ' . $enphasesecur_info_perc);
+				$eqLogic->checkAndUpdateCmd('ENC_pourcent', $enphasesecur_info_perc);	
 
 			}
 		}
