@@ -1,4 +1,4 @@
-# Plugin Enphase Secure V7 pour Jeedom
+# Plugin Enphase Secure V7 Beta pour Jeedom
 
 > Vérifiez bien que votre passerelle Enphase est en Firmware V7
 > 
@@ -17,30 +17,70 @@ Le plugin permet de récupérer les données:
     * Semaine
     * Mise en service
     * Cumul Journalier Export réseau
+    * Puissance Réactive
+    * Puissance Apaprente
+    * Facteur de puissance
+    * Courant
+    * Energie Réactive inductive jour
+    * Energie Réactive inductive Mes
+    * Energie Réactive capacitive jour
+    * Energie Réactive capacitive Mes
+    * Energie Apparente jour
+    * Energie Apparente Mes
 * de consommation totale mono ou tri (avec la production):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
+    * Puissance Réactive
+    * Puissance Apparente
+    * Facteur de puissance
+    * Courant
+    * Energie Réactive inductive jour
+    * Energie Réactive inductive Mes
+    * Energie Réactive capacitive jour
+    * Energie Réactive capacitive Mes
+    * Energie Apparente jour
+    * Energie Apparente Mes
 * de consommation net mono ou tri (importée du réseau):
     * Instantanné
     * Jour
     * Semaine
     * Mise en service
-    * Cumul journalier Import réseau
+    * Cumul journalier Import réseau (non fonctionnel avec le dernier firmware, bug enphase)
+    * Puissance Réactive
+    * Puissance Apaprente
+    * Facteur de puissance
+    * Courant
+    * Energie Réactive inductive jour
+    * Energie Réactive inductive Mes
+    * Energie Réactive capacitive jour
+    * Energie Réactive capacitive Mes
+    * Energie Apparente jour
+    * Energie Apparente Mes
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
-    * La puissance délivrée
-    * Le pourcentage de charge restant
+    * La puissance délivrée (ancienne batteries)
+    * Le pourcentage de charge restant (anciennes batteries)
+    * La capacité
+    * La puissance restante
 * les onduleurs
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
-    * La production cumulée sur la journée
+    * La production cumulée sur la journée (estimation)
+    * Le groupe d'appartenance (orientation ou puissance du panneau) pour la surveillance de production
+* Groupe d'onduleurs (si configuré)
+    * La puissance délivrée dans le groupe
+    * Le puissance délivrée max dans le groupe
+    * La production cumulée sur la journée (estimation) dans le groupe
+    * La surveillance de production
 
 
 Pour maximiser l'autoconsommation, posssibilité de régler un seuil haut et un seuil bas pour déclencher une commande
 
 L'actualisation des données est réglable avec un minimum de 1s sauf pour les onduleurs qui eux s'actualise toutes les 15min environ (non modifiable)
+
+La production des panneaux est surveillé une fois par jour. La formule de calcul est: l'addition des panneaux d'un groupe diviser par le nombre de panneau . Ce calcul est minoré de 10/100. Si la production journalière d'un panneau est inférieur à ce calcul, il est listé dans un rapport journalier dans le centre de message.
 
 L'accé se fait soit avec les identifiants enphase soit avec un token généré manuellement.
 
@@ -81,8 +121,7 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
    * Utilisateur Enphase
    * Mot de passe Enphase
    * Adresse IP locale de la passerelle
-   * ID du site (dispponible sur l'application)
-   * Numéro de série de la passerelle (disponnible sur l'application)
+   * Numéro de série de la passerelle (disponible sur l'application)
 * Mode Token Manuel:
    * Adresse IP locale de la passerelle
    * Token généré précédement depuis le site Enphase
@@ -90,6 +129,15 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 * Racordement de l'installation:
    * Mode Monophasé
    * Mode triphasé
+
+* Equipement par Groupement:
+Si coché, cré un équipement par groupement pour centraliser les informations
+
+Les groupements sont à renseigner dans chaque équipement onduleur
+>Attention, pensez à relancer le démon si vous changez ce paramètre.
+
+* Commandes par équipements:
+Cocher les commandes ( sur la page configuration du plugin) que vous voulez que le plugin rajoute
 
 * Autoconsommation:
    * Mode de fonctionnement: active ou non l'autoconsommation
