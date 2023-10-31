@@ -7,7 +7,8 @@
 # 31/10/2023
 Test nouvelle page pour les batteries 3t iq
 
-Informations récupérées: ENC_agg_avail_energy (energie restante) et  Enc_max_available_capacity (capacité maximum)
+# 10/10/2023
+Amélioration message probleme prod dans un groupe
 
 # 09/09/2023
 correction cumul groupe 2
