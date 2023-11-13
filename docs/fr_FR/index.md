@@ -1,4 +1,4 @@
-# Plugin Enphase Secure V7 pour Jeedom
+# Plugin Enphase Secure V7 Beta pour Jeedom
 
 > Vérifiez bien que votre passerelle Enphase est en Firmware V7
 > 
@@ -60,8 +60,10 @@ Le plugin permet de récupérer les données:
     * Energie Apparente Mes
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
-    * La puissance délivrée
-    * Le pourcentage de charge restant
+    * La puissance délivrée (ancienne batteries)
+    * Le pourcentage de charge restant (anciennes batteries)
+    * La capacité
+    * La puissance restante
 * les onduleurs
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
@@ -131,14 +133,18 @@ Il faudra  rentrer les informations suivante dans la page de configuration du pl
 * Equipement par Groupement:
 Si coché, cré un équipement par groupement pour centraliser les informations
 
-* Type de Firmware de la passerelle:
-Adapte le plugin au firmware de la passerelle. vous le retrouver sur l'application Enlighten, Onglet Menu, Système, Périphérique, Passerelle
-
 Les groupements sont à renseigner dans chaque équipement onduleur
 >Attention, pensez à relancer le démon si vous changez ce paramètre.
 
 * Commandes par équipements:
 Cocher les commandes ( sur la page configuration du plugin) que vous voulez que le plugin rajoute
+
+* Equipements onduleurs:
+Génère ou non un équipement par onduleur pour la puissance cumulé, max et instantané
+
+* Equipement Batteries 3T IQ :
+Génère ou non un équipement pour les nouvelle batterie
+>Attention si vous n'avez pas de batteries ou pas le bon firmware ça bloquera le daemon
 
 * Autoconsommation:
    * Mode de fonctionnement: active ou non l'autoconsommation

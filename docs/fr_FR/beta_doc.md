@@ -60,8 +60,10 @@ Le plugin permet de récupérer les données:
     * Energie Apparente Mes
 * la balance import et export instantanée réseau mono ou tri
 * le stockage
-    * La puissance délivrée
-    * Le pourcentage de charge restant
+    * La puissance délivrée (ancienne batteries)
+    * Le pourcentage de charge restant (anciennes batteries)
+    * La capacité
+    * La puissance restante
 * les onduleurs
     * La puissance délivrée par onduleur
     * Le puissance délivrée max par onduleur
@@ -136,6 +138,13 @@ Les groupements sont à renseigner dans chaque équipement onduleur
 
 * Commandes par équipements:
 Cocher les commandes ( sur la page configuration du plugin) que vous voulez que le plugin rajoute
+
+* Equipements onduleurs:
+Génère ou non un équipement par onduleur pour la puissance cumulé, max et instantané
+
+* Equipement Batteries 3T IQ :
+Génère ou non un équipement pour les nouvelle batterie
+>Attention si vous n'avez pas de batteries ou pas le bon firmware ça bloquera le daemon
 
 * Autoconsommation:
    * Mode de fonctionnement: active ou non l'autoconsommation

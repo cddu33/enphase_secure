@@ -151,6 +151,8 @@ class enphasesecur extends eqLogic
 			
 		}
 
+		
+
 		if (config::byKey('G1', __CLASS__) == true) { self::CreaEquip('enphasesecur_G1', 'Groupe 1', 'type', 'groupe', '1', 1);}
 		if (config::byKey('G2', __CLASS__) == true) { self::CreaEquip('enphasesecur_G2', 'Groupe 2', 'type', 'groupe', '1', 1);}
 		if (config::byKey('G3', __CLASS__) == true) { self::CreaEquip('enphasesecur_G3', 'Groupe 3', 'type', 'groupe', '1', 1);}
@@ -167,6 +169,8 @@ class enphasesecur extends eqLogic
 
 			self::CreaEquip('enphasesecur_bat', 'Enphase Stockage', 'type', 'bat', '1', 1);
 		}
+		//batteries
+		if (config::byKey('batt', __CLASS__) == true) { self::CreaEquip('enphasesecur_batt', 'Batteries 3T IQ', 'type', 'batt', '1', 1);}
 	}
 	// Fonction exécutée automatiquement avant la création de l'équipement
 	public function preInsert() {}
@@ -352,19 +356,27 @@ class enphasesecur extends eqLogic
 			$rapport = "Pas d'anomalie de production détectée, seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
 			log::add('enphasesecur', 'info', $rapport);
 		}
-		else {
-			$rapport = $rapport . ". seuil ligne 1: ". $cumul1 . ", seuil ligne 2: ". $cumul2 . ", seuil ligne 3: ". $cumul3 . ", seuil ligne 4: ". $cumul4;
-			log::add('enphasesecur', 'error', $rapport);
-		}
 		
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			if ($eqLogic->getConfiguration('type') == 'groupe') {
-				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { $eqLogic->checkAndUpdateCmd('alarme', $g1);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { $eqLogic->checkAndUpdateCmd('alarme', $g2);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { $eqLogic->checkAndUpdateCmd('alarme', $g3);}
-				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { $eqLogic->checkAndUpdateCmd('alarme', $g4);}
-			}
+				if ($eqLogic->getLogicalId() == 'enphasesecur_G1') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g1);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 1: ". $cumul1);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G2') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g2);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 2: ". $cumul2);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G3') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g3);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 3: ". $cumul3);
+				}
+				elseif ($eqLogic->getLogicalId() == 'enphasesecur_G4') { 
+					$eqLogic->checkAndUpdateCmd('alarme', $g4);
+					log::add('enphasesecur', 'error', $rapport . ". seuil ligne 4: ". $cumul4);
+				}
 
+			}
 		}
 	}
 
@@ -874,12 +886,6 @@ class enphasesecur extends eqLogic
 
 				$this->CreaCmd('cumulimport3', 'Import Jour Réseau3', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
 
-				// $this->CreaCmd('calculjour1', 'Calcul Jour, ne pas toucher1', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
-
-				// $this->CreaCmd('calculjour2', 'Calcul Jour, ne pas toucher2', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
-
-				// $this->CreaCmd('calculjour3', 'Calcul Jour, ne pas toucher3', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '0');
-
 				$this->CreaCmd('autoconso11', 'Autoconso 1 phase 1', '', '1', '', '','info', 'binary', '', '1');
 
 				$this->CreaCmd('autoconso12', 'Autoconso 1 phase 2', '', '1', '', '','info', 'binary', '', '1');
@@ -993,6 +999,14 @@ class enphasesecur extends eqLogic
 			self::removecron();
 			self::creacron();
 		}
+		if ($this->getConfiguration('type') == 'batt') 
+		{
+			$this->CreaCmd('Enc_max_available_capacity', 'Capacité maximum disponnible', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
+
+			$this->CreaCmd('ENC_agg_avail_energy', 'Energie Restante', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', 'Wh', '1');
+
+$this->CreaCmd('ENC_pourcent', 'Pourcentage restante', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', '%', '1');
+		}
   	}
 	// Fonction exécutée automatiquement avant la suppression de l'équipement
   	public function preRemove() {
@@ -1057,6 +1071,11 @@ class enphasesecur extends eqLogic
 		if (config::byKey('delais', __CLASS__) == ''){
 			config::save('delais','60','enphasesecur');
 		}
+
+		//batterie hs par defaut
+		if (config::byKey('batt', __CLASS__) == ''){
+			config::save('batt','non','enphasesecur');
+		}
 		
        $deamon_info = self::deamon_info();
         if ($deamon_info['launchable'] != 'ok') {
@@ -1086,6 +1105,7 @@ class enphasesecur extends eqLogic
 		$cmd .= ' --apikey ' . jeedom::getApiKey(__CLASS__); // l'apikey pour authentifier les échanges suivants
 		$cmd .= ' --pid ' . jeedom::getTmpFolder(__CLASS__) . '/deamon.pid'; // et on précise le chemin vers le pid file (ne pas modifier)
 		$cmd .= ' --delais '  . config::byKey('delais', __CLASS__); // delais actualisation
+		$cmd .= ' --batt '  . config::byKey('batt', __CLASS__); // batteries
 		log::add(__CLASS__, 'info', $cmd);
         log::add(__CLASS__, 'info', 'Lancement démon');
         $result = exec($cmd . ' >> ' . log::getPathToLog('enphasesecur_daemon') . ' 2>&1 &'); // 'template_daemon' est le nom du log pour votre démon, vous devez nommer votre log en commençant par le pluginid pour que le fichier apparaisse dans la page de config
