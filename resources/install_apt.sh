@@ -49,8 +49,8 @@ echo 88 > ${PROGRESS_FILE}
 sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir asyncio
 echo 90 > ${PROGRESS_FILE}
 sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir httpx
-echo 92 > ${PROGRESS_FILE}
-sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir lxml
+# echo 92 > ${PROGRESS_FILE}
+# sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir lxml
 echo 94 > ${PROGRESS_FILE}
 sudo -u www-data $BASEDIR/venv/bin/pip3 install --no-cache-dir html-parser
 echo 96 > ${PROGRESS_FILE}
