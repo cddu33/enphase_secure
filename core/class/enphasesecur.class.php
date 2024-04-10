@@ -99,7 +99,7 @@ class enphasesecur extends eqLogic
 	  	}
 	}
 
-	public function CreaEquip($enphaselogic, $enphasename, $enphaseconf, $enphaseconfbis, $enphasevisible, $enphaseenable) 
+	public static function CreaEquip($enphaselogic, $enphasename, $enphaseconf, $enphaseconfbis, $enphasevisible, $enphaseenable) 
 	{
 		if (!is_object(eqLogic::byLogicalId($enphaselogic, 'enphasesecur'))) 
 		{
