@@ -4,6 +4,11 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 15/04/2024
+Correction message surveillance groupe: si pas d'anomalie , message dans les infos , sinon message en error
+
+Compatibilité php8  @zgegkiller
+
 # 18/02/2024
 Suppression Lxml non utilisé
 
