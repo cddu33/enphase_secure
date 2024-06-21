@@ -22,13 +22,13 @@ class enphasesecur extends eqLogic
 {
 	/*     * *************************Attributs****************************** */
 
-	public function decrypt() {
+	public static function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
 		$this->setConfiguration('token', utils::decrypt($this->getConfiguration('token')));
 	}
 
-	public function encrypt() {
+	public static function encrypt() {
 		$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::encrypt($this->getConfiguration('serie')));
 		$this->setConfiguration('token', utils::encrypt($this->getConfiguration('token')));
@@ -78,7 +78,7 @@ class enphasesecur extends eqLogic
 		log::remove(__CLASS__ . '_update');
 	}
 
-	public function CreaCmd($enphaselogic, $enphasename, $enphasedash, $enphasehisto, $enphasehistor, $enphasegtype, $enphasetype, $enphasesubtype, $enphaseunite, $enphasevisible) 
+	public static function CreaCmd($enphaselogic, $enphasename, $enphasedash, $enphasehisto, $enphasehistor, $enphasegtype, $enphasetype, $enphasesubtype, $enphaseunite, $enphasevisible) 
 	{
 		$enphasesecurCmd = $this->getCmd(null, $enphaselogic);
 	  	if (!is_object($enphasesecurCmd)) 
@@ -185,7 +185,7 @@ class enphasesecur extends eqLogic
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
   	public function postUpdate() {}
 
-	public function enphasesecurCron15(){
+	public static function enphasesecurCron15(){
 		$prodgroupe1 = 0;
 		$prodgroupe2 = 0;
 		$prodgroupe3 = 0;
@@ -223,7 +223,7 @@ class enphasesecur extends eqLogic
 		}
 	}
 
-	public function enphasesecurCron1d(){
+	public static function enphasesecurCron1d(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			//init wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
@@ -262,7 +262,7 @@ class enphasesecur extends eqLogic
 		}
 	}
 
-	public function enphasesecurCron1drapport(){
+	public static function enphasesecurCron1drapport(){
 		
 		$cumul1 =0;
 		$cumul1b =0;
@@ -382,7 +382,7 @@ class enphasesecur extends eqLogic
 	}
 
 	//création des crons pour les onduleurs WH et init cumul export import
-	public function creacron(){
+	public  function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
         if (!is_object($enphasesecurCron15)) {
             $enphasesecurCron15 = new cron();
