@@ -22,13 +22,13 @@ class enphasesecur extends eqLogic
 {
 	/*     * *************************Attributs****************************** */
 
-	public static function decrypt() {
+	public function decrypt() {
 		$this->setConfiguration('password', utils::decrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::decrypt($this->getConfiguration('serie')));
 		$this->setConfiguration('token', utils::decrypt($this->getConfiguration('token')));
 	}
 
-	public static function encrypt() {
+	public function encrypt() {
 		$this->setConfiguration('password', utils::encrypt($this->getConfiguration('password')));
 		$this->setConfiguration('serie', utils::encrypt($this->getConfiguration('serie')));
 		$this->setConfiguration('token', utils::encrypt($this->getConfiguration('token')));
@@ -382,7 +382,7 @@ class enphasesecur extends eqLogic
 	}
 
 	//création des crons pour les onduleurs WH et init cumul export import
-	public  function creacron(){
+	public function creacron(){
 		$enphasesecurCron15 = cron::byClassAndFunction(__CLASS__, 'enphasesecurCron15');
         if (!is_object($enphasesecurCron15)) {
             $enphasesecurCron15 = new cron();
