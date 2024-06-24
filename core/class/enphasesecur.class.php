@@ -78,7 +78,7 @@ class enphasesecur extends eqLogic
 		log::remove(__CLASS__ . '_update');
 	}
 
-	public static function CreaCmd($enphaselogic, $enphasename, $enphasedash, $enphasehisto, $enphasehistor, $enphasegtype, $enphasetype, $enphasesubtype, $enphaseunite, $enphasevisible) 
+	public function CreaCmd($enphaselogic, $enphasename, $enphasedash, $enphasehisto, $enphasehistor, $enphasegtype, $enphasetype, $enphasesubtype, $enphaseunite, $enphasevisible) 
 	{
 		$enphasesecurCmd = $this->getCmd(null, $enphaselogic);
 	  	if (!is_object($enphasesecurCmd)) 
