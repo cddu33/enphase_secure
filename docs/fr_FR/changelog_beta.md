@@ -3,8 +3,11 @@
 >**IMPORTANT**
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
+
+# 24/06/2024
+compatibilité php8  suite 
+
 # 21/06/2024
-Correction message surveillance groupe: si pas d'anomalie , message dans les infos , sinon message en error
 compatibilité php8  suite 
 
 # 11/04/2024
