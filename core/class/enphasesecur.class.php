@@ -185,7 +185,7 @@ class enphasesecur extends eqLogic
 	// Fonction exécutée automatiquement après la mise à jour de l'équipement
   	public function postUpdate() {}
 
-	public function enphasesecurCron15(){
+	public static function enphasesecurCron15(){
 		$prodgroupe1 = 0;
 		$prodgroupe2 = 0;
 		$prodgroupe3 = 0;
@@ -223,7 +223,7 @@ class enphasesecur extends eqLogic
 		}
 	}
 
-	public function enphasesecurCron1d(){
+	public static function enphasesecurCron1d(){
 		foreach (eqLogic::byType('enphasesecur', true) as $eqLogic) {
 			//init wh onduleur
 			if ($eqLogic->getConfiguration('type') == 'conv') {
@@ -262,7 +262,7 @@ class enphasesecur extends eqLogic
 		}
 	}
 
-	public function enphasesecurCron1drapport(){
+	public static function enphasesecurCron1drapport(){
 		
 		$cumul1 =0;
 		$cumul1b =0;
