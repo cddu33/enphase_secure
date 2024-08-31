@@ -302,15 +302,26 @@ class enphasesecur extends eqLogic
 				}
 			}
 		}
-		
-		$cumul1 = $cumul1/$cumulb1;
-		$cumul1 = $cumul1-$cumul1*0.10;
-		$cumul2 = $cumul2/$cumulb2;
-		$cumul2 = $cumul2-$cumul2*0.10;
-		$cumul3 = $cumul3/$cumulb3;
-		$cumul3 = $cumul3-$cumul3*0.10;
-		$cumul4 = $cumul4/$cumulb4;
-		$cumul4 = $cumul4-$cumul4*0.10;
+		if (config::byKey('G1', __CLASS__) == true) 
+		{
+			$cumul1 = $cumul1/$cumulb1;
+			$cumul1 = $cumul1-$cumul1*0.10;
+		}
+		if (config::byKey('G2', __CLASS__) == true) 
+		{
+			$cumul2 = $cumul2/$cumulb2;
+			$cumul2 = $cumul2-$cumul2*0.10;
+		}
+		if (config::byKey('G3', __CLASS__) == true) 
+		{
+			$cumul3 = $cumul3/$cumulb3;
+			$cumul3 = $cumul3-$cumul3*0.10;
+		}
+		if (config::byKey('G4', __CLASS__) == true) 
+		{
+			$cumul4 = $cumul4/$cumulb4;
+			$cumul4 = $cumul4-$cumul4*0.10;
+		}
 		$g1 = true;
 		$g2 = true;
 		$g3 = true;
@@ -320,28 +331,28 @@ class enphasesecur extends eqLogic
 			if ($eqLogic->getConfiguration('type') == 'conv') {
 				switch ($eqLogic->getConfiguration('groupement')) {
 					case '1':
-						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1) {
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul1 && config::byKey('G1', __CLASS__) == true) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
 							$g1 = false;
 						}
 						break;
 						
 					case '2':
-						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul2) {
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul2 && config::byKey('G2', __CLASS__) == true) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
 							$g2 = false;
 						}
 						break;
 						
 					case '3':
-						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul3) {
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul3 && config::byKey('G3', __CLASS__) == true) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
 							$g3 = false;
 						}
 						break;
 						
 					case '4':
-						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul4) {
+						if($eqLogic->getCmd(null, 'calWH')->execCmd()<$cumul4 && config::byKey('G4', __CLASS__) == true) {
 							$rapport = $rapport . ' ' . $eqLogic->getName();
 							$g4 = false;
 						}
