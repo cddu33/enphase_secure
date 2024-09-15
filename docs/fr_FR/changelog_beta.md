@@ -4,6 +4,9 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 31/08/2024
+Correction message groupe si ils sont décochés uniquement dans la config du plugin
+
 # 03/08/2024
 correction message erreur si groupe d'alarme pas en erreur
 
