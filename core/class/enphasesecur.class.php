@@ -987,6 +987,7 @@ class enphasesecur extends eqLogic
 			$this->CreaCmd('batnow', 'Puissance délivrée', 'core::badge', '1', '3', 'CONSUMPTION','info', 'numeric', 'W', '1');
 
 			$this->CreaCmd('batperc', 'Pourcentage charge', 'core::badge', '1', '', 'CONSUMPTION','info', 'numeric', '%', '1');
+			self::removecron();
 		}
 		
 		if ($this->getConfiguration('type') == 'groupe') 
