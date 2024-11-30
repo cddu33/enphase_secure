@@ -4,6 +4,8 @@
 >
 >S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte.
 
+# 30/11/2024
+Inhibition du cron rapport si l'utiliusateur a bidouillé sa config et avait activé précédement les rapports
 
 # 31/08/2024
 Correction message groupe si ils sont décochés uniquement dans la config du plugin

@@ -263,7 +263,8 @@ class enphasesecur extends eqLogic
 	}
 
 	public static function enphasesecurCron1drapport(){
-		
+		if (config::byKey('G1', __CLASS__) == true || config::byKey('G1', __CLASS__) == true ||config::byKey('G1', __CLASS__) == true || config::byKey('G1', __CLASS__) == true)
+		{
 		$cumul1 =0;
 		$cumul1b =0;
 		$cumul2 =0;
@@ -391,7 +392,7 @@ class enphasesecur extends eqLogic
 
 				}
 			}
-		
+		}
 	}
 
 	//création des crons pour les onduleurs WH et init cumul export import
